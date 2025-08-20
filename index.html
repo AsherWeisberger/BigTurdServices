@@ -29,8 +29,7 @@
       city: "Terre Haute and surrounding cities",
       serviceZips: [
         "47801","47802","47803","47804","47805","47807","47806","47808","47809","47810"
-      ],
-      stripePaymentLink: "https://buy.stripe.com/test_12345" // optional: paste your Stripe Payment Link URL
+      ]
     };
 
     // Simple pricing model (feel free to tweak numbers)
@@ -119,12 +118,6 @@
       document.querySelectorAll('[data-business-name]').forEach(el => el.textContent = BUSINESS.name);
       document.querySelectorAll('[data-business-phone]').forEach(el => el.textContent = BUSINESS.phone);
       document.querySelectorAll('[data-business-email]').forEach(el => { el.textContent = BUSINESS.email; el.href = 'mailto:' + BUSINESS.email; });
-      document.querySelectorAll('[data-payment-link]').forEach(el => {
-        if (BUSINESS.stripePaymentLink && BUSINESS.stripePaymentLink.startsWith('https')) {
-          el.classList.remove('hidden');
-          el.href = BUSINESS.stripePaymentLink;
-        }
-      });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -181,7 +174,6 @@
           <p class="mt-4 text-lg text-stone-700 max-w-prose">Reliable, affordable dog poop cleanup for yards, HOAs, apartments and parks. No contracts. Friendly service. Sparkling lawns and happy paws.</p>
           <div class="mt-6 flex flex-col sm:flex-row gap-3">
             <a href="#quote" class="inline-flex items-center justify-center rounded-2xl px-5 py-3 border border-stone-300 bg-white shadow-sm hover:shadow">Get a Free Quote</a>
-            <a data-payment-link href="#" class="hidden inline-flex items-center justify-center rounded-2xl px-5 py-3 border border-stone-300 hover:bg-white/60">Pay Invoice</a>
           </div>
           <div class="mt-6 flex items-center gap-3 text-sm">
             <input id="quoteZipHero" type="text" maxlength="5" placeholder="Enter ZIP to check coverage" class="w-48 rounded-xl border border-stone-300 px-3 py-2" oninput="byId('quoteZip').value=this.value; updateZipBadge();" />
@@ -328,7 +320,6 @@
           <div id="quoteResult" class="text-lg font-semibold"></div>
           <div class="flex flex-col sm:flex-row gap-3">
             <a id="quoteCTA" href="#" class="inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-5 py-3 hover:bg-stone-50">Email us your details</a>
-            <a data-payment-link href="#" class="hidden inline-flex items-center justify-center rounded-xl border border-stone-300 px-5 py-3 hover:bg-stone-50">Pay deposit</a>
           </div>
         </div>
       </div>
@@ -386,7 +377,7 @@
       </details>
       <details class="rounded-2xl border bg-white p-5 shadow-sm">
         <summary class="font-semibold">How do I pay?</summary>
-        <p class="mt-2 text-stone-700">We accept major cards via online invoice. You can also enable a Stripe Payment Link—paste the URL in the site config at the top of this file.</p>
+        <p class="mt-2 text-stone-700">We accept major cards via online invoice. Use the 'Checkout Now' button for payment links."</p>
       </details>
       <details class="rounded-2xl border bg-white p-5 shadow-sm">
         <summary class="font-semibold">Any contracts?</summary>
