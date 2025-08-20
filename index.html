@@ -162,10 +162,12 @@
         </div>
       </div>
       <div class="relative">
-        <div class="aspect-[4/3] w-full rounded-3xl bg-white shadow-xl border border-stone-200 p-6 overflow-hidden"> <!-- Added overflow-hidden -->
-          <div class="image-container h-full w-full rounded-2xl border-2 border-dashed border-stone-300 flex items-center justify-center text-center p-0"> <!-- Removed p-6 to avoid extra padding -->
-            <div class="w-full h-full flex items-center justify-center">
-              <img src="BIGTURD%20PHOTO.png" alt="Big Turd Waste Removal" class="max-w-full max-h-full object-contain">
+        <div class="aspect-[4/3] w-full rounded-3xl bg-white shadow-xl border border-stone-200">
+          <div class="image-container h-full w-full rounded-2xl overflow-hidden">
+            <img src="BIGTURD%20PHOTO.png" alt="Big Turd Waste Removal" class="w-full h-full object-cover">
+            <div class="absolute bottom-2 left-2 text-sm text-stone-600">
+              <p class="font-semibold">BIG TURD Waste Removal</p>
+              <p>Locally owned & operated</p>
             </div>
           </div>
         </div>
@@ -181,12 +183,12 @@
       height: 100%;
     }
 
-    /* Style the image to fit within the container */
+    /* Style the image to fill the container */
     .image-container img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain; /* Ensures the image scales without distortion */
-      display: block; /* Removes any extra space below the image */
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Fills the container, cropping if necessary */
+      display: block;
     }
 
     /* Ensure the aspect ratio box respects the image */
@@ -194,7 +196,7 @@
       position: relative;
       width: 100%;
       padding-top: 75%; /* 4:3 aspect ratio = 75% */
-      overflow: hidden; /* Prevents overflow */
+      overflow: hidden;
     }
 
     .aspect-[4/3] > .image-container {
@@ -203,14 +205,16 @@
       left: 0;
       right: 0;
       bottom: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
-    /* Debugging: Add borders to see container boundaries */
-    .aspect-[4/3], .image-container, .image-container img {
-      border: 1px solid red; /* Remove after debugging */
+    /* Position text over the image */
+    .image-container .text-sm {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 2px 6px;
+      border-radius: 4px;
     }
   </style>
 </section>
