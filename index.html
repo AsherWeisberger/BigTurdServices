@@ -162,10 +162,10 @@
         </div>
       </div>
       <div class="relative">
-        <div class="aspect-[4/3] w-full rounded-3xl bg-white shadow-xl border border-stone-200 p-6">
-          <div class="image-container h-full w-full rounded-2xl border-2 border-dashed border-stone-300 flex items-center justify-center text-center p-6">
-            <div>
-              <img src="BIGTURD%20PHOTO.png" alt="Big Turd Waste Removal" class="max-h-full max-w-full">
+        <div class="aspect-[4/3] w-full rounded-3xl bg-white shadow-xl border border-stone-200 p-6 overflow-hidden"> <!-- Added overflow-hidden -->
+          <div class="image-container h-full w-full rounded-2xl border-2 border-dashed border-stone-300 flex items-center justify-center text-center p-0"> <!-- Removed p-6 to avoid extra padding -->
+            <div class="w-full h-full flex items-center justify-center">
+              <img src="BIGTURD%20PHOTO.png" alt="Big Turd Waste Removal" class="max-w-full max-h-full object-contain">
               <p class="font-semibold">BIG TURD Waste Removal</p>
               <p class="text-stone-600 text-sm">Locally owned & operated</p>
             </div>
@@ -196,6 +196,7 @@
       position: relative;
       width: 100%;
       padding-top: 75%; /* 4:3 aspect ratio = 75% */
+      overflow: hidden; /* Prevents overflow */
     }
 
     .aspect-[4/3] > .image-container {
@@ -204,32 +205,17 @@
       left: 0;
       right: 0;
       bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Debugging: Add borders to see container boundaries */
+    .aspect-[4/3], .image-container, .image-container img {
+      border: 1px solid red; /* Remove after debugging */
     }
   </style>
 </section>
-
-  <!-- How it works -->
-  <section id="services" class="container mx-auto px-4 py-16">
-    <h2 class="text-3xl font-extrabold">How it works</h2>
-    <div class="mt-8 grid md:grid-cols-3 gap-6">
-      <div class="rounded-2xl border bg-white p-6 shadow-sm">
-        <div class="text-3xl">📝</div>
-        <h3 class="mt-2 font-bold text-xl">1) Book</h3>
-        <p class="text-stone-700">Tell us about your pups and schedule. We'll add you to our route and send ETA alerts.</p>
-      </div>
-      <div class="rounded-2xl border bg-white p-6 shadow-sm">
-        <div class="text-3xl">🧹</div>
-        <h3 class="mt-2 font-bold text-xl">2) Scoop</h3>
-        <p class="text-stone-700">We walk the yard, scoop thoroughly, bag and remove waste. Tools are sanitized between stops.</p>
-      </div>
-      <div class="rounded-2xl border bg-white p-6 shadow-sm">
-        <div class="text-3xl">🌿</div>
-        <h3 class="mt-2 font-bold text-xl">3) Enjoy</h3>
-        <p class="text-stone-700">A clean, odor‑free yard without the hassle. Paws down, the best chore to outsource.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- Pricing -->
   <section id="pricing" class="relative">
     <div class="absolute inset-0 -z-10 bg-gradient-to-b from-stone-50 to-lime-50"></div>
