@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BIG TURD Waste Removal | Dog Poop Cleanup</title>
+  <meta name="description" content="BIG TURD Waste Removal – reliable, affordable dog poop yard cleanup. We scoop the poop so you don't have to." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💩</text></svg>">
+  <!-- Tailwind via CDN for fast styling on GitHub Pages -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Smooth scroll */
+    html{scroll-behavior:smooth}
+    /* Simple container width */
+    .container{max-width:1152px}
+    /* Hide number input spinners (Chrome) */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button{ -webkit-appearance: none; margin: 0; }
+    /* Modal */
+    .modal{ display:none; }
+    .modal.show{ display:flex; }
+  </style>
+  <script>
+    // === Site config you can customize ===
+    const BUSINESS = {
+      name: "BIG TURD Waste Removal",
+      phone: "(555) 555-1212",
+      email: "hello@bigturd.co",
+      city: "Your City",
+      serviceZips: [
+        // ⤵️ Replace with the ZIP codes you service
+        "46201","46202","46203","46204","46205","46220","46032","46033","46037","46038"
+      ],
+      stripePaymentLink: "https://buy.stripe.com/test_12345" // optional: paste your Stripe Payment Link URL
+    };
+
+    // Simple pricing model (feel free to tweak numbers)
+    const PRICING = {
+      weekly: { basePerVisit: 16, perExtraDog: 3, visitsPerWeek: 1 },
+      twice:  { basePerVisit: 14, perExtraDog: 3, visitsPerWeek: 2 },
+      biweekly:{ basePerVisit: 22, perExtraDog: 4, visitsPerWeek: 0.5 },
+      onetime:{ flat: 69 } // starting price; large yards or heavy first clean may cost more
+    };
+
+    // Utility: currency format
+    const $$ = n => n.toLocaleString(undefined,{style:'currency',currency:'USD'});
+
+    function byId(id){ return document.getElementById(id); }
+
+    function updateZipBadge(){
+      const zip = byId('quoteZip').value.trim();
+      const badge = byId('zipStatus');
+      if(!zip){ badge.textContent=''; badge.className='text-sm'; return; }
+      const covered = BUSINESS.serviceZips.includes(zip);
+      badge.textContent = covered ? 'In service area ✅' : 'Outside service area – ask us!';
+      badge.className = 'text-sm ' + (covered ? 'text-green-700' : 'text-amber-700');
+    }
+
+    function calcQuote(){
+      const dogs = Math.max(1, parseInt(byId('dogs').value||'1',10));
+      const freq = byId('frequency').value; // weekly, twice, biweekly, onetime
+      const yard = byId('yard').value; // small, medium, large
+      const zip = byId('quoteZip').value.trim();
+
+      let estMonthly = 0, perVisit=0, visits=0, label='';
+      if(freq === 'onetime'){
+        // Adjust flat price slightly by yard size and dogs
+        const yardBump = yard === 'large' ? 20 : yard === 'medium' ? 10 : 0;
+        const dogBump = Math.max(0, dogs-1) * 10;
+        const total = (PRICING.onetime.flat + yardBump + dogBump);
+        byId('quoteResult').innerHTML = `One‑time cleanup starting at <strong>${$$(total)}</strong>.`;
+      } else {
+        const p = PRICING[freq];
+        visits = p.visitsPerWeek * 4.33; // avg weeks/month
+        perVisit = p.basePerVisit + p.perExtraDog * Math.max(0, dogs-1);
+        // Light yard size discount/premium
+        const yardAdj = yard === 'large' ? 1.25 : yard === 'small' ? 0.9 : 1.0;
+        estMonthly = perVisit * visits * yardAdj;
+        label = ({weekly:'Weekly', twice:'Twice weekly', biweekly:'Every other week'})[freq];
+        byId('quoteResult').innerHTML = `${label} plan estimate: <strong>${$$(estMonthly)}</strong> / month <span class="text-gray-500">(~${$$(perVisit)} per visit)</span>`;
+      }
+
+      const covered = BUSINESS.serviceZips.includes(zip);
+      byId('quoteCTA').textContent = covered ? 'Request Service' : 'Request a Quote';
+      byId('quoteCTA').href = `mailto:${BUSINESS.email}?subject=Quote%20Request%20-%20${encodeURIComponent(BUSINESS.name)}&body=${encodeURIComponent(
+        `Name: \nPhone: \nAddress: \nZIP: ${zip}\nDogs: ${dogs}\nFrequency: ${label||'One-time'}\nYard size: ${yard}\n---\nNotes:`
+      )}`;
+    }
+
+    function fillBusinessBits(){
+      document.querySelectorAll('[data-business-name]').forEach(el=>el.textContent = BUSINESS.name);
+      document.querySelectorAll('[data-business-phone]').forEach(el=>el.textContent = BUSINESS.phone);
+      document.querySelectorAll('[data-business-email]').forEach(el=>{ el.textContent = BUSINESS.email; el.href = 'mailto:'+BUSINESS.email; });
+      document.querySelectorAll('[data-payment-link]').forEach(el=>{
+        if(BUSINESS.stripePaymentLink && BUSINESS.stripePaymentLink.startsWith('https')){
+          el.classList.remove('hidden');
+          el.href = BUSINESS.stripePaymentLink;
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fillBusinessBits();
+      updateZipBadge();
+      calcQuote();
+      // mobile menu toggle
+      const btn = document.getElementById('mobileMenuBtn');
+      const menu = document.getElementById('mobileMenu');
+      btn.addEventListener('click', ()=> menu.classList.toggle('hidden'));
+    });
+  </script>
+</head>
+<body class="bg-stone-50 text-stone-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-stone-200">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-3">
+        <a href="#top" class="flex items-center gap-2 font-extrabold text-xl tracking-tight">
+          <span class="text-2xl">💩</span>
+          <span>BIG TURD <span class="text-stone-500 font-semibold">Waste Removal</span></span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#services" class="hover:text-stone-700">Services</a>
+          <a href="#pricing" class="hover:text-stone-700">Pricing</a>
+          <a href="#area" class="hover:text-stone-700">Service Area</a>
+          <a href="#faq" class="hover:text-stone-700">FAQ</a>
+          <a href="#contact" class="hover:text-stone-700">Contact</a>
+          <a href="#quote" class="inline-flex items-center rounded-xl border border-stone-300 px-3 py-1.5 hover:bg-stone-100">Free Quote</a>
+        </nav>
+        <button id="mobileMenuBtn" class="md:hidden inline-flex items-center gap-2 rounded-xl border border-stone-300 px-3 py-1.5">Menu</button>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden pb-3">
+        <div class="grid gap-2 text-sm">
+          <a href="#services" class="px-2 py-1">Services</a>
+          <a href="#pricing" class="px-2 py-1">Pricing</a>
+          <a href="#area" class="px-2 py-1">Service Area</a>
+          <a href="#faq" class="px-2 py-1">FAQ</a>
+          <a href="#contact" class="px-2 py-1">Contact</a>
+          <a href="#quote" class="px-2 py-1 font-semibold">Free Quote</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="relative">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-lime-100 to-stone-50"></div>
+    <div class="container mx-auto px-4 py-16 md:py-24">
+      <div class="grid md:grid-cols-2 items-center gap-10">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+            We scoop the poop so <span class="underline decoration-lime-500">you</span> don't have to.
+          </h1>
+          <p class="mt-4 text-lg text-stone-700 max-w-prose">Reliable, affordable dog poop cleanup for yards, HOAs, apartments and parks. No contracts. Friendly service. Sparkling lawns and happy paws.</p>
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <a href="#quote" class="inline-flex items-center justify-center rounded-2xl px-5 py-3 border border-stone-300 bg-white shadow-sm hover:shadow">Get a Free Quote</a>
+            <a data-payment-link href="#" class="hidden inline-flex items-center justify-center rounded-2xl px-5 py-3 border border-stone-300 hover:bg-white/60">Pay Invoice</a>
+          </div>
+          <div class="mt-6 flex items-center gap-3 text-sm">
+            <input id="quoteZipHero" type="text" maxlength="5" placeholder="Enter ZIP to check coverage" class="w-48 rounded-xl border border-stone-300 px-3 py-2" oninput="byId('quoteZip').value=this.value; updateZipBadge();" />
+            <a href="#area" class="underline">See service area</a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/3] w-full rounded-3xl bg-white shadow-xl border border-stone-200 p-6">
+            <div class="h-full w-full rounded-2xl border-2 border-dashed border-stone-300 flex items-center justify-center text-center p-6">
+              <div>
+                <div class="text-6xl mb-2">💩</div>
+                <p class="font-semibold">BIG TURD Waste Removal</p>
+                <p class="text-stone-600 text-sm">Locally owned & operated</p>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -bottom-5 -left-5 rotate-[-2deg] rounded-2xl bg-white shadow border px-4 py-2 text-sm">No contracts • Text updates • Friendly techs</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="services" class="container mx-auto px-4 py-16">
+    <h2 class="text-3xl font-extrabold">How it works</h2>
+    <div class="mt-8 grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl border bg-white p-6 shadow-sm">
+        <div class="text-3xl">📝</div>
+        <h3 class="mt-2 font-bold text-xl">1) Book</h3>
+        <p class="text-stone-700">Tell us about your pups and schedule. We'll add you to our route and send ETA alerts.</p>
+      </div>
+      <div class="rounded-2xl border bg-white p-6 shadow-sm">
+        <div class="text-3xl">🧹</div>
+        <h3 class="mt-2 font-bold text-xl">2) Scoop</h3>
+        <p class="text-stone-700">We walk the yard, scoop thoroughly, bag and remove waste. Tools are sanitized between stops.</p>
+      </div>
+      <div class="rounded-2xl border bg-white p-6 shadow-sm">
+        <div class="text-3xl">🌿</div>
+        <h3 class="mt-2 font-bold text-xl">3) Enjoy</h3>
+        <p class="text-stone-700">A clean, odor‑free yard without the hassle. Paws down, the best chore to outsource.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="relative">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-stone-50 to-lime-50"></div>
+    <div class="container mx-auto px-4 py-16">
+      <h2 class="text-3xl font-extrabold">Simple pricing</h2>
+      <p class="text-stone-700 mt-2">Transparent rates that scale with dogs and visit frequency. First heavy clean may require a one‑time deep clean.</p>
+      <div class="mt-8 grid md:grid-cols-4 gap-6">
+        <div class="rounded-2xl border bg-white p-6 shadow-sm">
+          <h3 class="font-bold text-xl">Weekly</h3>
+          <p class="mt-1 text-stone-600">Starting around</p>
+          <p class="text-3xl font-extrabold">$16<span class="text-base font-semibold text-stone-500">/visit</span></p>
+          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
+            <li>1 visit per week</li>
+            <li>Add $3 per extra dog</li>
+            <li>No contracts</li>
+          </ul>
+          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50">Get quote</a>
+        </div>
+        <div class="rounded-2xl border bg-white p-6 shadow-sm">
+          <h3 class="font-bold text-xl">Twice weekly</h3>
+          <p class="mt-1 text-stone-600">Starting around</p>
+          <p class="text-3xl font-extrabold">$14<span class="text-base font-semibold text-stone-500">/visit</span></p>
+          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
+            <li>2 visits per week</li>
+            <li>Add $3 per extra dog</li>
+            <li>Great for small yards</li>
+          </ul>
+          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50">Get quote</a>
+        </div>
+        <div class="rounded-2xl border bg-white p-6 shadow-sm">
+          <h3 class="font-bold text-xl">Every other week</h3>
+          <p class="mt-1 text-stone-600">Starting around</p>
+          <p class="text-3xl font-extrabold">$22<span class="text-base font-semibold text-stone-500">/visit</span></p>
+          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
+            <li>Bi‑weekly visit</li>
+            <li>Add $4 per extra dog</li>
+            <li>Budget‑friendly</li>
+          </ul>
+          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50">Get quote</a>
+        </div>
+        <div class="rounded-2xl border bg-white p-6 shadow-sm">
+          <h3 class="font-bold text-xl">One‑time clean</h3>
+          <p class="mt-1 text-stone-600">Heavy clean starting at</p>
+          <p class="text-3xl font-extrabold">$69</p>
+          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
+            <li>Move‑in / spring clean</li>
+            <li>Puppy party rescue 🐶</li>
+            <li>Great before lawn service</li>
+          </ul>
+          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50">Get quote</a>
+        </div>
+      </div>
+      <p class="mt-4 text-xs text-stone-500">Prices shown are examples. Final quote depends on yard size, terrain and recent cleanup status.</p>
+    </div>
+  </section>
+
+  <!-- Quote widget -->
+  <section id="quote" class="container mx-auto px-4 py-16">
+    <div class="grid lg:grid-cols-2 gap-8">
+      <div class="rounded-2xl border bg-white p-6 shadow-sm">
+        <h2 class="text-2xl font-extrabold">Get your estimate</h2>
+        <p class="text-stone-700 mt-1">No obligation. We'll confirm details before scheduling.</p>
+        <div class="mt-6 grid gap-4">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="text-sm">ZIP code</label>
+              <input id="quoteZip" type="text" maxlength="5" class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="e.g., 46204" oninput="updateZipBadge(); calcQuote();" />
+              <div id="zipStatus" class="text-sm mt-1"></div>
+            </div>
+            <div>
+              <label class="text-sm"># of dogs</label>
+              <input id="dogs" type="number" min="1" value="1" class="w-full rounded-xl border border-stone-300 px-3 py-2" oninput="calcQuote();" />
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="text-sm">Frequency</label>
+              <select id="frequency" class="w-full rounded-xl border border-stone-300 px-3 py-2" onchange="calcQuote();">
+                <option value="weekly">Weekly</option>
+                <option value="twice">Twice weekly</option>
+                <option value="biweekly">Every other week</option>
+                <option value="onetime">One‑time clean</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-sm">Yard size</label>
+              <select id="yard" class="w-full rounded-xl border border-stone-300 px-3 py-2" onchange="calcQuote();">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </div>
+          </div>
+          <div id="quoteResult" class="text-lg font-semibold"></div>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a id="quoteCTA" href="#" class="inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-5 py-3 hover:bg-stone-50">Email us your details</a>
+            <a data-payment-link href="#" class="hidden inline-flex items-center justify-center rounded-xl border border-stone-300 px-5 py-3 hover:bg-stone-50">Pay deposit</a>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-2xl border bg-white p-6 shadow-sm">
+        <h3 class="text-xl font-extrabold">What’s included</h3>
+        <ul class="mt-3 space-y-2 list-disc list-inside text-stone-700">
+          <li>Thorough sweep of lawn and common areas</li>
+          <li>Bagging and removal of waste from property</li>
+          <li>Gates relatched and double‑checked</li>
+          <li>Tools sanitized between stops</li>
+          <li>Optional deodorizer (add‑on)</li>
+        </ul>
+        <h3 class="text-xl font-extrabold mt-6">Good to know</h3>
+        <ul class="mt-3 space-y-2 list-disc list-inside text-stone-700">
+          <li>You don’t need to be home</li>
+          <li>We work in light rain and snow</li>
+          <li>Inaccessible yards (locked gate/aggressive pet) are billed if we arrive</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service area -->
+  <section id="area" class="relative">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-lime-50 to-stone-50"></div>
+    <div class="container mx-auto px-4 py-16">
+      <h2 class="text-3xl font-extrabold">Service area</h2>
+      <p class="text-stone-700 mt-1">We currently service the following ZIP codes. Don’t see yours? Send us a note and we’ll try to help.</p>
+      <div id="zipGrid" class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3"></div>
+      <script>
+        // Render ZIP badges
+        document.addEventListener('DOMContentLoaded', ()=>{
+          const host = document.getElementById('zipGrid');
+          BUSINESS.serviceZips.forEach(z=>{
+            const a = document.createElement('a');
+            a.href = '#quote'; a.textContent = z;
+            a.className = 'inline-flex items-center justify-center rounded-xl border bg-white px-3 py-2 text-sm shadow-sm';
+            host.appendChild(a);
+          })
+        });
+      </script>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="container mx-auto px-4 py-16">
+    <h2 class="text-3xl font-extrabold">FAQ</h2>
+    <div class="mt-6 space-y-6">
+      <details class="rounded-2xl border bg-white p-5 shadow-sm">
+        <summary class="font-semibold">Do I need to be home?</summary>
+        <p class="mt-2 text-stone-700">Nope. We access via your preferred gate. Please ensure safe entry and any pets are secured if needed.</p>
+      </details>
+      <details class="rounded-2xl border bg-white p-5 shadow-sm">
+        <summary class="font-semibold">What about bad weather?</summary>
+        <p class="mt-2 text-stone-700">We work year‑round. In severe weather or unsafe conditions, we’ll reschedule and notify you.</p>
+      </details>
+      <details class="rounded-2xl border bg-white p-5 shadow-sm">
+        <summary class="font-semibold">How do I pay?</summary>
+        <p class="mt-2 text-stone-700">We accept major cards via online invoice. You can also enable a Stripe Payment Link—paste the URL in the site config at the top of this file.</p>
+      </details>
+      <details class="rounded-2xl border bg-white p-5 shadow-sm">
+        <summary class="font-semibold">Any contracts?</summary>
+        <p class="mt-2 text-stone-700">No contracts. Start, pause or cancel anytime. Just give us a little notice so we can adjust routes.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="relative">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-stone-50 to-white"></div>
+    <div class="container mx-auto px-4 py-16">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-3xl font-extrabold">Contact</h2>
+          <p class="text-stone-700 mt-1">We’re friendly humans—reach out with questions or to get scheduled.</p>
+          <div class="mt-6 space-y-2">
+            <p>📞 <a href="tel:+15555551212" data-business-phone>(555) 555‑1212</a></p>
+            <p>✉️ <a data-business-email href="mailto:hello@bigturd.co">hello@bigturd.co</a></p>
+            <p>📍 <span data-business-name>BIG TURD Waste Removal</span> – <span>Local Service • <span data-business-city>Your City</span></span></p>
+          </div>
+        </div>
+        <form action="mailto:hello@bigturd.co" method="post" enctype="text/plain" class="rounded-2xl border bg-white p-6 shadow-sm grid gap-4">
+          <div>
+            <label class="text-sm">Name</label>
+            <input name="Name" type="text" required class="w-full rounded-xl border border-stone-300 px-3 py-2" />
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="text-sm">Email</label>
+              <input name="Email" type="email" required class="w-full rounded-xl border border-stone-300 px-3 py-2" />
+            </div>
+            <div>
+              <label class="text-sm">Phone</label>
+              <input name="Phone" type="tel" class="w-full rounded-xl border border-stone-300 px-3 py-2" />
+            </div>
+          </div>
+          <div>
+            <label class="text-sm">Message</label>
+            <textarea name="Message" rows="4" class="w-full rounded-xl border border-stone-300 px-3 py-2"></textarea>
+          </div>
+          <button class="rounded-xl border border-stone-300 bg-white px-4 py-2 hover:bg-stone-50" type="submit">Send</button>
+          <p class="text-xs text-stone-500">This uses your email app to send. For a hosted form (no email app), connect Formspree or Airtable Forms later.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-stone-200">
+    <div class="container mx-auto px-4 py-10 text-sm text-stone-600">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <div class="font-bold">BIG TURD Waste Removal</div>
+          <div>© <span id="year"></span> • All rights reserved</div>
+        </div>
+        <div class="flex gap-3">
+          <a href="#top" class="underline">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- LocalBusiness schema (edit to match your biz) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "BIG TURD Waste Removal",
+    "image": "",
+    "telephone": "(555) 555-1212",
+    "email": "hello@bigturd.co",
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Local service area"
+    },
+    "url": "https://your-github-username.github.io/bigturd/",
+    "description": "Dog poop yard cleanup for homes, apartments and HOAs.",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Your City",
+      "addressRegion": "",
+      "postalCode": ""
+    }
+  }
+  </script>
+</body>
+</html>
