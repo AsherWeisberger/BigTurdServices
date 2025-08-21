@@ -19,6 +19,20 @@
     /* Modal */
     .modal{ display:none; }
     .modal.show{ display:flex; }
+    /* Glassy effect styles */
+    .glassy {
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+      backdrop-filter: blur(10px); /* Frosted glass blur */
+      border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    }
+    /* Ensure glassy effect works on dark backgrounds */
+    .glassy-dark {
+      background-color: rgba(0, 0, 0, 0.2); /* Darker semi-transparent for contrast */
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
   </style>
   <script>
     // === Site config you can customize ===
@@ -84,13 +98,13 @@
 
       if (freq === 'onetime') {
         const yardBump = yard === 'large' ? 20 : yard === 'medium' ? 10 : 0;
-        const total = PRICING.onetime.flat + yardBump; // Removed dogBump
+        const total = PRICING.onetime.flat + yardBump;
         byId('quoteResult').innerHTML = `One‑time cleanup starting at <strong>${$$(total)}</strong>.`;
         stripeLink = stripeLinks[yard][freq];
       } else {
         const p = PRICING[freq];
         visits = p.visitsPerWeek * 4.33;
-        perVisit = p.basePerVisit; // Removed perExtraDog adjustment
+        perVisit = p.basePerVisit;
         const yardAdj = yard === 'large' ? 1.25 : yard === 'small' ? 0.9 : 1.0;
         estMonthly = perVisit * visits * yardAdj;
         label = ({ weekly: 'Weekly', twice: 'Twice weekly', biweekly: 'Every other week' })[freq];
@@ -158,7 +172,7 @@
 </head>
 <body class="bg-stone-50 text-stone-900">
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-stone-200">
+  <header class="sticky top-0 z-50 glassy border-b border-stone-200">
     <div class="container mx-auto px-4">
       <div class="flex items-center justify-between py-3">
         <a href="#top" class="flex items-center gap-2 font-extrabold text-xl tracking-tight">
@@ -175,7 +189,7 @@
         </nav>
         <button id="mobileMenuBtn" class="md:hidden inline-flex items-center gap-2 rounded-xl border border-stone-300 px-3 py-1.5">Menu</button>
       </div>
-      <div id="mobileMenu" class="md:hidden hidden pb-3">
+      <div id="mobileMenu" class="md:hidden hidden pb-3 glassy">
         <div class="grid gap-2 text-sm">
           <a href="#services" class="px-2 py-1">Services</a>
           <a href="#pricing" class="px-2 py-1">Pricing</a>
@@ -207,12 +221,12 @@
           </div>
         </div>
         <div class="relative">
-          <div class="aspect-[4/3] w-full rounded-3xl bg-white shadow-xl border border-stone-200">
+          <div class="aspect-[4/3] w-full rounded-3xl glassy">
             <div class="image-container h-full w-full rounded-2xl overflow-hidden">
               <img src="BIGTURD%20PHOTO.png" alt="Big Turd Waste Removal" class="w-full h-full object-cover">
             </div>
           </div>
-          <div class="absolute -bottom-5 -left-5 rotate-[-2deg] rounded-2xl bg-white shadow border px-4 py-2 text-sm">No contracts • Text updates • Friendly techs</div>
+          <div class="absolute -bottom-5 -left-5 rotate-[-2deg] rounded-2xl glassy px-4 py-2 text-sm">No contracts • Text updates • Friendly techs</div>
         </div>
       </div>
     </div>
@@ -257,7 +271,7 @@
       <h2 class="text-3xl font-extrabold">Simple pricing</h2>
       <p class="text-stone-700 mt-2">Transparent rates that scale with dogs and visit frequency. First heavy clean may require a one‑time deep clean.</p>
       <div class="mt-8 grid md:grid-cols-4 gap-6">
-        <div class="rounded-2xl border bg-white p-6 shadow-sm">
+        <div class="rounded-2xl glassy p-6">
           <h3 class="font-bold text-xl">Weekly</h3>
           <p class="mt-1 text-stone-600">Starting around</p>
           <p class="text-3xl font-extrabold">$16<span class="text-base font-semibold text-stone-500">/visit</span></p>
@@ -268,7 +282,7 @@
           </ul>
           <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50">Get quote</a>
         </div>
-        <div class="rounded-2xl border bg-white p-6 shadow-sm">
+        <div class="rounded-2xl glassy p-6">
           <h3 class="font-bold text-xl">Twice weekly</h3>
           <p class="mt-1 text-stone-600">Starting around</p>
           <p class="text-3xl font-extrabold">$14<span class="text-base font-semibold text-stone-500">/visit</span></p>
@@ -279,7 +293,7 @@
           </ul>
           <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50">Get quote</a>
         </div>
-        <div class="rounded-2xl border bg-white p-6 shadow-sm">
+        <div class="rounded-2xl glassy p-6">
           <h3 class="font-bold text-xl">Every other week</h3>
           <p class="mt-1 text-stone-600">Starting around</p>
           <p class="text-3xl font-extrabold">$22<span class="text-base font-semibold text-stone-500">/visit</span></p>
@@ -290,7 +304,7 @@
           </ul>
           <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50">Get quote</a>
         </div>
-        <div class="rounded-2xl border bg-white p-6 shadow-sm">
+        <div class="rounded-2xl glassy p-6">
           <h3 class="font-bold text-xl">One‑time clean</h3>
           <p class="mt-1 text-stone-600">Heavy clean starting at</p>
           <p class="text-3xl font-extrabold">$69</p>
@@ -309,7 +323,7 @@
   <!-- Quote widget -->
   <section id="quote" class="container mx-auto px-4 py-16">
     <div class="grid lg:grid-cols-2 gap-8">
-      <div class="rounded-2xl border bg-white p-6 shadow-sm">
+      <div class="rounded-2xl glassy p-6 shadow-sm">
         <h2 class="text-2xl font-extrabold">Get your estimate</h2>
         <p class="text-stone-700 mt-1">No obligation. We'll confirm details before scheduling.</p>
         <div class="mt-6 grid gap-4">
@@ -319,7 +333,6 @@
               <input id="quoteZip" type="text" maxlength="5" class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="e.g., 46204" oninput="updateZipBadge(); calcQuote(); calcDogQuote();" />
               <div id="zipStatus" class="text-sm mt-1"></div>
             </div>
-            <!-- Removed # of dogs input -->
           </div>
           <div class="grid md:grid-cols-2 gap-4">
             <div>
@@ -346,7 +359,7 @@
           </div>
         </div>
       </div>
-      <div class="rounded-2xl border bg-white p-6 shadow-sm">
+      <div class="rounded-2xl glassy p-6 shadow-sm">
         <h2 class="text-2xl font-extrabold">Total Number of Dogs</h2>
         <p class="text-stone-700 mt-1">Select the total number of dogs at your property for an adjusted quote.</p>
         <div class="mt-6 grid gap-4">
@@ -387,7 +400,7 @@
           BUSINESS.serviceZips.forEach(z => {
             const a = document.createElement('a');
             a.href = '#quote'; a.textContent = z;
-            a.className = 'inline-flex items-center justify-center rounded-xl border bg-white px-3 py-2 text-sm shadow-sm';
+            a.className = 'inline-flex items-center justify-center rounded-xl glassy px-3 py-2 text-sm';
             host.appendChild(a);
           })
         });
@@ -399,19 +412,19 @@
   <section id="faq" class="container mx-auto px-4 py-16">
     <h2 class="text-3xl font-extrabold">FAQ</h2>
     <div class="mt-6 space-y-6">
-      <details class="rounded-2xl border bg-white p-5 shadow-sm">
+      <details class="rounded-2xl glassy p-5">
         <summary class="font-semibold">Do I need to be home?</summary>
         <p class="mt-2 text-stone-700">Nope. We access via your preferred gate. Please ensure safe entry and any pets are secured if needed.</p>
       </details>
-      <details class="rounded-2xl border bg-white p-5 shadow-sm">
+      <details class="rounded-2xl glassy p-5">
         <summary class="font-semibold">What about bad weather?</summary>
         <p class="mt-2 text-stone-700">We work year‑round. In severe weather or unsafe conditions, we’ll reschedule and notify you.</p>
       </details>
-      <details class="rounded-2xl border bg-white p-5 shadow-sm">
+      <details class="rounded-2xl glassy p-5">
         <summary class="font-semibold">How do I pay?</summary>
         <p class="mt-2 text-stone-700">Use the 'Checkout Now' button for payment."</p>
       </details>
-      <details class="rounded-2xl border bg-white p-5 shadow-sm">
+      <details class="rounded-2xl glassy p-5">
         <summary class="font-semibold">Any contracts?</summary>
         <p class="mt-2 text-stone-700">No contracts. Start, pause or cancel anytime. Just give us a little notice so we can adjust routes.</p>
       </details>
@@ -432,7 +445,7 @@
             <p>📍 <span data-business-name>BIG TURD Waste Removal</span> – <span>Local Service • <span data-business-city>Your City</span></span></p>
           </div>
         </div>
-        <div class="rounded-2xl border bg-white p-6 shadow-sm grid gap-4">
+        <div class="rounded-2xl glassy p-6 grid gap-4">
           <div>
             <label class="text-sm">Name</label>
             <input id="contactName" type="text" required class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="Your name" />
@@ -461,7 +474,7 @@
   <!-- Footer -->
   <footer class="border-t border-stone-200">
     <div class="container mx-auto px-4 py-10 text-sm text-stone-600">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 glassy">
         <div>
           <div class="font-bold">BIG TURD Waste Removal</div>
           <div>© <span id="year"></span> • All rights reserved</div>
