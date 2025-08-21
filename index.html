@@ -56,13 +56,12 @@
 
     function calcQuote() {
       const dogs = Math.max(1, parseInt(byId('dogs').value || '1', 10));
-      const freq = byId('frequency').value; // weekly, twice, biweekly, onetime
-      const yard = byId('yard').value; // small, medium, large
+      const freq = byId('frequency').value;
+      const yard = byId('yard').value;
       const zip = byId('quoteZip').value.trim();
 
       let estMonthly = 0, perVisit = 0, visits = 0, label = '', stripeLink = '#';
 
-      // Define Stripe links based on yard size and frequency
       const stripeLinks = {
         small: {
           weekly: 'https://buy.stripe.com/3cI8wP8J5cPbajnbT86g80c',
@@ -91,11 +90,11 @@
         byId('quoteResult').innerHTML = `One‑time cleanup starting at <strong>${$$(total)}</strong>.`;
         stripeLink = stripeLinks[yard][freq];
         if (dogs > 1) {
-          stripeLink += '?note=AddtlDogs:' + (dogs - 1) + 'x$10'; // Append note for manual adjustment
+          stripeLink += '?note=AddtlDogs:' + (dogs - 1) + 'x$10';
         }
       } else {
         const p = PRICING[freq];
-        visits = p.visitsPerWeek * 4.33; // avg weeks/month
+        visits = p.visitsPerWeek * 4.33;
         perVisit = p.basePerVisit + p.perExtraDog * Math.max(0, dogs - 1);
         const yardAdj = yard === 'large' ? 1.25 : yard === 'small' ? 0.9 : 1.0;
         estMonthly = perVisit * visits * yardAdj;
@@ -103,7 +102,7 @@
         byId('quoteResult').innerHTML = `${label} plan estimate: <strong>${$$(estMonthly)}</strong> / month <span class="text-gray-500">(~${$$(perVisit)} per visit)</span>`;
         stripeLink = stripeLinks[yard][freq];
         if (dogs > 1) {
-          stripeLink += '?note=AddtlDogs:' + (dogs - 1) + 'x$' + (p.perExtraDog * (dogs - 1)); // Append note for manual adjustment
+          stripeLink += '?note=AddtlDogs:' + (dogs - 1) + 'x$' + (p.perExtraDog * (dogs - 1));
         }
       }
 
@@ -118,6 +117,7 @@
       document.querySelectorAll('[data-business-name]').forEach(el => el.textContent = BUSINESS.name);
       document.querySelectorAll('[data-business-phone]').forEach(el => el.textContent = BUSINESS.phone);
       document.querySelectorAll('[data-business-email]').forEach(el => { el.textContent = BUSINESS.email; el.href = 'mailto:' + BUSINESS.email; });
+      // No payment link logic remains
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -377,7 +377,7 @@
       </details>
       <details class="rounded-2xl border bg-white p-5 shadow-sm">
         <summary class="font-semibold">How do I pay?</summary>
-        <p class="mt-2 text-stone-700">We accept major cards via online invoice. Use the 'Checkout Now' button for payment links."</p>
+        <p class="mt-2 text-stone-700">Use the 'Checkout Now' button for payment."</p>
       </details>
       <details class="rounded-2xl border bg-white p-5 shadow-sm">
         <summary class="font-semibold">Any contracts?</summary>
