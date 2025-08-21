@@ -117,7 +117,24 @@
       document.querySelectorAll('[data-business-name]').forEach(el => el.textContent = BUSINESS.name);
       document.querySelectorAll('[data-business-phone]').forEach(el => el.textContent = BUSINESS.phone);
       document.querySelectorAll('[data-business-email]').forEach(el => { el.textContent = BUSINESS.email; el.href = 'mailto:' + BUSINESS.email; });
-      // No payment link logic remains
+    }
+
+    function sendContactEmail() {
+      const name = byId('contactName').value.trim();
+      const email = byId('contactEmail').value.trim();
+      const phone = byId('contactPhone').value.trim();
+      const message = byId('contactMessage').value.trim();
+
+      if (!name || !email) {
+        alert('Please fill in at least your name and email.');
+        return;
+      }
+
+      const subject = `Contact Request - ${encodeURIComponent(BUSINESS.name)}`;
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}\n---\nNotes:`
+      );
+      window.location.href = `mailto:${BUSINESS.email}?subject=${subject}&body=${body}`;
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -127,6 +144,7 @@
       const btn = document.getElementById('mobileMenuBtn');
       const menu = document.getElementById('mobileMenu');
       btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+      byId('contactSubmit').addEventListener('click', sendContactEmail);
     });
   </script>
 </head>
@@ -400,28 +418,28 @@
             <p>📍 <span data-business-name>BIG TURD Waste Removal</span> – <span>Local Service • <span data-business-city>Your City</span></span></p>
           </div>
         </div>
-        <form action="mailto:BigTurdServices@yahoo.com" method="post" enctype="text/plain" class="rounded-2xl border bg-white p-6 shadow-sm grid gap-4">
+        <div class="rounded-2xl border bg-white p-6 shadow-sm grid gap-4">
           <div>
             <label class="text-sm">Name</label>
-            <input name="Name" type="text" required class="w-full rounded-xl border border-stone-300 px-3 py-2" />
+            <input id="contactName" type="text" required class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="Your name" />
           </div>
           <div class="grid md:grid-cols-2 gap-4">
             <div>
               <label class="text-sm">Email</label>
-              <input name="Email" type="email" required class="w-full rounded-xl border border-stone-300 px-3 py-2" />
+              <input id="contactEmail" type="email" required class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="Your email" />
             </div>
             <div>
               <label class="text-sm">Phone</label>
-              <input name="Phone" type="tel" class="w-full rounded-xl border border-stone-300 px-3 py-2" />
+              <input id="contactPhone" type="tel" class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="Your phone" />
             </div>
           </div>
           <div>
             <label class="text-sm">Message</label>
-            <textarea name="Message" rows="4" class="w-full rounded-xl border border-stone-300 px-3 py-2"></textarea>
+            <textarea id="contactMessage" rows="4" class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="Your message"></textarea>
           </div>
-          <button class="rounded-xl border border-stone-300 bg-white px-4 py-2 hover:bg-stone-50" type="submit">Send</button>
-          <p class="text-xs text-stone-500">This uses your email app to send. For a hosted form (no email app), connect Formspree or Airtable Forms later.</p>
-        </form>
+          <button id="contactSubmit" class="rounded-xl border border-stone-300 bg-white px-4 py-2 hover:bg-stone-50">Send Message</button>
+          <p class="text-xs text-stone-500">This will open your email app to send the message.</p>
+        </div>
       </div>
     </div>
   </section>
