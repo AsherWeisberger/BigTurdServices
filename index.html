@@ -119,20 +119,6 @@
       )}`;
     }
 
-    function calcDogQuote() {
-      const dogs = byId('dogCount').value;
-      const zip = byId('quoteZip').value.trim();
-      const baseLink = 'https://buy.stripe.com/14AaEXbVheXj1MR7CS6g80e';
-
-      let stripeLink = baseLink + '?dogs=' + dogs;
-
-      const covered = BUSINESS.serviceZips.includes(zip);
-      byId('dogCTA').textContent = covered ? 'Checkout Now' : 'Request a Quote';
-      byId('dogCTA').href = covered ? stripeLink : `mailto:${BUSINESS.email}?subject=Quote%20Request%20-%20${encodeURIComponent(BUSINESS.name)}&body=${encodeURIComponent(
-        `Name: \nPhone: \nAddress: \nZIP: ${zip}\nDogs: ${dogs}\n---\nNotes:`
-      )}`;
-    }
-
     function fillBusinessBits() {
       document.querySelectorAll('[data-business-name]').forEach(el => el.textContent = BUSINESS.name);
       document.querySelectorAll('[data-business-phone]').forEach(el => el.textContent = BUSINESS.phone);
@@ -161,12 +147,10 @@
       fillBusinessBits();
       updateZipBadge();
       calcQuote();
-      calcDogQuote();
       const btn = document.getElementById('mobileMenuBtn');
       const menu = document.getElementById('mobileMenu');
       btn.addEventListener('click', () => menu.classList.toggle('hidden'));
       byId('contactSubmit').addEventListener('click', sendContactEmail);
-      byId('dogCount').addEventListener('change', calcDogQuote);
     });
   </script>
 </head>
@@ -330,14 +314,14 @@
           <div class="grid md:grid-cols-2 gap-4">
             <div>
               <label class="text-sm">ZIP code</label>
-              <input id="quoteZip" type="text" maxlength="5" class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="e.g., 46204" oninput="updateZipBadge(); calcQuote(); calcDogQuote();" />
+              <input id="quoteZip" type="text" maxlength="5" class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="e.g., 46204" oninput="updateZipBadge(); calcQuote();" />
               <div id="zipStatus" class="text-sm mt-1"></div>
             </div>
           </div>
           <div class="grid md:grid-cols-2 gap-4">
             <div>
               <label class="text-sm">Frequency</label>
-              <select id="frequency" class="w-full rounded-xl border border-stone-300 px-3 py-2" onchange="calcQuote(); calcDogQuote();">
+              <select id="frequency" class="w-full rounded-xl border border-stone-300 px-3 py-2" onchange="calcQuote();">
                 <option value="weekly">Weekly</option>
                 <option value="twice">Twice weekly</option>
                 <option value="biweekly">Every other week</option>
@@ -346,7 +330,7 @@
             </div>
             <div>
               <label class="text-sm">Yard size</label>
-              <select id="yard" class="w-full rounded-xl border border-stone-300 px-3 py-2" onchange="calcQuote(); calcDogQuote();">
+              <select id="yard" class="w-full rounded-xl border border-stone-300 px-3 py-2" onchange="calcQuote();">
                 <option value="small">Small</option>
                 <option value="medium" selected>Medium</option>
                 <option value="large">Large</option>
@@ -361,26 +345,11 @@
       </div>
       <div class="rounded-2xl glassy p-6 shadow-sm">
         <h2 class="text-2xl font-extrabold">Total Number of Dogs</h2>
-        <p class="text-stone-700 mt-1">Select the total number of dogs at your property for an adjusted quote.</p>
+        <p class="text-stone-700 mt-1">After clicking checkout please select quantity of dogs on Stripe payout. This will be billed alongside your Frequency and Yard Size quote!</p>
         <div class="mt-6 grid gap-4">
-          <div>
-            <label class="text-sm">Number of Dogs</label>
-            <select id="dogCount" class="w-full rounded-xl border border-stone-300 px-3 py-2">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-            </select>
-          </div>
           <div id="dogResult" class="text-lg font-semibold"></div>
           <div class="flex flex-col sm:flex-row gap-3">
-            <a id="dogCTA" href="#" class="inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-5 py-3 hover:bg-stone-50">Email us your details</a>
+            <a id="quoteCTA" href="#" class="inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-5 py-3 hover:bg-stone-50">Email us your details</a>
           </div>
         </div>
       </div>
