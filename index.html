@@ -55,7 +55,6 @@
     }
 
     function calcQuote() {
-      const dogs = Math.max(1, parseInt(byId('dogs').value || '1', 10));
       const freq = byId('frequency').value;
       const yard = byId('yard').value;
       const zip = byId('quoteZip').value.trim();
@@ -64,7 +63,7 @@
 
       const stripeLinks = {
         small: {
-          weekly: 'https://buy.stripe.com/bJecN5bVh6qNbnr0aq6g80d',
+          weekly: 'https://buy.stripe.com/3cI8wP8J5cPbajnbT86g80c',
           twice: 'https://buy.stripe.com/3cI8wP8J5cPbajnbT86g80c',
           biweekly: 'https://buy.stripe.com/eVq5kD1gDcPbezDaP46g80b',
           onetime: 'https://buy.stripe.com/6oUeVdbVh6qN4Z3aP46g801'
@@ -85,31 +84,24 @@
 
       if (freq === 'onetime') {
         const yardBump = yard === 'large' ? 20 : yard === 'medium' ? 10 : 0;
-        const dogBump = Math.max(0, dogs - 1) * 10;
-        const total = (PRICING.onetime.flat + yardBump + dogBump);
+        const total = PRICING.onetime.flat + yardBump; // Removed dogBump
         byId('quoteResult').innerHTML = `One‑time cleanup starting at <strong>${$$(total)}</strong>.`;
         stripeLink = stripeLinks[yard][freq];
-        if (dogs > 1) {
-          stripeLink += '?note=AddtlDogs:' + (dogs - 1) + 'x$10';
-        }
       } else {
         const p = PRICING[freq];
         visits = p.visitsPerWeek * 4.33;
-        perVisit = p.basePerVisit + p.perExtraDog * Math.max(0, dogs - 1);
+        perVisit = p.basePerVisit; // Removed perExtraDog adjustment
         const yardAdj = yard === 'large' ? 1.25 : yard === 'small' ? 0.9 : 1.0;
         estMonthly = perVisit * visits * yardAdj;
         label = ({ weekly: 'Weekly', twice: 'Twice weekly', biweekly: 'Every other week' })[freq];
         byId('quoteResult').innerHTML = `${label} plan estimate: <strong>${$$(estMonthly)}</strong> / month <span class="text-gray-500">(~${$$(perVisit)} per visit)</span>`;
         stripeLink = stripeLinks[yard][freq];
-        if (dogs > 1) {
-          stripeLink += '?note=AddtlDogs:' + (dogs - 1) + 'x$' + (p.perExtraDog * (dogs - 1));
-        }
       }
 
       const covered = BUSINESS.serviceZips.includes(zip);
       byId('quoteCTA').textContent = covered ? 'Checkout Now' : 'Request a Quote';
       byId('quoteCTA').href = covered ? stripeLink : `mailto:${BUSINESS.email}?subject=Quote%20Request%20-%20${encodeURIComponent(BUSINESS.name)}&body=${encodeURIComponent(
-        `Name: \nPhone: \nAddress: \nZIP: ${zip}\nDogs: ${dogs}\nFrequency: ${label || 'One-time'}\nYard size: ${yard}\n---\nNotes:`
+        `Name: \nPhone: \nAddress: \nZIP: ${zip}\nFrequency: ${label || 'One-time'}\nYard size: ${yard}\n---\nNotes:`
       )}`;
     }
 
@@ -327,10 +319,7 @@
               <input id="quoteZip" type="text" maxlength="5" class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="e.g., 46204" oninput="updateZipBadge(); calcQuote(); calcDogQuote();" />
               <div id="zipStatus" class="text-sm mt-1"></div>
             </div>
-            <div>
-              <label class="text-sm"># of dogs</label>
-              <input id="dogs" type="number" min="1" value="1" class="w-full rounded-xl border border-stone-300 px-3 py-2" oninput="calcQuote();" />
-            </div>
+            <!-- Removed # of dogs input -->
           </div>
           <div class="grid md:grid-cols-2 gap-4">
             <div>
