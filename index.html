@@ -28,19 +28,19 @@
     /* Modal */
     .modal{ display:none; }
     .modal.show{ display:flex; }
-    /* Glassy effect styles */
+    /* Enhanced glassy effect styles */
     .glassy {
-      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-      backdrop-filter: blur(10px); /* Frosted glass blur */
-      border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+      background-color: rgba(255, 255, 255, 0.6); /* More transparent */
+      backdrop-filter: blur(15px); /* Stronger blur for frosted effect */
+      border: 1px solid rgba(255, 255, 255, 0.3); /* Slightly more visible border */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
     }
-    /* Ensure glassy effect works on dark backgrounds */
+    /* Glassy effect for dark backgrounds */
     .glassy-dark {
-      background-color: rgba(0, 0, 0, 0.2); /* Darker semi-transparent for contrast */
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      background-color: rgba(0, 0, 0, 0.3); /* More transparent dark */
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
     }
     /* Single gradient for the entire page */
     body {
@@ -188,9 +188,9 @@
           <a href="#area" class="hover:text-stone-700">Service Area</a>
           <a href="#faq" class="hover:text-stone-700">FAQ</a>
           <a href="#contact" class="hover:text-stone-700">Contact</a>
-          <a href="#quote" class="inline-flex items-center rounded-xl border border-stone-300 px-3 py-1.5 hover:bg-stone-100">Free Quote</a>
+          <a href="#quote" class="inline-flex items-center rounded-xl border border-stone-300 px-3 py-1.5 hover:bg-stone-100 glassy">Free Quote</a>
         </nav>
-        <button id="mobileMenuBtn" class="md:hidden inline-flex items-center gap-2 rounded-xl border border-stone-300 px-3 py-1.5">Menu</button>
+        <button id="mobileMenuBtn" class="md:hidden inline-flex items-center gap-2 rounded-xl border border-stone-300 px-3 py-1.5 glassy">Menu</button>
       </div>
       <div id="mobileMenu" class="md:hidden hidden pb-3 glassy">
         <div class="grid gap-2 text-sm">
@@ -215,15 +215,15 @@
           </h1>
           <p class="mt-4 text-lg text-stone-700 max-w-prose">Reliable, affordable dog poop cleanup for yards, HOAs, apartments and parks. No contracts. Friendly service. Sparkling lawns and happy paws.</p>
           <div class="mt-6 flex flex-col sm:flex-row gap-3">
-            <a href="#quote" class="inline-flex items-center justify-center rounded-2xl px-5 py-3 border border-stone-300 bg-white shadow-sm hover:shadow">Get a Free Quote</a>
+            <a href="#quote" class="inline-flex items-center justify-center rounded-2xl px-5 py-3 border border-stone-300 bg-white shadow-sm hover:shadow glassy">Get a Free Quote</a>
           </div>
           <div class="mt-6 flex items-center gap-3 text-sm">
-            <input id="quoteZipHero" type="text" maxlength="5" placeholder="Enter ZIP to check coverage" class="w-48 rounded-xl border border-stone-300 px-3 py-2" oninput="byId('quoteZip').value=this.value; updateZipBadge();" />
+            <input id="quoteZipHero" type="text" maxlength="5" placeholder="Enter ZIP to check coverage" class="w-48 rounded-xl border border-stone-300 px-3 py-2 glassy" oninput="byId('quoteZip').value=this.value; updateZipBadge();" />
             <a href="#area" class="underline">See service area</a>
           </div>
         </div>
         <div class="relative">
-          <div class="aspect-[4/3] w-full rounded-3xl glassy">
+          <div class="aspect-[4/3] w-full rounded-3xl">
             <div class="image-container h-full w-full rounded-2xl overflow-hidden">
               <img src="BIGTURD%20PHOTO.png" alt="Big Turd Waste Removal" class="w-full h-full object-cover">
             </div>
@@ -281,7 +281,7 @@
             <li>Add $3 per extra dog</li>
             <li>No contracts</li>
           </ul>
-          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50">Get quote</a>
+          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
         </div>
         <div class="rounded-2xl glassy p-6">
           <h3 class="font-bold text-xl">Twice weekly</h3>
@@ -292,7 +292,7 @@
             <li>Add $3 per extra dog</li>
             <li>Great for small yards</li>
           </ul>
-          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50">Get quote</a>
+          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
         </div>
         <div class="rounded-2xl glassy p-6">
           <h3 class="font-bold text-xl">Every other week</h3>
@@ -303,7 +303,7 @@
             <li>Add $4 per extra dog</li>
             <li>Budget‑friendly</li>
           </ul>
-          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50">Get quote</a>
+          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
         </div>
         <div class="rounded-2xl glassy p-6">
           <h3 class="font-bold text-xl">One‑time clean</h3>
@@ -314,7 +314,7 @@
             <li>Puppy party rescue 🐶</li>
             <li>Great before lawn service</li>
           </ul>
-          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50">Get quote</a>
+          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
         </div>
       </div>
       <p class="mt-4 text-xs text-stone-500">Prices shown are examples. Final quote depends on yard size, terrain and recent cleanup status.</p>
@@ -331,14 +331,14 @@
           <div class="grid md:grid-cols-2 gap-4">
             <div>
               <label class="text-sm">ZIP code</label>
-              <input id="quoteZip" type="text" maxlength="5" class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="e.g., 46204" oninput="updateZipBadge(); calcQuote();" />
+              <input id="quoteZip" type="text" maxlength="5" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="e.g., 46204" oninput="updateZipBadge(); calcQuote();" />
               <div id="zipStatus" class="text-sm mt-1"></div>
             </div>
           </div>
           <div class="grid md:grid-cols-2 gap-4">
             <div>
               <label class="text-sm">Frequency</label>
-              <select id="frequency" class="w-full rounded-xl border border-stone-300 px-3 py-2" onchange="calcQuote();">
+              <select id="frequency" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" onchange="calcQuote();">
                 <option value="weekly">Weekly</option>
                 <option value="twice">Twice weekly</option>
                 <option value="biweekly">Every other week</option>
@@ -347,7 +347,7 @@
             </div>
             <div>
               <label class="text-sm">Yard size</label>
-              <select id="yard" class="w-full rounded-xl border border-stone-300 px-3 py-2" onchange="calcQuote();">
+              <select id="yard" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" onchange="calcQuote();">
                 <option value="small">Small</option>
                 <option value="medium" selected>Medium</option>
                 <option value="large">Large</option>
@@ -356,7 +356,7 @@
           </div>
           <div id="quoteResult" class="text-lg font-semibold"></div>
           <div class="flex flex-col sm:flex-row gap-3">
-            <a id="quoteCTA" href="#" class="inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-5 py-3 hover:bg-stone-50">Email us your details</a>
+            <a id="quoteCTA" href="#" class="inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-5 py-3 hover:bg-stone-50 glassy">Email us your details</a>
           </div>
         </div>
       </div>
@@ -366,7 +366,7 @@
         <div class="mt-6 grid gap-4">
           <div id="dogResult" class="text-lg font-semibold"></div>
           <div class="flex flex-col sm:flex-row gap-3">
-            <a href="https://buy.stripe.com/14AaEXbVheXj1MR7CS6g80e" class="inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-5 py-3 hover:bg-stone-50">Checkout Now</a>
+            <a href="https://buy.stripe.com/14AaEXbVheXj1MR7CS6g80e" class="inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-5 py-3 hover:bg-stone-50 glassy">Checkout Now</a>
           </div>
         </div>
       </div>
@@ -432,23 +432,23 @@
         <div class="rounded-2xl glassy p-6 grid gap-4">
           <div>
             <label class="text-sm">Name</label>
-            <input id="contactName" type="text" required class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="Your name" />
+            <input id="contactName" type="text" required class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="Your name" />
           </div>
           <div class="grid md:grid-cols-2 gap-4">
             <div>
               <label class="text-sm">Email</label>
-              <input id="contactEmail" type="email" required class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="Your email" />
+              <input id="contactEmail" type="email" required class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="Your email" />
             </div>
             <div>
               <label class="text-sm">Phone</label>
-              <input id="contactPhone" type="tel" class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="Your phone" />
+              <input id="contactPhone" type="tel" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="Your phone" />
             </div>
           </div>
           <div>
             <label class="text-sm">Message</label>
-            <textarea id="contactMessage" rows="4" class="w-full rounded-xl border border-stone-300 px-3 py-2" placeholder="Your message"></textarea>
+            <textarea id="contactMessage" rows="4" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="Your message"></textarea>
           </div>
-          <button id="contactSubmit" class="rounded-xl border border-stone-300 bg-white px-4 py-2 hover:bg-stone-50">Send Message</button>
+          <button id="contactSubmit" class="rounded-xl border border-stone-300 bg-white px-4 py-2 hover:bg-stone-50 glassy">Send Message</button>
           <p class="text-xs text-stone-500">This will open your email app to send the message.</p>
         </div>
       </div>
