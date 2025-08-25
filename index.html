@@ -9,11 +9,15 @@
     gtag('js', new Date());
     gtag('config', 'G-Q1GQ8FT04X');
   </script>
-  
+ 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BIG TURD Waste Removal | Dog Poop Cleanup</title>
-  <meta name="description" content="BIG TURD Waste Removal – reliable, affordable dog poop yard cleanup. We scoop the poop so you don't have to." />
+  <meta name="description" content="BIG TURD Waste Removal – reliable, affordable dog poop yard cleanup in Terre Haute and surrounding areas. We scoop the poop so you don't have to." />
+  <meta name="keywords" content="dog poop cleanup, pet waste removal, yard cleaning service, Terre Haute, BIG TURD Waste Removal" />
+  <meta name="robots" content="index, follow" />
+  <!-- Reference to sitemap (create sitemap.xml in repository root) -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💩</text></svg>">
   <!-- Tailwind via CDN for fast styling on GitHub Pages -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -58,20 +62,16 @@
         "47801","47802","47803","47804","47805","47807","47806","47808","47809","47810"
       ]
     };
-
     // Simple pricing model (feel free to tweak numbers)
     const PRICING = {
       weekly: { basePerVisit: 16, perExtraDog: 3, visitsPerWeek: 1 },
-      twice:  { basePerVisit: 14, perExtraDog: 3, visitsPerWeek: 2 },
+      twice: { basePerVisit: 14, perExtraDog: 3, visitsPerWeek: 2 },
       biweekly: { basePerVisit: 22, perExtraDog: 4, visitsPerWeek: 0.5 },
       onetime: { flat: 69 }
     };
-
     // Utility: currency format
     const $$ = n => n.toLocaleString(undefined, { style: 'currency', currency: 'USD' });
-
     function byId(id) { return document.getElementById(id); }
-
     function updateZipBadge() {
       const zip = byId('quoteZip').value.trim();
       const badge = byId('zipStatus');
@@ -80,14 +80,11 @@
       badge.textContent = covered ? 'In service area ✅' : 'Outside service area – ask us!';
       badge.className = 'text-sm ' + (covered ? 'text-green-700' : 'text-amber-700');
     }
-
     function calcQuote() {
       const freq = byId('frequency').value;
       const yard = byId('yard').value;
       const zip = byId('quoteZip').value.trim();
-
       let estMonthly = 0, perVisit = 0, visits = 0, label = '', stripeLink = '#';
-
       const stripeLinks = {
         small: {
           weekly: 'https://buy.stripe.com/bJecN5bVh6qNbnr0aq6g80d',
@@ -108,7 +105,6 @@
           onetime: 'https://buy.stripe.com/cNieVd5wT9CZ0INbT86g803'
         }
       };
-
       if (freq === 'onetime') {
         const yardBump = yard === 'large' ? 20 : yard === 'medium' ? 10 : 0;
         const total = PRICING.onetime.flat + yardBump;
@@ -124,38 +120,32 @@
         byId('quoteResult').innerHTML = `${label} plan estimate: <strong>${$$(estMonthly)}</strong> / month <span class="text-gray-500">(~${$$(perVisit)} per visit)</span>`;
         stripeLink = stripeLinks[yard][freq];
       }
-
       const covered = BUSINESS.serviceZips.includes(zip);
       byId('quoteCTA').textContent = covered ? 'Checkout Now' : 'Request a Quote';
       byId('quoteCTA').href = covered ? stripeLink : `mailto:${BUSINESS.email}?subject=Quote%20Request%20-%20${encodeURIComponent(BUSINESS.name)}&body=${encodeURIComponent(
         `Name: \nPhone: \nAddress: \nZIP: ${zip}\nFrequency: ${label || 'One-time'}\nYard size: ${yard}\n---\nNotes:`
       )}`;
     }
-
     function fillBusinessBits() {
       document.querySelectorAll('[data-business-name]').forEach(el => el.textContent = BUSINESS.name);
       document.querySelectorAll('[data-business-phone]').forEach(el => el.textContent = BUSINESS.phone);
       document.querySelectorAll('[data-business-email]').forEach(el => { el.textContent = BUSINESS.email; el.href = 'mailto:' + BUSINESS.email; });
     }
-
     function sendContactEmail() {
       const name = byId('contactName').value.trim();
       const email = byId('contactEmail').value.trim();
       const phone = byId('contactPhone').value.trim();
       const message = byId('contactMessage').value.trim();
-
       if (!name || !email) {
         alert('Please fill in at least your name and email.');
         return;
       }
-
       const subject = `Contact Request - ${encodeURIComponent(BUSINESS.name)}`;
       const body = encodeURIComponent(
         `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}\n---\nNotes:`
       );
       window.location.href = `mailto:${BUSINESS.email}?subject=${subject}&body=${body}`;
     }
-
     document.addEventListener('DOMContentLoaded', () => {
       fillBusinessBits();
       updateZipBadge();
@@ -173,7 +163,6 @@
     🎉 Grand Opening Deal! 🎉<br>
     All initial cleanups <span class="text-red-600">FREE</span> with first month of service! 💰 Save $50!
   </div>
-
   <!-- Header -->
   <header class="sticky top-0 z-50 glassy border-b border-stone-200">
     <div class="container mx-auto px-4">
@@ -187,6 +176,7 @@
           <a href="#pricing" class="hover:text-stone-700">Pricing</a>
           <a href="#area" class="hover:text-stone-700">Service Area</a>
           <a href="#faq" class="hover:text-stone-700">FAQ</a>
+          <a href="#reviews" class="hover:text-stone-700">Reviews</a> <!-- Added Reviews link -->
           <a href="#contact" class="hover:text-stone-700">Contact</a>
           <a href="#quote" class="inline-flex items-center rounded-xl border border-stone-300 px-3 py-1.5 hover:bg-stone-100 glassy">Free Quote</a>
         </nav>
@@ -198,13 +188,13 @@
           <a href="#pricing" class="px-2 py-1">Pricing</a>
           <a href="#area" class="px-2 py-1">Service Area</a>
           <a href="#faq" class="px-2 py-1">FAQ</a>
+          <a href="#reviews" class="px-2 py-1">Reviews</a> <!-- Added Reviews link -->
           <a href="#contact" class="px-2 py-1">Contact</a>
           <a href="#quote" class="px-2 py-1 font-semibold">Free Quote</a>
         </div>
       </div>
     </div>
   </header>
-
   <!-- Hero -->
   <section id="top" class="relative">
     <div class="container mx-auto px-4 py-16 md:py-24">
@@ -239,7 +229,6 @@
         width: 100%;
         height: 100%;
       }
-
       /* Style the image to fill the container */
       .image-container img {
         width: 100%;
@@ -247,7 +236,6 @@
         object-fit: cover;
         display: block;
       }
-
       /* Ensure the aspect ratio box respects the image */
       .aspect-[4/3] {
         position: relative;
@@ -255,7 +243,6 @@
         padding-top: 75%;
         overflow: hidden;
       }
-
       .aspect-[4/3] > .image-container {
         position: absolute;
         top: 0;
@@ -265,7 +252,6 @@
       }
     </style>
   </section>
-
   <!-- Pricing -->
   <section id="pricing" class="relative">
     <div class="container mx-auto px-4 py-16">
@@ -320,7 +306,6 @@
       <p class="mt-4 text-xs text-stone-500">Prices shown are examples. Final quote depends on yard size, terrain and recent cleanup status.</p>
     </div>
   </section>
-
   <!-- Quote widget -->
   <section id="quote" class="container mx-auto px-4 py-16">
     <div class="grid lg:grid-cols-2 gap-8">
@@ -372,7 +357,6 @@
       </div>
     </div>
   </section>
-
   <!-- Service area -->
   <section id="area" class="relative">
     <div class="container mx-auto px-4 py-16">
@@ -392,7 +376,6 @@
       </script>
     </div>
   </section>
-
   <!-- FAQ -->
   <section id="faq" class="container mx-auto px-4 py-16">
     <h2 class="text-3xl font-extrabold">FAQ</h2>
@@ -407,7 +390,7 @@
       </details>
       <details class="rounded-2xl glassy p-5">
         <summary class="font-semibold">How do I pay?</summary>
-        <p class="mt-2 text-stone-700">Use the 'Checkout Now' button for payment."</p>
+        <p class="mt-2 text-stone-700">Use the 'Checkout Now' button for payment.</p>
       </details>
       <details class="rounded-2xl glassy p-5">
         <summary class="font-semibold">Any contracts?</summary>
@@ -415,7 +398,34 @@
       </details>
     </div>
   </section>
-
+  <!-- Reviews Section -->
+  <section id="reviews" class="container mx-auto px-4 py-16">
+    <h2 class="text-3xl font-extrabold">Customer Reviews</h2>
+    <p class="text-stone-700 mt-1">See what our customers are saying about BIG TURD Waste Removal!</p>
+    <div class="mt-6 rounded-2xl glassy p-6">
+      <div id="disqus_thread"></div>
+      <script>
+        /**
+         *  SETUP INSTRUCTIONS:
+         *  1. Sign up at https://disqus.com and create a site.
+         *  2. Get your Disqus shortname from your site settings.
+         *  3. Replace 'YOUR_DISQUS_SHORTNAME' below with your actual shortname.
+         *  4. Users can leave reviews via comments in this section.
+         */
+        var disqus_config = function () {
+          this.page.url = "https://your-github-username.github.io/bigturd/"; // Replace with your actual GitHub Pages URL
+          this.page.identifier = "bigturd-reviews";
+        };
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = 'https://YOUR_DISQUS_SHORTNAME.disqus.com/embed.js'; // Replace with your Disqus shortname
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">reviews powered by Disqus.</a></noscript>
+    </div>
+  </section>
   <!-- Contact -->
   <section id="contact" class="relative">
     <div class="container mx-auto px-4 py-16">
@@ -424,9 +434,9 @@
           <h2 class="text-3xl font-extrabold">Contact</h2>
           <p class="text-stone-700 mt-1">We’re friendly humans—reach out with questions or to get scheduled.</p>
           <div class="mt-6 space-y-2">
-            <p>📞 <a href="tel:+15555551212" data-business-phone>(555) 555‑1212</a></p>
-            <p>✉️ <a data-business-email href="mailto:hello@bigturd.co">hello@bigturd.co</a></p>
-            <p>📍 <span data-business-name>BIG TURD Waste Removal</span> – <span>Local Service • <span data-business-city>Your City</span></span></p>
+            <p>📞 <a href="tel:3235740882" data-business-phone>323-574-0882</a></p>
+            <p>✉️ <a data-business-email href="mailto:BigTurdService@yahoo.com">BigTurdService@yahoo.com</a></p>
+            <p>📍 <span data-business-name>BIG TURD Waste Removal</span> – <span>Local Service • <span data-business-city>Terre Haute and surrounding cities</span></span></p>
           </div>
         </div>
         <div class="rounded-2xl glassy p-6 grid gap-4">
@@ -454,7 +464,6 @@
       </div>
     </div>
   </section>
-
   <!-- Footer -->
   <footer class="border-t border-stone-200">
     <div class="container mx-auto px-4 py-10 text-sm text-stone-600">
@@ -469,32 +478,31 @@
       </div>
     </div>
   </footer>
-
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-
-  <!-- LocalBusiness schema (edit to match your biz) -->
+  <!-- LocalBusiness schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "BIG TURD Waste Removal",
-    "image": "",
-    "telephone": "(555) 555-1212",
-    "email": "hello@bigturd.co",
+    "image": "https://your-github-username.github.io/bigturd/BIGTURD%20PHOTO.png",
+    "telephone": "323-574-0882",
+    "email": "BigTurdService@yahoo.com",
     "areaServed": {
       "@type": "AdministrativeArea",
-      "name": "Local service area"
+      "name": "Terre Haute and surrounding cities",
+      "postalCode": ["47801","47802","47803","47804","47805","47807","47806","47808","47809","47810"]
     },
     "url": "https://your-github-username.github.io/bigturd/",
-    "description": "Dog poop yard cleanup for homes, apartments and HOAs.",
+    "description": "Dog poop yard cleanup for homes, apartments, and HOAs in Terre Haute and surrounding areas.",
     "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Your City",
-      "addressRegion": "",
-      "postalCode": ""
+      "addressLocality": "Terre Haute",
+      "addressRegion": "IN",
+      "postalCode": "47801-47810"
     }
   }
   </script>
