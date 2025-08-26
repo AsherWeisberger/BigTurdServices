@@ -80,12 +80,26 @@
         "47801","47802","47803","47804","47805","47807","47806","47808","47809","47810"
       ]
     };
-    // Simple pricing model (feel free to tweak numbers)
+    // Updated pricing model
     const PRICING = {
-      weekly: { basePerVisit: 16, perExtraDog: 3, visitsPerWeek: 1 },
-      twice: { basePerVisit: 14, perExtraDog: 3, visitsPerWeek: 2 },
-      biweekly: { basePerVisit: 22, perExtraDog: 4, visitsPerWeek: 0.5 },
-      onetime: { flat: 69 }
+      small: {
+        weekly: { price: 62.99, link: 'https://buy.stripe.com/bJecN5bVh6qNbnr0aq6g80d' },
+        twice: { price: 109.99, link: 'https://buy.stripe.com/3cI8wP8J5cPbajnbT86g80c' },
+        biweekly: { price: 42.99, link: 'https://buy.stripe.com/eVq5kD1gDcPbezDaP46g80b' },
+        onetime: { price: 69.00, link: 'https://buy.stripe.com/6oUeVdbVh6qN4Z3aP46g801' }
+      },
+      medium: {
+        weekly: { price: 69.99, link: 'https://buy.stripe.com/5kQeVd6AX6qNezD7CS6g80a' },
+        twice: { price: 119.99, link: 'https://buy.stripe.com/3cI4gze3pdTfdvz7CS6g809' },
+        biweekly: { price: 47.99, link: 'https://buy.stripe.com/aFa28r9N97uR6370aq6g808' },
+        onetime: { price: 79.00, link: 'https://buy.stripe.com/9B66oHgbx3eBbnr2iy6g802' }
+      },
+      large: {
+        weekly: { price: 88.99, link: 'https://buy.stripe.com/14AbJ13oL16t77be1g6g806' },
+        twice: { price: 149.99, link: 'https://buy.stripe.com/fZueVdf7tdTfezDaP46g805' },
+        biweekly: { price: 59.99, link: 'https://buy.stripe.com/3cI3cve3paH34Z3aP46g804' },
+        onetime: { price: 89.00, link: 'https://buy.stripe.com/cNieVd5wT9CZ0INbT86g803' }
+      }
     };
     // Utility: currency format
     const $$ = n => n.toLocaleString(undefined, { style: 'currency', currency: 'USD' });
@@ -102,46 +116,16 @@
       const freq = byId('frequency').value;
       const yard = byId('yard').value;
       const zip = byId('quoteZip').value.trim();
-      let estMonthly = 0, perVisit = 0, visits = 0, label = '', stripeLink = '#';
-      const stripeLinks = {
-        small: {
-          weekly: 'https://buy.stripe.com/bJecN5bVh6qNbnr0aq6g80d',
-          twice: 'https://buy.stripe.com/3cI8wP8J5cPbajnbT86g80c',
-          biweekly: 'https://buy.stripe.com/eVq5kD1gDcPbezDaP46g80b',
-          onetime: 'https://buy.stripe.com/6oUeVdbVh6qN4Z3aP46g801'
-        },
-        medium: {
-          weekly: 'https://buy.stripe.com/5kQeVd6AX6qNezD7CS6g80a',
-          twice: 'https://buy.stripe.com/3cI4gze3pdTfdvz7CS6g809',
-          biweekly: 'https://buy.stripe.com/aFa28r9N97uR6370aq6g808',
-          onetime: 'https://buy.stripe.com/9B66oHgbx3eBbnr2iy6g802'
-        },
-        large: {
-          weekly: 'https://buy.stripe.com/14AbJ13oL16t77be1g6g806',
-          twice: 'https://buy.stripe.com/fZueVdf7tdTfezDaP46g805',
-          biweekly: 'https://buy.stripe.com/3cI3cve3paH34Z3aP46g804',
-          onetime: 'https://buy.stripe.com/cNieVd5wT9CZ0INbT86g803'
-        }
-      };
-      if (freq === 'onetime') {
-        const yardBump = yard === 'large' ? 20 : yard === 'medium' ? 10 : 0;
-        const total = PRICING.onetime.flat + yardBump;
-        byId('quoteResult').innerHTML = `One‑time cleanup starting at <strong>${$$(total)}</strong>.`;
-        stripeLink = stripeLinks[yard][freq];
-      } else {
-        const p = PRICING[freq];
-        visits = p.visitsPerWeek * 4.33;
-        perVisit = p.basePerVisit;
-        const yardAdj = yard === 'large' ? 1.25 : yard === 'small' ? 0.9 : 1.0;
-        estMonthly = perVisit * visits * yardAdj;
-        label = ({ weekly: 'Weekly', twice: 'Twice weekly', biweekly: 'Every other week' })[freq];
-        byId('quoteResult').innerHTML = `${label} plan estimate: <strong>${$$(estMonthly)}</strong> / month <span class="text-gray-500">(~${$$(perVisit)} per visit)</span>`;
-        stripeLink = stripeLinks[yard][freq];
-      }
+      let price = 0, label = '', stripeLink = '#';
+      const p = PRICING[yard][freq];
+      price = p.price;
+      label = ({ weekly: 'Weekly', twice: 'Twice Weekly', biweekly: 'Every other week', onetime: 'One-time cleanup' })[freq];
+      byId('quoteResult').innerHTML = `${label}: <strong>${$$(price)}</strong> ${freq !== 'onetime' ? '/ month (billed monthly)' : ''}`;
+      stripeLink = p.link;
       const covered = BUSINESS.serviceZips.includes(zip);
       byId('quoteCTA').textContent = covered ? 'Checkout Now' : 'Request a Quote';
       byId('quoteCTA').href = covered ? stripeLink : `mailto:${BUSINESS.email}?subject=Quote%20Request%20-%20${encodeURIComponent(BUSINESS.name)}&body=${encodeURIComponent(
-        `Name: \nPhone: \nAddress: \nZIP: ${zip}\nFrequency: ${label || 'One-time'}\nYard size: ${yard}\n---\nNotes:`
+        `Name: \nPhone: \nAddress: \nZIP: ${zip}\nFrequency: ${label}\nYard size: ${yard}\n---\nNotes:`
       )}`;
     }
     function fillBusinessBits() {
@@ -381,9 +365,9 @@
               <label class="text-sm">Frequency</label>
               <select id="frequency" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" onchange="calcQuote();">
                 <option value="weekly">Weekly</option>
-                <option value="twice">Twice weekly</option>
+                <option value="twice">Twice Weekly</option>
                 <option value="biweekly">Every other week</option>
-                <option value="onetime">One‑time clean</option>
+                <option value="onetime">One-time cleanup</option>
               </select>
             </div>
             <div>
