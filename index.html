@@ -80,12 +80,26 @@
         "47801","47802","47803","47804","47805","47807","47806","47808","47809","47810"
       ]
     };
-    // Simple pricing model (feel free to tweak numbers)
+    // Updated pricing model
     const PRICING = {
-      weekly: { basePerVisit: 16, perExtraDog: 3, visitsPerWeek: 1 },
-      twice: { basePerVisit: 14, perExtraDog: 3, visitsPerWeek: 2 },
-      biweekly: { basePerVisit: 22, perExtraDog: 4, visitsPerWeek: 0.5 },
-      onetime: { flat: 69 }
+      small: {
+        weekly: { price: 62.99, link: 'https://buy.stripe.com/bJecN5bVh6qNbnr0aq6g80d' },
+        twice: { price: 109.99, link: 'https://buy.stripe.com/3cI8wP8J5cPbajnbT86g80c' },
+        biweekly: { price: 42.99, link: 'https://buy.stripe.com/eVq5kD1gDcPbezDaP46g80b' },
+        onetime: { price: 69.00, link: 'https://buy.stripe.com/6oUeVdbVh6qN4Z3aP46g801' }
+      },
+      medium: {
+        weekly: { price: 69.99, link: 'https://buy.stripe.com/5kQeVd6AX6qNezD7CS6g80a' },
+        twice: { price: 119.99, link: 'https://buy.stripe.com/3cI4gze3pdTfdvz7CS6g809' },
+        biweekly: { price: 47.99, link: 'https://buy.stripe.com/aFa28r9N97uR6370aq6g808' },
+        onetime: { price: 79.00, link: 'https://buy.stripe.com/9B66oHgbx3eBbnr2iy6g802' }
+      },
+      large: {
+        weekly: { price: 88.99, link: 'https://buy.stripe.com/14AbJ13oL16t77be1g6g806' },
+        twice: { price: 149.99, link: 'https://buy.stripe.com/fZueVdf7tdTfezDaP46g805' },
+        biweekly: { price: 59.99, link: 'https://buy.stripe.com/3cI3cve3paH34Z3aP46g804' },
+        onetime: { price: 89.00, link: 'https://buy.stripe.com/cNieVd5wT9CZ0INbT86g803' }
+      }
     };
     // Utility: currency format
     const $$ = n => n.toLocaleString(undefined, { style: 'currency', currency: 'USD' });
@@ -102,46 +116,16 @@
       const freq = byId('frequency').value;
       const yard = byId('yard').value;
       const zip = byId('quoteZip').value.trim();
-      let estMonthly = 0, perVisit = 0, visits = 0, label = '', stripeLink = '#';
-      const stripeLinks = {
-        small: {
-          weekly: 'https://buy.stripe.com/bJecN5bVh6qNbnr0aq6g80d',
-          twice: 'https://buy.stripe.com/3cI8wP8J5cPbajnbT86g80c',
-          biweekly: 'https://buy.stripe.com/eVq5kD1gDcPbezDaP46g80b',
-          onetime: 'https://buy.stripe.com/6oUeVdbVh6qN4Z3aP46g801'
-        },
-        medium: {
-          weekly: 'https://buy.stripe.com/5kQeVd6AX6qNezD7CS6g80a',
-          twice: 'https://buy.stripe.com/3cI4gze3pdTfdvz7CS6g809',
-          biweekly: 'https://buy.stripe.com/aFa28r9N97uR6370aq6g808',
-          onetime: 'https://buy.stripe.com/9B66oHgbx3eBbnr2iy6g802'
-        },
-        large: {
-          weekly: 'https://buy.stripe.com/14AbJ13oL16t77be1g6g806',
-          twice: 'https://buy.stripe.com/fZueVdf7tdTfezDaP46g805',
-          biweekly: 'https://buy.stripe.com/3cI3cve3paH34Z3aP46g804',
-          onetime: 'https://buy.stripe.com/cNieVd5wT9CZ0INbT86g803'
-        }
-      };
-      if (freq === 'onetime') {
-        const yardBump = yard === 'large' ? 20 : yard === 'medium' ? 10 : 0;
-        const total = PRICING.onetime.flat + yardBump;
-        byId('quoteResult').innerHTML = `One‑time cleanup starting at <strong>${$$(total)}</strong>.`;
-        stripeLink = stripeLinks[yard][freq];
-      } else {
-        const p = PRICING[freq];
-        visits = p.visitsPerWeek * 4.33;
-        perVisit = p.basePerVisit;
-        const yardAdj = yard === 'large' ? 1.25 : yard === 'small' ? 0.9 : 1.0;
-        estMonthly = perVisit * visits * yardAdj;
-        label = ({ weekly: 'Weekly', twice: 'Twice weekly', biweekly: 'Every other week' })[freq];
-        byId('quoteResult').innerHTML = `${label} plan estimate: <strong>${$$(estMonthly)}</strong> / month <span class="text-gray-500">(~${$$(perVisit)} per visit)</span>`;
-        stripeLink = stripeLinks[yard][freq];
-      }
+      let price = 0, label = '', stripeLink = '#';
+      const p = PRICING[yard][freq];
+      price = p.price;
+      label = ({ weekly: 'Weekly', twice: 'Twice Weekly', biweekly: 'Every other week', onetime: 'One-time cleanup' })[freq];
+      byId('quoteResult').innerHTML = `${label}: <strong>${$$(price)}</strong> ${freq !== 'onetime' ? '/ month (billed monthly)' : ''}`;
+      stripeLink = p.link;
       const covered = BUSINESS.serviceZips.includes(zip);
       byId('quoteCTA').textContent = covered ? 'Checkout Now' : 'Request a Quote';
       byId('quoteCTA').href = covered ? stripeLink : `mailto:${BUSINESS.email}?subject=Quote%20Request%20-%20${encodeURIComponent(BUSINESS.name)}&body=${encodeURIComponent(
-        `Name: \nPhone: \nAddress: \nZIP: ${zip}\nFrequency: ${label || 'One-time'}\nYard size: ${yard}\n---\nNotes:`
+        `Name: \nPhone: \nAddress: \nZIP: ${zip}\nFrequency: ${label}\nYard size: ${yard}\n---\nNotes:`
       )}`;
     }
     function fillBusinessBits() {
@@ -313,53 +297,87 @@
     <div class="container mx-auto px-4 py-16">
       <h2 class="text-3xl font-extrabold text-center">Simple, Transparent Pricing</h2>
       <p class="text-stone-700 mt-2 text-center max-w-2xl mx-auto">Choose the perfect plan for your yard size and cleaning frequency. All plans include reliable service and satisfaction guarantee.</p>
-      <div class="mt-8 grid md:grid-cols-4 gap-6">
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <!-- Small Yard -->
         <div class="rounded-2xl glassy p-6">
-          <h3 class="font-bold text-xl">Weekly</h3>
-          <p class="mt-1 text-stone-600">Starting around</p>
-          <p class="text-3xl font-extrabold">$16<span class="text-base font-semibold text-stone-500">/visit</span></p>
-          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
-            <li>1 visit per week</li>
-            <li>Add $3 per extra dog</li>
-            <li>No contracts</li>
-          </ul>
-          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
+          <h3 class="font-bold text-xl text-center">Small Yard</h3>
+          <div class="mt-4 space-y-6">
+            <div>
+              <h4 class="font-semibold">Weekly</h4>
+              <p class="text-2xl font-extrabold">$62.99/month (billed monthly)</p>
+              <a href="https://buy.stripe.com/bJecN5bVh6qNbnr0aq6g80d" class="mt-2 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Checkout</a>
+            </div>
+            <div>
+              <h4 class="font-semibold">Twice Weekly</h4>
+              <p class="text-2xl font-extrabold">$109.99/month (billed monthly)</p>
+              <a href="https://buy.stripe.com/3cI8wP8J5cPbajnbT86g80c" class="mt-2 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Checkout</a>
+            </div>
+            <div>
+              <h4 class="font-semibold">Every other week</h4>
+              <p class="text-2xl font-extrabold">$42.99/month (billed monthly)</p>
+              <a href="https://buy.stripe.com/eVq5kD1gDcPbezDaP46g80b" class="mt-2 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Checkout</a>
+            </div>
+            <div>
+              <h4 class="font-semibold">One-time cleanup</h4>
+              <p class="text-2xl font-extrabold">$69.00</p>
+              <a href="https://buy.stripe.com/6oUeVdbVh6qN4Z3aP46g801" class="mt-2 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Checkout</a>
+            </div>
+          </div>
         </div>
+        <!-- Medium Yard -->
         <div class="rounded-2xl glassy p-6">
-          <h3 class="font-bold text-xl">Twice weekly</h3>
-          <p class="mt-1 text-stone-600">Starting around</p>
-          <p class="text-3xl font-extrabold">$14<span class="text-base font-semibold text-stone-500">/visit</span></p>
-          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
-            <li>2 visits per week</li>
-            <li>Add $3 per extra dog</li>
-            <li>Great for small yards</li>
-          </ul>
-          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
+          <h3 class="font-bold text-xl text-center">Medium Yard</h3>
+          <div class="mt-4 space-y-6">
+            <div>
+              <h4 class="font-semibold">Weekly</h4>
+              <p class="text-2xl font-extrabold">$69.99/month (billed monthly)</p>
+              <a href="https://buy.stripe.com/5kQeVd6AX6qNezD7CS6g80a" class="mt-2 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Checkout</a>
+            </div>
+            <div>
+              <h4 class="font-semibold">Twice Weekly</h4>
+              <p class="text-2xl font-extrabold">$119.99/month (billed monthly)</p>
+              <a href="https://buy.stripe.com/3cI4gze3pdTfdvz7CS6g809" class="mt-2 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Checkout</a>
+            </div>
+            <div>
+              <h4 class="font-semibold">Every other week</h4>
+              <p class="text-2xl font-extrabold">$47.99/month (billed monthly)</p>
+              <a href="https://buy.stripe.com/aFa28r9N97uR6370aq6g808" class="mt-2 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Checkout</a>
+            </div>
+            <div>
+              <h4 class="font-semibold">One-time cleanup</h4>
+              <p class="text-2xl font-extrabold">$79.00</p>
+              <a href="https://buy.stripe.com/9B66oHgbx3eBbnr2iy6g802" class="mt-2 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Checkout</a>
+            </div>
+          </div>
         </div>
+        <!-- Large Yard -->
         <div class="rounded-2xl glassy p-6">
-          <h3 class="font-bold text-xl">Every other week</h3>
-          <p class="mt-1 text-stone-600">Starting around</p>
-          <p class="text-3xl font-extrabold">$22<span class="text-base font-semibold text-stone-500">/visit</span></p>
-          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
-            <li>Bi‑weekly visit</li>
-            <li>Add $4 per extra dog</li>
-            <li>Budget‑friendly</li>
-          </ul>
-          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
-        </div>
-        <div class="rounded-2xl glassy p-6">
-          <h3 class="font-bold text-xl">One‑time clean</h3>
-          <p class="mt-1 text-stone-600">Heavy clean starting at</p>
-          <p class="text-3xl font-extrabold">$69</p>
-          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
-            <li>Move‑in / spring clean</li>
-            <li>Puppy party rescue 🐶</li>
-            <li>Great before lawn service</li>
-          </ul>
-          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
+          <h3 class="font-bold text-xl text-center">Large Yard</h3>
+          <div class="mt-4 space-y-6">
+            <div>
+              <h4 class="font-semibold">Weekly</h4>
+              <p class="text-2xl font-extrabold">$88.99/month (billed monthly)</p>
+              <a href="https://buy.stripe.com/14AbJ13oL16t77be1g6g806" class="mt-2 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Checkout</a>
+            </div>
+            <div>
+              <h4 class="font-semibold">Twice Weekly</h4>
+              <p class="text-2xl font-extrabold">$149.99/month (billed monthly)</p>
+              <a href="https://buy.stripe.com/fZueVdf7tdTfezDaP46g805" class="mt-2 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Checkout</a>
+            </div>
+            <div>
+              <h4 class="font-semibold">Every other week</h4>
+              <p class="text-2xl font-extrabold">$59.99/month (billed monthly)</p>
+              <a href="https://buy.stripe.com/3cI3cve3paH34Z3aP46g804" class="mt-2 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Checkout</a>
+            </div>
+            <div>
+              <h4 class="font-semibold">One-time cleanup</h4>
+              <p class="text-2xl font-extrabold">$89.00</p>
+              <a href="https://buy.stripe.com/cNieVd5wT9CZ0INbT86g803" class="mt-2 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Checkout</a>
+            </div>
+          </div>
         </div>
       </div>
-      <p class="mt-4 text-xs text-stone-500">Prices shown are examples. Final quote depends on yard size, terrain and recent cleanup status.</p>
+      <p class="mt-4 text-xs text-stone-500 text-center">Prices are fixed per yard size and frequency. One-time cleanups are billed once.</p>
     </div>
   </section>
   <!-- Quote widget -->
@@ -381,9 +399,9 @@
               <label class="text-sm">Frequency</label>
               <select id="frequency" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" onchange="calcQuote();">
                 <option value="weekly">Weekly</option>
-                <option value="twice">Twice weekly</option>
+                <option value="twice">Twice Weekly</option>
                 <option value="biweekly">Every other week</option>
-                <option value="onetime">One‑time clean</option>
+                <option value="onetime">One-time cleanup</option>
               </select>
             </div>
             <div>
