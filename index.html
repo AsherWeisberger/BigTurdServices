@@ -50,6 +50,13 @@
     body {
       background: linear-gradient(to bottom, #f7fee7, #e7e5e4);
     }
+    /* Map styling */
+    #map {
+      height: 400px;
+      width: 100%;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
   </style>
   <script>
     // === Site config you can customize ===
@@ -292,8 +299,8 @@
   <!-- Pricing -->
   <section id="pricing" class="relative">
     <div class="container mx-auto px-4 py-16">
-      <h2 class="text-3xl font-extrabold">Simple pricing</h2>
-      <p class="text-stone-700 mt-2">Transparent rates that scale with dogs and visit frequency. First heavy clean may require a one‑time deep clean.</p>
+      <h2 class="text-3xl font-extrabold text-center">Simple, Transparent Pricing</h2>
+      <p class="text-stone-700 mt-2 text-center max-w-2xl mx-auto">Choose the perfect plan for your yard size and cleaning frequency. All plans include reliable service and satisfaction guarantee.</p>
       <div class="mt-8 grid md:grid-cols-4 gap-6">
         <div class="rounded-2xl glassy p-6">
           <h3 class="font-bold text-xl">Weekly</h3>
@@ -399,18 +406,35 @@
     <div class="container mx-auto px-4 py-16">
       <h2 class="text-3xl font-extrabold">Service area</h2>
       <p class="text-stone-700 mt-1">We currently service the following ZIP codes. Don’t see yours? Send us a note and we’ll try to help.</p>
-      <div id="zipGrid" class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3"></div>
+      <div id="map" class="mt-6"></div>
       <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const host = document.getElementById('zipGrid');
-          BUSINESS.serviceZips.forEach(z => {
-            const a = document.createElement('a');
-            a.href = '#quote'; a.textContent = z;
-            a.className = 'inline-flex items-center justify-center rounded-xl glassy px-3 py-2 text-sm';
-            host.appendChild(a);
-          })
-        });
+        function initMap() {
+          const map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: 39.4667, lng: -87.4139 }, // Centered on Terre Haute, IN
+            zoom: 10,
+          });
+
+          const serviceZips = [
+            "47801","47802","47803","47804","47805","47807","47806","47808","47809","47810"
+          ];
+
+          serviceZips.forEach(zip => {
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ address: `${zip}, Terre Haute, IN` }, (results, status) => {
+              if (status === "OK" && results[0]) {
+                new google.maps.Marker({
+                  position: results[0].geometry.location,
+                  map: map,
+                  title: zip,
+                });
+              } else {
+                console.error("Geocode was not successful for the following reason: " + status);
+              }
+            });
+          });
+        }
       </script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap"></script>
     </div>
   </section>
   <!-- FAQ -->
