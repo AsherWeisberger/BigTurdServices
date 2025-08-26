@@ -57,6 +57,17 @@
       border-radius: 1rem;
       overflow: hidden;
     }
+    /* Hero section styling */
+    .hero-text {
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 1rem;
+    }
+    .hero-image {
+      border-radius: 1rem;
+      overflow: hidden;
+    }
   </style>
   <script>
     // === Site config you can customize ===
@@ -183,7 +194,7 @@
           <a href="#pricing" class="hover:text-stone-700">Pricing</a>
           <a href="#area" class="hover:text-stone-700">Service Area</a>
           <a href="#faq" class="hover:text-stone-700">FAQ</a>
-          <a href="#reviews" class="hover:text-stone-700">Reviews</a> <!-- Added Reviews link -->
+          <a href="#reviews" class="hover:text-stone-700">Reviews</a>
           <a href="#contact" class="hover:text-stone-700">Contact</a>
           <a href="#quote" class="inline-flex items-center rounded-xl border border-stone-300 px-3 py-1.5 hover:bg-stone-100 glassy">Free Quote</a>
         </nav>
@@ -195,7 +206,7 @@
           <a href="#pricing" class="px-2 py-1">Pricing</a>
           <a href="#area" class="px-2 py-1">Service Area</a>
           <a href="#faq" class="px-2 py-1">FAQ</a>
-          <a href="#reviews" class="px-2 py-1">Reviews</a> <!-- Added Reviews link -->
+          <a href="#reviews" class="px-2 py-1">Reviews</a>
           <a href="#contact" class="px-2 py-1">Contact</a>
           <a href="#quote" class="px-2 py-1 font-semibold">Free Quote</a>
         </div>
@@ -203,29 +214,30 @@
     </div>
   </header>
   <!-- Hero -->
-  <section id="top" class="relative">
-    <div class="container mx-auto px-4 py-16 md:py-24">
+  <section id="top" class="relative bg-gray-100 py-16">
+    <div class="container mx-auto px-4">
       <div class="grid md:grid-cols-2 items-center gap-10">
-        <div>
-          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
-            We scoop the poop so <span class="underline decoration-lime-500">you</span> don't have to.
+        <div class="hero-text">
+          <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+            <span class="text-lime-600">Big Turd</span><br>
+            <span class="text-stone-900">Professional Pet Waste Removal</span>
           </h1>
-          <p class="mt-4 text-lg text-stone-700 max-w-prose">Reliable, affordable dog poop cleanup for yards, HOAs, apartments and parks. No contracts. Friendly service. Sparkling lawns and happy paws.</p>
-          <div class="mt-6 flex flex-col sm:flex-row gap-3">
-            <a href="#quote" class="inline-flex items-center justify-center rounded-2xl px-5 py-3 border border-stone-300 bg-white shadow-sm hover:shadow glassy">Get a Free Quote</a>
+          <p class="mt-6 text-lg text-stone-700 max-w-prose">Reliable, affordable dog poop cleanup for yards, HOAs, apartments and parks. No contracts. Friendly service. Sparkling lawns and happy paws.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#pricing" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-lime-600 text-white hover:bg-lime-700">View Pricing Plans</a>
+            <a href="#quote" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-green-600 text-white hover:bg-green-700">Get Free Quote</a>
           </div>
-          <div class="mt-6 flex items-center gap-3 text-sm">
+          <div class="mt-6 flex items-center gap-3 text-sm justify-center">
             <input id="quoteZipHero" type="text" maxlength="5" placeholder="Enter ZIP to check coverage" class="w-48 rounded-xl border border-stone-300 px-3 py-2 glassy" oninput="byId('quoteZip').value=this.value; updateZipBadge();" />
-            <a href="#area" class="underline">See service area</a>
+            <a href="#area" class="underline text-stone-700 hover:text-stone-900">See service area</a>
           </div>
         </div>
-        <div class="relative">
-          <div class="aspect-[4/3] w-full rounded-3xl">
-            <div class="image-container h-full w-full rounded-2xl overflow-hidden">
+        <div class="hero-image">
+          <div class="aspect-[4/3] w-full rounded-2xl overflow-hidden">
+            <div class="image-container h-full w-full">
               <img src="BIGTURD%20PHOTO.png" alt="Big Turd Waste Removal" class="w-full h-full object-cover">
             </div>
           </div>
-          <div class="mt-2 rounded-2xl glassy px-4 py-2 text-sm text-center">No contracts • Text updates • Friendly and Responsible Technicians</div>
         </div>
       </div>
     </div>
