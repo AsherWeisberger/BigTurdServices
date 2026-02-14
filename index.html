@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BIG TURD | Premium Pet Waste Removal - Terre Haute, IN</title>
-  <meta name="description" content="Professional dog waste removal service in Terre Haute, Indiana. The most reliable, affordable, and tech-forward poop scooping service. Call Asher at 323-574-0882." />
+  <meta name="description" content="Professional dog waste removal service in Terre Haute, Indiana. HOA, commercial, and residential services. Call Asher at 323-574-0882 for custom quotes." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -42,52 +42,109 @@
       z-index: 1;
     }
 
+    /* Floating Dog Paws Animation */
+    .paw-container {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+      overflow: hidden;
+    }
+    .paw {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.05;
+      animation: float-paw 15s infinite ease-in-out;
+    }
+    @keyframes float-paw {
+      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.05; }
+      50% { transform: translateY(-20px) rotate(10deg); opacity: 0.1; }
+    }
+
     /* Ultra-Premium Header */
     .mega-header {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 1000;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      padding: 1.5rem 0;
+      padding: 1rem 0;
     }
     .mega-header.scrolled {
-      padding: 0.75rem 0;
-      background: rgba(15, 15, 15, 0.85);
+      padding: 0.5rem 0;
+      background: rgba(15, 15, 15, 0.95);
       backdrop-filter: blur(20px) saturate(180%);
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* Logo Animation */
+    /* Dog-Friendly Logo */
     .logo-container {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
       cursor: pointer;
       transition: transform 0.3s;
     }
     .logo-container:hover { transform: scale(1.02); }
-    .logo-icon {
-      width: 50px; height: 50px;
+    .logo-mascot {
+      position: relative;
+      width: 60px; height: 60px;
       background: linear-gradient(135deg, #00b894, #00cec9);
-      border-radius: 14px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.75rem;
+      font-size: 2rem;
       box-shadow: 0 10px 40px rgba(0, 184, 148, 0.4);
-      animation: pulse-glow 3s ease-in-out infinite;
+      animation: wag 3s ease-in-out infinite;
     }
-    @keyframes pulse-glow {
-      0%, 100% { box-shadow: 0 10px 40px rgba(0, 184, 148, 0.4); }
-      50% { box-shadow: 0 10px 60px rgba(0, 206, 201, 0.6); }
+    .logo-mascot::before {
+      content: '';
+      position: absolute;
+      top: -8px; left: 8px;
+      width: 15px; height: 20px;
+      background: #00b894;
+      border-radius: 50%;
+      transform: rotate(-20deg);
+    }
+    .logo-mascot::after {
+      content: '';
+      position: absolute;
+      top: -8px; right: 8px;
+      width: 15px; height: 20px;
+      background: #00b894;
+      border-radius: 50%;
+      transform: rotate(20deg);
+    }
+    @keyframes wag {
+      0%, 100% { transform: rotate(-3deg); }
+      50% { transform: rotate(3deg); }
     }
     .logo-text {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Fredoka', sans-serif;
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 2rem;
       letter-spacing: -0.02em;
+      line-height: 1;
     }
-    .logo-text span { color: #00b894; }
+    .logo-text span { 
+      color: #00b894; 
+      position: relative;
+    }
+    .logo-text span::after {
+      content: '🐾';
+      position: absolute;
+      top: -5px;
+      right: -20px;
+      font-size: 0.8rem;
+      transform: rotate(20deg);
+    }
+    .logo-tagline {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.5px;
+      margin-top: -5px;
+    }
 
     /* Premium Navigation */
     .nav-link {
@@ -127,6 +184,9 @@
       box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
       position: relative;
       overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     .cta-btn::before {
       content: '';
@@ -149,9 +209,20 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding-top: 120px;
+      padding-top: 140px;
       position: relative;
       z-index: 10;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '🐕 🐕‍🦺 🦮 🐩 🐾';
+      position: absolute;
+      top: 20%;
+      right: -5%;
+      font-size: 8rem;
+      opacity: 0.03;
+      transform: rotate(-15deg);
+      pointer-events: none;
     }
     .hero-content {
       max-width: 700px;
@@ -171,11 +242,11 @@
       animation: fade-in-up 0.6s ease-out;
     }
     .hero h1 {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: clamp(3rem, 8vw, 5.5rem);
       font-weight: 700;
       line-height: 1.1;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
       margin-bottom: 1.5rem;
       animation: fade-in-up 0.6s ease-out 0.1s both;
     }
@@ -184,6 +255,14 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      position: relative;
+    }
+    .hero h1 .gradient-text::after {
+      content: '💩';
+      font-size: 0.5em;
+      vertical-align: super;
+      margin-left: 5px;
+      filter: drop-shadow(0 0 10px rgba(0,184,148,0.5));
     }
     .hero p {
       font-size: 1.25rem;
@@ -233,11 +312,35 @@
       border-color: rgba(255,255,255,0.3);
     }
 
+    /* Dog Family Illustration */
+    .dog-family-illustration {
+      position: absolute;
+      right: 5%;
+      bottom: 10%;
+      width: 400px;
+      height: 300px;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    .dog-family-illustration .dog {
+      position: absolute;
+      font-size: 4rem;
+      animation: bounce-dog 2s infinite ease-in-out;
+    }
+    .dog-family-illustration .dog:nth-child(1) { bottom: 0; left: 0; animation-delay: 0s; }
+    .dog-family-illustration .dog:nth-child(2) { bottom: 20px; left: 80px; font-size: 3rem; animation-delay: 0.2s; }
+    .dog-family-illustration .dog:nth-child(3) { bottom: 0; left: 150px; font-size: 3.5rem; animation-delay: 0.4s; }
+    .dog-family-illustration .dog:nth-child(4) { bottom: 30px; right: 50px; font-size: 2.5rem; animation-delay: 0.6s; }
+    @keyframes bounce-dog {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
     /* Floating Stats */
     .floating-stats {
       position: absolute;
       right: 5%;
-      top: 50%;
+      top: 40%;
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
@@ -289,8 +392,8 @@
       margin-bottom: 4rem;
     }
     .section-header h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 3rem;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3.5rem;
       font-weight: 700;
       margin-bottom: 1rem;
     }
@@ -358,6 +461,106 @@
       line-height: 1.6;
     }
 
+    /* HOA / Commercial Section */
+    .hoa-section {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 10;
+      background: linear-gradient(135deg, rgba(0, 184, 148, 0.1), rgba(0, 206, 201, 0.05));
+      border-top: 1px solid rgba(0, 184, 148, 0.2);
+      border-bottom: 1px solid rgba(0, 184, 148, 0.2);
+    }
+    .hoa-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hoa-content h2 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    .hoa-content h2 span {
+      color: #00b894;
+    }
+    .hoa-content > p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.125rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .hoa-features {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .hoa-feature {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1rem;
+    }
+    .hoa-feature i {
+      color: #00b894;
+      font-size: 1.25rem;
+    }
+    .hoa-cta {
+      background: linear-gradient(135deg, #00b894, #00cec9);
+      color: #0f0f0f;
+      padding: 1.25rem 2rem;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.3s;
+      box-shadow: 0 10px 30px rgba(0, 184, 148, 0.3);
+    }
+    .hoa-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 184, 148, 0.4);
+    }
+    .hoa-visual {
+      position: relative;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .community-icon {
+      font-size: 12rem;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+      animation: pulse-community 3s ease-in-out infinite;
+    }
+    @keyframes pulse-community {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .community-dogs {
+      position: absolute;
+      font-size: 3rem;
+      animation: orbit 10s linear infinite;
+    }
+    .community-dogs:nth-child(2) { top: 20%; left: 20%; animation-delay: 0s; }
+    .community-dogs:nth-child(3) { top: 20%; right: 20%; animation-delay: -3.3s; }
+    .community-dogs:nth-child(4) { bottom: 20%; left: 50%; transform: translateX(-50%); animation-delay: -6.6s; }
+    @keyframes orbit {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(10px, -10px); }
+      50% { transform: translate(0, -20px); }
+      75% { transform: translate(-10px, -10px); }
+    }
+
     /* How It Works */
     .how-it-works {
       padding: 6rem 0;
@@ -394,12 +597,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 2rem;
       font-weight: 700;
       color: #0f0f0f;
       margin: 0 auto 1.5rem;
       box-shadow: 0 10px 30px rgba(0, 184, 148, 0.3);
+      position: relative;
+    }
+    .step-number::after {
+      content: '🐾';
+      position: absolute;
+      bottom: -5px;
+      right: -5px;
+      font-size: 1.5rem;
     }
     .step h3 {
       font-family: 'Space Grotesk', sans-serif;
@@ -442,8 +653,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.25rem;
-      color: #00b894;
+      font-size: 1.5rem;
     }
     .feature-content h4 {
       font-weight: 700;
@@ -479,7 +689,7 @@
       content: '"';
       position: absolute;
       top: 1rem; right: 2rem;
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 4rem;
       color: rgba(0, 184, 148, 0.2);
       line-height: 1;
@@ -508,6 +718,7 @@
       justify-content: center;
       font-weight: 700;
       color: #0f0f0f;
+      font-size: 1.25rem;
     }
     .author-info h4 {
       font-weight: 700;
@@ -543,6 +754,9 @@
       border-radius: 50px;
       font-weight: 500;
       transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     .area-tag:hover {
       background: rgba(0, 184, 148, 0.2);
@@ -577,6 +791,9 @@
       font-weight: 600;
       margin-bottom: 1rem;
       color: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     .service-grid {
       display: grid;
@@ -643,7 +860,7 @@
       margin-bottom: 0.5rem;
     }
     .price-amount {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Fredoka', sans-serif;
       font-size: 4rem;
       font-weight: 700;
       background: linear-gradient(135deg, #00b894, #00cec9);
@@ -812,6 +1029,13 @@
       .steps-container::before {
         display: none;
       }
+      .hoa-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .dog-family-illustration {
+        display: none;
+      }
     }
     @media (max-width: 768px) {
       .service-grid {
@@ -829,30 +1053,49 @@
         gap: 1rem;
         text-align: center;
       }
+      .section-header h2 {
+        font-size: 2.5rem;
+      }
     }
   </style>
 </head>
 <body class="premium-bg">
   <div class="grid-bg"></div>
+  
+  <!-- Floating Paw Prints -->
+  <div class="paw-container">
+    <div class="paw" style="top: 10%; left: 5%;">🐾</div>
+    <div class="paw" style="top: 30%; right: 10%; animation-delay: 2s;">🐾</div>
+    <div class="paw" style="top: 60%; left: 8%; animation-delay: 4s;">🐾</div>
+    <div class="paw" style="bottom: 20%; right: 15%; animation-delay: 1s;">🐾</div>
+    <div class="paw" style="top: 80%; left: 20%; animation-delay: 3s;">🐾</div>
+  </div>
 
   <!-- Header -->
   <header class="mega-header" id="header">
     <div class="container mx-auto px-6">
       <div class="flex items-center justify-between">
         <a href="#" class="logo-container">
-          <div class="logo-icon">💩</div>
-          <div class="logo-text">BIG<span>TURD</span></div>
+          <div class="logo-mascot">🐕</div>
+          <div>
+            <div class="logo-text">BIG<span>TURD</span></div>
+            <div class="logo-tagline">Because Dogs Take Big Ones! 💩</div>
+          </div>
         </a>
 
         <nav class="hidden md:flex items-center gap-2">
           <a href="#services" class="nav-link">Services</a>
+          <a href="#hoa" class="nav-link">HOA & Commercial</a>
           <a href="#calculator" class="nav-link">Pricing</a>
           <a href="#how-it-works" class="nav-link">How It Works</a>
           <a href="#about" class="nav-link">About</a>
           <a href="#contact" class="nav-link">Contact</a>
         </nav>
 
-        <a href="#calculator" class="cta-btn">Get Quote</a>
+        <a href="#calculator" class="cta-btn">
+          <span>Get Quote</span>
+          <span>🦴</span>
+        </a>
       </div>
     </div>
   </header>
@@ -863,13 +1106,13 @@
       <div class="hero-content">
         <div class="hero-badge">
           <i class="fas fa-bolt"></i>
-          #1 Rated Pet Waste Removal in Terre Haute
+          Terre Haute's #1 Dog Waste Removal
         </div>
         <h1>
-          We Handle The<br>
-          <span class="gradient-text">Dirty Work</span>
+          We Scoop The<br>
+          <span class="gradient-text">Big Ones</span>
         </h1>
-        <p>Professional dog waste removal that gives you back your weekends. No contracts, no hassle, just a clean yard and happy paws. Serving Terre Haute and surrounding areas. Starting at just $42.99/month.</p>
+        <p>Professional pet waste removal for busy dog families. No contracts, no mess, no stress. Just a clean yard and happy pups. Serving Terre Haute and surrounding areas with love (and strong bags). Starting at just $42.99/month.</p>
         <div class="hero-buttons">
           <a href="#calculator" class="btn-primary">
             Calculate Your Price
@@ -883,18 +1126,26 @@
       </div>
     </div>
 
+    <!-- Dog Family Illustration -->
+    <div class="dog-family-illustration">
+      <div class="dog">🐕</div>
+      <div class="dog">🐕‍🦺</div>
+      <div class="dog">🦮</div>
+      <div class="dog">🐩</div>
+    </div>
+
     <div class="floating-stats">
       <div class="stat-card">
         <div class="stat-number">10K+</div>
-        <div class="stat-label">Yards Cleaned</div>
+        <div class="stat-label">Piles Scooped 🎯</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">99%</div>
-        <div class="stat-label">Happy Customers</div>
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Happy Dog Families</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">4.9★</div>
-        <div class="stat-label">Average Rating</div>
+        <div class="stat-label">Tail Wags Guaranteed</div>
       </div>
     </div>
   </section>
@@ -903,45 +1154,99 @@
   <section class="what-we-do" id="services">
     <div class="container mx-auto px-6">
       <div class="section-header">
-        <h2>What We Do</h2>
-        <p>Comprehensive pet waste removal services tailored to your needs. We keep your yard clean, safe, and odor-free.</p>
+        <h2>What We Do 🐾</h2>
+        <p>Comprehensive pet waste removal services tailored to your pack's needs. We keep your yard clean, safe, and ready for fetch.</p>
       </div>
 
       <div class="services-grid">
         <div class="service-box">
           <div class="service-box-icon">📅</div>
           <h3>Weekly Scooping</h3>
-          <p>Our most popular plan! Perfect for homes with one or two dogs. We visit once a week to keep your yard consistently clean and fresh. No buildup, no mess.</p>
+          <p>Our most popular plan! Perfect for homes with one or two furry friends. We visit once a week to keep your yard consistently clean. No buildup, no mess, more time for belly rubs.</p>
         </div>
 
         <div class="service-box">
           <div class="service-box-icon">⚡</div>
           <h3>Twice Weekly</h3>
-          <p>Ideal for multi-dog households or high-traffic yards. Zero buildup guaranteed with two visits per week. Your yard stays pristine all week long.</p>
+          <p>Ideal for multi-dog households or high-traffic yards. Zero buildup guaranteed with two visits per week. Your yard stays pristine for impromptu games of frisbee.</p>
         </div>
 
         <div class="service-box">
           <div class="service-box-icon">🗓️</div>
           <h3>Bi-Weekly Cleanup</h3>
-          <p>Budget-friendly option for smaller yards or single-dog homes. Every other week service that keeps your yard manageable without breaking the bank.</p>
+          <p>Budget-friendly option for smaller yards or single-pup homes. Every other week service that keeps your yard manageable without breaking the treat budget.</p>
         </div>
 
         <div class="service-box">
           <div class="service-box-icon">🧹</div>
           <h3>One-Time Deep Clean</h3>
-          <p>Hosting an event? Moving in? Haven't cleaned up in a while? Our one-time service restores your yard to like-new condition. Perfect for spring cleaning.</p>
+          <p>Hosting a BBQ? Moving in? Haven't cleaned up since winter? Our one-time service restores your yard to like-new condition. Perfect for spring cleaning or before the in-laws visit.</p>
         </div>
 
         <div class="service-box">
           <div class="service-box-icon">🧼</div>
           <h3>Sanitizer & Deodorizer</h3>
-          <p>Go beyond scooping! Our eco-friendly, pet-safe sanitizer eliminates bacteria, odors, and harmful parasites left behind by pet waste. Optional add-on.</p>
+          <p>Go beyond scooping! Our eco-friendly, pet-safe sanitizer eliminates bacteria, odors, and harmful parasites left behind. Your nose (and your neighbors) will thank you.</p>
         </div>
 
         <div class="service-box">
-          <div class="service-box-icon">🏠</div>
-          <h3>Commercial Services</h3>
-          <p>Apartment complexes, dog parks, and veterinary offices. We handle large-scale waste management with custom scheduling and competitive rates.</p>
+          <div class="service-box-icon">🏢</div>
+          <h3>HOA & Commercial</h3>
+          <p>Apartment complexes, dog parks, vet offices, and community spaces. We handle large-scale waste management with custom scheduling. <a href="#hoa" style="color: #00b894;">Learn more →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOA / Commercial Section -->
+  <section class="hoa-section" id="hoa">
+    <div class="container mx-auto px-6">
+      <div class="hoa-container">
+        <div class="hoa-content">
+          <h2>HOA & <span>Community</span> Solutions 🏘️</h2>
+          <p>Managing waste for multiple properties or community spaces? We specialize in large-scale pet waste removal with competitive pricing and rapid response times. From apartment complexes to dog parks, we keep your community clean and residents happy.</p>
+          
+          <div class="hoa-features">
+            <div class="hoa-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Customized service plans for any property size</span>
+            </div>
+            <div class="hoa-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Dedicated account manager (Asher personally oversees all commercial accounts)</span>
+            </div>
+            <div class="hoa-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Same-day emergency cleanup available</span>
+            </div>
+            <div class="hoa-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Detailed reporting and documentation for HOA boards</span>
+            </div>
+            <div class="hoa-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Station installation and maintenance (bag dispensers, receptacles)</span>
+            </div>
+            <div class="hoa-feature">
+              <i class="fas fa-check-circle"></i>
+              <span>Licensed, insured, and background-checked technicians</span>
+            </div>
+          </div>
+
+          <a href="tel:323-574-0882" class="hoa-cta">
+            <i class="fas fa-phone-alt"></i>
+            Call Asher for Custom Quote: 323-574-0882
+          </a>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.6);">
+            Or email: <a href="mailto:asher@bigturd.com" style="color: #00b894;">asher@bigturd.com</a> • Response within 2 hours guaranteed
+          </p>
+        </div>
+
+        <div class="hoa-visual">
+          <div class="community-icon">🏘️</div>
+          <div class="community-dogs">🐕</div>
+          <div class="community-dogs">🦮</div>
+          <div class="community-dogs">🐕‍🦺</div>
         </div>
       </div>
     </div>
@@ -951,27 +1256,27 @@
   <section class="how-it-works" id="how-it-works">
     <div class="container mx-auto px-6">
       <div class="section-header">
-        <h2>How It Works</h2>
-        <p>Getting started is easy. Three simple steps to a cleaner yard.</p>
+        <h2>How It Works 🎯</h2>
+        <p>Getting started is easier than teaching your dog to sit. Three simple steps to a cleaner yard.</p>
       </div>
 
       <div class="steps-container">
         <div class="step">
           <div class="step-number">1</div>
           <h3>Get Your Quote</h3>
-          <p>Use our instant calculator or call Asher at 323-574-0882. Choose your service frequency and yard size.</p>
+          <p>Use our instant calculator or call Asher at 323-574-0882. Tell us about your pack and we'll recommend the perfect plan.</p>
         </div>
 
         <div class="step">
           <div class="step-number">2</div>
           <h3>Schedule Service</h3>
-          <p>Pick your preferred day and time. We'll confirm your appointment and send reminders before each visit.</p>
+          <p>Pick your preferred day and time. We'll confirm your appointment and send cute dog memes... I mean, reminders... before each visit.</p>
         </div>
 
         <div class="step">
           <div class="step-number">3</div>
           <h3>Enjoy Your Clean Yard</h3>
-          <p>We scoop, sanitize, and haul away the waste. You enjoy a pristine yard without lifting a finger. 100% satisfaction guaranteed.</p>
+          <p>We scoop, sanitize, and haul away the evidence. You enjoy a pristine yard and spend more time playing fetch. 100% satisfaction guaranteed.</p>
         </div>
       </div>
     </div>
@@ -981,8 +1286,8 @@
   <section class="why-us" id="about">
     <div class="container mx-auto px-6">
       <div class="section-header">
-        <h2>Why Choose BIG TURD?</h2>
-        <p>We're not just scoopers – we're your partners in maintaining a clean, healthy outdoor space.</p>
+        <h2>Why Choose BIG TURD? 🏆</h2>
+        <p>We're not just scoopers – we're your partners in maintaining a clean, healthy outdoor space for your four-legged family members.</p>
       </div>
 
       <div class="features-grid">
@@ -1041,8 +1346,8 @@
   <section class="testimonials">
     <div class="container mx-auto px-6">
       <div class="section-header">
-        <h2>What Customers Say</h2>
-        <p>Don't just take our word for it. Here's what Terre Haute pet owners think about our service.</p>
+        <h2>Happy Tails & Tales 🐕</h2>
+        <p>Don't just take our word for it. Here's what Terre Haute dog parents think about our service.</p>
       </div>
 
       <div class="testimonial-grid">
@@ -1054,12 +1359,12 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
           </div>
-          <p class="testimonial-text">"Asher is incredibly reliable! I've used BIG TURD for 6 months now and my yard has never looked better. Worth every penny to get my weekends back."</p>
+          <p class="testimonial-text">"Asher is incredibly reliable! I've used BIG TURD for 6 months now and my yard has never looked better. My Golden Retriever actually has room to run now! Worth every penny."</p>
           <div class="testimonial-author">
-            <div class="author-avatar">SM</div>
+            <div class="author-avatar">🐕</div>
             <div class="author-info">
               <h4>Sarah M.</h4>
-              <p>Terre Haute, IN • 3 Dogs</p>
+              <p>Terre Haute, IN • 3 Dogs (The Brady Bunch)</p>
             </div>
           </div>
         </div>
@@ -1072,12 +1377,12 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
           </div>
-          <p class="testimonial-text">"Professional, friendly, and thorough. I was skeptical at first but now I can't imagine going back to scooping myself. Highly recommend!"</p>
+          <p class="testimonial-text">"Professional, friendly, and thorough. I was skeptical about the name at first but these guys are the real deal. Now I can't imagine going back to scooping myself!"</p>
           <div class="testimonial-author">
-            <div class="author-avatar">JK</div>
+            <div class="author-avatar">🦮</div>
             <div class="author-info">
               <h4>Jason K.</h4>
-              <p>West Terre Haute • 2 Dogs</p>
+              <p>West Terre Haute • 2 Labs</p>
             </div>
           </div>
         </div>
@@ -1090,12 +1395,12 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
           </div>
-          <p class="testimonial-text">"The twice-weekly plan is perfect for our Great Danes. Asher always texts when he's on the way and leaves the gate locked. Top notch service!"</p>
+          <p class="testimonial-text">"The twice-weekly plan is perfect for our Great Danes. Asher always texts when he's on the way and leaves the gate locked. Top notch service for big dogs with big... you know!"</p>
           <div class="testimonial-author">
-            <div class="author-avatar">LT</div>
+            <div class="author-avatar">🐕‍🦺</div>
             <div class="author-info">
               <h4>Lisa T.</h4>
-              <p>Seelyville, IN • 2 Large Dogs</p>
+              <p>Seelyville, IN • 2 Great Danes</p>
             </div>
           </div>
         </div>
@@ -1108,21 +1413,21 @@
     <div class="container mx-auto px-6">
       <div class="areas-container">
         <div class="section-header">
-          <h2>Service Areas</h2>
+          <h2>Where We Fetch 🗺️</h2>
           <p>We proudly serve Terre Haute and surrounding communities. Not sure if we cover your area? Just ask!</p>
         </div>
         
         <div class="areas-tags">
-          <span class="area-tag">Terre Haute</span>
-          <span class="area-tag">West Terre Haute</span>
-          <span class="area-tag">Seelyville</span>
-          <span class="area-tag">Riley</span>
-          <span class="area-tag">New Goshen</span>
-          <span class="area-tag">Pimento</span>
-          <span class="area-tag">Lewis</span>
-          <span class="area-tag">Fontanet</span>
-          <span class="area-tag">Staunton</span>
-          <span class="area-tag">+ More</span>
+          <span class="area-tag">🐾 Terre Haute</span>
+          <span class="area-tag">🐾 West Terre Haute</span>
+          <span class="area-tag">🐾 Seelyville</span>
+          <span class="area-tag">🐾 Riley</span>
+          <span class="area-tag">🐾 New Goshen</span>
+          <span class="area-tag">🐾 Pimento</span>
+          <span class="area-tag">🐾 Lewis</span>
+          <span class="area-tag">🐾 Fontanet</span>
+          <span class="area-tag">🐾 Staunton</span>
+          <span class="area-tag">🐾 + More!</span>
         </div>
       </div>
     </div>
@@ -1132,14 +1437,14 @@
   <section class="calculator-section" id="calculator">
     <div class="container mx-auto px-6">
       <div class="section-header">
-        <h2>Instant Price Calculator</h2>
+        <h2>Instant Price Calculator 🧮</h2>
         <p>Get your exact price in seconds. No hidden fees, no surprises. Asher will confirm everything before your first visit.</p>
       </div>
 
       <div class="calc-container">
         <div class="calc-options">
           <div class="option-group">
-            <h3>1. Select Service Frequency</h3>
+            <h3><span>1.</span> Select Service Frequency</h3>
             <div class="service-grid">
               <div class="service-card selected" id="card-weekly" onclick="selectService('weekly')">
                 <div class="service-icon">📅</div>
@@ -1165,7 +1470,7 @@
           </div>
 
           <div class="option-group">
-            <h3>2. Choose Yard Size</h3>
+            <h3><span>2.</span> Choose Yard Size</h3>
             <div class="service-grid">
               <div class="service-card selected" id="yard-small" onclick="selectYard('small')">
                 <div class="service-name">Small Yard</div>
@@ -1184,7 +1489,7 @@
         </div>
 
         <div class="price-display">
-          <div class="price-label">Your Monthly Price</div>
+          <div class="price-label">Your Monthly Investment</div>
           <div class="price-amount" id="price">$62.99</div>
           <div class="price-period" id="period">Weekly service • Small yard</div>
 
@@ -1218,8 +1523,8 @@
   <section class="contact-section" id="contact">
     <div class="container mx-auto px-6">
       <div class="section-header">
-        <h2>Get In Touch</h2>
-        <p>Ready for a cleaner yard? Contact Asher directly. We typically respond within 2 hours during business hours.</p>
+        <h2>Get In Touch 📞</h2>
+        <p>Ready for a cleaner yard? Contact Asher directly. We typically respond within 2 hours during business hours (unless we're playing fetch).</p>
       </div>
 
       <div class="contact-grid">
@@ -1252,10 +1557,13 @@
     <div class="footer-content">
       <div class="footer-brand">
         <div class="logo-container">
-          <div class="logo-icon" style="width: 40px; height: 40px; font-size: 1.25rem;">💩</div>
-          <div class="logo-text" style="font-size: 1.25rem;">BIG<span>TURD</span></div>
+          <div class="logo-mascot" style="width: 50px; height: 50px; font-size: 1.5rem;">🐕</div>
+          <div>
+            <div class="logo-text" style="font-size: 1.5rem;">BIG<span>TURD</span></div>
+            <div class="logo-tagline">Because Dogs Take Big Ones! 💩</div>
+          </div>
         </div>
-        <p>Premium pet waste removal service in Terre Haute, Indiana. Professional, reliable, and hassle-free. Let us handle the dirty work so you don't have to.</p>
+        <p>Premium pet waste removal service in Terre Haute, Indiana. Professional, reliable, and hassle-free. Let us handle the dirty work so you can focus on the belly rubs.</p>
       </div>
 
       <div class="footer-links">
@@ -1264,7 +1572,7 @@
         <a href="#services">Twice Weekly</a>
         <a href="#services">Bi-Weekly</a>
         <a href="#services">One-Time Clean</a>
-        <a href="#services">Commercial</a>
+        <a href="#hoa">HOA & Commercial</a>
       </div>
 
       <div class="footer-links">
@@ -1280,13 +1588,17 @@
         <h4>Contact</h4>
         <a href="tel:323-574-0882">323-574-0882</a>
         <a href="mailto:asher@bigturd.com">asher@bigturd.com</a>
-        <p style="color: rgba(255,255,255,0.6); margin-top: 1rem; line-height: 1.6;">Asher Weisberger<br>Terre Haute, IN 47807</p>
+        <p style="color: rgba(255,255,255,0.6); margin-top: 1rem; line-height: 1.6;">
+          Asher Weisberger<br>
+          Terre Haute, IN 47807<br>
+          <span style="font-size: 1.5rem;">🐕 💩 🧹</span>
+        </p>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2024 BIG TURD Pet Waste Removal. All rights reserved.</p>
-      <p>Locally owned and operated in Terre Haute, Indiana.</p>
+      <p>&copy; 2024 BIG TURD Pet Waste Removal. All rights reserved. 🐾</p>
+      <p>Locally owned and operated in Terre Haute, Indiana. We love dogs!</p>
     </div>
   </footer>
 
