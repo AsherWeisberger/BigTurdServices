@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BIG TURD | Premium Pet Waste Removal</title>
-  <meta name="description" content="Professional dog waste removal service. The most reliable, affordable, and tech-forward poop scooping service in America." />
+  <title>BIG TURD | Premium Pet Waste Removal - Terre Haute, IN</title>
+  <meta name="description" content="Professional dog waste removal service in Terre Haute, Indiana. The most reliable, affordable, and tech-forward poop scooping service. Call Asher at 323-574-0882." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -283,12 +283,7 @@
       }
     }
 
-    /* Calculator Section */
-    .calculator-section {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 10;
-    }
+    /* Section Headers */
     .section-header {
       text-align: center;
       margin-bottom: 4rem;
@@ -304,7 +299,263 @@
       font-size: 1.125rem;
     }
 
-    /* Calculator Cards */
+    /* What We Do Section */
+    .what-we-do {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 10;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .service-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 2.5rem;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #00b894, #00cec9);
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+    .service-box:hover::before {
+      transform: scaleX(1);
+    }
+    .service-box:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 184, 148, 0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    .service-box-icon {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, rgba(0, 184, 148, 0.2), rgba(0, 206, 201, 0.2));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .service-box h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .service-box p {
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    /* How It Works */
+    .how-it-works {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 10;
+      background: rgba(0,0,0,0.2);
+    }
+    .steps-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .steps-container::before {
+      content: '';
+      position: absolute;
+      top: 40px; left: 15%; right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, #00b894, #00cec9);
+      opacity: 0.3;
+      z-index: 0;
+    }
+    .step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .step-number {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, #00b894, #00cec9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f0f0f;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 184, 148, 0.3);
+    }
+    .step h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    .step p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+    }
+
+    /* Why Choose Us */
+    .why-us {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 10;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .feature-icon {
+      width: 50px; height: 50px;
+      min-width: 50px;
+      background: linear-gradient(135deg, rgba(0, 184, 148, 0.15), rgba(0, 206, 201, 0.15));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: #00b894;
+    }
+    .feature-content h4 {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .feature-content p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 10;
+      background: rgba(0,0,0,0.2);
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 1rem; right: 2rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 4rem;
+      color: rgba(0, 184, 148, 0.2);
+      line-height: 1;
+    }
+    .stars {
+      color: #ffd700;
+      margin-bottom: 1rem;
+    }
+    .testimonial-text {
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .author-avatar {
+      width: 50px; height: 50px;
+      background: linear-gradient(135deg, #00b894, #00cec9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #0f0f0f;
+    }
+    .author-info h4 {
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .author-info p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.875rem;
+    }
+
+    /* Service Areas */
+    .service-areas {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 10;
+    }
+    .areas-container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .areas-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .area-tag {
+      background: rgba(0, 184, 148, 0.1);
+      border: 1px solid rgba(0, 184, 148, 0.3);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    .area-tag:hover {
+      background: rgba(0, 184, 148, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Calculator Section */
+    .calculator-section {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 10;
+      background: rgba(0,0,0,0.2);
+    }
     .calc-container {
       display: grid;
       grid-template-columns: 1fr 400px;
@@ -353,8 +604,7 @@
     .service-card.best::before {
       content: 'BEST VALUE';
       position: absolute;
-      top: -10px;
-      left: 50%;
+      top: -10px; left: 50%;
       transform: translateX(-50%);
       background: linear-gradient(135deg, #ffd700, #ffaa00);
       color: #0f0f0f;
@@ -440,6 +690,110 @@
       box-shadow: 0 10px 30px rgba(0, 184, 148, 0.4);
     }
 
+    /* Contact Section */
+    .contact-section {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 10;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .contact-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .contact-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 184, 148, 0.3);
+    }
+    .contact-icon {
+      width: 60px; height: 60px;
+      background: linear-gradient(135deg, rgba(0, 184, 148, 0.2), rgba(0, 206, 201, 0.2));
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 1.5rem;
+    }
+    .contact-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .contact-card p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 1rem;
+    }
+    .contact-card a {
+      color: #00b894;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .contact-card a:hover {
+      color: #00cec9;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 4rem 0 2rem;
+      position: relative;
+      z-index: 10;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.3);
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-brand p {
+      color: rgba(255,255,255,0.6);
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+    .footer-links h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #fff;
+    }
+    .footer-links a {
+      display: block;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      margin-bottom: 0.75rem;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover {
+      color: #00b894;
+    }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      padding: 2rem 1.5rem 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.875rem;
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
       .calc-container {
@@ -452,6 +806,12 @@
       .floating-stats {
         display: none;
       }
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+      .steps-container::before {
+        display: none;
+      }
     }
     @media (max-width: 768px) {
       .service-grid {
@@ -460,9 +820,17 @@
       .hero h1 {
         font-size: 2.5rem;
       }
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
     }
   </style>
-<base target="_blank">
 </head>
 <body class="premium-bg">
   <div class="grid-bg"></div>
@@ -479,6 +847,7 @@
         <nav class="hidden md:flex items-center gap-2">
           <a href="#services" class="nav-link">Services</a>
           <a href="#calculator" class="nav-link">Pricing</a>
+          <a href="#how-it-works" class="nav-link">How It Works</a>
           <a href="#about" class="nav-link">About</a>
           <a href="#contact" class="nav-link">Contact</a>
         </nav>
@@ -494,21 +863,21 @@
       <div class="hero-content">
         <div class="hero-badge">
           <i class="fas fa-bolt"></i>
-          #1 Rated Pet Waste Removal in America
+          #1 Rated Pet Waste Removal in Terre Haute
         </div>
         <h1>
           We Handle The<br>
           <span class="gradient-text">Dirty Work</span>
         </h1>
-        <p>Professional dog waste removal that gives you back your weekends. No contracts, no hassle, just a clean yard and happy paws. Starting at just $42.99/month.</p>
+        <p>Professional dog waste removal that gives you back your weekends. No contracts, no hassle, just a clean yard and happy paws. Serving Terre Haute and surrounding areas. Starting at just $42.99/month.</p>
         <div class="hero-buttons">
           <a href="#calculator" class="btn-primary">
             Calculate Your Price
             <i class="fas fa-arrow-right"></i>
           </a>
-          <a href="#how-it-works" class="btn-secondary">
-            <i class="fas fa-play-circle"></i>
-            See How It Works
+          <a href="tel:323-574-0882" class="btn-secondary">
+            <i class="fas fa-phone"></i>
+            Call Asher: 323-574-0882
           </a>
         </div>
       </div>
@@ -530,12 +899,241 @@
     </div>
   </section>
 
+  <!-- What We Do / Services Section -->
+  <section class="what-we-do" id="services">
+    <div class="container mx-auto px-6">
+      <div class="section-header">
+        <h2>What We Do</h2>
+        <p>Comprehensive pet waste removal services tailored to your needs. We keep your yard clean, safe, and odor-free.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-box">
+          <div class="service-box-icon">📅</div>
+          <h3>Weekly Scooping</h3>
+          <p>Our most popular plan! Perfect for homes with one or two dogs. We visit once a week to keep your yard consistently clean and fresh. No buildup, no mess.</p>
+        </div>
+
+        <div class="service-box">
+          <div class="service-box-icon">⚡</div>
+          <h3>Twice Weekly</h3>
+          <p>Ideal for multi-dog households or high-traffic yards. Zero buildup guaranteed with two visits per week. Your yard stays pristine all week long.</p>
+        </div>
+
+        <div class="service-box">
+          <div class="service-box-icon">🗓️</div>
+          <h3>Bi-Weekly Cleanup</h3>
+          <p>Budget-friendly option for smaller yards or single-dog homes. Every other week service that keeps your yard manageable without breaking the bank.</p>
+        </div>
+
+        <div class="service-box">
+          <div class="service-box-icon">🧹</div>
+          <h3>One-Time Deep Clean</h3>
+          <p>Hosting an event? Moving in? Haven't cleaned up in a while? Our one-time service restores your yard to like-new condition. Perfect for spring cleaning.</p>
+        </div>
+
+        <div class="service-box">
+          <div class="service-box-icon">🧼</div>
+          <h3>Sanitizer & Deodorizer</h3>
+          <p>Go beyond scooping! Our eco-friendly, pet-safe sanitizer eliminates bacteria, odors, and harmful parasites left behind by pet waste. Optional add-on.</p>
+        </div>
+
+        <div class="service-box">
+          <div class="service-box-icon">🏠</div>
+          <h3>Commercial Services</h3>
+          <p>Apartment complexes, dog parks, and veterinary offices. We handle large-scale waste management with custom scheduling and competitive rates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container mx-auto px-6">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Getting started is easy. Three simple steps to a cleaner yard.</p>
+      </div>
+
+      <div class="steps-container">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Get Your Quote</h3>
+          <p>Use our instant calculator or call Asher at 323-574-0882. Choose your service frequency and yard size.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Schedule Service</h3>
+          <p>Pick your preferred day and time. We'll confirm your appointment and send reminders before each visit.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Enjoy Your Clean Yard</h3>
+          <p>We scoop, sanitize, and haul away the waste. You enjoy a pristine yard without lifting a finger. 100% satisfaction guaranteed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-us" id="about">
+    <div class="container mx-auto px-6">
+      <div class="section-header">
+        <h2>Why Choose BIG TURD?</h2>
+        <p>We're not just scoopers – we're your partners in maintaining a clean, healthy outdoor space.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🌿</div>
+          <div class="feature-content">
+            <h4>Eco-Friendly Disposal</h4>
+            <p>All waste is bagged and disposed of properly. We use biodegradable bags and follow environmentally responsible practices.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <div class="feature-content">
+            <h4>No Contracts Required</h4>
+            <p>Cancel anytime with no penalties. We earn your business every visit with quality service, not legal obligations.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⏰</div>
+          <div class="feature-content">
+            <h4>Reliable & On-Time</h4>
+            <p>Same day, same time, every week. We show up when we say we will. Consistency you can count on.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <div class="feature-content">
+            <h4>Fully Insured</h4>
+            <p>Peace of mind with comprehensive liability insurance. Your property is protected while we work.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">👤</div>
+          <div class="feature-content">
+            <h4>Uniformed Professionals</h4>
+            <p>Our team arrives in marked vehicles and clean uniforms. Professional appearance, professional service.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">💯</div>
+          <div class="feature-content">
+            <h4>Satisfaction Guaranteed</h4>
+            <p>Not happy with a cleanup? We'll re-scoop for free. Your satisfaction is our top priority, period.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container mx-auto px-6">
+      <div class="section-header">
+        <h2>What Customers Say</h2>
+        <p>Don't just take our word for it. Here's what Terre Haute pet owners think about our service.</p>
+      </div>
+
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Asher is incredibly reliable! I've used BIG TURD for 6 months now and my yard has never looked better. Worth every penny to get my weekends back."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SM</div>
+            <div class="author-info">
+              <h4>Sarah M.</h4>
+              <p>Terre Haute, IN • 3 Dogs</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Professional, friendly, and thorough. I was skeptical at first but now I can't imagine going back to scooping myself. Highly recommend!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">JK</div>
+            <div class="author-info">
+              <h4>Jason K.</h4>
+              <p>West Terre Haute • 2 Dogs</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"The twice-weekly plan is perfect for our Great Danes. Asher always texts when he's on the way and leaves the gate locked. Top notch service!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">LT</div>
+            <div class="author-info">
+              <h4>Lisa T.</h4>
+              <p>Seelyville, IN • 2 Large Dogs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas -->
+  <section class="service-areas">
+    <div class="container mx-auto px-6">
+      <div class="areas-container">
+        <div class="section-header">
+          <h2>Service Areas</h2>
+          <p>We proudly serve Terre Haute and surrounding communities. Not sure if we cover your area? Just ask!</p>
+        </div>
+        
+        <div class="areas-tags">
+          <span class="area-tag">Terre Haute</span>
+          <span class="area-tag">West Terre Haute</span>
+          <span class="area-tag">Seelyville</span>
+          <span class="area-tag">Riley</span>
+          <span class="area-tag">New Goshen</span>
+          <span class="area-tag">Pimento</span>
+          <span class="area-tag">Lewis</span>
+          <span class="area-tag">Fontanet</span>
+          <span class="area-tag">Staunton</span>
+          <span class="area-tag">+ More</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Calculator Section -->
   <section class="calculator-section" id="calculator">
     <div class="container mx-auto px-6">
       <div class="section-header">
         <h2>Instant Price Calculator</h2>
-        <p>Get your exact price in seconds. No hidden fees, no surprises.</p>
+        <p>Get your exact price in seconds. No hidden fees, no surprises. Asher will confirm everything before your first visit.</p>
       </div>
 
       <div class="calc-container">
@@ -609,12 +1207,88 @@
             Checkout Now <i class="fas fa-arrow-right ml-2"></i>
           </button>
           <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.5);">
-            Secure payment via Stripe
+            Secure payment via Stripe • Questions? Call Asher at 323-574-0882
           </p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container mx-auto px-6">
+      <div class="section-header">
+        <h2>Get In Touch</h2>
+        <p>Ready for a cleaner yard? Contact Asher directly. We typically respond within 2 hours during business hours.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon">📱</div>
+          <h3>Call or Text</h3>
+          <p>Speak directly with Asher for immediate assistance or to schedule your first cleanup.</p>
+          <a href="tel:323-574-0882">323-574-0882</a>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">📧</div>
+          <h3>Email Us</h3>
+          <p>Send us a message anytime. Perfect for detailed questions or special requests.</p>
+          <a href="mailto:asher@bigturd.com">asher@bigturd.com</a>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">📍</div>
+          <h3>Service Area</h3>
+          <p>Based in Terre Haute, IN. Serving all surrounding areas within 30 miles.</p>
+          <a href="#service-areas">View All Areas</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo-container">
+          <div class="logo-icon" style="width: 40px; height: 40px; font-size: 1.25rem;">💩</div>
+          <div class="logo-text" style="font-size: 1.25rem;">BIG<span>TURD</span></div>
+        </div>
+        <p>Premium pet waste removal service in Terre Haute, Indiana. Professional, reliable, and hassle-free. Let us handle the dirty work so you don't have to.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Services</h4>
+        <a href="#services">Weekly Scooping</a>
+        <a href="#services">Twice Weekly</a>
+        <a href="#services">Bi-Weekly</a>
+        <a href="#services">One-Time Clean</a>
+        <a href="#services">Commercial</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a href="#about">About Us</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#service-areas">Service Areas</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <a href="tel:323-574-0882">323-574-0882</a>
+        <a href="mailto:asher@bigturd.com">asher@bigturd.com</a>
+        <p style="color: rgba(255,255,255,0.6); margin-top: 1rem; line-height: 1.6;">Asher Weisberger<br>Terre Haute, IN 47807</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2024 BIG TURD Pet Waste Removal. All rights reserved.</p>
+      <p>Locally owned and operated in Terre Haute, Indiana.</p>
+    </div>
+  </footer>
 
   <script>
     // Header scroll effect
