@@ -1,1587 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Tag Manager (gtag.js) for Analytics Tracking -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1GQ8FT04X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q1GQ8FT04X');
+  </script>
+ 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BIG TURD | Premium Pet Waste Removal - Terre Haute, IN</title>
-  <meta name="description" content="Professional dog waste removal service in Terre Haute, Indiana. HOA, commercial, and residential services. Call BIG at 323-574-0882 for custom quotes." />
+  <title>BIG TURD Waste Removal | Dog Poop Cleanup</title>
+  <meta name="description" content="BIG TURD Waste Removal – reliable, affordable dog poop yard cleanup in Terre Haute and surrounding areas. We scoop the poop so you don't have to." />
+  <meta name="keywords" content="dog poop cleanup, pet waste removal, yard cleaning service, Terre Haute, BIG TURD Waste Removal" />
+  <meta name="robots" content="index, follow" />
+  <!-- Reference to sitemap (create sitemap.xml in repository root) -->
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💩</text></svg>">
+  <!-- Tailwind via CDN for fast styling on GitHub Pages -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #fff; overflow-x: hidden; }
-
-    /* Premium Gradient Background */
-    .premium-bg {
-      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
-      position: relative;
+    /* Smooth scroll */
+    html{scroll-behavior:smooth}
+    /* Simple container width */
+    .container{max-width:1152px}
+    /* Hide number input spinners (Chrome) */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button{ -webkit-appearance: none; margin: 0; }
+    /* Modal */
+    .modal{ display:none; }
+    .modal.show{ display:flex; }
+    /* Enhanced glassy effect styles */
+    .glassy {
+      background-color: rgba(255, 255, 255, 0.6); /* More transparent */
+      backdrop-filter: blur(15px); /* Stronger blur for frosted effect */
+      border: 1px solid rgba(255, 255, 255, 0.3); /* Slightly more visible border */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
     }
-    .premium-bg::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 80%, rgba(0, 184, 148, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0, 206, 201, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(255, 193, 7, 0.05) 0%, transparent 40%);
-      pointer-events: none;
-      z-index: 0;
+    /* Glassy effect for dark backgrounds */
+    .glassy-dark {
+      background-color: rgba(0, 0, 0, 0.3); /* More transparent dark */
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
     }
-
-    /* Animated Grid Background */
-    .grid-bg {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: 
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-      z-index: 1;
+    /* Single gradient for the entire page */
+    body {
+      background: linear-gradient(to bottom, #f7fee7, #e7e5e4);
     }
-
-    /* Floating Dog Paws Animation */
-    .paw-container {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 2;
-      overflow: hidden;
-    }
-    .paw {
-      position: absolute;
-      font-size: 2rem;
-      opacity: 0.05;
-      animation: float-paw 15s infinite ease-in-out;
-    }
-    @keyframes float-paw {
-      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.05; }
-      50% { transform: translateY(-20px) rotate(10deg); opacity: 0.1; }
-    }
-
-    /* Ultra-Premium Header */
-    .mega-header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      padding: 1rem 0;
-    }
-    .mega-header.scrolled {
-      padding: 0.5rem 0;
-      background: rgba(15, 15, 15, 0.95);
-      backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    /* Logo with Paw Image */
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-    .logo-container:hover { transform: scale(1.02); }
-    .logo-img {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 10px rgba(0, 184, 148, 0.5));
-      transition: transform 0.3s;
-    }
-    .logo-container:hover .logo-img {
-      transform: rotate(10deg) scale(1.1);
-    }
-    .logo-text {
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 700;
-      font-size: 2rem;
-      letter-spacing: -0.02em;
-      line-height: 1;
-    }
-    .logo-text span { 
-      color: #00b894; 
-      position: relative;
-    }
-    .logo-tagline {
-      font-size: 0.7rem;
-      color: rgba(255,255,255,0.6);
-      letter-spacing: 0.5px;
-      margin-top: -5px;
-    }
-
-    /* Premium Navigation */
-    .nav-link {
-      position: relative;
-      padding: 0.5rem 1rem;
-      font-weight: 500;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.7);
-      transition: all 0.3s;
-      text-decoration: none;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 50%;
-      width: 0; height: 2px;
-      background: linear-gradient(90deg, #00b894, #00cec9);
-      transition: all 0.3s;
-      transform: translateX(-50%);
-    }
-    .nav-link:hover {
-      color: #fff;
-    }
-    .nav-link:hover::after {
-      width: 80%;
-    }
-
-    /* CTA Button */
-    .cta-btn {
-      background: linear-gradient(135deg, #00b894, #00cec9);
-      color: #0f0f0f;
-      padding: 0.75rem 1.5rem;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
-      position: relative;
-      overflow: hidden;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .cta-btn::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.5s;
-    }
-    .cta-btn:hover::before {
-      left: 100%;
-    }
-    .cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 184, 148, 0.5);
-    }
-
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: 140px;
-      position: relative;
-      z-index: 10;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '🐕 🐕‍🦺 🦮 🐩 🐾';
-      position: absolute;
-      top: 20%;
-      right: -5%;
-      font-size: 8rem;
-      opacity: 0.03;
-      transform: rotate(-15deg);
-      pointer-events: none;
-    }
-    .hero-content {
-      max-width: 700px;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(0, 184, 148, 0.1);
-      border: 1px solid rgba(0, 184, 148, 0.3);
-      padding: 0.5rem 1rem;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #00b894;
-      margin-bottom: 2rem;
-      animation: fade-in-up 0.6s ease-out;
-    }
-    .hero h1 {
-      font-family: 'Fredoka', sans-serif;
-      font-size: clamp(3rem, 8vw, 5.5rem);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-      animation: fade-in-up 0.6s ease-out 0.1s both;
-    }
-    .hero h1 .gradient-text {
-      background: linear-gradient(135deg, #00b894, #00cec9, #ffd700);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      position: relative;
-    }
-    .hero h1 .gradient-text::after {
-      content: '💩';
-      font-size: 0.5em;
-      vertical-align: super;
-      margin-left: 5px;
-      filter: drop-shadow(0 0 10px rgba(0,184,148,0.5));
-    }
-    .hero p {
-      font-size: 1.25rem;
-      color: rgba(255,255,255,0.7);
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
-      animation: fade-in-up 0.6s ease-out 0.2s both;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      animation: fade-in-up 0.6s ease-out 0.3s both;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #00b894, #00cec9);
-      color: #0f0f0f;
-      padding: 1rem 2rem;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 1rem;
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 10px 30px rgba(0, 184, 148, 0.3);
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(0, 184, 148, 0.4);
-    }
-    .btn-secondary {
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      padding: 1rem 2rem;
-      border-radius: 14px;
-      font-weight: 600;
-      font-size: 1rem;
-      border: 1px solid rgba(255,255,255,0.2);
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.15);
-      border-color: rgba(255,255,255,0.3);
-    }
-
-    /* Dog Family Illustration */
-    .dog-family-illustration {
-      position: absolute;
-      right: 5%;
-      bottom: 10%;
-      width: 400px;
-      height: 300px;
-      opacity: 0.8;
-      pointer-events: none;
-    }
-    .dog-family-illustration .dog {
-      position: absolute;
-      font-size: 4rem;
-      animation: bounce-dog 2s infinite ease-in-out;
-    }
-    .dog-family-illustration .dog:nth-child(1) { bottom: 0; left: 0; animation-delay: 0s; }
-    .dog-family-illustration .dog:nth-child(2) { bottom: 20px; left: 80px; font-size: 3rem; animation-delay: 0.2s; }
-    .dog-family-illustration .dog:nth-child(3) { bottom: 0; left: 150px; font-size: 3.5rem; animation-delay: 0.4s; }
-    .dog-family-illustration .dog:nth-child(4) { bottom: 30px; right: 50px; font-size: 2.5rem; animation-delay: 0.6s; }
-    @keyframes bounce-dog {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* Floating Stats */
-    .floating-stats {
-      position: absolute;
-      right: 5%;
-      top: 40%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .stat-card {
-      background: rgba(255,255,255,0.05);
+    /* Hero section styling */
+    .hero-text {
+      background-color: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 1.5rem;
-      border-radius: 20px;
-      min-width: 200px;
-      animation: float 6s ease-in-out infinite;
+      padding: 2rem;
+      border-radius: 1rem;
     }
-    .stat-card:nth-child(2) { animation-delay: -2s; }
-    .stat-card:nth-child(3) { animation-delay: -4s; }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-    .stat-number {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #00b894, #00cec9);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .stat-label {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.6);
-      margin-top: 0.25rem;
-    }
-
-    @keyframes fade-in-up {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Section Headers */
-    .section-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-    .section-header h2 {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-    .section-header p {
-      color: rgba(255,255,255,0.6);
-      font-size: 1.125rem;
-    }
-
-    /* What We Do Section */
-    .what-we-do {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 10;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .service-box {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 24px;
-      padding: 2.5rem;
-      transition: all 0.4s;
-      position: relative;
+    .hero-image {
+      border-radius: 1rem;
       overflow: hidden;
     }
-    .service-box::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, #00b894, #00cec9);
-      transform: scaleX(0);
-      transition: transform 0.4s;
-    }
-    .service-box:hover::before {
-      transform: scaleX(1);
-    }
-    .service-box:hover {
-      transform: translateY(-5px);
-      border-color: rgba(0, 184, 148, 0.3);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
-    .service-box-icon {
-      width: 60px; height: 60px;
-      background: linear-gradient(135deg, rgba(0, 184, 148, 0.2), rgba(0, 206, 201, 0.2));
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.75rem;
-      margin-bottom: 1.5rem;
-    }
-    .service-box h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-    .service-box p {
-      color: rgba(255,255,255,0.6);
-      line-height: 1.6;
-    }
-
-    /* HOA / Commercial Section */
-    .hoa-section {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 10;
-      background: linear-gradient(135deg, rgba(0, 184, 148, 0.1), rgba(0, 206, 201, 0.05));
-      border-top: 1px solid rgba(0, 184, 148, 0.2);
-      border-bottom: 1px solid rgba(0, 184, 148, 0.2);
-    }
-    .hoa-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .hoa-content h2 {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
-    .hoa-content h2 span {
-      color: #00b894;
-    }
-    .hoa-content > p {
-      color: rgba(255,255,255,0.7);
-      font-size: 1.125rem;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-    .hoa-features {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .hoa-feature {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: 1rem;
-    }
-    .hoa-feature i {
-      color: #00b894;
-      font-size: 1.25rem;
-    }
-    .hoa-cta {
-      background: linear-gradient(135deg, #00b894, #00cec9);
-      color: #0f0f0f;
-      padding: 1.25rem 2rem;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      transition: all 0.3s;
-      box-shadow: 0 10px 30px rgba(0, 184, 148, 0.3);
-    }
-    .hoa-cta:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px rgba(0, 184, 148, 0.4);
-    }
-    .hoa-visual {
-      position: relative;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .community-icon {
-      font-size: 12rem;
-      position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
-      animation: pulse-community 3s ease-in-out infinite;
-    }
-    @keyframes pulse-community {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-    .community-dogs {
-      position: absolute;
-      font-size: 3rem;
-      animation: orbit 10s linear infinite;
-    }
-    .community-dogs:nth-child(2) { top: 20%; left: 20%; animation-delay: 0s; }
-    .community-dogs:nth-child(3) { top: 20%; right: 20%; animation-delay: -3.3s; }
-    .community-dogs:nth-child(4) { bottom: 20%; left: 50%; transform: translateX(-50%); animation-delay: -6.6s; }
-    @keyframes orbit {
-      0%, 100% { transform: translate(0, 0); }
-      25% { transform: translate(10px, -10px); }
-      50% { transform: translate(0, -20px); }
-      75% { transform: translate(-10px, -10px); }
-    }
-
-    /* How It Works */
-    .how-it-works {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 10;
-      background: rgba(0,0,0,0.2);
-    }
-    .steps-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 3rem;
-      max-width: 1000px;
-      margin: 0 auto;
-      position: relative;
-    }
-    .steps-container::before {
-      content: '';
-      position: absolute;
-      top: 40px; left: 15%; right: 15%;
-      height: 2px;
-      background: linear-gradient(90deg, #00b894, #00cec9);
-      opacity: 0.3;
-      z-index: 0;
-    }
-    .step {
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    .step-number {
-      width: 80px; height: 80px;
-      background: linear-gradient(135deg, #00b894, #00cec9);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Fredoka', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: #0f0f0f;
-      margin: 0 auto 1.5rem;
-      box-shadow: 0 10px 30px rgba(0, 184, 148, 0.3);
-      position: relative;
-    }
-    .step-number::after {
-      content: '🐾';
-      position: absolute;
-      bottom: -5px;
-      right: -5px;
-      font-size: 1.5rem;
-    }
-    .step h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-    .step p {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.95rem;
-    }
-
-    /* Why Choose Us */
-    .why-us {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 10;
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .feature-card {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 1.5rem;
-      background: rgba(255,255,255,0.03);
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    .feature-icon {
-      width: 50px; height: 50px;
-      min-width: 50px;
-      background: linear-gradient(135deg, rgba(0, 184, 148, 0.15), rgba(0, 206, 201, 0.15));
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-    }
-    .feature-content h4 {
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .feature-content p {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.9rem;
-    }
-
-    /* Testimonials */
-    .testimonials {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 10;
-      background: rgba(0,0,0,0.2);
-    }
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .testimonial-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 2rem;
-      position: relative;
-    }
-    .testimonial-card::before {
-      content: '"';
-      position: absolute;
-      top: 1rem; right: 2rem;
-      font-family: 'Fredoka', sans-serif;
-      font-size: 4rem;
-      color: rgba(0, 184, 148, 0.2);
-      line-height: 1;
-    }
-    .stars {
-      color: #ffd700;
-      margin-bottom: 1rem;
-    }
-    .testimonial-text {
-      color: rgba(255,255,255,0.8);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      font-style: italic;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .author-avatar {
-      width: 50px; height: 50px;
-      background: linear-gradient(135deg, #00b894, #00cec9);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: #0f0f0f;
-      font-size: 1.25rem;
-    }
-    .author-info h4 {
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-    .author-info p {
-      color: rgba(255,255,255,0.5);
-      font-size: 0.875rem;
-    }
-
-    /* Service Areas */
-    .service-areas {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 10;
-    }
-    .areas-container {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .areas-tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    .area-tag {
-      background: rgba(0, 184, 148, 0.1);
-      border: 1px solid rgba(0, 184, 148, 0.3);
-      padding: 0.75rem 1.5rem;
-      border-radius: 50px;
-      font-weight: 500;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .area-tag:hover {
-      background: rgba(0, 184, 148, 0.2);
-      transform: translateY(-2px);
-    }
-
-    /* Calculator Section */
-    .calculator-section {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 10;
-      background: rgba(0,0,0,0.2);
-    }
-    .calc-container {
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .calc-options {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 24px;
-      padding: 2rem;
-    }
-    .option-group {
-      margin-bottom: 2rem;
-    }
-    .option-group h3 {
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      color: rgba(255,255,255,0.9);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-    .service-card {
-      background: rgba(255,255,255,0.05);
-      border: 2px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 1.5rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-align: center;
-      position: relative;
-    }
-    .service-card:hover {
-      border-color: rgba(0, 184, 148, 0.5);
-      background: rgba(0, 184, 148, 0.05);
-    }
-    .service-card.selected {
-      border-color: #00b894;
-      background: rgba(0, 184, 148, 0.1);
-    }
-    .service-card.best::before {
-      content: 'BEST VALUE';
-      position: absolute;
-      top: -10px; left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, #ffd700, #ffaa00);
-      color: #0f0f0f;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-    .service-icon {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    .service-name {
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-    }
-    .service-desc {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.5);
-    }
-
-    /* Price Display */
-    .price-display {
-      background: linear-gradient(135deg, rgba(0, 184, 148, 0.1), rgba(0, 206, 201, 0.1));
-      border: 1px solid rgba(0, 184, 148, 0.3);
-      border-radius: 24px;
-      padding: 2rem;
-      position: sticky;
-      top: 100px;
-      height: fit-content;
-    }
-    .price-label {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 0.5rem;
-    }
-    .price-amount {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 4rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #00b894, #00cec9);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1;
-    }
-    .price-period {
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 2rem;
-    }
-    .breakdown {
-      background: rgba(0,0,0,0.2);
-      border-radius: 16px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .breakdown-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.75rem;
-      font-size: 0.9rem;
-    }
-    .breakdown-row:last-child {
-      margin-bottom: 0;
-      padding-top: 0.75rem;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      font-weight: 700;
-    }
-    .checkout-btn {
-      width: 100%;
-      background: linear-gradient(135deg, #00b894, #00cec9);
-      color: #0f0f0f;
-      border: none;
-      padding: 1.25rem;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-    .checkout-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0, 184, 148, 0.4);
-    }
-
-    /* Contact Section */
-    .contact-section {
-      padding: 6rem 0;
-      position: relative;
-      z-index: 10;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 3rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .contact-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 20px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s;
-    }
-    .contact-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(0, 184, 148, 0.3);
-    }
-    .contact-icon {
-      width: 60px; height: 60px;
-      background: linear-gradient(135deg, rgba(0, 184, 148, 0.2), rgba(0, 206, 201, 0.2));
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      margin: 0 auto 1.5rem;
-    }
-    .contact-card h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .contact-card p {
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 1rem;
-    }
-    .contact-card a {
-      color: #00b894;
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .contact-card a:hover {
-      color: #00cec9;
-    }
-
-    /* Footer */
-    .footer {
-      padding: 4rem 0 2rem;
-      position: relative;
-      z-index: 10;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      background: rgba(0,0,0,0.3);
-    }
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-    }
-    .footer-brand p {
-      color: rgba(255,255,255,0.6);
-      margin-top: 1rem;
-      line-height: 1.6;
-    }
-    .footer-links h4 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: #fff;
-    }
-    .footer-links a {
-      display: block;
-      color: rgba(255,255,255,0.6);
-      text-decoration: none;
-      margin-bottom: 0.75rem;
-      transition: color 0.3s;
-    }
-    .footer-links a:hover {
-      color: #00b894;
-    }
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 3rem auto 0;
-      padding: 2rem 1.5rem 0;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: rgba(255,255,255,0.5);
-      font-size: 0.875rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .calc-container {
-        grid-template-columns: 1fr;
-      }
-      .price-display {
-        position: relative;
-        top: 0;
-      }
-      .floating-stats {
-        display: none;
-      }
-      .footer-content {
-        grid-template-columns: 1fr 1fr;
-      }
-      .steps-container::before {
-        display: none;
-      }
-      .hoa-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .dog-family-illustration {
-        display: none;
-      }
-    }
-    @media (max-width: 768px) {
-      .service-grid {
-        grid-template-columns: 1fr;
-      }
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .footer-bottom {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-      }
-      .section-header h2 {
-        font-size: 2.5rem;
-      }
+    /* Logo styling */
+    .logo-img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
     }
   </style>
-</head>
-<body class="premium-bg">
-  <div class="grid-bg"></div>
-  
-  <!-- Floating Paw Prints -->
-  <div class="paw-container">
-    <div class="paw" style="top: 10%; left: 5%;">🐾</div>
-    <div class="paw" style="top: 30%; right: 10%; animation-delay: 2s;">🐾</div>
-    <div class="paw" style="top: 60%; left: 8%; animation-delay: 4s;">🐾</div>
-    <div class="paw" style="bottom: 20%; right: 15%; animation-delay: 1s;">🐾</div>
-    <div class="paw" style="top: 80%; left: 20%; animation-delay: 3s;">🐾</div>
-  </div>
-
-  <!-- Header -->
-  <header class="mega-header" id="header">
-    <div class="container mx-auto px-6">
-      <div class="flex items-center justify-between">
-        <a href="#" class="logo-container">
-          <img src="Dog Paw.png" alt="BIG TURD Logo" class="logo-img">
-          <div>
-            <div class="logo-text">BIG<span>TURD</span></div>
-            <div class="logo-tagline">Because Dogs Take Big Ones! 💩</div>
-          </div>
-        </a>
-
-        <nav class="hidden md:flex items-center gap-2">
-          <a href="#services" class="nav-link">Services</a>
-          <a href="#hoa" class="nav-link">HOA & Commercial</a>
-          <a href="#calculator" class="nav-link">Pricing</a>
-          <a href="#how-it-works" class="nav-link">How It Works</a>
-          <a href="#about" class="nav-link">About</a>
-          <a href="#contact" class="nav-link">Contact</a>
-        </nav>
-
-        <a href="#calculator" class="cta-btn">
-          <span>Get Quote</span>
-          <span>🦴</span>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container mx-auto px-6">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <i class="fas fa-bolt"></i>
-          Terre Haute's #1 Dog Waste Removal
-        </div>
-        <h1>
-          We Scoop The<br>
-          <span class="gradient-text">Big Ones</span>
-        </h1>
-        <p>Professional pet waste removal for busy dog families. No contracts, no mess, no stress. Just a clean yard and happy pups. Serving Terre Haute and surrounding areas with love (and strong bags). Starting at just $42.99/month.</p>
-        <div class="hero-buttons">
-          <a href="#calculator" class="btn-primary">
-            Calculate Your Price
-            <i class="fas fa-arrow-right"></i>
-          </a>
-          <a href="tel:323-574-0882" class="btn-secondary">
-            <i class="fas fa-phone"></i>
-            Call BIG: 323-574-0882
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Dog Family Illustration -->
-    <div class="dog-family-illustration">
-      <div class="dog">🐕</div>
-      <div class="dog">🐕‍🦺</div>
-      <div class="dog">🦮</div>
-      <div class="dog">🐩</div>
-    </div>
-
-    <div class="floating-stats">
-      <div class="stat-card">
-        <div class="stat-number">10K+</div>
-        <div class="stat-label">Piles Scooped 🎯</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">500+</div>
-        <div class="stat-label">Happy Dog Families</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">4.9★</div>
-        <div class="stat-label">Tail Wags Guaranteed</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- What We Do / Services Section -->
-  <section class="what-we-do" id="services">
-    <div class="container mx-auto px-6">
-      <div class="section-header">
-        <h2>What We Do 🐾</h2>
-        <p>Comprehensive pet waste removal services tailored to your pack's needs. We keep your yard clean, safe, and ready for fetch.</p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-box">
-          <div class="service-box-icon">📅</div>
-          <h3>Weekly Scooping</h3>
-          <p>Our most popular plan! Perfect for homes with one or two furry friends. We visit once a week to keep your yard consistently clean. No buildup, no mess, more time for belly rubs.</p>
-        </div>
-
-        <div class="service-box">
-          <div class="service-box-icon">⚡</div>
-          <h3>Twice Weekly</h3>
-          <p>Ideal for multi-dog households or high-traffic yards. Zero buildup guaranteed with two visits per week. Your yard stays pristine for impromptu games of frisbee.</p>
-        </div>
-
-        <div class="service-box">
-          <div class="service-box-icon">🗓️</div>
-          <h3>Bi-Weekly Cleanup</h3>
-          <p>Budget-friendly option for smaller yards or single-pup homes. Every other week service that keeps your yard manageable without breaking the treat budget.</p>
-        </div>
-
-        <div class="service-box">
-          <div class="service-box-icon">🧹</div>
-          <h3>One-Time Deep Clean</h3>
-          <p>Hosting a BBQ? Moving in? Haven't cleaned up since winter? Our one-time service restores your yard to like-new condition. Perfect for spring cleaning or before the in-laws visit.</p>
-        </div>
-
-        <div class="service-box">
-          <div class="service-box-icon">🧼</div>
-          <h3>Sanitizer & Deodorizer</h3>
-          <p>Go beyond scooping! Our eco-friendly, pet-safe sanitizer eliminates bacteria, odors, and harmful parasites left behind. Your nose (and your neighbors) will thank you.</p>
-        </div>
-
-        <div class="service-box">
-          <div class="service-box-icon">🏢</div>
-          <h3>HOA & Commercial</h3>
-          <p>Apartment complexes, dog parks, vet offices, and community spaces. We handle large-scale waste management with custom scheduling. <a href="#hoa" style="color: #00b894;">Learn more →</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- HOA / Commercial Section -->
-  <section class="hoa-section" id="hoa">
-    <div class="container mx-auto px-6">
-      <div class="hoa-container">
-        <div class="hoa-content">
-          <h2>HOA & <span>Community</span> Solutions 🏘️</h2>
-          <p>Managing waste for multiple properties or community spaces? We specialize in large-scale pet waste removal with competitive pricing and rapid response times. From apartment complexes to dog parks, we keep your community clean and residents happy.</p>
-          
-          <div class="hoa-features">
-            <div class="hoa-feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Customized service plans for any property size</span>
-            </div>
-            <div class="hoa-feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Dedicated account manager for all commercial accounts</span>
-            </div>
-            <div class="hoa-feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Same-day emergency cleanup available</span>
-            </div>
-            <div class="hoa-feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Detailed reporting and documentation for HOA boards</span>
-            </div>
-            <div class="hoa-feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Station installation and maintenance (bag dispensers, receptacles)</span>
-            </div>
-            <div class="hoa-feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Licensed, insured, and background-checked technicians</span>
-            </div>
-          </div>
-
-          <a href="tel:323-574-0882" class="hoa-cta">
-            <i class="fas fa-phone-alt"></i>
-            Call BIG for Custom Quote: 323-574-0882
-          </a>
-          <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-            Or email: <a href="mailto:bigturdservice@gmail.com" style="color: #00b894;">bigturdservice@gmail.com</a> • Response within 2 hours guaranteed
-          </p>
-        </div>
-
-        <div class="hoa-visual">
-          <div class="community-icon">🏘️</div>
-          <div class="community-dogs">🐕</div>
-          <div class="community-dogs">🦮</div>
-          <div class="community-dogs">🐕‍🦺</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How It Works -->
-  <section class="how-it-works" id="how-it-works">
-    <div class="container mx-auto px-6">
-      <div class="section-header">
-        <h2>How It Works 🎯</h2>
-        <p>Getting started is easier than teaching your dog to sit. Three simple steps to a cleaner yard.</p>
-      </div>
-
-      <div class="steps-container">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>Get Your Quote</h3>
-          <p>Use our instant calculator or call us at 323-574-0882. Tell us about your pack and we'll recommend the perfect plan.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>Schedule Service</h3>
-          <p>Pick your preferred day and time. We'll confirm your appointment and send reminders before each visit.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>Enjoy Your Clean Yard</h3>
-          <p>We scoop, sanitize, and haul away the evidence. You enjoy a pristine yard and spend more time playing fetch. 100% satisfaction guaranteed.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Choose Us -->
-  <section class="why-us" id="about">
-    <div class="container mx-auto px-6">
-      <div class="section-header">
-        <h2>Why Choose BIG TURD? 🏆</h2>
-        <p>We're not just scoopers – we're your partners in maintaining a clean, healthy outdoor space for your four-legged family members.</p>
-      </div>
-
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🌿</div>
-          <div class="feature-content">
-            <h4>Eco-Friendly Disposal</h4>
-            <p>All waste is bagged and disposed of properly. We use biodegradable bags and follow environmentally responsible practices.</p>
-          </div>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🔒</div>
-          <div class="feature-content">
-            <h4>No Contracts Required</h4>
-            <p>Cancel anytime with no penalties. We earn your business every visit with quality service, not legal obligations.</p>
-          </div>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">⏰</div>
-          <div class="feature-content">
-            <h4>Reliable & On-Time</h4>
-            <p>Same day, same time, every week. We show up when we say we will. Consistency you can count on.</p>
-          </div>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🛡️</div>
-          <div class="feature-content">
-            <h4>Fully Insured</h4>
-            <p>Peace of mind with comprehensive liability insurance. Your property is protected while we work.</p>
-          </div>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">👤</div>
-          <div class="feature-content">
-            <h4>Uniformed Professionals</h4>
-            <p>Our team arrives in marked vehicles and clean uniforms. Professional appearance, professional service.</p>
-          </div>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">💯</div>
-          <div class="feature-content">
-            <h4>Satisfaction Guaranteed</h4>
-            <p>Not happy with a cleanup? We'll re-scoop for free. Your satisfaction is our top priority, period.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="testimonials">
-    <div class="container mx-auto px-6">
-      <div class="section-header">
-        <h2>Happy Tails & Tales 🐕</h2>
-        <p>Don't just take our word for it. Here's what Terre Haute dog parents think about our service.</p>
-      </div>
-
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p class="testimonial-text">"The team at BIG TURD is incredibly reliable! I've used them for 6 months now and my yard has never looked better. My Golden Retriever actually has room to run now! Worth every penny."</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">🐕</div>
-            <div class="author-info">
-              <h4>Sarah M.</h4>
-              <p>Terre Haute, IN • 3 Dogs (The Brady Bunch)</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p class="testimonial-text">"Professional, friendly, and thorough. I was skeptical about the name at first but these guys are the real deal. Now I can't imagine going back to scooping myself!"</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">🦮</div>
-            <div class="author-info">
-              <h4>Jason K.</h4>
-              <p>West Terre Haute • 2 Labs</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <p class="testimonial-text">"The twice-weekly plan is perfect for our Great Danes. They always text when they're on the way and leave the gate locked. Top notch service for big dogs with big... you know!"</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">🐕‍🦺</div>
-            <div class="author-info">
-              <h4>Lisa T.</h4>
-              <p>Seelyville, IN • 2 Great Danes</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Service Areas -->
-  <section class="service-areas">
-    <div class="container mx-auto px-6">
-      <div class="areas-container">
-        <div class="section-header">
-          <h2>Where We Fetch 🗺️</h2>
-          <p>We proudly serve Terre Haute and surrounding communities. Not sure if we cover your area? Just ask!</p>
-        </div>
-        
-        <div class="areas-tags">
-          <span class="area-tag">🐾 Terre Haute</span>
-          <span class="area-tag">🐾 West Terre Haute</span>
-          <span class="area-tag">🐾 Seelyville</span>
-          <span class="area-tag">🐾 Riley</span>
-          <span class="area-tag">🐾 New Goshen</span>
-          <span class="area-tag">🐾 Pimento</span>
-          <span class="area-tag">🐾 Lewis</span>
-          <span class="area-tag">🐾 Fontanet</span>
-          <span class="area-tag">🐾 Staunton</span>
-          <span class="area-tag">🐾 + More!</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Calculator Section -->
-  <section class="calculator-section" id="calculator">
-    <div class="container mx-auto px-6">
-      <div class="section-header">
-        <h2>Instant Price Calculator 🧮</h2>
-        <p>Get your exact price in seconds. No hidden fees, no surprises. We'll confirm everything before your first visit.</p>
-      </div>
-
-      <div class="calc-container">
-        <div class="calc-options">
-          <div class="option-group">
-            <h3><span>1.</span> Select Service Frequency</h3>
-            <div class="service-grid">
-              <div class="service-card selected" id="card-weekly" onclick="selectService('weekly')">
-                <div class="service-icon">📅</div>
-                <div class="service-name">Weekly</div>
-                <div class="service-desc">1x per week • Most popular</div>
-              </div>
-              <div class="service-card best" id="card-twice" onclick="selectService('twice')">
-                <div class="service-icon">⚡</div>
-                <div class="service-name">Twice Weekly</div>
-                <div class="service-desc">2x per week • Best value</div>
-              </div>
-              <div class="service-card" id="card-biweekly" onclick="selectService('biweekly')">
-                <div class="service-icon">🗓️</div>
-                <div class="service-name">Every Other Week</div>
-                <div class="service-desc">1x per 2 weeks • Budget friendly</div>
-              </div>
-              <div class="service-card" id="card-onetime" onclick="selectService('onetime')">
-                <div class="service-icon">🧹</div>
-                <div class="service-name">One-Time Clean</div>
-                <div class="service-desc">Single deep clean</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="option-group">
-            <h3><span>2.</span> Choose Yard Size</h3>
-            <div class="service-grid">
-              <div class="service-card selected" id="yard-small" onclick="selectYard('small')">
-                <div class="service-name">Small Yard</div>
-                <div class="service-desc">Under 5,000 sq ft</div>
-              </div>
-              <div class="service-card" id="yard-medium" onclick="selectYard('medium')">
-                <div class="service-name">Medium Yard</div>
-                <div class="service-desc">5,000 - 10,000 sq ft</div>
-              </div>
-              <div class="service-card" id="yard-large" onclick="selectYard('large')">
-                <div class="service-name">Large Yard</div>
-                <div class="service-desc">10,000 - 15,000 sq ft</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="price-display">
-          <div class="price-label">Your Monthly Investment</div>
-          <div class="price-amount" id="price">$62.99</div>
-          <div class="price-period" id="period">Weekly service • Small yard</div>
-
-          <div class="breakdown">
-            <div class="breakdown-row">
-              <span>Base service</span>
-              <span id="basePrice">$62.99</span>
-            </div>
-            <div class="breakdown-row" id="upgradeRow" style="display: none;">
-              <span>Yard upgrade</span>
-              <span id="upgradePrice">+$0</span>
-            </div>
-            <div class="breakdown-row">
-              <span>Total</span>
-              <span id="totalPrice">$62.99</span>
-            </div>
-          </div>
-
-          <button class="checkout-btn" onclick="checkout()">
-            Checkout Now <i class="fas fa-arrow-right ml-2"></i>
-          </button>
-          <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.5);">
-            Secure payment via Stripe • Questions? Call us at 323-574-0882
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact-section" id="contact">
-    <div class="container mx-auto px-6">
-      <div class="section-header">
-        <h2>Get In Touch 📞</h2>
-        <p>Ready for a cleaner yard? Contact us directly. We typically respond within 2 hours during business hours (unless we're playing fetch).</p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div class="contact-icon">📱</div>
-          <h3>Call or Text</h3>
-          <p>Speak directly with our team for immediate assistance or to schedule your first cleanup.</p>
-          <a href="tel:323-574-0882">323-574-0882</a>
-        </div>
-
-        <div class="contact-card">
-          <div class="contact-icon">📧</div>
-          <h3>Email Us</h3>
-          <p>Send us a message anytime. Perfect for detailed questions or special requests.</p>
-          <a href="mailto:bigturdservice@gmail.com">bigturdservice@gmail.com</a>
-        </div>
-
-        <div class="contact-card">
-          <div class="contact-icon">📍</div>
-          <h3>Service Area</h3>
-          <p>Based in Terre Haute, IN. Serving all surrounding areas within 30 miles.</p>
-          <a href="#service-areas">View All Areas</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-brand">
-        <div class="logo-container">
-          <img src="Dog Paw.png" alt="BIG TURD Logo" class="logo-img" style="width: 40px; height: 40px;">
-          <div>
-            <div class="logo-text" style="font-size: 1.5rem;">BIG<span>TURD</span></div>
-            <div class="logo-tagline">Because Dogs Take Big Ones! 💩</div>
-          </div>
-        </div>
-        <p>Premium pet waste removal service in Terre Haute, Indiana. Professional, reliable, and hassle-free. Let us handle the dirty work so you can focus on the belly rubs.</p>
-      </div>
-
-      <div class="footer-links">
-        <h4>Services</h4>
-        <a href="#services">Weekly Scooping</a>
-        <a href="#services">Twice Weekly</a>
-        <a href="#services">Bi-Weekly</a>
-        <a href="#services">One-Time Clean</a>
-        <a href="#hoa">HOA & Commercial</a>
-      </div>
-
-      <div class="footer-links">
-        <h4>Company</h4>
-        <a href="#about">About Us</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#service-areas">Service Areas</a>
-        <a href="#testimonials">Reviews</a>
-        <a href="#contact">Contact</a>
-      </div>
-
-      <div class="footer-links">
-        <h4>Contact</h4>
-        <a href="tel:323-574-0882">323-574-0882</a>
-        <a href="mailto:bigturdservice@gmail.com">bigturdservice@gmail.com</a>
-        <p style="color: rgba(255,255,255,0.6); margin-top: 1rem; line-height: 1.6;">
-          BIG TURD Pet Waste Removal<br>
-          Terre Haute, IN 47807<br>
-          <span style="font-size: 1.5rem;">🐕 💩 🧹</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2024 BIG TURD Pet Waste Removal. All rights reserved. 🐾</p>
-      <p>Locally owned and operated in Terre Haute, Indiana. We love dogs!</p>
-    </div>
-  </footer>
-
   <script>
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
+    // === Site config you can customize ===
+    const BUSINESS = {
+      name: "BIG TURD Waste Removal",
+      phone: "323-574-0882",
+      email: "bigturdservice@gmail.com",
+      city: "Terre Haute and surrounding cities",
+      serviceZips: [
+        "47801","47802","47803","47804","47805","47807","47806","47808","47809","47810"
+      ]
+    };
 
-    // Pricing data
+    // Updated pricing model with Stripe links
     const PRICING = {
       small: {
         weekly:   { price: 62.99,  link: 'https://buy.stripe.com/cNi9ATf7tg1najn3mC6g80g' },
@@ -1603,55 +102,481 @@
       }
     };
 
-    let currentService = 'weekly';
-    let currentYard = 'small';
+    // Dog count pricing - +$7 per additional dog
+    const DOG_PRICING = {
+      1: { extra: 0, label: '1 Dog', stripeLink: null }, // Base - no extra charge
+      2: { extra: 7, label: '2 Dogs', stripeLink: 'https://buy.stripe.com/14AaEXbVheXj1MR7CS6g80e' },
+      3: { extra: 14, label: '3 Dogs', stripeLink: 'https://buy.stripe.com/14AaEXbVheXj1MR7CS6g80e' }, // Same link, quantity 2
+      4: { extra: null, label: '4+ Dogs', stripeLink: null } // Custom quote
+    };
 
-    function selectService(service) {
-      currentService = service;
-      document.querySelectorAll('[id^="card-"]').forEach(card => {
-        card.classList.remove('selected');
-      });
-      document.getElementById('card-' + service).classList.add('selected');
-      updatePrice();
+    // Utility: currency format
+    const $$ = n => n.toLocaleString(undefined, { style: 'currency', currency: 'USD' });
+    function byId(id) { return document.getElementById(id); }
+
+    function updateZipBadge() {
+      const zip = byId('quoteZip').value.trim();
+      const badge = byId('zipStatus');
+      if (!zip) { badge.textContent = ''; badge.className = 'text-sm'; return; }
+      const covered = BUSINESS.serviceZips.includes(zip);
+      badge.textContent = covered ? 'In service area ✅' : 'Outside service area – ask us!';
+      badge.className = 'text-sm ' + (covered ? 'text-green-700' : 'text-amber-700');
     }
 
-    function selectYard(yard) {
-      currentYard = yard;
-      document.querySelectorAll('[id^="yard-"]').forEach(card => {
-        card.classList.remove('selected');
-      });
-      document.getElementById('yard-' + yard).classList.add('selected');
-      updatePrice();
-    }
-
-    function updatePrice() {
-      const data = PRICING[currentYard][currentService];
-      const isOneTime = currentService === 'onetime';
-
-      document.getElementById('price').textContent = '$' + data.price.toFixed(2);
-      document.getElementById('period').textContent = 
-        (currentService === 'weekly' ? 'Weekly' : 
-         currentService === 'twice' ? 'Twice Weekly' : 
-         currentService === 'biweekly' ? 'Every Other Week' : 'One-Time') + 
-        ' • ' + currentYard.charAt(0).toUpperCase() + currentYard.slice(1) + ' yard';
-
-      document.getElementById('basePrice').textContent = '$' + PRICING.small[currentService].price.toFixed(2);
-      document.getElementById('totalPrice').textContent = '$' + data.price.toFixed(2);
-
-      const upgradeRow = document.getElementById('upgradeRow');
-      if (currentYard !== 'small') {
-        upgradeRow.style.display = 'flex';
-        const upgradeAmount = currentYard === 'medium' ? 7 : 24;
-        document.getElementById('upgradePrice').textContent = '+$' + upgradeAmount + '.00';
+    function calcQuote() {
+      const freq = byId('frequency').value;
+      const yard = byId('yard').value;
+      const dogs = parseInt(byId('dogCount').value) || 1;
+      const zip = byId('quoteZip').value.trim();
+      
+      // Get base pricing
+      const p = PRICING[yard][freq];
+      let price = p.price;
+      let label = ({ weekly: 'Weekly', twice: 'Twice Weekly', biweekly: 'Every other week', onetime: 'One-time cleanup' })[freq];
+      
+      // Calculate dog fees
+      let dogFee = 0;
+      let dogLabel = '';
+      if (dogs === 4) {
+        // 4+ dogs - custom quote
+        byId('quoteResult').innerHTML = `<strong>Custom Quote Required</strong><br>4+ dogs - please call ${BUSINESS.phone}`;
+        byId('quoteCTA').textContent = 'Call for Quote';
+        byId('quoteCTA').href = `tel:${BUSINESS.phone}`;
+        byId('dogResult').innerHTML = '4+ Dogs - Call for custom pricing';
+        return;
       } else {
-        upgradeRow.style.display = 'none';
+        dogFee = DOG_PRICING[dogs].extra;
+        dogLabel = DOG_PRICING[dogs].label;
+      }
+      
+      const totalPrice = price + dogFee;
+      
+      // Update main quote result
+      byId('quoteResult').innerHTML = `${label} • ${yard.charAt(0).toUpperCase() + yard.slice(1)} Yard • ${dogLabel}<br><strong>${$$(totalPrice)}</strong> ${freq !== 'onetime' ? '/ month' : ''}`;
+      
+      // Update dog result
+      if (dogs > 1) {
+        byId('dogResult').innerHTML = `${dogLabel}: +${$$(dogFee)}/month<br><a href="${DOG_PRICING[dogs].stripeLink}" target="_blank" class="text-blue-600 underline">Add extra dog(s) on Stripe</a>`;
+      } else {
+        byId('dogResult').innerHTML = `${dogLabel}: Included in base price`;
+      }
+      
+      // Set CTA
+      const covered = BUSINESS.serviceZips.includes(zip);
+      if (covered) {
+        byId('quoteCTA').textContent = 'Checkout Now';
+        byId('quoteCTA').href = p.link;
+      } else {
+        byId('quoteCTA').textContent = 'Request a Quote';
+        byId('quoteCTA').href = `mailto:${BUSINESS.email}?subject=Quote%20Request%20-%20${encodeURIComponent(BUSINESS.name)}&body=${encodeURIComponent(
+          `Name: \nPhone: \nAddress: \nZIP: ${zip}\nFrequency: ${label}\nYard size: ${yard}\nDogs: ${dogs}\n---\nNotes:`
+        )}`;
       }
     }
 
-    function checkout() {
-      const data = PRICING[currentYard][currentService];
-      window.open(data.link, '_blank');
+    function fillBusinessBits() {
+      document.querySelectorAll('[data-business-name]').forEach(el => el.textContent = BUSINESS.name);
+      document.querySelectorAll('[data-business-phone]').forEach(el => el.textContent = BUSINESS.phone);
+      document.querySelectorAll('[data-business-email]').forEach(el => { el.textContent = BUSINESS.email; el.href = 'mailto:' + BUSINESS.email; });
     }
+
+    function sendContactEmail() {
+      const name = byId('contactName').value.trim();
+      const email = byId('contactEmail').value.trim();
+      const phone = byId('contactPhone').value.trim();
+      const message = byId('contactMessage').value.trim();
+      if (!name || !email) {
+        alert('Please fill in at least your name and email.');
+        return;
+      }
+      const subject = `Contact Request - ${encodeURIComponent(BUSINESS.name)}`;
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}\n---\nNotes:`
+      );
+      window.location.href = `mailto:${BUSINESS.email}?subject=${subject}&body=${body}`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fillBusinessBits();
+      updateZipBadge();
+      calcQuote();
+      const btn = document.getElementById('mobileMenuBtn');
+      const menu = document.getElementById('mobileMenu');
+      btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+      byId('contactSubmit').addEventListener('click', sendContactEmail);
+    });
+  </script>
+</head>
+<body class="text-stone-900">
+   <!-- Cheapest Nationwide Banner -->
+  <div class="bg-green-600 text-white text-center py-4 font-extrabold text-xl tracking-wide">
+    💩 CHEAPEST POOP SCOOP SERVICES IN THE NATION 💩<br>
+    <span class="text-yellow-300">COMPETITIVE RATES TO LET THE CUSTOMER WIN!</span>
+  </div>
+
+  <!-- Grand Opening Deal Banner -->
+  <div class="bg-yellow-400 text-black text-center py-4 font-bold text-lg">
+    🎉 Grand Opening Deal! 🎉<br>
+    All initial cleanups <span class="text-red-600">FREE</span> with first month of service! 💰 Save $50!
+  </div>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 glassy border-b border-stone-200">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-3">
+        <a href="#top" class="flex items-center gap-2 font-extrabold text-xl tracking-tight">
+          <img src="Dog Paw.png" alt="BIG TURD Logo" class="logo-img">
+          <span>BIG TURD <span class="text-stone-500 font-semibold">Waste Removal</span></span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#services" class="hover:text-stone-700">Services</a>
+          <a href="#pricing" class="hover:text-stone-700">Pricing</a>
+          <a href="#area" class="hover:text-stone-700">Service Area</a>
+          <a href="#faq" class="hover:text-stone-700">FAQ</a>
+          <a href="#reviews" class="hover:text-stone-700">Reviews</a>
+          <a href="#contact" class="hover:text-stone-700">Contact</a>
+          <a href="#quote" class="inline-flex items-center rounded-xl border border-stone-300 px-3 py-1.5 hover:bg-stone-100 glassy">Free Quote</a>
+        </nav>
+        <button id="mobileMenuBtn" class="md:hidden inline-flex items-center gap-2 rounded-xl border border-stone-300 px-3 py-1.5 glassy">Menu</button>
+      </div>
+      <div id="mobileMenu" class="md:hidden hidden pb-3 glassy">
+        <div class="grid gap-2 text-sm">
+          <a href="#services" class="px-2 py-1">Services</a>
+          <a href="#pricing" class="px-2 py-1">Pricing</a>
+          <a href="#area" class="px-2 py-1">Service Area</a>
+          <a href="#faq" class="px-2 py-1">FAQ</a>
+          <a href="#reviews" class="px-2 py-1">Reviews</a>
+          <a href="#contact" class="px-2 py-1">Contact</a>
+          <a href="#quote" class="px-2 py-1 font-semibold">Free Quote</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Hero -->
+  <section id="top" class="relative bg-gray-100 py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-2 items-center gap-10">
+        <div class="hero-text">
+          <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+            <span class="text-lime-600">Big Turd</span><br>
+            <span class="text-stone-900">Professional Pet Waste Removal</span>
+          </h1>
+          <p class="mt-6 text-lg text-stone-700 max-w-prose">Reliable, affordable dog poop cleanup for yards, HOAs, apartments and parks. No contracts. Friendly service. Sparkling lawns and happy paws.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#pricing" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-lime-600 text-white hover:bg-lime-700">View Pricing Plans</a>
+            <a href="#quote" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-green-600 text-white hover:bg-green-700">Get Free Quote</a>
+          </div>
+          <div class="mt-6 flex items-center gap-3 text-sm justify-center">
+            <input id="quoteZipHero" type="text" maxlength="5" placeholder="Enter Zip Code" class="w-48 rounded-xl border border-stone-300 px-3 py-2 glassy" oninput="byId('quoteZip').value=this.value; updateZipBadge();" />
+            <a href="#area" class="underline text-stone-700 hover:text-stone-900">See service area</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="aspect-[4/3] w-full rounded-2xl overflow-hidden">
+            <div class="image-container h-full w-full">
+              <img src="BIGTURD%20PHOTO.png" alt="Big Turd Waste Removal" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      /* Ensure the image container fits the box */
+      .image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      /* Style the image to fill the container */
+      .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      /* Ensure the aspect ratio box respects the image */
+      .aspect-[4/3] {
+        position: relative;
+        width: 100%;
+        padding-top: 75%;
+        overflow: hidden;
+      }
+      .aspect-[4/3] > .image-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    </style>
+  </section>
+  <!-- Why Choose Big Turd -->
+  <section class="container mx-auto px-4 py-16">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold">Why Choose Big Turd?</h2>
+      <p class="mt-2 text-stone-700 max-w-2xl mx-auto">We're committed to keeping your yard clean, healthy, and enjoyable for your family and pets.</p>
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-white/60 backdrop-blur-md p-6 rounded-xl text-center shadow-sm">
+          <div class="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-green-600">✅</span>
+          </div>
+          <h3 class="font-semibold text-lg">Reliable Service</h3>
+          <p class="mt-2 text-stone-600">Consistent, dependable cleanup service that you can count on every week.</p>
+        </div>
+        <div class="bg-white/60 backdrop-blur-md p-6 rounded-xl text-center shadow-sm">
+          <div class="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-green-600">🛡️</span>
+          </div>
+          <h3 class="font-semibold text-lg">Health & Safety</h3>
+          <p class="mt-2 text-stone-600">Professional sanitization keeps your yard and pets safe from harmful bacteria.</p>
+        </div>
+        <div class="bg-white/60 backdrop-blur-md p-6 rounded-xl text-center shadow-sm">
+          <div class="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-green-600">📅</span>
+          </div>
+          <h3 class="font-semibold text-lg">Flexible Scheduling</h3>
+          <p class="mt-2 text-stone-600">Choose from weekly, bi-weekly, or one-time services to fit your needs.</p>
+        </div>
+        <div class="bg-white/60 backdrop-blur-md p-6 rounded-xl text-center shadow-sm">
+          <div class="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-green-600">⭐</span>
+          </div>
+          <h3 class="font-semibold text-lg">100% Satisfaction</h3>
+          <p class="mt-2 text-stone-600">Not happy with our service? We'll make it right or refund your money.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Pricing -->
+  <section id="pricing" class="relative">
+    <div class="container mx-auto px-4 py-16">
+      <h2 class="text-3xl font-extrabold text-center">Simple, Transparent Pricing</h2>
+      <p class="text-stone-700 mt-2 text-center max-w-2xl mx-auto">Choose the perfect plan for your yard size and cleaning frequency. All plans include reliable service and satisfaction guarantee.</p>
+      <div class="mt-8 grid md:grid-cols-4 gap-6">
+        <div class="rounded-2xl glassy p-6">
+          <h3 class="font-bold text-xl">Weekly</h3>
+          <p class="mt-1 text-stone-600">Starting around</p>
+          <p class="text-3xl font-extrabold">$16<span class="text-base font-semibold text-stone-500">/visit</span></p>
+          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
+            <li>1 visit per week</li>
+            <li>Add $7 per extra dog</li>
+            <li>No contracts</li>
+          </ul>
+          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
+        </div>
+        <div class="rounded-2xl glassy p-6">
+          <h3 class="font-bold text-xl">Twice weekly</h3>
+          <p class="mt-1 text-stone-600">Starting around</p>
+          <p class="text-3xl font-extrabold">$14<span class="text-base font-semibold text-stone-500">/visit</span></p>
+          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
+            <li>2 visits per week</li>
+            <li>Add $7 per extra dog</li>
+            <li>Great for small yards</li>
+          </ul>
+          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
+        </div>
+        <div class="rounded-2xl glassy p-6">
+          <h3 class="font-bold text-xl">Every other week</h3>
+          <p class="mt-1 text-stone-600">Starting around</p>
+          <p class="text-3xl font-extrabold">$22<span class="text-base font-semibold text-stone-500">/visit</span></p>
+          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
+            <li>Bi-weekly visit</li>
+            <li>Add $7 per extra dog</li>
+            <li>Budget-friendly</li>
+          </ul>
+          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
+        </div>
+        <div class="rounded-2xl glassy p-6">
+          <h3 class="font-bold text-xl">One-time clean</h3>
+          <p class="mt-1 text-stone-600">Heavy clean starting at</p>
+          <p class="text-3xl font-extrabold">$69</p>
+          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
+            <li>Move-in / spring clean</li>
+            <li>Puppy party rescue 🐶</li>
+            <li>Great before lawn service</li>
+          </ul>
+          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
+        </div>
+      </div>
+      <p class="mt-4 text-xs text-stone-500">Prices shown are examples. Final quote depends on yard size, terrain and recent cleanup status.</p>
+    </div>
+  </section>
+  <!-- Quote widget -->
+  <section id="quote" class="container mx-auto px-4 py-16">
+    <div class="grid lg:grid-cols-2 gap-8">
+      <div class="rounded-2xl glassy p-6 shadow-sm">
+        <h2 class="text-2xl font-extrabold">Get your estimate</h2>
+        <p class="text-stone-700 mt-1">No obligation. We'll confirm details before scheduling.</p>
+        <div class="mt-6 grid gap-4">
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="text-sm">ZIP code</label>
+              <input id="quoteZip" type="text" maxlength="5" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="e.g., 46204" oninput="updateZipBadge(); calcQuote();" />
+              <div id="zipStatus" class="text-sm mt-1"></div>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="text-sm">Frequency</label>
+              <select id="frequency" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" onchange="calcQuote();">
+                <option value="weekly">Weekly</option>
+                <option value="twice">Twice Weekly</option>
+                <option value="biweekly">Every other week</option>
+                <option value="onetime">One-time cleanup</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-sm">Yard size</label>
+              <select id="yard" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" onchange="calcQuote();">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </div>
+          </div>
+          <!-- Number of Dogs -->
+          <div>
+            <label class="text-sm">Number of Dogs 🐕</label>
+            <select id="dogCount" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" onchange="calcQuote();">
+              <option value="1">1 Dog (Base price)</option>
+              <option value="2">2 Dogs (+$7/month)</option>
+              <option value="3">3 Dogs (+$14/month)</option>
+              <option value="4">4+ Dogs (Custom quote)</option>
+            </select>
+          </div>
+          <div id="quoteResult" class="text-lg font-semibold"></div>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a id="quoteCTA" href="#" class="inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-5 py-3 hover:bg-stone-50 glassy">Email us your details</a>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-2xl glassy p-6 shadow-sm">
+        <h2 class="text-2xl font-extrabold">Additional Dogs</h2>
+        <p class="text-stone-700 mt-1">Each additional dog adds $7/month. Select your total number of dogs above.</p>
+        <div class="mt-6 grid gap-4">
+          <div id="dogResult" class="text-lg font-semibold"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Service area -->
+  <section id="area" class="relative">
+    <div class="container mx-auto px-4 py-16">
+      <h2 class="text-3xl font-extrabold">Service Area</h2>
+      <p class="text-stone-700 mt-1">We currently service the following ZIP codes. Don't see yours? Send us a note and we'll try to help.</p>
+      <div class="mt-6">
+        <p class="text-stone-600">Serving: 47801, 47802, 47803, 47804, 47805, 47807, 47806, 47808, 47809, 47810</p>
+      </div>
+    </div>
+  </section>
+  <!-- FAQ -->
+  <section id="faq" class="container mx-auto px-4 py-16">
+    <h2 class="text-3xl font-extrabold">FAQ</h2>
+    <div class="mt-6 space-y-6">
+      <details class="rounded-2xl glassy p-5">
+        <summary class="font-semibold">Do I need to be home?</summary>
+        <p class="mt-2 text-stone-700">Nope. We access via your preferred gate. Please ensure safe entry and any pets are secured if needed.</p>
+      </details>
+      <details class="rounded-2xl glassy p-5">
+        <summary class="font-semibold">What about bad weather?</summary>
+        <p class="mt-2 text-stone-700">We work year-round. In severe weather or unsafe conditions, we'll reschedule and notify you.</p>
+      </details>
+      <details class="rounded-2xl glassy p-5">
+        <summary class="font-semibold">How do I pay?</summary>
+        <p class="mt-2 text-stone-700">Use the 'Checkout Now' button for payment.</p>
+      </details>
+      <details class="rounded-2xl glassy p-5">
+        <summary class="font-semibold">Any contracts?</summary>
+        <p class="mt-2 text-stone-700">No contracts. Start, pause or cancel anytime. Just give us a little notice so we can adjust routes.</p>
+      </details>
+    </div>
+  </section>
+  <!-- Reviews Section -->
+  <section id="reviews" class="container mx-auto px-4 py-16">
+    <h2 class="text-3xl font-extrabold">Customer Reviews</h2>
+    <p class="text-stone-700 mt-1">See what our customers are saying about BIG TURD Waste Removal!</p>
+    <div class="mt-6 rounded-2xl glassy p-6">
+      <p class="text-stone-600">Reviews coming soon! Check back for customer testimonials.</p>
+    </div>
+  </section>
+  <!-- Contact -->
+  <section id="contact" class="relative">
+    <div class="container mx-auto px-4 py-16">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-3xl font-extrabold">Contact</h2>
+          <p class="text-stone-700 mt-1">We're friendly humans—reach out with questions or to get scheduled.</p>
+          <div class="mt-6 space-y-2">
+            <p>📞 <a href="tel:3235740882" data-business-phone>323-574-0882</a></p>
+            <p>✉️ <a data-business-email href="mailto:bigturdservice@gmail.com">bigturdservice@gmail.com</a></p>
+            <p>📍 <span data-business-name>BIG TURD Waste Removal</span> – <span>Local Service • <span data-business-city>Terre Haute and surrounding cities</span></span></p>
+          </div>
+        </div>
+        <div class="rounded-2xl glassy p-6 grid gap-4">
+          <div>
+            <label class="text-sm">Name</label>
+            <input id="contactName" type="text" required class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="Your name" />
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <label class="text-sm">Email</label>
+              <input id="contactEmail" type="email" required class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="Your email" />
+            </div>
+            <div>
+              <label class="text-sm">Phone</label>
+              <input id="contactPhone" type="tel" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="Your phone" />
+            </div>
+          </div>
+          <div>
+            <label class="text-sm">Message</label>
+            <textarea id="contactMessage" rows="4" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="Your message"></textarea>
+          </div>
+          <button id="contactSubmit" class="rounded-xl border border-stone-300 bg-white px-4 py-2 hover:bg-stone-50 glassy">Send Message</button>
+          <p class="text-xs text-stone-500">This will open your email app to send the message.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="border-t border-stone-200">
+    <div class="container mx-auto px-4 py-10 text-sm text-stone-600">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 glassy">
+        <div>
+          <div class="font-bold">BIG TURD Waste Removal</div>
+          <div>© <span id="year"></span> • All rights reserved</div>
+        </div>
+        <div class="flex gap-3">
+          <a href="#top" class="underline">Back to top</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <!-- LocalBusiness schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "BIG TURD Waste Removal",
+    "image": "https://your-github-username.github.io/bigturd/BIGTURD%20PHOTO.png",
+    "telephone": "323-574-0882",
+    "email": "bigturdservice@gmail.com",
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Terre Haute and surrounding cities",
+      "postalCode": ["47801","47802","47803","47804","47805","47807","47806","47808","47809","47810"]
+    },
+    "url": "https://your-github-username.github.io/bigturd/",
+    "description": "Dog poop yard cleanup for homes, apartments, and HOAs in Terre Haute and surrounding areas.",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Terre Haute",
+      "addressRegion": "IN",
+      "postalCode": "47801-47810"
+    }
+  }
   </script>
 </body>
 </html>
