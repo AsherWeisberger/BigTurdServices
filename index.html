@@ -21,6 +21,8 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💩</text></svg>">
   <!-- Tailwind via CDN for fast styling on GitHub Pages -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* Smooth scroll */
     html{scroll-behavior:smooth}
@@ -34,14 +36,14 @@
     .modal.show{ display:flex; }
     /* Enhanced glassy effect styles */
     .glassy {
-      background-color: rgba(255, 255, 255, 0.6); /* More transparent */
-      backdrop-filter: blur(15px); /* Stronger blur for frosted effect */
-      border: 1px solid rgba(255, 255, 255, 0.3); /* Slightly more visible border */
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+      background-color: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
     /* Glassy effect for dark backgrounds */
     .glassy-dark {
-      background-color: rgba(0, 0, 0, 0.3); /* More transparent dark */
+      background-color: rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(15px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
@@ -49,6 +51,7 @@
     /* Single gradient for the entire page */
     body {
       background: linear-gradient(to bottom, #f7fee7, #e7e5e4);
+      font-family: 'Inter', sans-serif;
     }
     /* Hero section styling */
     .hero-text {
@@ -66,6 +69,250 @@
       width: 40px;
       height: 40px;
       object-fit: contain;
+    }
+
+    /* Calculator Styles */
+    .calculator-section {
+      padding: 4rem 0;
+      position: relative;
+    }
+    .calc-container {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .calc-options {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    .option-group {
+      margin-bottom: 2rem;
+    }
+    .option-group h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .service-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      position: relative;
+    }
+    .service-card:hover {
+      border-color: #65a30d;
+      background: rgba(101, 163, 13, 0.05);
+      transform: translateY(-2px);
+    }
+    .service-card.selected {
+      border-color: #65a30d;
+      background: rgba(101, 163, 13, 0.15);
+      box-shadow: 0 4px 15px rgba(101, 163, 13, 0.2);
+    }
+    .service-card.best::before {
+      content: 'BEST VALUE';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #000;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .service-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+      color: #1a1a1a;
+    }
+    .service-desc {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    /* Dog Count Selector */
+    .dog-count-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .dog-count-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      position: relative;
+    }
+    .dog-count-card:hover {
+      border-color: #65a30d;
+      background: rgba(101, 163, 13, 0.05);
+      transform: translateY(-2px);
+    }
+    .dog-count-card.selected {
+      border-color: #65a30d;
+      background: rgba(101, 163, 13, 0.15);
+      box-shadow: 0 4px 15px rgba(101, 163, 13, 0.2);
+    }
+    .dog-count-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .dog-count-number {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+      color: #1a1a1a;
+    }
+    .dog-count-label {
+      font-size: 0.75rem;
+      color: #666;
+    }
+    .dog-count-price {
+      font-size: 0.75rem;
+      color: #65a30d;
+      margin-top: 0.5rem;
+      font-weight: 700;
+    }
+
+    /* Yard Size */
+    .yard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    /* Price Display */
+    .price-display {
+      background: linear-gradient(135deg, rgba(101, 163, 13, 0.15), rgba(132, 204, 22, 0.1));
+      border: 2px solid rgba(101, 163, 13, 0.3);
+      border-radius: 24px;
+      padding: 2rem;
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    .price-label {
+      font-size: 0.875rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .price-amount {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #65a30d, #84cc16);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .price-period {
+      color: #666;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+    .breakdown {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .breakdown-row:last-child {
+      margin-bottom: 0;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .checkout-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #65a30d, #84cc16);
+      color: #fff;
+      border: none;
+      padding: 1rem;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(101, 163, 13, 0.3);
+    }
+    .checkout-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(101, 163, 13, 0.4);
+    }
+    .custom-quote-box {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 14px;
+    }
+    .custom-quote-box h4 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #1a1a1a;
+    }
+    .custom-quote-box a {
+      color: #65a30d;
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .calc-container {
+        grid-template-columns: 1fr;
+      }
+      .price-display {
+        position: relative;
+        top: 0;
+      }
+      .service-grid, .dog-count-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .yard-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
   <script>
@@ -104,74 +351,96 @@
 
     // Dog count pricing - +$7 per additional dog
     const DOG_PRICING = {
-      1: { extra: 0, label: '1 Dog', stripeLink: null }, // Base - no extra charge
+      1: { extra: 0, label: '1 Dog', stripeLink: null },
       2: { extra: 7, label: '2 Dogs', stripeLink: 'https://buy.stripe.com/14AaEXbVheXj1MR7CS6g80e' },
-      3: { extra: 14, label: '3 Dogs', stripeLink: 'https://buy.stripe.com/14AaEXbVheXj1MR7CS6g80e' }, // Same link, quantity 2
-      4: { extra: null, label: '4+ Dogs', stripeLink: null } // Custom quote
+      3: { extra: 14, label: '3 Dogs', stripeLink: 'https://buy.stripe.com/14AaEXbVheXj1MR7CS6g80e' },
+      4: { extra: null, label: '4+ Dogs', stripeLink: null }
     };
 
-    // Utility: currency format
-    const $$ = n => n.toLocaleString(undefined, { style: 'currency', currency: 'USD' });
-    function byId(id) { return document.getElementById(id); }
+    let currentService = 'weekly';
+    let currentYard = 'medium';
+    let currentDogs = 1;
 
-    function updateZipBadge() {
-      const zip = byId('quoteZip').value.trim();
-      const badge = byId('zipStatus');
-      if (!zip) { badge.textContent = ''; badge.className = 'text-sm'; return; }
-      const covered = BUSINESS.serviceZips.includes(zip);
-      badge.textContent = covered ? 'In service area ✅' : 'Outside service area – ask us!';
-      badge.className = 'text-sm ' + (covered ? 'text-green-700' : 'text-amber-700');
+    function selectService(service) {
+      currentService = service;
+      document.querySelectorAll('[id^="card-"]').forEach(card => {
+        card.classList.remove('selected');
+      });
+      document.getElementById('card-' + service).classList.add('selected');
+      updatePrice();
     }
 
-    function calcQuote() {
-      const freq = byId('frequency').value;
-      const yard = byId('yard').value;
-      const dogs = parseInt(byId('dogCount').value) || 1;
-      const zip = byId('quoteZip').value.trim();
-      
-      // Get base pricing
-      const p = PRICING[yard][freq];
-      let price = p.price;
-      let label = ({ weekly: 'Weekly', twice: 'Twice Weekly', biweekly: 'Every other week', onetime: 'One-time cleanup' })[freq];
-      
-      // Calculate dog fees
-      let dogFee = 0;
-      let dogLabel = '';
-      if (dogs === 4) {
-        // 4+ dogs - custom quote
-        byId('quoteResult').innerHTML = `<strong>Custom Quote Required</strong><br>4+ dogs - please call ${BUSINESS.phone}`;
-        byId('quoteCTA').textContent = 'Call for Quote';
-        byId('quoteCTA').href = `tel:${BUSINESS.phone}`;
-        byId('dogResult').innerHTML = '4+ Dogs - Call for custom pricing';
+    function selectYard(yard) {
+      currentYard = yard;
+      document.querySelectorAll('[id^="yard-"]').forEach(card => {
+        card.classList.remove('selected');
+      });
+      document.getElementById('yard-' + yard).classList.add('selected');
+      updatePrice();
+    }
+
+    function selectDogs(dogs) {
+      currentDogs = dogs;
+      document.querySelectorAll('[id^="dog-"]').forEach(card => {
+        card.classList.remove('selected');
+      });
+      document.getElementById('dog-' + dogs).classList.add('selected');
+      updatePrice();
+    }
+
+    function updatePrice() {
+      if (currentDogs === 4) {
+        document.getElementById('price').innerHTML = 'Call Us';
+        document.getElementById('period').textContent = '4+ Dogs • Custom quote required';
+        document.getElementById('breakdown').style.display = 'none';
+        document.getElementById('checkoutBtn').style.display = 'none';
+        document.getElementById('customQuote').style.display = 'block';
         return;
-      } else {
-        dogFee = DOG_PRICING[dogs].extra;
-        dogLabel = DOG_PRICING[dogs].label;
       }
-      
-      const totalPrice = price + dogFee;
-      
-      // Update main quote result
-      byId('quoteResult').innerHTML = `${label} • ${yard.charAt(0).toUpperCase() + yard.slice(1)} Yard • ${dogLabel}<br><strong>${$$(totalPrice)}</strong> ${freq !== 'onetime' ? '/ month' : ''}`;
-      
-      // Update dog result
-      if (dogs > 1) {
-        byId('dogResult').innerHTML = `${dogLabel}: +${$$(dogFee)}/month<br><a href="${DOG_PRICING[dogs].stripeLink}" target="_blank" class="text-blue-600 underline">Add extra dog(s) on Stripe</a>`;
+
+      document.getElementById('breakdown').style.display = 'block';
+      document.getElementById('checkoutBtn').style.display = 'block';
+      document.getElementById('customQuote').style.display = 'none';
+
+      const baseData = PRICING[currentYard][currentService];
+      const dogFee = DOG_PRICING[currentDogs].extra;
+      const totalPrice = baseData.price + dogFee;
+
+      const serviceName = currentService === 'weekly' ? 'Weekly' : 
+                         currentService === 'twice' ? 'Twice Weekly' : 
+                         currentService === 'biweekly' ? 'Every Other Week' : 'One-Time';
+
+      document.getElementById('price').textContent = '$' + totalPrice.toFixed(2);
+      document.getElementById('period').textContent = `${serviceName} • ${currentDogs} Dog${currentDogs > 1 ? 's' : ''} • ${currentYard.charAt(0).toUpperCase() + currentYard.slice(1)} Yard`;
+
+      document.getElementById('basePrice').textContent = '$' + baseData.price.toFixed(2);
+      document.getElementById('totalPrice').textContent = '$' + totalPrice.toFixed(2);
+
+      const dogRow = document.getElementById('dogRow');
+      if (currentDogs > 1) {
+        dogRow.style.display = 'flex';
+        document.getElementById('dogPrice').textContent = '+$' + dogFee.toFixed(2);
       } else {
-        byId('dogResult').innerHTML = `${dogLabel}: Included in base price`;
+        dogRow.style.display = 'none';
       }
-      
-      // Set CTA
-      const covered = BUSINESS.serviceZips.includes(zip);
-      if (covered) {
-        byId('quoteCTA').textContent = 'Checkout Now';
-        byId('quoteCTA').href = p.link;
+
+      const yardRow = document.getElementById('yardRow');
+      if (currentYard !== 'small') {
+        yardRow.style.display = 'flex';
+        const yardUpgrade = currentYard === 'medium' ? 7 : 24;
+        document.getElementById('yardUpgradePrice').textContent = '+$' + yardUpgrade.toFixed(2);
       } else {
-        byId('quoteCTA').textContent = 'Request a Quote';
-        byId('quoteCTA').href = `mailto:${BUSINESS.email}?subject=Quote%20Request%20-%20${encodeURIComponent(BUSINESS.name)}&body=${encodeURIComponent(
-          `Name: \nPhone: \nAddress: \nZIP: ${zip}\nFrequency: ${label}\nYard size: ${yard}\nDogs: ${dogs}\n---\nNotes:`
-        )}`;
+        yardRow.style.display = 'none';
       }
+    }
+
+    function checkout() {
+      if (currentDogs === 4) {
+        window.location.href = 'tel:' + BUSINESS.phone;
+        return;
+      }
+      const data = PRICING[currentYard][currentService];
+      window.open(data.link, '_blank');
     }
 
     function fillBusinessBits() {
@@ -181,10 +450,10 @@
     }
 
     function sendContactEmail() {
-      const name = byId('contactName').value.trim();
-      const email = byId('contactEmail').value.trim();
-      const phone = byId('contactPhone').value.trim();
-      const message = byId('contactMessage').value.trim();
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
       if (!name || !email) {
         alert('Please fill in at least your name and email.');
         return;
@@ -198,12 +467,11 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       fillBusinessBits();
-      updateZipBadge();
-      calcQuote();
+      updatePrice();
       const btn = document.getElementById('mobileMenuBtn');
       const menu = document.getElementById('mobileMenu');
       btn.addEventListener('click', () => menu.classList.toggle('hidden'));
-      byId('contactSubmit').addEventListener('click', sendContactEmail);
+      document.getElementById('contactSubmit').addEventListener('click', sendContactEmail);
     });
   </script>
 </head>
@@ -234,7 +502,7 @@
           <a href="#faq" class="hover:text-stone-700">FAQ</a>
           <a href="#reviews" class="hover:text-stone-700">Reviews</a>
           <a href="#contact" class="hover:text-stone-700">Contact</a>
-          <a href="#quote" class="inline-flex items-center rounded-xl border border-stone-300 px-3 py-1.5 hover:bg-stone-100 glassy">Free Quote</a>
+          <a href="#pricing" class="inline-flex items-center rounded-xl border border-stone-300 px-3 py-1.5 hover:bg-stone-100 glassy">Free Quote</a>
         </nav>
         <button id="mobileMenuBtn" class="md:hidden inline-flex items-center gap-2 rounded-xl border border-stone-300 px-3 py-1.5 glassy">Menu</button>
       </div>
@@ -246,7 +514,7 @@
           <a href="#faq" class="px-2 py-1">FAQ</a>
           <a href="#reviews" class="px-2 py-1">Reviews</a>
           <a href="#contact" class="px-2 py-1">Contact</a>
-          <a href="#quote" class="px-2 py-1 font-semibold">Free Quote</a>
+          <a href="#pricing" class="px-2 py-1 font-semibold">Free Quote</a>
         </div>
       </div>
     </div>
@@ -263,11 +531,7 @@
           <p class="mt-6 text-lg text-stone-700 max-w-prose">Reliable, affordable dog poop cleanup for yards, HOAs, apartments and parks. No contracts. Friendly service. Sparkling lawns and happy paws.</p>
           <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#pricing" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-lime-600 text-white hover:bg-lime-700">View Pricing Plans</a>
-            <a href="#quote" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-green-600 text-white hover:bg-green-700">Get Free Quote</a>
-          </div>
-          <div class="mt-6 flex items-center gap-3 text-sm justify-center">
-            <input id="quoteZipHero" type="text" maxlength="5" placeholder="Enter Zip Code" class="w-48 rounded-xl border border-stone-300 px-3 py-2 glassy" oninput="byId('quoteZip').value=this.value; updateZipBadge();" />
-            <a href="#area" class="underline text-stone-700 hover:text-stone-900">See service area</a>
+            <a href="#pricing" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-green-600 text-white hover:bg-green-700">Get Free Quote</a>
           </div>
         </div>
         <div class="hero-image">
@@ -280,20 +544,17 @@
       </div>
     </div>
     <style>
-      /* Ensure the image container fits the box */
       .image-container {
         position: relative;
         width: 100%;
         height: 100%;
       }
-      /* Style the image to fill the container */
       .image-container img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
       }
-      /* Ensure the aspect ratio box respects the image */
       .aspect-[4/3] {
         position: relative;
         width: 100%;
@@ -346,118 +607,138 @@
       </div>
     </div>
   </section>
-  <!-- Pricing -->
-  <section id="pricing" class="relative">
-    <div class="container mx-auto px-4 py-16">
-      <h2 class="text-3xl font-extrabold text-center">Simple, Transparent Pricing</h2>
-      <p class="text-stone-700 mt-2 text-center max-w-2xl mx-auto">Choose the perfect plan for your yard size and cleaning frequency. All plans include reliable service and satisfaction guarantee.</p>
-      <div class="mt-8 grid md:grid-cols-4 gap-6">
-        <div class="rounded-2xl glassy p-6">
-          <h3 class="font-bold text-xl">Weekly</h3>
-          <p class="mt-1 text-stone-600">Starting around</p>
-          <p class="text-3xl font-extrabold">$16<span class="text-base font-semibold text-stone-500">/visit</span></p>
-          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
-            <li>1 visit per week</li>
-            <li>Add $7 per extra dog</li>
-            <li>No contracts</li>
-          </ul>
-          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
-        </div>
-        <div class="rounded-2xl glassy p-6">
-          <h3 class="font-bold text-xl">Twice weekly</h3>
-          <p class="mt-1 text-stone-600">Starting around</p>
-          <p class="text-3xl font-extrabold">$14<span class="text-base font-semibold text-stone-500">/visit</span></p>
-          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
-            <li>2 visits per week</li>
-            <li>Add $7 per extra dog</li>
-            <li>Great for small yards</li>
-          </ul>
-          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
-        </div>
-        <div class="rounded-2xl glassy p-6">
-          <h3 class="font-bold text-xl">Every other week</h3>
-          <p class="mt-1 text-stone-600">Starting around</p>
-          <p class="text-3xl font-extrabold">$22<span class="text-base font-semibold text-stone-500">/visit</span></p>
-          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
-            <li>Bi-weekly visit</li>
-            <li>Add $7 per extra dog</li>
-            <li>Budget-friendly</li>
-          </ul>
-          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
-        </div>
-        <div class="rounded-2xl glassy p-6">
-          <h3 class="font-bold text-xl">One-time clean</h3>
-          <p class="mt-1 text-stone-600">Heavy clean starting at</p>
-          <p class="text-3xl font-extrabold">$69</p>
-          <ul class="mt-4 text-sm space-y-2 list-disc list-inside">
-            <li>Move-in / spring clean</li>
-            <li>Puppy party rescue 🐶</li>
-            <li>Great before lawn service</li>
-          </ul>
-          <a href="#quote" class="mt-6 inline-flex w-full justify-center rounded-xl border px-4 py-2 hover:bg-stone-50 glassy">Get quote</a>
-        </div>
+
+  <!-- Interactive Pricing Calculator -->
+  <section id="pricing" class="calculator-section">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-extrabold">Instant Price Calculator</h2>
+        <p class="mt-2 text-stone-700 max-w-2xl mx-auto">Get your exact price in seconds. No hidden fees, no surprises. Select your preferences below.</p>
       </div>
-      <p class="mt-4 text-xs text-stone-500">Prices shown are examples. Final quote depends on yard size, terrain and recent cleanup status.</p>
-    </div>
-  </section>
-  <!-- Quote widget -->
-  <section id="quote" class="container mx-auto px-4 py-16">
-    <div class="grid lg:grid-cols-2 gap-8">
-      <div class="rounded-2xl glassy p-6 shadow-sm">
-        <h2 class="text-2xl font-extrabold">Get your estimate</h2>
-        <p class="text-stone-700 mt-1">No obligation. We'll confirm details before scheduling.</p>
-        <div class="mt-6 grid gap-4">
-          <div class="grid md:grid-cols-2 gap-4">
-            <div>
-              <label class="text-sm">ZIP code</label>
-              <input id="quoteZip" type="text" maxlength="5" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="e.g., 46204" oninput="updateZipBadge(); calcQuote();" />
-              <div id="zipStatus" class="text-sm mt-1"></div>
+
+      <div class="calc-container">
+        <div class="calc-options">
+          <!-- Service Frequency -->
+          <div class="option-group">
+            <h3><span>1.</span> Select Service Frequency</h3>
+            <div class="service-grid">
+              <div class="service-card selected" id="card-weekly" onclick="selectService('weekly')">
+                <div class="service-icon">📅</div>
+                <div class="service-name">Weekly</div>
+                <div class="service-desc">1x per week • Most popular</div>
+              </div>
+              <div class="service-card best" id="card-twice" onclick="selectService('twice')">
+                <div class="service-icon">⚡</div>
+                <div class="service-name">Twice Weekly</div>
+                <div class="service-desc">2x per week • Best value</div>
+              </div>
+              <div class="service-card" id="card-biweekly" onclick="selectService('biweekly')">
+                <div class="service-icon">🗓️</div>
+                <div class="service-name">Every Other Week</div>
+                <div class="service-desc">1x per 2 weeks • Budget friendly</div>
+              </div>
+              <div class="service-card" id="card-onetime" onclick="selectService('onetime')">
+                <div class="service-icon">🧹</div>
+                <div class="service-name">One-Time Clean</div>
+                <div class="service-desc">Single deep clean</div>
+              </div>
             </div>
           </div>
-          <div class="grid md:grid-cols-2 gap-4">
-            <div>
-              <label class="text-sm">Frequency</label>
-              <select id="frequency" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" onchange="calcQuote();">
-                <option value="weekly">Weekly</option>
-                <option value="twice">Twice Weekly</option>
-                <option value="biweekly">Every other week</option>
-                <option value="onetime">One-time cleanup</option>
-              </select>
-            </div>
-            <div>
-              <label class="text-sm">Yard size</label>
-              <select id="yard" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" onchange="calcQuote();">
-                <option value="small">Small</option>
-                <option value="medium" selected>Medium</option>
-                <option value="large">Large</option>
-              </select>
-            </div>
-          </div>
+
           <!-- Number of Dogs -->
-          <div>
-            <label class="text-sm">Number of Dogs 🐕</label>
-            <select id="dogCount" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" onchange="calcQuote();">
-              <option value="1">1 Dog (Base price)</option>
-              <option value="2">2 Dogs (+$7/month)</option>
-              <option value="3">3 Dogs (+$14/month)</option>
-              <option value="4">4+ Dogs (Custom quote)</option>
-            </select>
+          <div class="option-group">
+            <h3><span>2.</span> Number of Dogs 🐕</h3>
+            <div class="dog-count-grid">
+              <div class="dog-count-card selected" id="dog-1" onclick="selectDogs(1)">
+                <div class="dog-count-icon">🐕</div>
+                <div class="dog-count-number">1 Dog</div>
+                <div class="dog-count-label">Base price</div>
+                <div class="dog-count-price">Included</div>
+              </div>
+              <div class="dog-count-card" id="dog-2" onclick="selectDogs(2)">
+                <div class="dog-count-icon">🐕🐕</div>
+                <div class="dog-count-number">2 Dogs</div>
+                <div class="dog-count-label">+ $7/month</div>
+                <div class="dog-count-price">+$7.00</div>
+              </div>
+              <div class="dog-count-card" id="dog-3" onclick="selectDogs(3)">
+                <div class="dog-count-icon">🐕🐕🐕</div>
+                <div class="dog-count-number">3 Dogs</div>
+                <div class="dog-count-label">+ $14/month</div>
+                <div class="dog-count-price">+$14.00</div>
+              </div>
+              <div class="dog-count-card" id="dog-4" onclick="selectDogs(4)">
+                <div class="dog-count-icon">🏠</div>
+                <div class="dog-count-number">4+ Dogs</div>
+                <div class="dog-count-label">Custom quote</div>
+                <div class="dog-count-price">Call us</div>
+              </div>
+            </div>
           </div>
-          <div id="quoteResult" class="text-lg font-semibold"></div>
-          <div class="flex flex-col sm:flex-row gap-3">
-            <a id="quoteCTA" href="#" class="inline-flex items-center justify-center rounded-xl border border-stone-300 bg-white px-5 py-3 hover:bg-stone-50 glassy">Email us your details</a>
+
+          <!-- Yard Size -->
+          <div class="option-group">
+            <h3><span>3.</span> Choose Yard Size</h3>
+            <div class="yard-grid">
+              <div class="service-card selected" id="yard-small" onclick="selectYard('small')">
+                <div class="service-name">Small Yard</div>
+                <div class="service-desc">Under 5,000 sq ft</div>
+              </div>
+              <div class="service-card" id="yard-medium" onclick="selectYard('medium')">
+                <div class="service-name">Medium Yard</div>
+                <div class="service-desc">5,000 - 10,000 sq ft</div>
+              </div>
+              <div class="service-card" id="yard-large" onclick="selectYard('large')">
+                <div class="service-name">Large Yard</div>
+                <div class="service-desc">10,000 - 15,000 sq ft</div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="rounded-2xl glassy p-6 shadow-sm">
-        <h2 class="text-2xl font-extrabold">Additional Dogs</h2>
-        <p class="text-stone-700 mt-1">Each additional dog adds $7/month. Select your total number of dogs above.</p>
-        <div class="mt-6 grid gap-4">
-          <div id="dogResult" class="text-lg font-semibold"></div>
+
+        <!-- Price Display -->
+        <div class="price-display">
+          <div class="price-label">Your Monthly Price</div>
+          <div class="price-amount" id="price">$62.99</div>
+          <div class="price-period" id="period">Weekly • 1 Dog • Small yard</div>
+
+          <div class="breakdown" id="breakdown">
+            <div class="breakdown-row">
+              <span>Base service</span>
+              <span id="basePrice">$62.99</span>
+            </div>
+            <div class="breakdown-row" id="dogRow" style="display: none;">
+              <span>Additional dogs</span>
+              <span id="dogPrice">+$0</span>
+            </div>
+            <div class="breakdown-row" id="yardRow" style="display: none;">
+              <span>Yard upgrade</span>
+              <span id="yardUpgradePrice">+$0</span>
+            </div>
+            <div class="breakdown-row">
+              <span>Total</span>
+              <span id="totalPrice">$62.99</span>
+            </div>
+          </div>
+
+          <button class="checkout-btn" id="checkoutBtn" onclick="checkout()">
+            Checkout Now <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+
+          <div class="custom-quote-box" id="customQuote" style="display: none;">
+            <h4>Custom Quote Required</h4>
+            <p class="text-stone-600 mb-3">4+ dogs need special pricing</p>
+            <a href="tel:323-574-0882">📞 323-574-0882</a>
+          </div>
+
+          <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #666;">
+            Secure payment via Stripe • Questions? Call us
+          </p>
         </div>
       </div>
     </div>
   </section>
+
   <!-- Service area -->
   <section id="area" class="relative">
     <div class="container mx-auto px-4 py-16">
