@@ -1,249 +1,703 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Turd | Dog Waste Removal</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BIG TURD | Premium Pet Waste Removal</title>
+  <meta name="description" content="Professional dog waste removal service. The most reliable, affordable, and tech-forward poop scooping service in America." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0f0f0f; color: #fff; overflow-x: hidden; }
 
-        /* Header */
-        header { background: white; padding: 20px 0; border-bottom: 1px solid #ddd; }
-        .logo { font-size: 24px; font-weight: bold; display: flex; align-items: center; gap: 10px; text-decoration: none; color: #333; }
-        .logo-icon { background: #00b894; color: white; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+    /* Premium Gradient Background */
+    .premium-bg {
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+      position: relative;
+    }
+    .premium-bg::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 184, 148, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 206, 201, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 193, 7, 0.05) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-        /* Hero */
-        .hero { background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%); padding: 60px 0; text-align: center; }
-        .hero h1 { font-size: 48px; margin-bottom: 20px; }
-        .hero p { font-size: 20px; color: #666; max-width: 600px; margin: 0 auto; }
+    /* Animated Grid Background */
+    .grid-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: 
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 1;
+    }
 
-        /* Calculator */
-        .calculator { padding: 60px 0; }
-        .calculator h2 { text-align: center; font-size: 36px; margin-bottom: 40px; }
-        .calc-box { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    /* Ultra-Premium Header */
+    .mega-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 1.5rem 0;
+    }
+    .mega-header.scrolled {
+      padding: 0.75rem 0;
+      background: rgba(15, 15, 15, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
 
-        .options h3 { margin-bottom: 20px; font-size: 18px; }
-        .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
-        .service-btn { border: 2px solid #ddd; background: white; padding: 20px; border-radius: 12px; cursor: pointer; text-align: center; transition: all 0.3s; }
-        .service-btn:hover { border-color: #00b894; }
-        .service-btn.active { border-color: #00b894; background: #f0fdf9; }
-        .service-btn.best::before { content: "BEST VALUE"; display: block; font-size: 10px; background: #00b894; color: white; padding: 2px 8px; border-radius: 10px; margin-bottom: 5px; font-weight: bold; }
-        .service-name { font-weight: bold; font-size: 16px; margin: 5px 0; }
-        .service-desc { font-size: 13px; color: #666; }
+    /* Logo Animation */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .logo-container:hover { transform: scale(1.02); }
+    .logo-icon {
+      width: 50px; height: 50px;
+      background: linear-gradient(135deg, #00b894, #00cec9);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      box-shadow: 0 10px 40px rgba(0, 184, 148, 0.4);
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 10px 40px rgba(0, 184, 148, 0.4); }
+      50% { box-shadow: 0 10px 60px rgba(0, 206, 201, 0.6); }
+    }
+    .logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+    .logo-text span { color: #00b894; }
 
-        .dog-box { display: flex; align-items: center; gap: 20px; }
-        .dog-btn { width: 50px; height: 50px; border: 2px solid #ddd; background: white; border-radius: 8px; font-size: 24px; cursor: pointer; }
-        .dog-btn:hover { background: #00b894; color: white; border-color: #00b894; }
-        .dog-count { font-size: 32px; font-weight: bold; min-width: 50px; text-align: center; }
-        .dog-note { margin-top: 10px; color: #666; font-size: 14px; }
+    /* Premium Navigation */
+    .nav-link {
+      position: relative;
+      padding: 0.5rem 1rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, #00b894, #00cec9);
+      transition: all 0.3s;
+      transform: translateX(-50%);
+    }
+    .nav-link:hover {
+      color: #fff;
+    }
+    .nav-link:hover::after {
+      width: 80%;
+    }
 
-        /* Price Box */
-        .price-box { background: #2d3436; color: white; border-radius: 16px; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
-        .price-label { font-size: 14px; opacity: 0.8; margin-bottom: 10px; }
-        .price { font-size: 64px; font-weight: bold; margin-bottom: 10px; }
-        .price-period { opacity: 0.8; margin-bottom: 30px; }
-        .breakdown { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-        .breakdown-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
-        .breakdown-row:last-child { margin-bottom: 0; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.2); font-weight: bold; font-size: 16px; }
-        .checkout-btn { background: white; color: #2d3436; border: none; padding: 20px; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; }
-        .checkout-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    /* CTA Button */
+    .cta-btn {
+      background: linear-gradient(135deg, #00b894, #00cec9);
+      color: #0f0f0f;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    .cta-btn:hover::before {
+      left: 100%;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 184, 148, 0.5);
+    }
 
-        /* Features */
-        .features { padding: 60px 0; background: white; }
-        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
-        .feature-icon { width: 80px; height: 80px; background: linear-gradient(135deg, #00b894, #00cec9); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 20px; }
-        .feature h3 { margin-bottom: 10px; }
-        .feature p { color: #666; }
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 120px;
+      position: relative;
+      z-index: 10;
+    }
+    .hero-content {
+      max-width: 700px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 184, 148, 0.1);
+      border: 1px solid rgba(0, 184, 148, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #00b894;
+      margin-bottom: 2rem;
+      animation: fade-in-up 0.6s ease-out;
+    }
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      animation: fade-in-up 0.6s ease-out 0.1s both;
+    }
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, #00b894, #00cec9, #ffd700);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      animation: fade-in-up 0.6s ease-out 0.2s both;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fade-in-up 0.6s ease-out 0.3s both;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #00b894, #00cec9);
+      color: #0f0f0f;
+      padding: 1rem 2rem;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 10px 30px rgba(0, 184, 148, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 184, 148, 0.4);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 14px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.3);
+    }
 
-        /* Footer */
-        footer { background: #2d3436; color: white; padding: 40px 0; text-align: center; }
-        .footer-logo { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+    /* Floating Stats */
+    .floating-stats {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 1.5rem;
+      border-radius: 20px;
+      min-width: 200px;
+      animation: float 6s ease-in-out infinite;
+    }
+    .stat-card:nth-child(2) { animation-delay: -2s; }
+    .stat-card:nth-child(3) { animation-delay: -4s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00b894, #00cec9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.25rem;
+    }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 32px; }
-            .calc-box { grid-template-columns: 1fr; }
-            .service-grid { grid-template-columns: 1fr; }
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-    </style>
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Calculator Section */
+    .calculator-section {
+      padding: 6rem 0;
+      position: relative;
+      z-index: 10;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .section-header h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .section-header p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.125rem;
+    }
+
+    /* Calculator Cards */
+    .calc-container {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .calc-options {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 2rem;
+    }
+    .option-group {
+      margin-bottom: 2rem;
+    }
+    .option-group h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: rgba(255,255,255,0.9);
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .service-card {
+      background: rgba(255,255,255,0.05);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      position: relative;
+    }
+    .service-card:hover {
+      border-color: rgba(0, 184, 148, 0.5);
+      background: rgba(0, 184, 148, 0.05);
+    }
+    .service-card.selected {
+      border-color: #00b894;
+      background: rgba(0, 184, 148, 0.1);
+    }
+    .service-card.best::before {
+      content: 'BEST VALUE';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #ffd700, #ffaa00);
+      color: #0f0f0f;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .service-name {
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .service-desc {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* Price Display */
+    .price-display {
+      background: linear-gradient(135deg, rgba(0, 184, 148, 0.1), rgba(0, 206, 201, 0.1));
+      border: 1px solid rgba(0, 184, 148, 0.3);
+      border-radius: 24px;
+      padding: 2rem;
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+    }
+    .price-label {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.5rem;
+    }
+    .price-amount {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00b894, #00cec9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .price-period {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2rem;
+    }
+    .breakdown {
+      background: rgba(0,0,0,0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+    }
+    .breakdown-row:last-child {
+      margin-bottom: 0;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-weight: 700;
+    }
+    .checkout-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #00b894, #00cec9);
+      color: #0f0f0f;
+      border: none;
+      padding: 1.25rem;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .checkout-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 184, 148, 0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .calc-container {
+        grid-template-columns: 1fr;
+      }
+      .price-display {
+        position: relative;
+        top: 0;
+      }
+      .floating-stats {
+        display: none;
+      }
+    }
+    @media (max-width: 768px) {
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
 <base target="_blank">
 </head>
-<body>
-    <header>
-        <div class="container">
-            <a href="#" class="logo">
-                <div class="logo-icon">💩</div>
-                Big Turd
-            </a>
+<body class="premium-bg">
+  <div class="grid-bg"></div>
+
+  <!-- Header -->
+  <header class="mega-header" id="header">
+    <div class="container mx-auto px-6">
+      <div class="flex items-center justify-between">
+        <a href="#" class="logo-container">
+          <div class="logo-icon">💩</div>
+          <div class="logo-text">BIG<span>TURD</span></div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-2">
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#calculator" class="nav-link">Pricing</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <a href="#calculator" class="cta-btn">Get Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container mx-auto px-6">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fas fa-bolt"></i>
+          #1 Rated Pet Waste Removal in America
         </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <h1>Your Yard Deserves Better</h1>
-            <p>Professional dog waste removal. Get an exact price instantly.</p>
+        <h1>
+          We Handle The<br>
+          <span class="gradient-text">Dirty Work</span>
+        </h1>
+        <p>Professional dog waste removal that gives you back your weekends. No contracts, no hassle, just a clean yard and happy paws. Starting at just $42.99/month.</p>
+        <div class="hero-buttons">
+          <a href="#calculator" class="btn-primary">
+            Calculate Your Price
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="#how-it-works" class="btn-secondary">
+            <i class="fas fa-play-circle"></i>
+            See How It Works
+          </a>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section class="calculator">
-        <div class="container">
-            <h2>Price Calculator</h2>
-            <div class="calc-box">
-                <div class="options">
-                    <h3>Choose Service</h3>
-                    <div class="service-grid">
-                        <button class="service-btn active" id="btn-weekly" onclick="setService('weekly', 45, 3)">
-                            <div>📅</div>
-                            <div class="service-name">Weekly</div>
-                            <div class="service-desc">1x per week</div>
-                        </button>
-                        <button class="service-btn best" id="btn-twice" onclick="setService('twice', 35, 3)">
-                            <div>⚡</div>
-                            <div class="service-name">Twice Weekly</div>
-                            <div class="service-desc">2x per week</div>
-                        </button>
-                        <button class="service-btn" id="btn-biweekly" onclick="setService('biweekly', 55, 4)">
-                            <div>🗓️</div>
-                            <div class="service-name">Every Other Week</div>
-                            <div class="service-desc">1x per 2 weeks</div>
-                        </button>
-                        <button class="service-btn" id="btn-onetime" onclick="setService('onetime', 75, 5)">
-                            <div>🧹</div>
-                            <div class="service-name">One-Time</div>
-                            <div class="service-desc">Single visit</div>
-                        </button>
-                    </div>
+    <div class="floating-stats">
+      <div class="stat-card">
+        <div class="stat-number">10K+</div>
+        <div class="stat-label">Yards Cleaned</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">99%</div>
+        <div class="stat-label">Happy Customers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4.9★</div>
+        <div class="stat-label">Average Rating</div>
+      </div>
+    </div>
+  </section>
 
-                    <h3>Number of Dogs</h3>
-                    <div class="dog-box">
-                        <button class="dog-btn" onclick="changeDogs(-1)">−</button>
-                        <div class="dog-count" id="dogDisplay">1</div>
-                        <button class="dog-btn" onclick="changeDogs(1)">+</button>
-                    </div>
-                    <div class="dog-note" id="dogNote">+$3 per extra dog</div>
-                </div>
+  <!-- Calculator Section -->
+  <section class="calculator-section" id="calculator">
+    <div class="container mx-auto px-6">
+      <div class="section-header">
+        <h2>Instant Price Calculator</h2>
+        <p>Get your exact price in seconds. No hidden fees, no surprises.</p>
+      </div>
 
-                <div class="price-box">
-                    <div class="price-label">Your Price</div>
-                    <div class="price" id="mainPrice">$45</div>
-                    <div class="price-period" id="pricePeriod">per visit • Weekly</div>
-
-                    <div class="breakdown">
-                        <div class="breakdown-row">
-                            <span>Base rate</span>
-                            <span id="baseDisplay">$45</span>
-                        </div>
-                        <div class="breakdown-row" id="extraRow" style="display:none">
-                            <span>Extra dogs</span>
-                            <span id="extraDisplay">$0</span>
-                        </div>
-                        <div class="breakdown-row">
-                            <span>Total</span>
-                            <span id="totalDisplay">$45</span>
-                        </div>
-                    </div>
-
-                    <button class="checkout-btn" onclick="alert('Total: ' + document.getElementById('mainPrice').textContent + '
-
-Connect your Stripe link here')">
-                        Checkout Now →
-                    </button>
-                </div>
+      <div class="calc-container">
+        <div class="calc-options">
+          <div class="option-group">
+            <h3>1. Select Service Frequency</h3>
+            <div class="service-grid">
+              <div class="service-card selected" id="card-weekly" onclick="selectService('weekly')">
+                <div class="service-icon">📅</div>
+                <div class="service-name">Weekly</div>
+                <div class="service-desc">1x per week • Most popular</div>
+              </div>
+              <div class="service-card best" id="card-twice" onclick="selectService('twice')">
+                <div class="service-icon">⚡</div>
+                <div class="service-name">Twice Weekly</div>
+                <div class="service-desc">2x per week • Best value</div>
+              </div>
+              <div class="service-card" id="card-biweekly" onclick="selectService('biweekly')">
+                <div class="service-icon">🗓️</div>
+                <div class="service-name">Every Other Week</div>
+                <div class="service-desc">1x per 2 weeks • Budget friendly</div>
+              </div>
+              <div class="service-card" id="card-onetime" onclick="selectService('onetime')">
+                <div class="service-icon">🧹</div>
+                <div class="service-name">One-Time Clean</div>
+                <div class="service-desc">Single deep clean</div>
+              </div>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <section class="features">
-        <div class="container">
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">✅</div>
-                    <h3>Reliable</h3>
-                    <p>Weekly service you can count on</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Safe</h3>
-                    <p>Professional sanitization</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">📅</div>
-                    <h3>Flexible</h3>
-                    <p>No contracts, cancel anytime</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">⭐</div>
-                    <h3>Guaranteed</h3>
-                    <p>100% satisfaction or refund</p>
-                </div>
+          <div class="option-group">
+            <h3>2. Choose Yard Size</h3>
+            <div class="service-grid">
+              <div class="service-card selected" id="yard-small" onclick="selectYard('small')">
+                <div class="service-name">Small Yard</div>
+                <div class="service-desc">Under 5,000 sq ft</div>
+              </div>
+              <div class="service-card" id="yard-medium" onclick="selectYard('medium')">
+                <div class="service-name">Medium Yard</div>
+                <div class="service-desc">5,000 - 10,000 sq ft</div>
+              </div>
+              <div class="service-card" id="yard-large" onclick="selectYard('large')">
+                <div class="service-name">Large Yard</div>
+                <div class="service-desc">10,000 - 15,000 sq ft</div>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-logo">💩 Big Turd</div>
-            <p>Premium dog waste removal in Terre Haute</p>
-            <p style="margin-top: 10px; opacity: 0.7;">© 2026 All rights reserved</p>
+        <div class="price-display">
+          <div class="price-label">Your Monthly Price</div>
+          <div class="price-amount" id="price">$62.99</div>
+          <div class="price-period" id="period">Weekly service • Small yard</div>
+
+          <div class="breakdown">
+            <div class="breakdown-row">
+              <span>Base service</span>
+              <span id="basePrice">$62.99</span>
+            </div>
+            <div class="breakdown-row" id="upgradeRow" style="display: none;">
+              <span>Yard upgrade</span>
+              <span id="upgradePrice">+$0</span>
+            </div>
+            <div class="breakdown-row">
+              <span>Total</span>
+              <span id="totalPrice">$62.99</span>
+            </div>
+          </div>
+
+          <button class="checkout-btn" onclick="checkout()">
+            Checkout Now <i class="fas fa-arrow-right ml-2"></i>
+          </button>
+          <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.5);">
+            Secure payment via Stripe
+          </p>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // State
-        let currentService = 'weekly';
-        let base = 45;
-        let extraDogFee = 3;
-        let dogs = 1;
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
 
-        function setService(name, basePrice, extraFee) {
-            currentService = name;
-            base = basePrice;
-            extraDogFee = extraFee;
+    // Pricing data
+    const PRICING = {
+      small: {
+        weekly:   { price: 62.99,  link: 'https://buy.stripe.com/cNi9ATf7tg1najn3mC6g80g' },
+        twice:    { price: 109.99, link: 'https://buy.stripe.com/6oUcN53oL4iF3UZaP46g80h' },
+        biweekly: { price: 42.99,  link: 'https://buy.stripe.com/8x29AT4sP3eBgHL3mC6g80i' },
+        onetime:  { price: 69.00,  link: 'https://buy.stripe.com/6oU14n4sP02pgHL4qG6g80j' }
+      },
+      medium: {
+        weekly:   { price: 69.99,  link: 'https://buy.stripe.com/4gM00j8J5bL7dvzaP46g80k' },
+        twice:    { price: 119.99, link: 'https://buy.stripe.com/eVqaEXgbx5mJ1MR0aq6g80l' },
+        biweekly: { price: 47.99,  link: 'https://buy.stripe.com/3cI28r8J5cPb77bg9o6g80m' },
+        onetime:  { price: 79.00,  link: 'https://buy.stripe.com/9B614n7F116t8bfbT86g80n' }
+      },
+      large: {
+        weekly:   { price: 88.99,  link: 'https://buy.stripe.com/5kQ00jbVheXjbnr7CS6g80o' },
+        twice:    { price: 149.99, link: 'https://buy.stripe.com/3cI3cvbVh16t0INcXc6g80p' },
+        biweekly: { price: 59.99,  link: 'https://buy.stripe.com/28E3cv8J57uR2QVcXc6g80q' },
+        onetime:  { price: 89.00,  link: 'https://buy.stripe.com/eVq00j8J52ax3UZe1g6g80r' }
+      }
+    };
 
-            // Update buttons
-            document.querySelectorAll('.service-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('btn-' + name).classList.add('active');
+    let currentService = 'weekly';
+    let currentYard = 'small';
 
-            // Update text
-            const periods = {
-                'weekly': 'per visit • Weekly',
-                'twice': 'per visit • Twice Weekly',
-                'biweekly': 'per visit • Every Other Week',
-                'onetime': 'flat rate • One-Time'
-            };
-            document.getElementById('pricePeriod').textContent = periods[name];
-            document.getElementById('dogNote').textContent = '+$' + extraFee + ' per extra dog';
+    function selectService(service) {
+      currentService = service;
+      document.querySelectorAll('[id^="card-"]').forEach(card => {
+        card.classList.remove('selected');
+      });
+      document.getElementById('card-' + service).classList.add('selected');
+      updatePrice();
+    }
 
-            updatePrice();
-        }
+    function selectYard(yard) {
+      currentYard = yard;
+      document.querySelectorAll('[id^="yard-"]').forEach(card => {
+        card.classList.remove('selected');
+      });
+      document.getElementById('yard-' + yard).classList.add('selected');
+      updatePrice();
+    }
 
-        function changeDogs(delta) {
-            var newCount = dogs + delta;
-            if (newCount >= 1 && newCount <= 10) {
-                dogs = newCount;
-                document.getElementById('dogDisplay').textContent = dogs;
-                updatePrice();
-            }
-        }
+    function updatePrice() {
+      const data = PRICING[currentYard][currentService];
+      const isOneTime = currentService === 'onetime';
 
-        function updatePrice() {
-            var extraDogs = Math.max(0, dogs - 1);
-            var extraCost = extraDogs * extraDogFee;
-            var total = base + extraCost;
+      document.getElementById('price').textContent = '$' + data.price.toFixed(2);
+      document.getElementById('period').textContent = 
+        (currentService === 'weekly' ? 'Weekly' : 
+         currentService === 'twice' ? 'Twice Weekly' : 
+         currentService === 'biweekly' ? 'Every Other Week' : 'One-Time') + 
+        ' • ' + currentYard.charAt(0).toUpperCase() + currentYard.slice(1) + ' yard';
 
-            document.getElementById('mainPrice').textContent = '$' + total;
-            document.getElementById('baseDisplay').textContent = '$' + base;
-            document.getElementById('totalDisplay').textContent = '$' + total;
+      document.getElementById('basePrice').textContent = '$' + PRICING.small[currentService].price.toFixed(2);
+      document.getElementById('totalPrice').textContent = '$' + data.price.toFixed(2);
 
-            if (extraDogs > 0) {
-                document.getElementById('extraRow').style.display = 'flex';
-                document.getElementById('extraDisplay').textContent = '$' + extraCost + ' (' + extraDogs + ' extra)';
-            } else {
-                document.getElementById('extraRow').style.display = 'none';
-            }
-        }
-    </script>
+      const upgradeRow = document.getElementById('upgradeRow');
+      if (currentYard !== 'small') {
+        upgradeRow.style.display = 'flex';
+        const upgradeAmount = currentYard === 'medium' ? 7 : 24;
+        document.getElementById('upgradePrice').textContent = '+$' + upgradeAmount + '.00';
+      } else {
+        upgradeRow.style.display = 'none';
+      }
+    }
+
+    function checkout() {
+      const data = PRICING[currentYard][currentService];
+      window.open(data.link, '_blank');
+    }
+  </script>
 </body>
 </html>
