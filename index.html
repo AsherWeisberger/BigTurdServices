@@ -3,1393 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Big Turd | Premium Dog Waste Removal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Big Turd | Dog Waste Removal</title>
     <style>
-        :root {
-            --primary: #2D3436;
-            --accent: #00B894;
-            --accent-light: #55EFC4;
-            --bg: #FAFAFA;
-            --text: #2D3436;
-            --text-light: #636E72;
-            --border: #DFE6E9;
-            --card: #FFFFFF;
-            --gradient-start: #00B894;
-            --gradient-end: #00CEC9;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            padding: 0.5rem 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .cta-button {
-            background: var(--primary);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(0,184,148,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.3; }
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            width: 100%;
-        }
-
-        .hero-content {
-            z-index: 1;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, rgba(0,184,148,0.1), rgba(0,206,201,0.1));
-            color: var(--accent);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(0,184,148,0.2);
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, #636E72 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            max-width: 500px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,184,148,0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,184,148,0.4);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            border: 2px solid var(--border);
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .hero-visual {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .floating-card {
-            background: var(--card);
-            padding: 1.5rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            position: absolute;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .floating-card:nth-child(1) {
-            top: 10%;
-            right: 0;
-            animation-delay: 0s;
-        }
-
-        .floating-card:nth-child(2) {
-            bottom: 20%;
-            left: 0;
-            animation-delay: 2s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-image {
-            width: 100%;
-            max-width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, #E8F5E9 0%, #E0F2F1 100%);
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-image::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.5;
-        }
-
-        /* Pricing Calculator Section */
-        .pricing-calculator {
-            padding: 6rem 2rem;
-            background: linear-gradient(180deg, var(--bg) 0%, white 100%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .calculator-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .calculator-form {
-            background: var(--card);
-            padding: 2.5rem;
-            border-radius: 24px;
-            border: 2px solid var(--border);
-            height: fit-content;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--primary);
-        }
-
-        .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s;
-            background: white;
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23636E72' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1.5rem;
-            padding-right: 3rem;
-        }
-
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(0,184,148,0.1);
-        }
-
-        .dog-count-display {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 0.5rem;
-        }
-
-        .dog-counter {
-            display: flex;
-            align-items: center;
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .dog-counter button {
-            background: var(--bg);
-            border: none;
-            width: 48px;
-            height: 48px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            color: var(--primary);
-        }
-
-        .dog-counter button:hover {
-            background: var(--accent);
-            color: white;
-        }
-
-        .dog-counter span {
-            width: 60px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 1.25rem;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .dog-note {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            margin-top: 0.5rem;
-        }
-
-        /* Price Display */
-        .price-display {
-            background: linear-gradient(135deg, var(--primary) 0%, #636E72 100%);
-            color: white;
-            padding: 2.5rem;
-            border-radius: 24px;
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .price-display h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .price-amount {
-            font-size: 4rem;
-            font-weight: 700;
-            font-family: 'Space Grotesk', sans-serif;
-            margin-bottom: 0.5rem;
-            line-height: 1;
-        }
-
-        .price-period {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            margin-bottom: 2rem;
-        }
-
-        .price-breakdown {
-            background: rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .breakdown-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.75rem;
-            font-size: 0.95rem;
-        }
-
-        .breakdown-row:last-child {
-            margin-bottom: 0;
-            padding-top: 0.75rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .checkout-btn {
-            width: 100%;
-            padding: 1.25rem;
-            background: white;
-            color: var(--primary);
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .checkout-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .price-note {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
-
-        /* Service Cards */
-        .service-cards {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .service-card {
-            background: var(--card);
-            border: 2px solid var(--border);
-            border-radius: 16px;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .service-card:hover {
-            border-color: var(--accent-light);
-            transform: translateY(-3px);
-        }
-
-        .service-card.active {
-            border-color: var(--accent);
-            background: linear-gradient(135deg, rgba(0,184,148,0.05), rgba(0,206,201,0.05));
-        }
-
-        .service-card.popular::before {
-            content: 'BEST VALUE';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .service-icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .service-name {
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        .service-desc {
-            font-size: 0.8rem;
-            color: var(--text-light);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 6rem 2rem;
-            background: white;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: var(--bg);
-            padding: 2rem;
-            border-radius: 20px;
-            transition: all 0.3s;
-            border: 1px solid var(--border);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            border-color: var(--accent-light);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .feature-card p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Service Area */
-        .service-area {
-            padding: 6rem 2rem;
-            background: white;
-        }
-
-        .area-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .area-visual {
-            background: linear-gradient(135deg, #E8F5E9 0%, #E0F2F1 100%);
-            border-radius: 30px;
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 400px;
-        }
-
-        .zip-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .zip-tag {
-            background: white;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-family: 'Space Grotesk', monospace;
-            font-weight: 600;
-            color: var(--accent);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .area-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .area-content p {
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--border);
-            padding: 1.5rem 0;
-        }
-
-        .faq-question {
-            font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .faq-answer {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-        }
-
-        .faq-icon {
-            transition: transform 0.3s;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        header { background: white; padding: 20px 0; border-bottom: 1px solid #ddd; }
+        .logo { font-size: 24px; font-weight: bold; display: flex; align-items: center; gap: 10px; text-decoration: none; color: #333; }
+        .logo-icon { background: #00b894; color: white; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #e8f5e9 0%, #e0f2f1 100%); padding: 60px 0; text-align: center; }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; }
+        .hero p { font-size: 20px; color: #666; max-width: 600px; margin: 0 auto; }
+
+        /* Calculator */
+        .calculator { padding: 60px 0; }
+        .calculator h2 { text-align: center; font-size: 36px; margin-bottom: 40px; }
+        .calc-box { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+        .options h3 { margin-bottom: 20px; font-size: 18px; }
+        .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+        .service-btn { border: 2px solid #ddd; background: white; padding: 20px; border-radius: 12px; cursor: pointer; text-align: center; transition: all 0.3s; }
+        .service-btn:hover { border-color: #00b894; }
+        .service-btn.active { border-color: #00b894; background: #f0fdf9; }
+        .service-btn.best::before { content: "BEST VALUE"; display: block; font-size: 10px; background: #00b894; color: white; padding: 2px 8px; border-radius: 10px; margin-bottom: 5px; font-weight: bold; }
+        .service-name { font-weight: bold; font-size: 16px; margin: 5px 0; }
+        .service-desc { font-size: 13px; color: #666; }
+
+        .dog-box { display: flex; align-items: center; gap: 20px; }
+        .dog-btn { width: 50px; height: 50px; border: 2px solid #ddd; background: white; border-radius: 8px; font-size: 24px; cursor: pointer; }
+        .dog-btn:hover { background: #00b894; color: white; border-color: #00b894; }
+        .dog-count { font-size: 32px; font-weight: bold; min-width: 50px; text-align: center; }
+        .dog-note { margin-top: 10px; color: #666; font-size: 14px; }
+
+        /* Price Box */
+        .price-box { background: #2d3436; color: white; border-radius: 16px; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        .price-label { font-size: 14px; opacity: 0.8; margin-bottom: 10px; }
+        .price { font-size: 64px; font-weight: bold; margin-bottom: 10px; }
+        .price-period { opacity: 0.8; margin-bottom: 30px; }
+        .breakdown { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .breakdown-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
+        .breakdown-row:last-child { margin-bottom: 0; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.2); font-weight: bold; font-size: 16px; }
+        .checkout-btn { background: white; color: #2d3436; border: none; padding: 20px; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; }
+        .checkout-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        /* Features */
+        .features { padding: 60px 0; background: white; }
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
+        .feature-icon { width: 80px; height: 80px; background: linear-gradient(135deg, #00b894, #00cec9); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 20px; }
+        .feature h3 { margin-bottom: 10px; }
+        .feature p { color: #666; }
 
         /* Footer */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 4rem 2rem 2rem;
-        }
+        footer { background: #2d3436; color: white; padding: 40px 0; text-align: center; }
+        .footer-logo { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            margin-bottom: 3rem;
-        }
-
-        .footer-brand h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-brand p {
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .footer-links h4 {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-links a {
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-light);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 2rem;
-            text-align: center;
-            color: rgba(255,255,255,0.5);
-            font-size: 0.85rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                margin: 0 auto 2rem;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .hero-visual {
-                order: -1;
-            }
-
-            .hero-image {
-                height: 300px;
-                font-size: 5rem;
-            }
-
-            .calculator-container {
-                grid-template-columns: 1fr;
-            }
-
-            .price-display {
-                position: relative;
-                top: 0;
-            }
-
-            .service-cards {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .area-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .service-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .floating-card {
-                display: none;
-            }
-
-            .price-amount {
-                font-size: 3rem;
-            }
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.animate {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .fade-in.animate.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .calc-box { grid-template-columns: 1fr; }
+            .service-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 <base target="_blank">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
+    <header>
+        <div class="container">
             <a href="#" class="logo">
                 <div class="logo-icon">💩</div>
                 Big Turd
             </a>
-            <ul class="nav-links">
-                <li><a href="#calculator">Pricing</a></li>
-                <li><a href="#features">Why Us</a></li>
-                <li><a href="#service-area">Service Area</a></li>
-            </ul>
-            <a href="#calculator" class="cta-button">Get Price</a>
-            <button class="mobile-menu-btn">☰</button>
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="badge">
-                    <span>⚡</span> Instant Quotes
-                </div>
-                <h1>Your Yard Deserves Better</h1>
-                <p>Professional dog waste removal that gives you back your weekends. Get an exact price in seconds—no forms, no waiting.</p>
-                <div class="hero-buttons">
-                    <a href="#calculator" class="btn-primary">
-                        Calculate Price
-                        <span>→</span>
-                    </a>
-                    <a href="#features" class="btn-secondary">
-                        Learn More
-                    </a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="floating-card">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🐕</div>
-                    <div style="font-weight: 600; font-size: 0.9rem;">Happy Dogs</div>
-                    <div style="font-size: 0.75rem; color: var(--text-light);">Love clean yards</div>
-                </div>
-                <div class="floating-card">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">💰</div>
-                    <div style="font-weight: 600; font-size: 0.9rem;">Exact Pricing</div>
-                    <div style="font-size: 0.75rem; color: var(--text-light);">No surprises</div>
-                </div>
-                <div class="hero-image">
-                    🌿
-                </div>
-            </div>
+        <div class="container">
+            <h1>Your Yard Deserves Better</h1>
+            <p>Professional dog waste removal. Get an exact price instantly.</p>
         </div>
     </section>
 
-    <!-- Pricing Calculator Section -->
-    <section class="pricing-calculator" id="calculator">
+    <section class="calculator">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2>Instant Price Calculator</h2>
-                <p>Select your service and number of dogs. Your exact price updates instantly—no surprises at checkout.</p>
-            </div>
-
-            <div class="calculator-container fade-in">
-                <div class="calculator-form">
-                    <div class="form-group">
-                        <label>Choose Your Service</label>
-                        <div class="service-cards">
-                            <div class="service-card active" data-service="weekly" data-base="45">
-                                <div class="service-icon">📅</div>
-                                <div class="service-name">Weekly</div>
-                                <div class="service-desc">1x per week</div>
-                            </div>
-                            <div class="service-card popular" data-service="twice-weekly" data-base="35">
-                                <div class="service-icon">⚡</div>
-                                <div class="service-name">Twice Weekly</div>
-                                <div class="service-desc">2x per week</div>
-                            </div>
-                            <div class="service-card" data-service="bi-weekly" data-base="55">
-                                <div class="service-icon">🗓️</div>
-                                <div class="service-name">Every Other Week</div>
-                                <div class="service-desc">1x per 2 weeks</div>
-                            </div>
-                            <div class="service-card" data-service="one-time" data-base="75">
-                                <div class="service-icon">🧹</div>
-                                <div class="service-name">One-Time Clean</div>
-                                <div class="service-desc">Single visit</div>
-                            </div>
-                        </div>
+            <h2>Price Calculator</h2>
+            <div class="calc-box">
+                <div class="options">
+                    <h3>Choose Service</h3>
+                    <div class="service-grid">
+                        <button class="service-btn active" id="btn-weekly" onclick="setService('weekly', 45, 3)">
+                            <div>📅</div>
+                            <div class="service-name">Weekly</div>
+                            <div class="service-desc">1x per week</div>
+                        </button>
+                        <button class="service-btn best" id="btn-twice" onclick="setService('twice', 35, 3)">
+                            <div>⚡</div>
+                            <div class="service-name">Twice Weekly</div>
+                            <div class="service-desc">2x per week</div>
+                        </button>
+                        <button class="service-btn" id="btn-biweekly" onclick="setService('biweekly', 55, 4)">
+                            <div>🗓️</div>
+                            <div class="service-name">Every Other Week</div>
+                            <div class="service-desc">1x per 2 weeks</div>
+                        </button>
+                        <button class="service-btn" id="btn-onetime" onclick="setService('onetime', 75, 5)">
+                            <div>🧹</div>
+                            <div class="service-name">One-Time</div>
+                            <div class="service-desc">Single visit</div>
+                        </button>
                     </div>
 
-                    <div class="form-group">
-                        <label>Number of Dogs</label>
-                        <div class="dog-count-display">
-                            <div class="dog-counter">
-                                <button type="button" onclick="adjustDogs(-1)">−</button>
-                                <span id="dogCount">1</span>
-                                <button type="button" onclick="adjustDogs(1)">+</button>
-                            </div>
-                            <span style="color: var(--text-light);">dogs</span>
-                        </div>
-                        <div class="dog-note" id="dogNote">+$3 per extra dog for Weekly & Twice Weekly</div>
+                    <h3>Number of Dogs</h3>
+                    <div class="dog-box">
+                        <button class="dog-btn" onclick="changeDogs(-1)">−</button>
+                        <div class="dog-count" id="dogDisplay">1</div>
+                        <button class="dog-btn" onclick="changeDogs(1)">+</button>
                     </div>
-
-                    <div class="form-group">
-                        <label>Yard Size (Optional)</label>
-                        <select id="yardSize">
-                            <option value="0">Small (under 5,000 sq ft) - Included</option>
-                            <option value="10">Medium (5,000-10,000 sq ft) +$10</option>
-                            <option value="20">Large (10,000-15,000 sq ft) +$20</option>
-                            <option value="custom">Extra Large (15,000+ sq ft) - Custom quote</option>
-                        </select>
-                    </div>
+                    <div class="dog-note" id="dogNote">+$3 per extra dog</div>
                 </div>
 
-                <div class="price-display">
-                    <h3>Your Price</h3>
-                    <div class="price-amount" id="priceAmount">$45</div>
-                    <div class="price-period" id="pricePeriod">per visit • Weekly service</div>
+                <div class="price-box">
+                    <div class="price-label">Your Price</div>
+                    <div class="price" id="mainPrice">$45</div>
+                    <div class="price-period" id="pricePeriod">per visit • Weekly</div>
 
-                    <div class="price-breakdown">
+                    <div class="breakdown">
                         <div class="breakdown-row">
-                            <span>Base rate (Weekly)</span>
-                            <span id="basePrice">$45</span>
+                            <span>Base rate</span>
+                            <span id="baseDisplay">$45</span>
                         </div>
-                        <div class="breakdown-row" id="extraDogsRow" style="display: none;">
-                            <span>Extra dogs (0)</span>
-                            <span id="extraDogsPrice">$0</span>
-                        </div>
-                        <div class="breakdown-row" id="yardSizeRow" style="display: none;">
-                            <span>Yard size</span>
-                            <span id="yardSizePrice">$0</span>
+                        <div class="breakdown-row" id="extraRow" style="display:none">
+                            <span>Extra dogs</span>
+                            <span id="extraDisplay">$0</span>
                         </div>
                         <div class="breakdown-row">
-                            <span>Total per visit</span>
-                            <span id="totalPrice">$45</span>
+                            <span>Total</span>
+                            <span id="totalDisplay">$45</span>
                         </div>
                     </div>
 
-                    <button class="checkout-btn" onclick="goToCheckout()">
-                        Checkout Now
-                        <span>→</span>
+                    <button class="checkout-btn" onclick="alert('Total: ' + document.getElementById('mainPrice').textContent + '
+
+Connect your Stripe link here')">
+                        Checkout Now →
                     </button>
-                    <div class="price-note">Final price confirmed before scheduling. No contracts.</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
+    <section class="features">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2>Why Choose Big Turd?</h2>
-                <p>We're not just scooping poop—we're giving you back your time, your yard, and your peace of mind.</p>
-            </div>
             <div class="features-grid">
-                <div class="feature-card fade-in">
+                <div class="feature">
                     <div class="feature-icon">✅</div>
-                    <h3>Reliable Service</h3>
-                    <p>Consistent, dependable cleanup service that you can count on every week. Rain or shine, we're there.</p>
+                    <h3>Reliable</h3>
+                    <p>Weekly service you can count on</p>
                 </div>
-                <div class="feature-card fade-in">
+                <div class="feature">
                     <div class="feature-icon">🛡️</div>
-                    <h3>Health & Safety</h3>
-                    <p>Professional sanitization keeps your yard and pets safe from harmful bacteria and parasites.</p>
+                    <h3>Safe</h3>
+                    <p>Professional sanitization</p>
                 </div>
-                <div class="feature-card fade-in">
+                <div class="feature">
                     <div class="feature-icon">📅</div>
-                    <h3>Flexible Scheduling</h3>
-                    <p>Choose from weekly, bi-weekly, or one-time services to fit your needs and budget.</p>
+                    <h3>Flexible</h3>
+                    <p>No contracts, cancel anytime</p>
                 </div>
-                <div class="feature-card fade-in">
+                <div class="feature">
                     <div class="feature-icon">⭐</div>
-                    <h3>100% Satisfaction</h3>
-                    <p>Not happy with our service? We'll make it right or refund your money. No questions asked.</p>
+                    <h3>Guaranteed</h3>
+                    <p>100% satisfaction or refund</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Service Area -->
-    <section class="service-area" id="service-area">
-        <div class="container">
-            <div class="area-grid">
-                <div class="area-visual fade-in">
-                    <div style="font-size: 4rem; margin-bottom: 1rem;">📍</div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary);">Currently Serving</h3>
-                    <div class="zip-list">
-                        <span class="zip-tag">47801</span>
-                        <span class="zip-tag">47802</span>
-                        <span class="zip-tag">47803</span>
-                        <span class="zip-tag">47804</span>
-                        <span class="zip-tag">47805</span>
-                        <span class="zip-tag">47806</span>
-                        <span class="zip-tag">47807</span>
-                        <span class="zip-tag">47808</span>
-                        <span class="zip-tag">47809</span>
-                        <span class="zip-tag">47810</span>
-                    </div>
-                    <p style="margin-top: 2rem; color: var(--text-light); font-size: 0.9rem;">Don't see your ZIP? Send us a note and we'll try to help.</p>
-                </div>
-                <div class="area-content fade-in">
-                    <h2>Common Questions</h2>
-                    <p>Everything you need to know about our service. Can't find what you're looking for? Reach out directly.</p>
-
-                    <div class="faq-item active">
-                        <div class="faq-question">
-                            Do I need to be home?
-                            <span class="faq-icon">▼</span>
-                        </div>
-                        <div class="faq-answer">
-                            Nope. We access via your preferred gate. Please ensure safe entry and any pets are secured if needed.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            What about bad weather?
-                            <span class="faq-icon">▼</span>
-                        </div>
-                        <div class="faq-answer">
-                            We work year-round. In severe weather or unsafe conditions, we'll reschedule and notify you.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            How do I pay?
-                            <span class="faq-icon">▼</span>
-                        </div>
-                        <div class="faq-answer">
-                            Use the 'Checkout Now' button for payment. Select your quantity of dogs on Stripe checkout. This will be billed alongside your Frequency and Yard Size quote!
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-question">
-                            Any contracts?
-                            <span class="faq-icon">▼</span>
-                        </div>
-                        <div class="faq-answer">
-                            No contracts. Start, pause or cancel anytime. Just give us a little notice so we can adjust routes.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <h3>
-                    <span style="font-size: 1.5rem;">💩</span>
-                    Big Turd
-                </h3>
-                <p>Premium dog waste removal service. Giving you back your weekends, one scoop at a time. Serving Terre Haute and surrounding areas.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Services</h4>
-                <ul>
-                    <li><a href="#calculator">Weekly Service</a></li>
-                    <li><a href="#calculator">Twice Weekly</a></li>
-                    <li><a href="#calculator">Every Other Week</a></li>
-                    <li><a href="#calculator">One-Time Cleanup</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#features">About Us</a></li>
-                    <li><a href="#service-area">Service Area</a></li>
-                    <li><a href="#service-area">FAQ</a></li>
-                    <li><a href="#">Reviews</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Refund Policy</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Big Turd Waste Removal. All rights reserved. Made with 💩 in Terre Haute.</p>
+        <div class="container">
+            <div class="footer-logo">💩 Big Turd</div>
+            <p>Premium dog waste removal in Terre Haute</p>
+            <p style="margin-top: 10px; opacity: 0.7;">© 2026 All rights reserved</p>
         </div>
     </footer>
 
     <script>
-        // Pricing configuration
-        const pricing = {
-            'weekly': { base: 45, extraDog: 3, name: 'Weekly', period: 'per visit • Weekly service' },
-            'twice-weekly': { base: 35, extraDog: 3, name: 'Twice Weekly', period: 'per visit • 2x weekly service' },
-            'bi-weekly': { base: 55, extraDog: 4, name: 'Every Other Week', period: 'per visit • Bi-weekly service' },
-            'one-time': { base: 75, extraDog: 5, name: 'One-Time Clean', period: 'flat rate • Single visit' }
-        };
-
+        // State
         let currentService = 'weekly';
-        let dogCount = 1;
+        let base = 45;
+        let extraDogFee = 3;
+        let dogs = 1;
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
+        function setService(name, basePrice, extraFee) {
+            currentService = name;
+            base = basePrice;
+            extraDogFee = extraFee;
+
+            // Update buttons
+            document.querySelectorAll('.service-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + name).classList.add('active');
+
+            // Update text
+            const periods = {
+                'weekly': 'per visit • Weekly',
+                'twice': 'per visit • Twice Weekly',
+                'biweekly': 'per visit • Every Other Week',
+                'onetime': 'flat rate • One-Time'
+            };
+            document.getElementById('pricePeriod').textContent = periods[name];
+            document.getElementById('dogNote').textContent = '+$' + extraFee + ' per extra dog';
+
             updatePrice();
-            setupEventListeners();
-            setupAnimations();
-        });
-
-        function setupEventListeners() {
-            // Service card selection
-            document.querySelectorAll('.service-card').forEach(function(card) {
-                card.addEventListener('click', function() {
-                    document.querySelectorAll('.service-card').forEach(function(c) {
-                        c.classList.remove('active');
-                    });
-                    card.classList.add('active');
-                    currentService = card.dataset.service;
-                    updatePrice();
-                    updateDogNote();
-                });
-            });
-
-            // Yard size change
-            document.getElementById('yardSize').addEventListener('change', updatePrice);
-
-            // FAQ accordion
-            document.querySelectorAll('.faq-question').forEach(function(question) {
-                question.addEventListener('click', function() {
-                    var item = question.parentElement;
-                    var wasActive = item.classList.contains('active');
-                    document.querySelectorAll('.faq-item').forEach(function(faq) {
-                        faq.classList.remove('active');
-                    });
-                    if (!wasActive) {
-                        item.classList.add('active');
-                    }
-                });
-            });
-
-            // Navbar scroll
-            window.addEventListener('scroll', function() {
-                var navbar = document.getElementById('navbar');
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
-            // Smooth scroll
-            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    var target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                });
-            });
         }
 
-        function adjustDogs(delta) {
-            var newCount = dogCount + delta;
+        function changeDogs(delta) {
+            var newCount = dogs + delta;
             if (newCount >= 1 && newCount <= 10) {
-                dogCount = newCount;
-                document.getElementById('dogCount').textContent = dogCount;
+                dogs = newCount;
+                document.getElementById('dogDisplay').textContent = dogs;
                 updatePrice();
             }
         }
 
-        function updateDogNote() {
-            var config = pricing[currentService];
-            var note = document.getElementById('dogNote');
-            if (currentService === 'one-time') {
-                note.textContent = '+$' + config.extraDog + ' per extra dog for one-time clean';
-            } else {
-                note.textContent = '+$' + config.extraDog + ' per extra dog for ' + config.name;
-            }
-        }
-
         function updatePrice() {
-            var config = pricing[currentService];
-            var yardSizeSelect = document.getElementById('yardSize');
-            var yardSizeCost = parseInt(yardSizeSelect.value) || 0;
+            var extraDogs = Math.max(0, dogs - 1);
+            var extraCost = extraDogs * extraDogFee;
+            var total = base + extraCost;
 
-            // Check for custom yard size
-            if (yardSizeSelect.value === 'custom') {
-                document.getElementById('priceAmount').textContent = 'Custom';
-                document.getElementById('pricePeriod').textContent = 'Quote on request';
-                document.querySelector('.price-breakdown').style.display = 'none';
-                document.querySelector('.checkout-btn').textContent = 'Request Quote →';
-                return;
-            } else {
-                document.querySelector('.price-breakdown').style.display = 'block';
-                document.querySelector('.checkout-btn').textContent = 'Checkout Now →';
-            }
+            document.getElementById('mainPrice').textContent = '$' + total;
+            document.getElementById('baseDisplay').textContent = '$' + base;
+            document.getElementById('totalDisplay').textContent = '$' + total;
 
-            // Calculate extra dog cost
-            var extraDogs = Math.max(0, dogCount - 1);
-            var extraDogCost = extraDogs * config.extraDog;
-
-            // Calculate total
-            var total = config.base + extraDogCost + yardSizeCost;
-
-            // Update display
-            document.getElementById('priceAmount').textContent = '$' + total;
-            document.getElementById('pricePeriod').textContent = config.period;
-
-            // Update breakdown
-            document.getElementById('basePrice').textContent = '$' + config.base;
-            document.querySelector('.breakdown-row:first-child span:first-child').textContent = 
-                'Base rate (' + config.name + ')';
-
-            // Extra dogs row
-            var extraDogsRow = document.getElementById('extraDogsRow');
             if (extraDogs > 0) {
-                extraDogsRow.style.display = 'flex';
-                document.getElementById('extraDogsPrice').textContent = '$' + extraDogCost;
-                extraDogsRow.querySelector('span:first-child').textContent = 
-                    'Extra dogs (' + extraDogs + ' × $' + config.extraDog + ')';
+                document.getElementById('extraRow').style.display = 'flex';
+                document.getElementById('extraDisplay').textContent = '$' + extraCost + ' (' + extraDogs + ' extra)';
             } else {
-                extraDogsRow.style.display = 'none';
+                document.getElementById('extraRow').style.display = 'none';
             }
-
-            // Yard size row
-            var yardSizeRow = document.getElementById('yardSizeRow');
-            if (yardSizeCost > 0) {
-                yardSizeRow.style.display = 'flex';
-                document.getElementById('yardSizePrice').textContent = '$' + yardSizeCost;
-            } else {
-                yardSizeRow.style.display = 'none';
-            }
-
-            document.getElementById('totalPrice').textContent = '$' + total;
-        }
-
-        function goToCheckout() {
-            var config = pricing[currentService];
-            var total = document.getElementById('totalPrice').textContent;
-            var yardSize = document.getElementById('yardSize').value;
-
-            if (yardSize === 'custom') {
-                alert('Requesting custom quote...
-
-We'll contact you within 24 hours with pricing for extra large yards.');
-                return;
-            }
-
-            // Build checkout URL with parameters (you'd replace this with your Stripe link)
-            var params = new URLSearchParams({
-                service: currentService,
-                dogs: dogCount,
-                total: total.replace('$', ''),
-                yard: yardSize
-            });
-
-            // For demo purposes, show alert. In production, redirect to Stripe:
-            // window.location.href = 'https://checkout.stripe.com/your-link?' + params.toString();
-
-            alert('Proceeding to checkout...
-
-Service: ' + config.name + '
-Dogs: ' + dogCount + '
-Total: ' + total + '
-
-(Connect your Stripe checkout link here)');
-        }
-
-        function setupAnimations() {
-            // Make all fade-in elements visible immediately
-            document.querySelectorAll('.fade-in').forEach(function(el) {
-                el.classList.add('visible');
-            });
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-            document.querySelectorAll('.fade-in').forEach(function(el) {
-                observer.observe(el);
-            });
         }
     </script>
 </body>
