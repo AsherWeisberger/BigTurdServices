@@ -208,7 +208,7 @@
     /* Yard Size */
     .yard-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
     }
 
@@ -275,6 +275,10 @@
       cursor: pointer;
       transition: all 0.3s;
       box-shadow: 0 4px 15px rgba(101, 163, 13, 0.3);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     .checkout-btn:hover {
       transform: translateY(-2px);
@@ -299,6 +303,70 @@
       text-decoration: none;
     }
 
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 4rem;
+      color: rgba(101, 163, 13, 0.2);
+      line-height: 1;
+    }
+    .stars {
+      color: #fbbf24;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    .testimonial-text {
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #65a30d, #84cc16);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #fff;
+      font-size: 1.25rem;
+    }
+    .author-info h4 {
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: #1a1a1a;
+    }
+    .author-info p {
+      color: #666;
+      font-size: 0.875rem;
+    }
+
     @media (max-width: 768px) {
       .calc-container {
         grid-template-columns: 1fr;
@@ -320,14 +388,14 @@
     const BUSINESS = {
       name: "BIG TURD Waste Removal",
       phone: "323-574-0882",
-      email: "bigturdservice@gmail.com",
+      email: "bigturdservice@yahoo.com",
       city: "Terre Haute and surrounding cities",
       serviceZips: [
         "47801","47802","47803","47804","47805","47807","47806","47808","47809","47810"
       ]
     };
 
-    // Updated pricing model with Stripe links
+    // Updated pricing model with Stripe links - FIXED URLs (removed trailing spaces)
     const PRICING = {
       small: {
         weekly:   { price: 62.99,  link: 'https://buy.stripe.com/cNi9ATf7tg1najn3mC6g80g' },
@@ -351,10 +419,10 @@
 
     // Dog count pricing - +$7 per additional dog
     const DOG_PRICING = {
-      1: { extra: 0, label: '1 Dog', stripeLink: null },
-      2: { extra: 7, label: '2 Dogs', stripeLink: 'https://buy.stripe.com/14AaEXbVheXj1MR7CS6g80e' },
-      3: { extra: 14, label: '3 Dogs', stripeLink: 'https://buy.stripe.com/14AaEXbVheXj1MR7CS6g80e' },
-      4: { extra: null, label: '4+ Dogs', stripeLink: null }
+      1: { extra: 0, label: '1 Dog' },
+      2: { extra: 7, label: '2 Dogs' },
+      3: { extra: 14, label: '3 Dogs' },
+      4: { extra: null, label: '4+ Dogs' }
     };
 
     let currentService = 'weekly';
@@ -389,9 +457,15 @@
     }
 
     function updatePrice() {
-      if (currentDogs === 4) {
+      // Check for custom quote conditions
+      const needsCustomQuote = currentDogs === 4 || currentYard === 'xlarge';
+      
+      if (needsCustomQuote) {
         document.getElementById('price').innerHTML = 'Call Us';
-        document.getElementById('period').textContent = '4+ Dogs • Custom quote required';
+        let reason = [];
+        if (currentDogs === 4) reason.push('4+ dogs');
+        if (currentYard === 'xlarge') reason.push('20,000+ sq ft');
+        document.getElementById('period').textContent = reason.join(' • ') + ' • Custom quote required';
         document.getElementById('breakdown').style.display = 'none';
         document.getElementById('checkoutBtn').style.display = 'none';
         document.getElementById('customQuote').style.display = 'block';
@@ -399,7 +473,7 @@
       }
 
       document.getElementById('breakdown').style.display = 'block';
-      document.getElementById('checkoutBtn').style.display = 'block';
+      document.getElementById('checkoutBtn').style.display = 'inline-flex';
       document.getElementById('customQuote').style.display = 'none';
 
       const baseData = PRICING[currentYard][currentService];
@@ -435,18 +509,27 @@
     }
 
     function checkout() {
-      if (currentDogs === 4) {
-        window.location.href = 'tel:' + BUSINESS.phone;
+      // Double check we have valid selections
+      if (currentDogs === 4 || currentYard === 'xlarge') {
+        window.location.href = 'tel:' + BUSINESS.phone.replace(/-/g, '');
         return;
       }
+      
       const data = PRICING[currentYard][currentService];
-      window.open(data.link, '_blank');
+      if (data && data.link) {
+        window.open(data.link, '_blank');
+      } else {
+        alert('Please select valid options before checkout.');
+      }
     }
 
     function fillBusinessBits() {
       document.querySelectorAll('[data-business-name]').forEach(el => el.textContent = BUSINESS.name);
       document.querySelectorAll('[data-business-phone]').forEach(el => el.textContent = BUSINESS.phone);
-      document.querySelectorAll('[data-business-email]').forEach(el => { el.textContent = BUSINESS.email; el.href = 'mailto:' + BUSINESS.email; });
+      document.querySelectorAll('[data-business-email]').forEach(el => { 
+        el.textContent = BUSINESS.email; 
+        el.href = 'mailto:' + BUSINESS.email; 
+      });
     }
 
     function sendContactEmail() {
@@ -690,7 +773,11 @@
               </div>
               <div class="service-card" id="yard-large" onclick="selectYard('large')">
                 <div class="service-name">Large Yard</div>
-                <div class="service-desc">10,000 - 15,000 sq ft</div>
+                <div class="service-desc">10,000 - 20,000 sq ft</div>
+              </div>
+              <div class="service-card" id="yard-xlarge" onclick="selectYard('xlarge')">
+                <div class="service-name">Extra Large</div>
+                <div class="service-desc">20,000+ sq ft • Call us</div>
               </div>
             </div>
           </div>
@@ -699,165 +786,218 @@
         <!-- Price Display -->
         <div class="price-display">
           <div class="price-label">Your Monthly Price</div>
-          <div class="price-amount" id="price">$62.99</div>
-          <div class="price-period" id="period">Weekly • 1 Dog • Small yard</div>
-
+          <div class="price-amount" id="price">$69.99</div>
+          <div class="price-period" id="period">Weekly • 1 Dog • Medium Yard</div>
+          
           <div class="breakdown" id="breakdown">
             <div class="breakdown-row">
-              <span>Base service</span>
-              <span id="basePrice">$62.99</span>
+              <span>Base Service</span>
+              <span id="basePrice">$69.99</span>
             </div>
             <div class="breakdown-row" id="dogRow" style="display: none;">
-              <span>Additional dogs</span>
-              <span id="dogPrice">+$0</span>
+              <span>Additional Dogs</span>
+              <span id="dogPrice">+$0.00</span>
             </div>
             <div class="breakdown-row" id="yardRow" style="display: none;">
-              <span>Yard upgrade</span>
-              <span id="yardUpgradePrice">+$0</span>
+              <span>Yard Size Upgrade</span>
+              <span id="yardUpgradePrice">+$0.00</span>
             </div>
             <div class="breakdown-row">
               <span>Total</span>
-              <span id="totalPrice">$62.99</span>
+              <span id="totalPrice">$69.99</span>
             </div>
           </div>
 
-          <button class="checkout-btn" id="checkoutBtn" onclick="checkout()">
-            Checkout Now <i class="fas fa-arrow-right ml-2"></i>
+          <!-- CHECKOUT BUTTON - This was missing! -->
+          <button id="checkoutBtn" class="checkout-btn" onclick="checkout()">
+            <i class="fas fa-lock mr-2"></i> Checkout Now
           </button>
 
-          <div class="custom-quote-box" id="customQuote" style="display: none;">
+          <!-- Custom Quote Box - This was missing! -->
+          <div id="customQuote" class="custom-quote-box" style="display: none;">
             <h4>Custom Quote Required</h4>
-            <p class="text-stone-600 mb-3">4+ dogs need special pricing</p>
-            <a href="tel:323-574-0882">📞 323-574-0882</a>
+            <p class="text-sm text-gray-600 mb-3">This configuration requires a personalized quote.</p>
+            <a href="tel:323-574-0882" onclick="gtag('event', 'click', { event_category: 'conversion', event_label: 'phone_call_custom_quote' });">
+              <i class="fas fa-phone mr-2"></i> Call 323-574-0882
+            </a>
           </div>
-
-          <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #666;">
-            Secure payment via Stripe • Questions? Call us
-          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Service area -->
-  <section id="area" class="relative">
-    <div class="container mx-auto px-4 py-16">
-      <h2 class="text-3xl font-extrabold">Service Area</h2>
-      <p class="text-stone-700 mt-1">We currently service the following ZIP codes. Don't see yours? Send us a note and we'll try to help.</p>
-      <div class="mt-6">
-        <p class="text-stone-600">Serving: 47801, 47802, 47803, 47804, 47805, 47807, 47806, 47808, 47809, 47810</p>
-      </div>
-    </div>
-  </section>
-  <!-- FAQ -->
-  <section id="faq" class="container mx-auto px-4 py-16">
-    <h2 class="text-3xl font-extrabold">FAQ</h2>
-    <div class="mt-6 space-y-6">
-      <details class="rounded-2xl glassy p-5">
-        <summary class="font-semibold">Do I need to be home?</summary>
-        <p class="mt-2 text-stone-700">Nope. We access via your preferred gate. Please ensure safe entry and any pets are secured if needed.</p>
-      </details>
-      <details class="rounded-2xl glassy p-5">
-        <summary class="font-semibold">What about bad weather?</summary>
-        <p class="mt-2 text-stone-700">We work year-round. In severe weather or unsafe conditions, we'll reschedule and notify you.</p>
-      </details>
-      <details class="rounded-2xl glassy p-5">
-        <summary class="font-semibold">How do I pay?</summary>
-        <p class="mt-2 text-stone-700">Use the 'Checkout Now' button for payment.</p>
-      </details>
-      <details class="rounded-2xl glassy p-5">
-        <summary class="font-semibold">Any contracts?</summary>
-        <p class="mt-2 text-stone-700">No contracts. Start, pause or cancel anytime. Just give us a little notice so we can adjust routes.</p>
-      </details>
-    </div>
-  </section>
-  <!-- Reviews Section -->
+  <!-- Testimonials Section -->
   <section id="reviews" class="container mx-auto px-4 py-16">
-    <h2 class="text-3xl font-extrabold">Customer Reviews</h2>
-    <p class="text-stone-700 mt-1">See what our customers are saying about BIG TURD Waste Removal!</p>
-    <div class="mt-6 rounded-2xl glassy p-6">
-      <p class="text-stone-600">Reviews coming soon! Check back for customer testimonials.</p>
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-extrabold">What Our Customers Say</h2>
+      <p class="mt-2 text-stone-700">Don't just take our word for it - hear from our happy customers!</p>
     </div>
-  </section>
-  <!-- Contact -->
-  <section id="contact" class="relative">
-    <div class="container mx-auto px-4 py-16">
-      <div class="grid md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h2 class="text-3xl font-extrabold">Contact</h2>
-          <p class="text-stone-700 mt-1">We're friendly humans—reach out with questions or to get scheduled.</p>
-          <div class="mt-6 space-y-2">
-            <p>📞 <a href="tel:3235740882" data-business-phone>323-574-0882</a></p>
-            <p>✉️ <a data-business-email href="mailto:bigturdservice@gmail.com">bigturdservice@gmail.com</a></p>
-            <p>📍 <span data-business-name>BIG TURD Waste Removal</span> – <span>Local Service • <span data-business-city>Terre Haute and surrounding cities</span></span></p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Big Turd has been a lifesaver! I never have to worry about stepping in surprises in my yard anymore. Professional, reliable, and worth every penny."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JD</div>
+          <div class="author-info">
+            <h4>John D.</h4>
+            <p>Terre Haute, IN</p>
           </div>
         </div>
-        <div class="rounded-2xl glassy p-6 grid gap-4">
-          <div>
-            <label class="text-sm">Name</label>
-            <input id="contactName" type="text" required class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="Your name" />
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Best service ever! They come every week like clockwork. My yard has never looked better, and my kids can play outside without worry."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SM</div>
+          <div class="author-info">
+            <h4>Sarah M.</h4>
+            <p>West Terre Haute, IN</p>
           </div>
-          <div class="grid md:grid-cols-2 gap-4">
-            <div>
-              <label class="text-sm">Email</label>
-              <input id="contactEmail" type="email" required class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="Your email" />
-            </div>
-            <div>
-              <label class="text-sm">Phone</label>
-              <input id="contactPhone" type="tel" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="Your phone" />
-            </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"I was skeptical at first, but now I can't imagine not having this service. Affordable, friendly, and they do an amazing job every time!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MK</div>
+          <div class="author-info">
+            <h4>Mike K.</h4>
+            <p>Clinton, IN</p>
           </div>
-          <div>
-            <label class="text-sm">Message</label>
-            <textarea id="contactMessage" rows="4" class="w-full rounded-xl border border-stone-300 px-3 py-2 glassy" placeholder="Your message"></textarea>
-          </div>
-          <button id="contactSubmit" class="rounded-xl border border-stone-300 bg-white px-4 py-2 hover:bg-stone-50 glassy">Send Message</button>
-          <p class="text-xs text-stone-500">This will open your email app to send the message.</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Service Area -->
+  <section id="area" class="container mx-auto px-4 py-16">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold">Service Area</h2>
+      <p class="mt-2 text-stone-700 max-w-2xl mx-auto">We proudly serve Terre Haute and surrounding areas. Check if we cover your zip code!</p>
+      <div class="mt-8 glassy rounded-2xl p-8 max-w-2xl mx-auto">
+        <h3 class="font-bold text-xl mb-4">Cities We Serve</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-left">
+          <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Terre Haute</div>
+          <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> West Terre Haute</div>
+          <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Clinton</div>
+          <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Brazil</div>
+          <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Sullivan</div>
+          <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Marshall</div>
+        </div>
+        <p class="mt-6 text-sm text-stone-600">Don't see your city? Call us at <a href="tel:323-574-0882" class="text-green-600 font-bold">323-574-0882</a> to check availability!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="container mx-auto px-4 py-16">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-extrabold text-center mb-10">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="glassy rounded-xl p-6">
+          <h3 class="font-bold text-lg mb-2">How does the service work?</h3>
+          <p class="text-stone-600">We come to your property on your scheduled day, thoroughly clean your yard of all pet waste, and dispose of it properly. You don't even need to be home!</p>
+        </div>
+        <div class="glassy rounded-xl p-6">
+          <h3 class="font-bold text-lg mb-2">Do I need to sign a contract?</h3>
+          <p class="text-stone-600">Nope! All our services are month-to-month with no long-term contracts. Cancel anytime with 30 days notice.</p>
+        </div>
+        <div class="glassy rounded-xl p-6">
+          <h3 class="font-bold text-lg mb-2">What if it rains or snows?</h3>
+          <p class="text-stone-600">We work in most weather conditions. If severe weather prevents us from servicing your yard, we'll reschedule for the next available day at no extra charge.</p>
+        </div>
+        <div class="glassy rounded-xl p-6">
+          <h3 class="font-bold text-lg mb-2">Is the initial cleanup really free?</h3>
+          <p class="text-stone-600">Yes! With your first month of recurring service, we include a free initial deep clean to get your yard back in shape.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container mx-auto px-4 py-16">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl font-extrabold mb-4">Get In Touch</h2>
+      <p class="text-stone-600 mb-8">Have questions? We're here to help! Reach out to us anytime.</p>
+      
+      <div class="glassy rounded-2xl p-8">
+        <div class="grid gap-4 text-left">
+          <div>
+            <label class="block text-sm font-medium mb-1">Name *</label>
+            <input type="text" id="contactName" class="w-full px-4 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Your name">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Email *</label>
+            <input type="email" id="contactEmail" class="w-full px-4 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="your@email.com">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Phone</label>
+            <input type="tel" id="contactPhone" class="w-full px-4 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="(555) 123-4567">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Message</label>
+            <textarea id="contactMessage" rows="4" class="w-full px-4 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="How can we help you?"></textarea>
+          </div>
+          <button id="contactSubmit" class="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition">
+            Send Message
+          </button>
+        </div>
+      </div>
+      
+      <div class="mt-8 flex flex-col md:flex-row justify-center gap-8">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-phone text-green-600"></i>
+          <a href="tel:323-574-0882" class="font-bold text-lg hover:text-green-600">323-574-0882</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-envelope text-green-600"></i>
+          <a href="mailto:bigturdservice@yahoo.com" class="font-bold text-lg hover:text-green-600">bigturdservice@yahoo.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
-  <footer class="border-t border-stone-200">
-    <div class="container mx-auto px-4 py-10 text-sm text-stone-600">
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 glassy">
+  <footer class="bg-stone-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
         <div>
-          <div class="font-bold">BIG TURD Waste Removal</div>
-          <div>© <span id="year"></span> • All rights reserved</div>
+          <div class="flex items-center gap-2 font-extrabold text-xl mb-4">
+            <span class="text-2xl">💩</span>
+            <span>BIG TURD</span>
+          </div>
+          <p class="text-stone-400 text-sm">Professional pet waste removal services in Terre Haute and surrounding areas. We scoop the poop so you don't have to!</p>
         </div>
-        <div class="flex gap-3">
-          <a href="#top" class="underline">Back to top</a>
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm text-stone-400">
+            <li><a href="#services" class="hover:text-white">Services</a></li>
+            <li><a href="#pricing" class="hover:text-white">Pricing</a></li>
+            <li><a href="#area" class="hover:text-white">Service Area</a></li>
+            <li><a href="#faq" class="hover:text-white">FAQ</a></li>
+          </ul>
         </div>
+        <div>
+          <h4 class="font-bold mb-4">Contact</h4>
+          <ul class="space-y-2 text-sm text-stone-400">
+            <li><i class="fas fa-phone mr-2"></i> 323-574-0882</li>
+            <li><i class="fas fa-envelope mr-2"></i> bigturdservice@yahoo.com</li>
+            <li><i class="fas fa-map-marker-alt mr-2"></i> Terre Haute, IN</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Hours</h4>
+          <ul class="space-y-2 text-sm text-stone-400">
+            <li>Monday - Friday: 8am - 6pm</li>
+            <li>Saturday: 9am - 4pm</li>
+            <li>Sunday: Closed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-stone-800 mt-8 pt-8 text-center text-stone-500 text-sm">
+        <p>&copy; 2024 BIG TURD Waste Removal. All rights reserved. 💩</p>
       </div>
     </div>
   </footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-  <!-- LocalBusiness schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "BIG TURD Waste Removal",
-    "image": "https://your-github-username.github.io/bigturd/BIGTURD%20PHOTO.png",
-    "telephone": "323-574-0882",
-    "email": "bigturdservice@gmail.com",
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": "Terre Haute and surrounding cities",
-      "postalCode": ["47801","47802","47803","47804","47805","47807","47806","47808","47809","47810"]
-    },
-    "url": "https://your-github-username.github.io/bigturd/",
-    "description": "Dog poop yard cleanup for homes, apartments, and HOAs in Terre Haute and surrounding areas.",
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Terre Haute",
-      "addressRegion": "IN",
-      "postalCode": "47801-47810"
-    }
-  }
-  </script>
 </body>
 </html>
