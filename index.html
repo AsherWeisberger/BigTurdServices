@@ -473,7 +473,17 @@
     }
 
     function updatePrice() {
-      // Check for custom quote conditions
+      // Check for one-time service first - always show call us
+      if (currentService === 'onetime') {
+        document.getElementById('price').innerHTML = 'Call Us';
+        document.getElementById('period').textContent = 'One-Time Clean • Call for quote';
+        document.getElementById('breakdown').style.display = 'none';
+        document.getElementById('checkoutBtn').style.display = 'none';
+        document.getElementById('customQuote').style.display = 'block';
+        return;
+      }
+
+      // Check for other custom quote conditions
       const needsCustomQuote = currentDogs === 4 || currentYard === 'xlarge';
       
       if (needsCustomQuote) {
@@ -531,7 +541,7 @@
 
     function checkout() {
       // Double check we have valid selections
-      if (currentDogs === 4 || currentYard === 'xlarge') {
+      if (currentService === 'onetime' || currentDogs === 4 || currentYard === 'xlarge') {
         window.location.href = 'tel:' + BUSINESS.phone.replace(/-/g, '');
         return;
       }
