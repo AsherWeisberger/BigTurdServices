@@ -648,9 +648,9 @@
           </div>
         </div>
         <div class="hero-image">
-          <div class="aspect-[4/3] w-full rounded-2xl overflow-hidden">
-            <div class="image-container h-full w-full">
-              <img src="BIGTURD%20PHOTO.png" alt="Big Turd Waste Removal" class="w-full h-full object-cover">
+          <div class="aspect-[4/3] w-full rounded-2xl overflow-hidden bg-white/50">
+            <div class="image-container h-full w-full flex items-center justify-center p-8">
+              <img src="BIGTURD%20PHOTO.png" alt="Big Turd Waste Removal" class="max-w-full max-h-full object-contain">
             </div>
           </div>
         </div>
@@ -661,11 +661,14 @@
         position: relative;
         width: 100%;
         height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .image-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
         display: block;
       }
       .aspect-[4/3] {
