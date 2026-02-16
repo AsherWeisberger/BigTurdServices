@@ -686,6 +686,188 @@
       }
     </style>
   </section>
+
+  <!-- POOP CALCULATOR SECTION -->
+<section id="poop-calc" class="container mx-auto px-4 py-12">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-8">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-stone-900 mb-4">
+        <span class="text-lime-600">💩</span> The Poop Calculator <span class="text-lime-600">💩</span>
+      </h2>
+      <p class="text-lg text-stone-600">See how much poop is really piling up in your yard. It's more than you think.</p>
+    </div>
+
+    <div class="glassy rounded-3xl p-6 md:p-10 shadow-2xl border-2 border-lime-200">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+        
+        <!-- LEFT SIDE: Controls -->
+        <div class="space-y-8">
+          <!-- Dog Counter -->
+          <div class="bg-white/80 rounded-2xl p-6 border border-stone-200">
+            <label class="block text-sm font-bold text-stone-500 uppercase tracking-wide mb-3">
+              How many dogs?
+            </label>
+            <div class="flex items-center gap-4 mb-4">
+              <button onclick="adjustDogs(-1)" class="w-12 h-12 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center text-2xl font-bold transition">−</button>
+              <div class="flex-1 text-center">
+                <span id="dogCount" class="text-5xl font-black text-lime-600">1</span>
+                <span class="text-stone-400 text-sm block mt-1">dog<span id="dogPlural">s</span></span>
+              </div>
+              <button onclick="adjustDogs(1)" class="w-12 h-12 rounded-full bg-lime-500 hover:bg-lime-600 text-white flex items-center justify-center text-2xl font-bold transition shadow-lg">+</button>
+            </div>
+            <div class="flex justify-center gap-1 text-3xl" id="dogEmojis">
+              🐕
+            </div>
+          </div>
+
+          <!-- Poops Per Day -->
+          <div class="bg-white/80 rounded-2xl p-6 border border-stone-200">
+            <label class="block text-sm font-bold text-stone-500 uppercase tracking-wide mb-3">
+              Poops per day per dog
+            </label>
+            <input type="range" id="poopSlider" min="1" max="5" value="3" step="1" 
+                   class="w-full h-3 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-lime-600 mb-4"
+                   oninput="updateCalc()">
+            <div class="flex justify-between text-xs text-stone-400 font-bold uppercase tracking-wide">
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+            </div>
+            <div class="text-center mt-4">
+              <span id="poopPerDay" class="text-4xl font-black text-amber-600">3</span>
+              <span class="text-stone-500">poops/day each</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: The Shocking Results -->
+        <div class="flex flex-col justify-center">
+          <div class="bg-gradient-to-br from-stone-900 to-stone-800 rounded-2xl p-6 text-white shadow-xl">
+            <div class="text-center mb-6">
+              <div class="text-sm uppercase tracking-widest text-stone-400 mb-2">Monthly Poop Total</div>
+              <div class="flex items-baseline justify-center gap-2 flex-wrap">
+                <span id="totalPoops" class="text-7xl md:text-8xl font-black text-lime-400 leading-none">84</span>
+                <span class="text-3xl font-bold text-stone-300">poops</span>
+              </div>
+            </div>
+
+            <!-- Visual Poop Storm -->
+            <div class="bg-black/30 rounded-xl p-4 mb-6 min-h-[120px] flex flex-wrap justify-center items-center gap-1 overflow-hidden" id="poopVisual">
+              <!-- Poops get injected here -->
+            </div>
+
+            <!-- Reality Check -->
+            <div class="space-y-3 text-sm">
+              <div class="flex items-center gap-3 bg-white/10 rounded-lg p-3">
+                <span class="text-2xl">⚖️</span>
+                <div>
+                  <div class="font-bold text-lime-300">That's <span id="poundsWaste">63</span> lbs of waste</div>
+                  <div class="text-stone-400 text-xs">per month sitting in your yard</div>
+                </div>
+              </div>
+              
+              <div class="flex items-center gap-3 bg-white/10 rounded-lg p-3">
+                <span class="text-2xl">🦠</span>
+                <div>
+                  <div class="font-bold text-red-300"><span id="bacteriaCount">1.9 billion</span> bacteria</div>
+                  <div class="text-stone-400 text-xs">swarming in that poop right now</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 bg-white/10 rounded-lg p-3">
+                <span class="text-2xl">⏰</span>
+                <div>
+                  <div class="font-bold text-amber-300"><span id="timeWasted">4.2</span> hours</div>
+                  <div class="text-stone-400 text-xs">you'll spend scooping this month</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 text-center">
+            <a href="#pricing" class="inline-flex items-center justify-center w-full bg-lime-600 hover:bg-lime-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              Save Your Yard →
+            </a>
+            <p class="text-xs text-stone-500 mt-2">Based on average .75 lbs per poop</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  let dogs = 1;
+  let poopsPerDay = 3;
+
+  function adjustDogs(change) {
+    dogs = Math.max(1, Math.min(5, dogs + change));
+    document.getElementById('dogCount').textContent = dogs;
+    document.getElementById('dogPlural').textContent = dogs === 1 ? '' : 's';
+    
+    // Update dog emojis
+    const dogEmojis = document.getElementById('dogEmojis');
+    dogEmojis.innerHTML = '🐕'.repeat(dogs);
+    
+    updateCalc();
+  }
+
+  function updateCalc() {
+    poopsPerDay = parseInt(document.getElementById('poopSlider').value);
+    document.getElementById('poopPerDay').textContent = poopsPerDay;
+    
+    // Math
+    const daily = dogs * poopsPerDay;
+    const weekly = daily * 7;
+    const monthly = daily * 30;
+    const pounds = (monthly * 0.75).toFixed(0);
+    const bacteria = (monthly * 23000000).toLocaleString();
+    const hours = ((monthly * 2) / 60).toFixed(1); // 2 mins per poop
+    
+    // Update numbers
+    document.getElementById('totalPoops').textContent = monthly;
+    document.getElementById('poundsWaste').textContent = pounds;
+    document.getElementById('bacteriaCount').textContent = bacteria;
+    document.getElementById('timeWasted').textContent = hours;
+    
+    // Update visual poop display (max 50 for performance)
+    const visualContainer = document.getElementById('poopVisual');
+    visualContainer.innerHTML = '';
+    const displayCount = Math.min(monthly, 50);
+    for(let i = 0; i < displayCount; i++) {
+      const poop = document.createElement('span');
+      poop.textContent = '💩';
+      poop.style.fontSize = Math.random() > 0.5 ? '1.5rem' : '1.2rem';
+      poop.style.opacity = Math.random() * 0.5 + 0.5;
+      poop.style.animation = `float ${2 + Math.random() * 2}s ease-in-out infinite`;
+      poop.style.animationDelay = `${Math.random() * 2}s`;
+      visualContainer.appendChild(poop);
+    }
+    
+    if(monthly > 50) {
+      const more = document.createElement('div');
+      more.className = 'w-full text-center text-stone-400 text-xs mt-2';
+      more.textContent = `+ ${monthly - 50} more...`;
+      visualContainer.appendChild(more);
+    }
+  }
+
+  // Add floating animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Initialize
+  updateCalc();
+</script>
+  
   <!-- Why Choose Big Turd -->
   <section class="container mx-auto px-4 py-16">
     <div class="text-center">
