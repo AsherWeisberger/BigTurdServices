@@ -616,45 +616,42 @@
     </div>
   </header>
 
-  <!-- Hero Section - Redesigned -->
-  <section id="top" class="relative py-20 overflow-hidden">
-    <!-- Background decoration -->
-    <div class="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-stone-100"></div>
-    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-green-100/30 to-transparent"></div>
-    
+  <!-- Hero Section - Integrated Design -->
+  <section id="top" class="relative py-16 lg:py-24 overflow-hidden bg-gradient-to-br from-green-50 via-white to-stone-100">
     <div class="container mx-auto px-4 relative">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-4">
+        
         <!-- Text Content -->
-        <div class="text-center lg:text-left">
+        <div class="text-center lg:text-left max-w-xl z-10">
           <div class="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold mb-6">
             <span class="animate-pulse">🐕</span>
             Now Serving Terre Haute & Surrounding Areas
           </div>
           
-          <h1 class="text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-            <span class="text-lime-600">Professional</span><br>
-            <span class="text-stone-900">Pet Waste Removal</span>
+          <h1 class="text-5xl lg:text-7xl font-extrabold leading-tight mb-6">
+            <span class="text-lime-600">Big Turd</span><br>
+            <span class="text-stone-900">Professional<br>Pet Waste Removal</span>
           </h1>
           
-          <p class="text-lg text-stone-600 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+          <p class="text-lg text-stone-600 mb-8 leading-relaxed">
             Reliable, affordable dog poop cleanup for yards, HOAs, apartments and parks. 
             <span class="text-green-600 font-semibold">No contracts.</span> Friendly service. 
             Sparkling lawns and happy paws.
           </p>
           
           <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <a href="#pricing" class="inline-flex items-center justify-center px-8 py-4 bg-lime-600 text-white font-bold rounded-xl hover:bg-lime-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+            <a href="#pricing" class="inline-flex items-center justify-center px-8 py-4 bg-lime-600 text-white font-bold rounded-xl hover:bg-lime-700 transition-all shadow-lg hover:shadow-xl">
               View Pricing Plans
               <i class="fas fa-arrow-right ml-2"></i>
             </a>
             <a href="tel:323-574-0882" class="inline-flex items-center justify-center px-8 py-4 bg-white text-stone-700 font-bold rounded-xl border-2 border-stone-200 hover:border-green-500 hover:text-green-600 transition-all">
               <i class="fas fa-phone mr-2"></i>
-              Call Now
+              323-574-0882
             </a>
           </div>
           
           <!-- Trust badges -->
-          <div class="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-stone-500">
+          <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm text-stone-500">
             <div class="flex items-center gap-2">
               <i class="fas fa-check-circle text-green-500"></i>
               <span>Licensed & Insured</span>
@@ -670,25 +667,21 @@
           </div>
         </div>
         
-        <!-- Image Content -->
-        <div class="relative">
-          <!-- Decorative elements -->
-          <div class="absolute -top-4 -right-4 w-72 h-72 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-          <div class="absolute -bottom-4 -left-4 w-72 h-72 bg-lime-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <!-- Logo positioned naturally alongside -->
+        <div class="relative w-full max-w-md lg:max-w-lg xl:max-w-xl lg:-ml-8">
+          <!-- Decorative blob behind -->
+          <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-br from-green-200 to-lime-200 rounded-full opacity-30 blur-3xl"></div>
           
-          <!-- Logo container -->
-          <div class="relative bg-white rounded-3xl shadow-2xl p-8 lg:p-12 transform hover:scale-[1.02] transition-transform duration-300">
-            <div class="aspect-square flex items-center justify-center">
-              <img src="BIGTURD%20PHOTO.png" alt="Big Turd Waste Removal" class="w-full h-full object-contain drop-shadow-lg">
-            </div>
-            
-            <!-- Floating badge -->
-            <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-full font-bold shadow-lg flex items-center gap-2 whitespace-nowrap">
-              <i class="fas fa-star text-yellow-300"></i>
-              #1 in Terre Haute
-            </div>
+          <!-- Logo image - no box, just floating -->
+          <img src="BIGTURD%20PHOTO.png" alt="Big Turd Waste Removal" class="relative w-full h-auto drop-shadow-2xl transform hover:scale-105 transition-transform duration-300">
+          
+          <!-- Floating badge -->
+          <div class="absolute -bottom-4 right-4 lg:right-0 bg-green-600 text-white px-6 py-3 rounded-full font-bold shadow-lg flex items-center gap-2 whitespace-nowrap animate-bounce">
+            <i class="fas fa-star text-yellow-300"></i>
+            #1 in Terre Haute
           </div>
         </div>
+        
       </div>
     </div>
   </section>
