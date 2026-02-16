@@ -395,20 +395,32 @@
       ]
     };
 
-    // Base pricing for SMALL yard (the baseline)
-    const BASE_PRICING = {
-      weekly:   { price: 62.99,  link: 'https://buy.stripe.com/cNi9ATf7tg1najn3mC6g80g' },
-      twice:    { price: 108.99, link: 'https://buy.stripe.com/6oUcN53oL4iF3UZaP46g80h' },
-      biweekly: { price: 42.99,  link: 'https://buy.stripe.com/8x29AT4sP3eBgHL3mC6g80i' },
-      onetime:  { price: 69.00,  link: 'https://buy.stripe.com/6oU14n4sP02pgHL4qG6g80j' }
-    };
-
-    // Yard size upgrades (additional cost over small yard base price)
-    const YARD_UPGRADES = {
-      small:  { extra: 0,  label: 'Small Yard' },
-      medium: { extra: 7,  label: 'Medium Yard' },
-      large:  { extra: 26, label: 'Large Yard' },
-      xlarge: { extra: null, label: 'Extra Large' }
+    // UPDATED PRICING - All new prices and Stripe links as provided
+    const PRICING = {
+      small: {
+        weekly:   { price: 65.00,  link: 'https://buy.stripe.com/3cIcN54sP3eB2QV3mC6g80y' },
+        twice:    { price: 110.00, link: 'https://buy.stripe.com/3cI00jcZl9CZezD9L06g80C' },
+        biweekly: { price: 45.00,  link: 'https://buy.stripe.com/14A9AT3oL9CZdvzbT86g80H' },
+        onetime:  { price: 69.00,  link: 'https://buy.stripe.com/7sY8wP8J5eXj2QVf5k6g80L' }
+      },
+      medium: {
+        weekly:   { price: 75.00,  link: 'https://buy.stripe.com/28E00jcZl6qNajnaP46g80z' },
+        twice:    { price: 119.99, link: 'https://buy.stripe.com/cNi7sL0cz5mJajn5uK6g80D' },
+        biweekly: { price: 50.00,  link: 'https://buy.stripe.com/00w9AT8J5dTfcrv0aq6g80I' },
+        onetime:  { price: 79.00,  link: 'https://buy.stripe.com/5kQdR9bVh7uR6378GW6g80M' }
+      },
+      large: {
+        weekly:   { price: 85.00,  link: 'https://buy.stripe.com/00waEX5wTdTf1MR6yO6g80A' },
+        twice:    { price: 135.00, link: 'https://buy.stripe.com/14AeVd7F1eXj3UZ9L06g80E' },
+        biweekly: { price: 60.00,  link: 'https://buy.stripe.com/dRmbJ1f7teXj77bg9o6g80J' },
+        onetime:  { price: 89.00,  link: 'https://buy.stripe.com/bJe6oH2kH4iF2QVaP46g80N' }
+      },
+      xlarge: {
+        weekly:   { price: 100.00, link: 'https://buy.stripe.com/6oU9ATf7tdTf8bf5uK6g80B' },
+        twice:    { price: 145.00, link: 'https://buy.stripe.com/9B66oH0czcPbbnr5uK6g80G' },
+        biweekly: { price: 70.00,  link: 'https://buy.stripe.com/bJe6oH8J53eBdvz3mC6g80K' },
+        onetime:  { price: 110.00, link: 'https://buy.stripe.com/28E4gz4sP7uR637f5k6g80O' }
+      }
     };
 
     // Dog count pricing - +$7 per additional dog over the first
@@ -417,28 +429,6 @@
       2: { extra: 7, label: '2 Dogs' },
       3: { extra: 14, label: '3 Dogs' },
       4: { extra: null, label: '4+ Dogs' }
-    };
-
-    // Stripe links for each yard size + frequency combination
-    const PRICING = {
-      small: {
-        weekly:   { price: 62.99,  link: 'https://buy.stripe.com/cNi9ATf7tg1najn3mC6g80g' },
-        twice:    { price: 108.99, link: 'https://buy.stripe.com/6oUcN53oL4iF3UZaP46g80h' },
-        biweekly: { price: 42.99,  link: 'https://buy.stripe.com/8x29AT4sP3eBgHL3mC6g80i' },
-        onetime:  { price: 69.00,  link: 'https://buy.stripe.com/6oU14n4sP02pgHL4qG6g80j' }
-      },
-      medium: {
-        weekly:   { price: 69.99,  link: 'https://buy.stripe.com/4gM00j8J5bL7dvzaP46g80k' },
-        twice:    { price: 119.99, link: 'https://buy.stripe.com/eVqaEXgbx5mJ1MR0aq6g80l' },
-        biweekly: { price: 47.99,  link: 'https://buy.stripe.com/3cI28r8J5cPb77bg9o6g80m' },
-        onetime:  { price: 79.00,  link: 'https://buy.stripe.com/9B614n7F116t8bfbT86g80n' }
-      },
-      large: {
-        weekly:   { price: 88.99,  link: 'https://buy.stripe.com/5kQ00jbVheXjbnr7CS6g80o' },
-        twice:    { price: 149.99, link: 'https://buy.stripe.com/3cI3cvbVh16t0INcXc6g80p' },
-        biweekly: { price: 59.99,  link: 'https://buy.stripe.com/28E3cv8J57uR2QVcXc6g80q' },
-        onetime:  { price: 89.00,  link: 'https://buy.stripe.com/eVq00j8J52ax3UZe1g6g80r' }
-      }
     };
 
     let currentService = 'weekly';
@@ -473,25 +463,10 @@
     }
 
     function updatePrice() {
-      // Check for one-time service first - always show call us
-      if (currentService === 'onetime') {
+      // Check for 4+ dogs - requires custom quote
+      if (currentDogs === 4) {
         document.getElementById('price').innerHTML = 'Call Us';
-        document.getElementById('period').textContent = 'One-Time Clean • Call for quote';
-        document.getElementById('breakdown').style.display = 'none';
-        document.getElementById('checkoutBtn').style.display = 'none';
-        document.getElementById('customQuote').style.display = 'block';
-        return;
-      }
-
-      // Check for other custom quote conditions
-      const needsCustomQuote = currentDogs === 4 || currentYard === 'xlarge';
-      
-      if (needsCustomQuote) {
-        document.getElementById('price').innerHTML = 'Call Us';
-        let reason = [];
-        if (currentDogs === 4) reason.push('4+ dogs');
-        if (currentYard === 'xlarge') reason.push('20,000+ sq ft');
-        document.getElementById('period').textContent = reason.join(' • ') + ' • Custom quote required';
+        document.getElementById('period').textContent = '4+ Dogs • Custom quote required';
         document.getElementById('breakdown').style.display = 'none';
         document.getElementById('checkoutBtn').style.display = 'none';
         document.getElementById('customQuote').style.display = 'block';
@@ -502,19 +477,22 @@
       document.getElementById('checkoutBtn').style.display = 'inline-flex';
       document.getElementById('customQuote').style.display = 'none';
 
-      // Calculate pricing based on small yard as baseline
-      const basePrice = BASE_PRICING[currentService].price;
-      const yardUpgrade = YARD_UPGRADES[currentYard].extra;
+      // Get base price from PRICING object
+      const basePrice = PRICING[currentYard][currentService].price;
       const dogFee = DOG_PRICING[currentDogs].extra;
       
-      const totalPrice = basePrice + yardUpgrade + dogFee;
+      const totalPrice = basePrice + dogFee;
 
       const serviceName = currentService === 'weekly' ? 'Weekly' : 
                          currentService === 'twice' ? 'Twice Weekly' : 
                          currentService === 'biweekly' ? 'Every Other Week' : 'One-Time';
 
+      const yardLabel = currentYard === 'small' ? 'Small Yard' :
+                       currentYard === 'medium' ? 'Medium Yard' :
+                       currentYard === 'large' ? 'Large Yard' : 'Extra Large';
+
       document.getElementById('price').textContent = '$' + totalPrice.toFixed(2);
-      document.getElementById('period').textContent = `${serviceName} • ${currentDogs} Dog${currentDogs > 1 ? 's' : ''} • ${YARD_UPGRADES[currentYard].label}`;
+      document.getElementById('period').textContent = `${serviceName} • ${currentDogs} Dog${currentDogs > 1 ? 's' : ''} • ${yardLabel}`;
 
       // Update breakdown
       document.getElementById('basePrice').textContent = '$' + basePrice.toFixed(2);
@@ -528,20 +506,11 @@
       } else {
         dogRow.style.display = 'none';
       }
-
-      // Show/hide yard upgrade row
-      const yardRow = document.getElementById('yardRow');
-      if (currentYard !== 'small') {
-        yardRow.style.display = 'flex';
-        document.getElementById('yardUpgradePrice').textContent = '+$' + yardUpgrade.toFixed(2);
-      } else {
-        yardRow.style.display = 'none';
-      }
     }
 
     function checkout() {
-      // Double check we have valid selections
-      if (currentService === 'onetime' || currentDogs === 4 || currentYard === 'xlarge') {
+      // Check for 4+ dogs
+      if (currentDogs === 4) {
         window.location.href = 'tel:' + BUSINESS.phone.replace(/-/g, '');
         return;
       }
@@ -686,188 +655,6 @@
       }
     </style>
   </section>
-
-  <!-- POOP CALCULATOR SECTION -->
-<section id="poop-calc" class="container mx-auto px-4 py-12">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-8">
-      <h2 class="text-4xl md:text-5xl font-extrabold text-stone-900 mb-4">
-        <span class="text-lime-600">💩</span> The Poop Calculator <span class="text-lime-600">💩</span>
-      </h2>
-      <p class="text-lg text-stone-600">See how much poop is really piling up in your yard. It's more than you think.</p>
-    </div>
-
-    <div class="glassy rounded-3xl p-6 md:p-10 shadow-2xl border-2 border-lime-200">
-      <div class="grid md:grid-cols-2 gap-8 md:gap-12">
-        
-        <!-- LEFT SIDE: Controls -->
-        <div class="space-y-8">
-          <!-- Dog Counter -->
-          <div class="bg-white/80 rounded-2xl p-6 border border-stone-200">
-            <label class="block text-sm font-bold text-stone-500 uppercase tracking-wide mb-3">
-              How many dogs?
-            </label>
-            <div class="flex items-center gap-4 mb-4">
-              <button onclick="adjustDogs(-1)" class="w-12 h-12 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center text-2xl font-bold transition">−</button>
-              <div class="flex-1 text-center">
-                <span id="dogCount" class="text-5xl font-black text-lime-600">1</span>
-                <span class="text-stone-400 text-sm block mt-1">dog<span id="dogPlural">s</span></span>
-              </div>
-              <button onclick="adjustDogs(1)" class="w-12 h-12 rounded-full bg-lime-500 hover:bg-lime-600 text-white flex items-center justify-center text-2xl font-bold transition shadow-lg">+</button>
-            </div>
-            <div class="flex justify-center gap-1 text-3xl" id="dogEmojis">
-              🐕
-            </div>
-          </div>
-
-          <!-- Poops Per Day -->
-          <div class="bg-white/80 rounded-2xl p-6 border border-stone-200">
-            <label class="block text-sm font-bold text-stone-500 uppercase tracking-wide mb-3">
-              Poops per day per dog
-            </label>
-            <input type="range" id="poopSlider" min="1" max="5" value="3" step="1" 
-                   class="w-full h-3 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-lime-600 mb-4"
-                   oninput="updateCalc()">
-            <div class="flex justify-between text-xs text-stone-400 font-bold uppercase tracking-wide">
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>4</span>
-              <span>5</span>
-            </div>
-            <div class="text-center mt-4">
-              <span id="poopPerDay" class="text-4xl font-black text-amber-600">3</span>
-              <span class="text-stone-500">poops/day each</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- RIGHT SIDE: The Shocking Results -->
-        <div class="flex flex-col justify-center">
-          <div class="bg-gradient-to-br from-stone-900 to-stone-800 rounded-2xl p-6 text-white shadow-xl">
-            <div class="text-center mb-6">
-              <div class="text-sm uppercase tracking-widest text-stone-400 mb-2">Monthly Poop Total</div>
-              <div class="flex items-baseline justify-center gap-2 flex-wrap">
-                <span id="totalPoops" class="text-7xl md:text-8xl font-black text-lime-400 leading-none">84</span>
-                <span class="text-3xl font-bold text-stone-300">poops</span>
-              </div>
-            </div>
-
-            <!-- Visual Poop Storm -->
-            <div class="bg-black/30 rounded-xl p-4 mb-6 min-h-[120px] flex flex-wrap justify-center items-center gap-1 overflow-hidden" id="poopVisual">
-              <!-- Poops get injected here -->
-            </div>
-
-            <!-- Reality Check -->
-            <div class="space-y-3 text-sm">
-              <div class="flex items-center gap-3 bg-white/10 rounded-lg p-3">
-                <span class="text-2xl">⚖️</span>
-                <div>
-                  <div class="font-bold text-lime-300">That's <span id="poundsWaste">63</span> lbs of waste</div>
-                  <div class="text-stone-400 text-xs">per month sitting in your yard</div>
-                </div>
-              </div>
-              
-              <div class="flex items-center gap-3 bg-white/10 rounded-lg p-3">
-                <span class="text-2xl">🦠</span>
-                <div>
-                  <div class="font-bold text-red-300"><span id="bacteriaCount">1.9 billion</span> bacteria</div>
-                  <div class="text-stone-400 text-xs">swarming in that poop right now</div>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-3 bg-white/10 rounded-lg p-3">
-                <span class="text-2xl">⏰</span>
-                <div>
-                  <div class="font-bold text-amber-300"><span id="timeWasted">4.2</span> hours</div>
-                  <div class="text-stone-400 text-xs">you'll spend scooping this month</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-6 text-center">
-            <a href="#pricing" class="inline-flex items-center justify-center w-full bg-lime-600 hover:bg-lime-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-              Save Your Yard →
-            </a>
-            <p class="text-xs text-stone-500 mt-2">Based on average .75 lbs per poop</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  let dogs = 1;
-  let poopsPerDay = 3;
-
-  function adjustDogs(change) {
-    dogs = Math.max(1, Math.min(5, dogs + change));
-    document.getElementById('dogCount').textContent = dogs;
-    document.getElementById('dogPlural').textContent = dogs === 1 ? '' : 's';
-    
-    // Update dog emojis
-    const dogEmojis = document.getElementById('dogEmojis');
-    dogEmojis.innerHTML = '🐕'.repeat(dogs);
-    
-    updateCalc();
-  }
-
-  function updateCalc() {
-    poopsPerDay = parseInt(document.getElementById('poopSlider').value);
-    document.getElementById('poopPerDay').textContent = poopsPerDay;
-    
-    // Math
-    const daily = dogs * poopsPerDay;
-    const weekly = daily * 7;
-    const monthly = daily * 30;
-    const pounds = (monthly * 0.75).toFixed(0);
-    const bacteria = (monthly * 23000000).toLocaleString();
-    const hours = ((monthly * 2) / 60).toFixed(1); // 2 mins per poop
-    
-    // Update numbers
-    document.getElementById('totalPoops').textContent = monthly;
-    document.getElementById('poundsWaste').textContent = pounds;
-    document.getElementById('bacteriaCount').textContent = bacteria;
-    document.getElementById('timeWasted').textContent = hours;
-    
-    // Update visual poop display (max 50 for performance)
-    const visualContainer = document.getElementById('poopVisual');
-    visualContainer.innerHTML = '';
-    const displayCount = Math.min(monthly, 50);
-    for(let i = 0; i < displayCount; i++) {
-      const poop = document.createElement('span');
-      poop.textContent = '💩';
-      poop.style.fontSize = Math.random() > 0.5 ? '1.5rem' : '1.2rem';
-      poop.style.opacity = Math.random() * 0.5 + 0.5;
-      poop.style.animation = `float ${2 + Math.random() * 2}s ease-in-out infinite`;
-      poop.style.animationDelay = `${Math.random() * 2}s`;
-      visualContainer.appendChild(poop);
-    }
-    
-    if(monthly > 50) {
-      const more = document.createElement('div');
-      more.className = 'w-full text-center text-stone-400 text-xs mt-2';
-      more.textContent = `+ ${monthly - 50} more...`;
-      visualContainer.appendChild(more);
-    }
-  }
-
-  // Add floating animation
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
-    }
-  `;
-  document.head.appendChild(style);
-
-  // Initialize
-  updateCalc();
-</script>
-  
   <!-- Why Choose Big Turd -->
   <section class="container mx-auto px-4 py-16">
     <div class="text-center">
@@ -992,7 +779,7 @@
               </div>
               <div class="service-card" id="yard-xlarge" onclick="selectYard('xlarge')">
                 <div class="service-name">Extra Large</div>
-                <div class="service-desc">20,000+ sq ft • Call us</div>
+                <div class="service-desc">20,000+ sq ft</div>
               </div>
             </div>
           </div>
@@ -1001,25 +788,21 @@
         <!-- Price Display -->
         <div class="price-display">
           <div class="price-label">Your Monthly Price</div>
-          <div class="price-amount" id="price">$62.99</div>
+          <div class="price-amount" id="price">$65.00</div>
           <div class="price-period" id="period">Weekly • 1 Dog • Small Yard</div>
           
           <div class="breakdown" id="breakdown">
             <div class="breakdown-row">
               <span>Base Service</span>
-              <span id="basePrice">$62.99</span>
+              <span id="basePrice">$65.00</span>
             </div>
             <div class="breakdown-row" id="dogRow" style="display: none;">
               <span>Additional Dogs</span>
               <span id="dogPrice">+$0.00</span>
             </div>
-            <div class="breakdown-row" id="yardRow" style="display: none;">
-              <span>Yard Size Upgrade</span>
-              <span id="yardUpgradePrice">+$0.00</span>
-            </div>
             <div class="breakdown-row">
               <span>Total</span>
-              <span id="totalPrice">$62.99</span>
+              <span id="totalPrice">$65.00</span>
             </div>
           </div>
 
@@ -1031,7 +814,7 @@
           <!-- Custom Quote Box -->
           <div id="customQuote" class="custom-quote-box" style="display: none;">
             <h4>Custom Quote Required</h4>
-            <p class="text-sm text-gray-600 mb-3">This configuration requires a personalized quote.</p>
+            <p class="text-sm text-gray-600 mb-3">4+ dogs requires a personalized quote.</p>
             <a href="tel:323-574-0882" onclick="gtag('event', 'click', { event_category: 'conversion', event_label: 'phone_call_custom_quote' });">
               <i class="fas fa-phone mr-2"></i> Call 323-574-0882
             </a>
