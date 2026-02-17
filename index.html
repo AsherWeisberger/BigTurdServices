@@ -367,6 +367,85 @@
       font-size: 0.875rem;
     }
 
+    /* Commercial Section Styles */
+    .commercial-section {
+      background: linear-gradient(135deg, rgba(101, 163, 13, 0.1), rgba(132, 204, 22, 0.05));
+      border: 2px solid rgba(101, 163, 13, 0.2);
+    }
+    
+    .commercial-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(101, 163, 13, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+    
+    .commercial-card:hover {
+      border-color: #65a30d;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(101, 163, 13, 0.15);
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      color: #444;
+    }
+    
+    .feature-list li i {
+      color: #65a30d;
+      margin-top: 0.25rem;
+    }
+
+    /* Commercial Calculator Specific Styles */
+    .contract-length-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .addon-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .addon-card:hover {
+      border-color: #65a30d;
+      background: rgba(101, 163, 13, 0.05);
+    }
+    
+    .addon-card.selected {
+      border-color: #65a30d;
+      background: rgba(101, 163, 13, 0.15);
+      box-shadow: 0 4px 15px rgba(101, 163, 13, 0.2);
+    }
+    
+    .addon-checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #65a30d;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: all 0.2s;
+    }
+    
+    .addon-card.selected .addon-checkbox {
+      background: #65a30d;
+    }
+
     @media (max-width: 768px) {
       .calc-container {
         grid-template-columns: 1fr;
@@ -375,7 +454,7 @@
         position: relative;
         top: 0;
       }
-      .service-grid, .dog-count-grid {
+      .service-grid, .dog-count-grid, .contract-length-grid {
         grid-template-columns: repeat(2, 1fr);
       }
       .yard-grid {
@@ -582,6 +661,7 @@
         <nav class="hidden md:flex items-center gap-6 text-sm">
           <a href="#services" class="hover:text-stone-700">Services</a>
           <a href="#pricing" class="hover:text-stone-700">Pricing</a>
+          <a href="#commercial" class="hover:text-stone-700">Commercial</a>
           <a href="#area" class="hover:text-stone-700">Service Area</a>
           <a href="#faq" class="hover:text-stone-700">FAQ</a>
           <a href="#reviews" class="hover:text-stone-700">Reviews</a>
@@ -594,6 +674,7 @@
         <div class="grid gap-2 text-sm">
           <a href="#services" class="px-2 py-1">Services</a>
           <a href="#pricing" class="px-2 py-1">Pricing</a>
+          <a href="#commercial" class="px-2 py-1">Commercial</a>
           <a href="#area" class="px-2 py-1">Service Area</a>
           <a href="#faq" class="px-2 py-1">FAQ</a>
           <a href="#reviews" class="px-2 py-1">Reviews</a>
@@ -615,7 +696,7 @@
           <p class="mt-6 text-lg text-stone-700 max-w-prose mx-auto">Reliable, affordable dog poop cleanup for yards, HOAs, apartments and parks. No contracts. Friendly service. Sparkling lawns and happy paws.</p>
           <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#pricing" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-lime-600 text-white hover:bg-lime-700">View Pricing Plans</a>
-            <a href="#pricing" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-green-600 text-white hover:bg-green-700">Get Free Quote</a>
+            <a href="#commercial" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-green-600 text-white hover:bg-green-700">Commercial Solutions</a>
           </div>
         </div>
       </div>
@@ -972,6 +1053,317 @@
     </div>
   </section>
 
+  <!-- COMMERCIAL SECTION - Dog Poop Stations for Larger Complexes -->
+  <section id="commercial" class="commercial-section py-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-extrabold text-stone-900 mb-4">
+          🏢 Commercial Solutions
+        </h2>
+        <p class="text-lg text-stone-600 max-w-2xl mx-auto">
+          Professional dog poop station installation and maintenance for HOAs, apartment complexes, parks, and commercial properties. Keep your common areas clean and your residents happy.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        <!-- Feature 1 -->
+        <div class="commercial-card text-center">
+          <div class="w-16 h-16 bg-lime-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+            🚮
+          </div>
+          <h3 class="font-bold text-xl mb-2">Station Installation</h3>
+          <p class="text-stone-600 mb-4">Professional installation of high-quality dog poop stations including bag dispensers and waste receptacles.</p>
+          <div class="text-2xl font-black text-lime-600">$350</div>
+          <div class="text-sm text-stone-500">One-time installation fee</div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="commercial-card text-center">
+          <div class="w-16 h-16 bg-lime-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+            🔄
+          </div>
+          <h3 class="font-bold text-xl mb-2">Regular Maintenance</h3>
+          <p class="text-stone-600 mb-4">6 or 12-month service contracts including bag restocking, waste removal, and station cleaning.</p>
+          <div class="text-2xl font-black text-lime-600">$125<span class="text-lg text-stone-500">/mo</span></div>
+          <div class="text-sm text-stone-500">Per station under contract</div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="commercial-card text-center">
+          <div class="w-16 h-16 bg-lime-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+            ✨
+          </div>
+          <h3 class="font-bold text-xl mb-2">Sanitization Add-on</h3>
+          <p class="text-stone-600 mb-4">Optional surrounding area cleanup and sanitization to keep your entire property fresh and hygienic.</p>
+          <div class="text-2xl font-black text-lime-600">+$25<span class="text-lg text-stone-500">/mo</span></div>
+          <div class="text-sm text-stone-500">Per station additional</div>
+        </div>
+      </div>
+
+      <!-- CTA to Commercial Calculator Page -->
+      <div class="text-center">
+        <a href="#commercial-calculator" class="inline-flex items-center justify-center bg-lime-600 hover:bg-lime-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+          <i class="fas fa-calculator mr-3"></i>
+          Calculate Your Commercial Quote
+        </a>
+        <p class="mt-4 text-sm text-stone-500">Get an instant estimate for your property's needs</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMERCIAL CALCULATOR PAGE/SECTION -->
+  <section id="commercial-calculator" class="calculator-section bg-stone-50 py-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-extrabold">Commercial Station Calculator</h2>
+        <p class="mt-2 text-stone-700 max-w-2xl mx-auto">Calculate the total cost for your HOA, apartment complex, or commercial property. Includes installation, maintenance contracts, and optional sanitization.</p>
+      </div>
+
+      <div class="calc-container" style="max-width: 1100px;">
+        <div class="calc-options" style="background: rgba(255, 255, 255, 0.9);">
+          
+          <!-- Number of Stations -->
+          <div class="option-group">
+            <h3><span>1.</span> Number of Stations Needed 🚮</h3>
+            <div class="dog-count-grid" style="grid-template-columns: repeat(4, 1fr);">
+              <div class="dog-count-card selected" id="station-1" onclick="selectStations(1)">
+                <div class="dog-count-icon">🚮</div>
+                <div class="dog-count-number">1 Station</div>
+                <div class="dog-count-label">Small property</div>
+              </div>
+              <div class="dog-count-card" id="station-2" onclick="selectStations(2)">
+                <div class="dog-count-icon">🚮🚮</div>
+                <div class="dog-count-number">2 Stations</div>
+                <div class="dog-count-label">Medium complex</div>
+              </div>
+              <div class="dog-count-card" id="station-3" onclick="selectStations(3)">
+                <div class="dog-count-icon">🚮🚮🚮</div>
+                <div class="dog-count-number">3 Stations</div>
+                <div class="dog-count-label">Large complex</div>
+              </div>
+              <div class="dog-count-card" id="station-4" onclick="selectStations(4)">
+                <div class="dog-count-icon">🏢</div>
+                <div class="dog-count-number">4+ Stations</div>
+                <div class="dog-count-label">Custom quote</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contract Length -->
+          <div class="option-group">
+            <h3><span>2.</span> Service Contract Length 📅</h3>
+            <div class="contract-length-grid">
+              <div class="service-card selected" id="contract-6" onclick="selectContract(6)">
+                <div class="service-icon">📆</div>
+                <div class="service-name">6 Months</div>
+                <div class="service-desc">$125/mo per station</div>
+              </div>
+              <div class="service-card best" id="contract-12" onclick="selectContract(12)">
+                <div class="service-icon">⭐</div>
+                <div class="service-name">12 Months</div>
+                <div class="service-desc">$125/mo • Best value</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add-on Services -->
+          <div class="option-group">
+            <h3><span>3.</span> Add-on Services ✨</h3>
+            <div class="addon-card selected" id="addon-sanitize" onclick="toggleAddon('sanitize')">
+              <div class="addon-checkbox" id="check-sanitize">✓</div>
+              <div class="flex-1">
+                <div class="font-bold text-stone-900">Surrounding Area Sanitization</div>
+                <div class="text-sm text-stone-600">+$25/month per station</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Installation Note -->
+          <div class="mt-6 p-4 bg-lime-50 rounded-xl border border-lime-200">
+            <div class="flex items-start gap-3">
+              <i class="fas fa-info-circle text-lime-600 mt-1"></i>
+              <div>
+                <div class="font-bold text-stone-900">Installation Included</div>
+                <div class="text-sm text-stone-600">Each station includes professional installation for a one-time fee of $350. This covers the station, bag dispenser, waste receptacle, and secure mounting.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Commercial Price Display -->
+        <div class="price-display" style="background: linear-gradient(135deg, rgba(101, 163, 13, 0.2), rgba(132, 204, 22, 0.15));">
+          <div class="price-label">Total Investment</div>
+          <div class="price-amount" id="commercial-price">$1,100</div>
+          <div class="price-period" id="commercial-period">1 Station • 6 Month Contract • With Sanitization</div>
+          
+          <div class="breakdown" id="commercial-breakdown">
+            <div class="breakdown-row">
+              <span>Installation (1 station × $350)</span>
+              <span id="install-cost">$350.00</span>
+            </div>
+            <div class="breakdown-row">
+              <span>6 Month Service ($125/mo)</span>
+              <span id="service-cost">$750.00</span>
+            </div>
+            <div class="breakdown-row" id="addon-row">
+              <span>Sanitization Add-on ($25/mo)</span>
+              <span id="addon-cost">$150.00</span>
+            </div>
+            <div class="breakdown-row">
+              <span>Total Upfront</span>
+              <span id="commercial-total">$1,100.00</span>
+            </div>
+          </div>
+
+          <!-- Monthly Recurring Note -->
+          <div class="mt-4 p-3 bg-white/60 rounded-lg text-center">
+            <div class="text-sm text-stone-600">Monthly recurring after installation:</div>
+            <div class="text-xl font-bold text-lime-700" id="monthly-recurring">$150/month</div>
+          </div>
+
+          <!-- CHECKOUT BUTTON -->
+          <button id="commercial-checkoutBtn" class="checkout-btn mt-4" onclick="commercialCheckout()">
+            <i class="fas fa-lock mr-2"></i> Get Started Now
+          </button>
+          <div class="text-xs text-center mt-2 text-stone-500">Stripe payment link coming soon</div>
+
+          <!-- Custom Quote Box -->
+          <div id="commercial-customQuote" class="custom-quote-box" style="display: none;">
+            <h4>Custom Quote Required</h4>
+            <p class="text-sm text-gray-600 mb-3">4+ stations requires a personalized quote for your property.</p>
+            <a href="tel:812-508-6399" onclick="gtag('event', 'click', { event_category: 'conversion', event_label: 'commercial_phone_call' });">
+              <i class="fas fa-phone mr-2"></i> Call 812-508-6399
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commercial Calculator JavaScript -->
+  <script>
+    // Commercial Calculator State
+    let commercialState = {
+      stations: 1,
+      contractMonths: 6,
+      sanitizeAddon: true
+    };
+
+    const COMMERCIAL_PRICING = {
+      installation: 350,      // per station
+      monthlyService: 125,    // per station per month
+      sanitizeAddon: 25       // per station per month
+    };
+
+    function selectStations(num) {
+      commercialState.stations = num;
+      
+      // Update UI
+      document.querySelectorAll('[id^="station-"]').forEach(card => {
+        card.classList.remove('selected');
+      });
+      document.getElementById('station-' + num).classList.add('selected');
+      
+      updateCommercialPrice();
+    }
+
+    function selectContract(months) {
+      commercialState.contractMonths = months;
+      
+      // Update UI
+      document.getElementById('contract-6').classList.remove('selected');
+      document.getElementById('contract-12').classList.remove('selected');
+      document.getElementById('contract-' + months).classList.add('selected');
+      
+      updateCommercialPrice();
+    }
+
+    function toggleAddon(addon) {
+      if (addon === 'sanitize') {
+        commercialState.sanitizeAddon = !commercialState.sanitizeAddon;
+        const card = document.getElementById('addon-sanitize');
+        const checkbox = document.getElementById('check-sanitize');
+        
+        if (commercialState.sanitizeAddon) {
+          card.classList.add('selected');
+          checkbox.textContent = '✓';
+        } else {
+          card.classList.remove('selected');
+          checkbox.textContent = '';
+        }
+      }
+      updateCommercialPrice();
+    }
+
+    function updateCommercialPrice() {
+      // Handle 4+ stations case
+      if (commercialState.stations === 4) {
+        document.getElementById('commercial-price').innerHTML = 'Call Us';
+        document.getElementById('commercial-period').textContent = '4+ Stations • Custom quote required';
+        document.getElementById('commercial-breakdown').style.display = 'none';
+        document.getElementById('commercial-checkoutBtn').style.display = 'none';
+        document.getElementById('commercial-customQuote').style.display = 'block';
+        return;
+      }
+
+      document.getElementById('commercial-breakdown').style.display = 'block';
+      document.getElementById('commercial-checkoutBtn').style.display = 'inline-flex';
+      document.getElementById('commercial-customQuote').style.display = 'none';
+
+      const stations = commercialState.stations;
+      const months = commercialState.contractMonths;
+      const hasSanitize = commercialState.sanitizeAddon;
+
+      // Calculate costs
+      const installCost = stations * COMMERCIAL_PRICING.installation;
+      const serviceCost = stations * COMMERCIAL_PRICING.monthlyService * months;
+      const addonCost = hasSanitize ? (stations * COMMERCIAL_PRICING.sanitizeAddon * months) : 0;
+      
+      const totalUpfront = installCost + serviceCost + addonCost;
+      const monthlyRecurring = (stations * COMMERCIAL_PRICING.monthlyService) + 
+                               (hasSanitize ? stations * COMMERCIAL_PRICING.sanitizeAddon : 0);
+
+      // Update display
+      document.getElementById('commercial-price').textContent = '$' + totalUpfront.toLocaleString();
+      
+      const stationText = stations === 1 ? '1 Station' : stations + ' Stations';
+      const contractText = months + ' Month' + (months > 1 ? 's' : '') + ' Contract';
+      const addonText = hasSanitize ? 'With Sanitization' : 'Basic Service';
+      document.getElementById('commercial-period').textContent = `${stationText} • ${contractText} • ${addonText}`;
+
+      // Update breakdown
+      document.getElementById('install-cost').textContent = '$' + installCost.toLocaleString() + '.00';
+      document.getElementById('service-cost').textContent = '$' + serviceCost.toLocaleString() + '.00';
+      
+      const addonRow = document.getElementById('addon-row');
+      if (hasSanitize) {
+        addonRow.style.display = 'flex';
+        document.getElementById('addon-cost').textContent = '$' + addonCost.toLocaleString() + '.00';
+      } else {
+        addonRow.style.display = 'none';
+      }
+      
+      document.getElementById('commercial-total').textContent = '$' + totalUpfront.toLocaleString() + '.00';
+      document.getElementById('monthly-recurring').textContent = '$' + monthlyRecurring + '/month';
+    }
+
+    function commercialCheckout() {
+      if (commercialState.stations === 4) {
+        window.location.href = 'tel:' + BUSINESS.phone.replace(/-/g, '');
+        return;
+      }
+      
+      // Placeholder for Stripe integration
+      alert('Stripe payment link coming soon! Please call us at 812-508-6399 to get started.');
+      // gtag('event', 'begin_checkout', { event_category: 'ecommerce', event_label: 'commercial_station' });
+    }
+
+    // Initialize commercial calculator
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCommercialPrice();
+    });
+  </script>
+
   <!-- Testimonials Section -->
   <section id="reviews" class="container mx-auto px-4 py-16">
     <div class="text-center mb-10">
@@ -1119,6 +1511,7 @@
           <ul class="space-y-2 text-sm text-stone-400">
             <li><a href="#services" class="hover:text-white">Services</a></li>
             <li><a href="#pricing" class="hover:text-white">Pricing</a></li>
+            <li><a href="#commercial" class="hover:text-white">Commercial</a></li>
             <li><a href="#area" class="hover:text-white">Service Area</a></li>
             <li><a href="#faq" class="hover:text-white">FAQ</a></li>
           </ul>
