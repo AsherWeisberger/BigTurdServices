@@ -73,7 +73,7 @@
       padding: 2rem;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
-    .option-group { margin-bottom: 2rem; }
+    .option-group { margin-bottom: 2.5rem; }
     .option-group h3 {
       font-family: 'Fredoka', sans-serif;
       font-size: 1.25rem;
@@ -86,12 +86,12 @@
     }
     
     /* Station Type Cards */
-    .station-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .station-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .station-card {
       background: rgba(255, 255, 255, 0.9);
       border: 2px solid rgba(0, 0, 0, 0.1);
       border-radius: 16px;
-      padding: 1.25rem;
+      padding: 1.5rem;
       cursor: pointer;
       transition: all 0.3s;
       position: relative;
@@ -121,10 +121,40 @@
       letter-spacing: 0.5px;
       white-space: nowrap;
     }
-    .station-icon { font-size: 2rem; margin-bottom: 0.5rem; text-align: center; }
-    .station-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; color: #1a1a1a; text-align: center; }
-    .station-price { font-size: 1.25rem; font-weight: 800; color: #65a30d; text-align: center; margin-bottom: 0.5rem; }
-    .station-features { font-size: 0.75rem; color: #666; line-height: 1.4; }
+    .station-icon { font-size: 2.5rem; margin-bottom: 0.5rem; text-align: center; }
+    .station-name { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem; color: #1a1a1a; text-align: center; }
+    .station-price { font-size: 1.5rem; font-weight: 800; color: #65a30d; text-align: center; margin-bottom: 0.75rem; }
+    .station-features { font-size: 0.8rem; color: #666; line-height: 1.5; }
+
+    /* Quantity Cards */
+    .qty-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .qty-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      position: relative;
+    }
+    .qty-card:hover { border-color: #65a30d; background: rgba(101, 163, 13, 0.05); }
+    .qty-card.selected { border-color: #65a30d; background: rgba(101, 163, 13, 0.15); box-shadow: 0 4px 15px rgba(101, 163, 13, 0.2); }
+    .qty-card.discount::after {
+      content: '5% OFF';
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.65rem;
+      font-weight: 800;
+    }
+    .qty-number { font-size: 2rem; font-weight: 800; color: #1a1a1a; }
+    .qty-label { font-size: 0.85rem; color: #666; }
+    .qty-card.custom { grid-column: span 2; }
 
     /* Plan Cards */
     .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
@@ -139,52 +169,21 @@
     }
     .plan-card:hover { border-color: #65a30d; background: rgba(101, 163, 13, 0.05); transform: translateY(-2px); }
     .plan-card.selected { border-color: #65a30d; background: rgba(101, 163, 13, 0.15); box-shadow: 0 4px 15px rgba(101, 163, 13, 0.2); }
-    .plan-card.best::before {
-      content: 'BEST VALUE';
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
-      color: #000;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-    .plan-badge { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.65rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .plan-badge { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 12px; font-size: 0.7rem; font-weight: 700; margin-bottom: 0.5rem; }
     .badge-basic { background: #dcfce7; color: #166534; }
     .badge-standard { background: #fef3c7; color: #92400e; }
     .badge-premium { background: #dbeafe; color: #1e40af; }
     .plan-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem; color: #1a1a1a; }
     .plan-price { font-size: 1.5rem; font-weight: 800; color: #65a30d; margin-bottom: 0.5rem; }
-    .plan-desc { font-size: 0.8rem; color: #666; line-height: 1.3; }
+    .plan-desc { font-size: 0.8rem; color: #666; line-height: 1.4; }
 
-    /* Counter */
-    .counter-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-    .counter-card {
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid rgba(0, 0, 0, 0.1);
-      border-radius: 16px;
-      padding: 1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-align: center;
-    }
-    .counter-card:hover { border-color: #65a30d; background: rgba(101, 163, 13, 0.05); }
-    .counter-card.selected { border-color: #65a30d; background: rgba(101, 163, 13, 0.15); box-shadow: 0 4px 15px rgba(101, 163, 13, 0.2); }
-    .counter-number { font-size: 1.5rem; font-weight: 800; color: #1a1a1a; }
-    .counter-label { font-size: 0.75rem; color: #666; }
-    .counter-discount { font-size: 0.7rem; color: #65a30d; font-weight: 700; margin-top: 0.25rem; }
-
-    /* Contract Toggle */
+    /* Contract Cards */
     .contract-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .contract-card {
       background: rgba(255, 255, 255, 0.9);
       border: 2px solid rgba(0, 0, 0, 0.1);
       border-radius: 16px;
-      padding: 1rem;
+      padding: 1.25rem;
       cursor: pointer;
       transition: all 0.3s;
       text-align: center;
@@ -192,47 +191,61 @@
     }
     .contract-card:hover { border-color: #65a30d; background: rgba(101, 163, 13, 0.05); }
     .contract-card.selected { border-color: #65a30d; background: rgba(101, 163, 13, 0.15); box-shadow: 0 4px 15px rgba(101, 163, 13, 0.2); }
-    .contract-card.savings::after {
-      content: 'SAVE 5%';
+    .contract-badge {
       position: absolute;
-      top: -8px;
-      right: -8px;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: white;
-      padding: 0.2rem 0.5rem;
-      border-radius: 12px;
-      font-size: 0.6rem;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.65rem;
       font-weight: 800;
+      white-space: nowrap;
     }
-    .contract-name { font-weight: 700; font-size: 0.9rem; color: #1a1a1a; margin-bottom: 0.25rem; }
-    .contract-price { font-size: 1.1rem; font-weight: 700; color: #65a30d; }
-    .contract-note { font-size: 0.7rem; color: #666; margin-top: 0.25rem; }
+    .badge-save-10 { background: linear-gradient(135deg, #22c55e, #16a34a); color: white; }
+    .badge-save-15 { background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #000; }
+    .contract-months { font-size: 1.5rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.25rem; }
+    .contract-label { font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
+    .contract-discount { font-size: 0.9rem; font-weight: 700; color: #16a34a; }
 
-    /* Add-ons */
-    .addon-list { display: flex; flex-direction: column; gap: 0.75rem; }
-    .addon-item {
+    /* Payment Toggle */
+    .payment-section {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+    .payment-toggle {
+      display: flex;
+      gap: 1rem;
+    }
+    .payment-option {
+      flex: 1;
       background: rgba(255, 255, 255, 0.9);
       border: 2px solid rgba(0, 0, 0, 0.1);
       border-radius: 12px;
       padding: 1rem;
       cursor: pointer;
       transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      text-align: center;
+      position: relative;
     }
-    .addon-item:hover { border-color: #65a30d; background: rgba(101, 163, 13, 0.05); }
-    .addon-item.selected { border-color: #65a30d; background: rgba(101, 163, 13, 0.15); }
-    .addon-check {
-      width: 24px; height: 24px; border: 2px solid #65a30d; border-radius: 6px;
-      display: flex; align-items: center; justify-content: center;
-      color: white; transition: all 0.2s; flex-shrink: 0;
+    .payment-option:hover { border-color: #65a30d; background: rgba(101, 163, 13, 0.05); }
+    .payment-option.selected { border-color: #65a30d; background: rgba(101, 163, 13, 0.15); }
+    .payment-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #000;
+      padding: 0.2rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.65rem;
+      font-weight: 800;
     }
-    .addon-item.selected .addon-check { background: #65a30d; }
-    .addon-info { flex: 1; }
-    .addon-name { font-weight: 600; font-size: 0.95rem; color: #1a1a1a; }
-    .addon-desc { font-size: 0.8rem; color: #666; }
-    .addon-price { font-weight: 700; color: #65a30d; font-size: 0.95rem; white-space: nowrap; }
+    .payment-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .payment-name { font-weight: 700; font-size: 0.95rem; color: #1a1a1a; }
+    .payment-desc { font-size: 0.75rem; color: #666; margin-top: 0.25rem; }
 
     /* Price Display */
     .price-display {
@@ -248,14 +261,16 @@
     .price-label { font-size: 0.875rem; color: #666; margin-bottom: 0.5rem; font-weight: 500; }
     .price-amount {
       font-family: 'Fredoka', sans-serif;
-      font-size: 3rem;
+      font-size: 2.75rem;
       font-weight: 700;
       background: linear-gradient(135deg, #65a30d, #84cc16);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       line-height: 1;
+      margin-bottom: 0.5rem;
     }
-    .price-period { color: #666; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    .price-period { color: #666; margin-bottom: 1.5rem; font-size: 0.9rem; line-height: 1.4; }
+    
     .breakdown {
       background: rgba(255, 255, 255, 0.6);
       border-radius: 16px;
@@ -278,13 +293,18 @@
       color: #1a1a1a;
       font-size: 1.1rem;
     }
-    .breakdown-row.monthly {
-      margin-top: 0.5rem;
-      padding-top: 0.5rem;
-      border-top: 1px dashed rgba(0, 0, 0, 0.1);
-      font-weight: 600;
-      color: #65a30d;
+    
+    .savings-box {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      border: 1px solid #22c55e;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
     }
+    .savings-title { font-weight: 700; color: #166534; font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .savings-amount { font-size: 1.25rem; font-weight: 800; color: #16a34a; }
+    
     .checkout-btn {
       width: 100%;
       background: linear-gradient(135deg, #65a30d, #84cc16);
@@ -297,38 +317,37 @@
       cursor: pointer;
       transition: all 0.3s;
       box-shadow: 0 4px 15px rgba(101, 163, 13, 0.3);
-      text-decoration: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
     }
     .checkout-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(101, 163, 13, 0.4); }
-    
-    .bundle-banner {
+
+    .custom-notice {
       background: linear-gradient(135deg, #fef3c7, #fde68a);
       border: 2px solid #f59e0b;
       border-radius: 16px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
+      padding: 1.5rem;
       text-align: center;
     }
-    .bundle-title { font-weight: 800; color: #92400e; font-size: 0.9rem; margin-bottom: 0.25rem; }
-    .bundle-price { font-size: 1.5rem; font-weight: 800; color: #b45309; }
-    .bundle-save { font-size: 0.8rem; color: #92400e; font-weight: 600; }
+    .custom-title { font-weight: 800; color: #92400e; font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .custom-phone { font-size: 1.5rem; font-weight: 800; color: #b45309; }
 
     @media (max-width: 968px) {
       .calc-container { grid-template-columns: 1fr; }
       .price-display { position: relative; top: 0; }
-      .station-grid, .plan-grid, .counter-grid, .contract-grid { grid-template-columns: repeat(2, 1fr); }
+      .station-grid, .plan-grid, .qty-grid, .contract-grid { grid-template-columns: repeat(2, 1fr); }
+      .qty-card.custom { grid-column: span 2; }
     }
     @media (max-width: 640px) {
-      .station-grid, .plan-grid, .counter-grid, .contract-grid { grid-template-columns: 1fr; }
+      .station-grid, .plan-grid, .qty-grid, .contract-grid { grid-template-columns: 1fr; }
+      .qty-card.custom { grid-column: span 1; }
     }
   </style>
 </head>
 <body class="text-stone-900">
   <!-- Banner -->
-  <div class="bg-green-600 text-white text-center py-4 font-extrabold text-xl tracking-wide">
+  <div class="bg-green-600 text-white text-center py-3 font-extrabold text-lg tracking-wide">
     50% OFF INITIAL CLEANUP WITH PURCHASE OF MONTHLY SERVICE
   </div>
 
@@ -345,7 +364,6 @@
           <a href="#pricing" class="hover:text-stone-700">Pricing</a>
           <a href="#commercial" class="hover:text-stone-700 font-bold text-lime-700">Commercial</a>
           <a href="#area" class="hover:text-stone-700">Service Area</a>
-          <a href="#faq" class="hover:text-stone-700">FAQ</a>
           <a href="#contact" class="hover:text-stone-700">Contact</a>
         </nav>
         <button id="mobileMenuBtn" class="md:hidden inline-flex items-center gap-2 rounded-xl border border-stone-300 px-3 py-1.5 glassy">Menu</button>
@@ -373,14 +391,14 @@
           </h1>
           <p class="mt-6 text-lg text-stone-700 max-w-prose mx-auto">
             Professional dog poop station installation and maintenance for HOAs, apartments, and commercial properties. 
-            The only professional-grade service in Terre Haute with structured contracts and transparent pricing.
+            Serving Terre Haute with structured contracts and transparent pricing.
           </p>
           <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#commercial-calculator" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-lime-600 text-white hover:bg-lime-700 font-bold">
               <i class="fas fa-calculator mr-2"></i> Build Your Quote
             </a>
             <a href="tel:812-508-6399" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-white text-lime-700 border-2 border-lime-600 hover:bg-lime-50 font-bold">
-              <i class="fas fa-phone mr-2"></i> Call for Custom Quote
+              <i class="fas fa-phone mr-2"></i> 812-508-6399
             </a>
           </div>
         </div>
@@ -388,42 +406,48 @@
     </div>
   </section>
 
-  <!-- Commercial Overview Cards -->
-  <section id="commercial" class="container mx-auto px-4 py-16">
-    <div class="grid md:grid-cols-3 gap-6 mb-12">
-      <div class="glassy rounded-2xl p-6 text-center">
-        <div class="w-16 h-16 bg-lime-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">🛠️</div>
-        <h3 class="font-bold text-xl mb-2">Professional Installation</h3>
-        <p class="text-stone-600 text-sm mb-4">Standard ($425) or Premium ($575) stations with commercial-grade hardware and secure mounting.</p>
-        <div class="text-lime-700 font-bold">$175-$575 per station</div>
-      </div>
-      <div class="glassy rounded-2xl p-6 text-center">
-        <div class="w-16 h-16 bg-lime-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">🔁</div>
-        <h3 class="font-bold text-xl mb-2">Flexible Maintenance</h3>
-        <p class="text-stone-600 text-sm mb-4">Choose from Basic ($65), Standard ($85), or Premium ($140) monthly plans based on your traffic.</p>
-        <div class="text-lime-700 font-bold">$65-$140 per station/mo</div>
-      </div>
-      <div class="glassy rounded-2xl p-6 text-center">
-        <div class="w-16 h-16 bg-lime-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">💰</div>
-        <h3 class="font-bold text-xl mb-2">Volume Discounts</h3>
-        <p class="text-stone-600 text-sm mb-4">Save 5% on 2-3 stations, 10% on 4-6 stations, or get custom pricing for 7+ stations.</p>
-        <div class="text-lime-700 font-bold">Up to 10% off</div>
-      </div>
-    </div>
-
-    <!-- Bundle Offer Highlight -->
-    <div class="bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-400 rounded-2xl p-8 text-center mb-12">
-      <div class="inline-block bg-amber-500 text-white px-4 py-1 rounded-full text-sm font-bold mb-4">BEST DEAL</div>
-      <h3 class="text-2xl font-bold text-amber-900 mb-2">Complete Station Bundle</h3>
-      <p class="text-amber-800 mb-4">Station + Installation + 12 Months Basic Service</p>
-      <div class="flex items-center justify-center gap-4 flex-wrap">
-        <div class="text-4xl font-black text-amber-700">$1,150<span class="text-lg font-normal text-amber-600">/station</span></div>
-        <div class="text-left">
-          <div class="text-amber-800 font-bold line-through">$1,205 value</div>
-          <div class="text-amber-600 text-sm">You save $55 per station!</div>
+  <!-- Commercial Overview -->
+  <section id="commercial" class="container mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-2 gap-6 mb-12">
+      <div class="glassy rounded-2xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 bg-lime-100 rounded-full flex items-center justify-center text-2xl">🛠️</div>
+          <div>
+            <h3 class="font-bold text-lg">Station Installation</h3>
+            <p class="text-stone-600 text-sm">Professional-grade equipment</p>
+          </div>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-stone-200">
+          <span class="text-stone-700">Standard Station</span>
+          <span class="font-bold text-lime-700">$350</span>
+        </div>
+        <div class="flex justify-between items-center py-2">
+          <span class="text-stone-700">Premium Station</span>
+          <span class="font-bold text-lime-700">$425</span>
         </div>
       </div>
-      <p class="text-amber-700 text-sm mt-4">($425 install + $780 annual service, discounted)</p>
+      
+      <div class="glassy rounded-2xl p-6">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 bg-lime-100 rounded-full flex items-center justify-center text-2xl">📅</div>
+          <div>
+            <h3 class="font-bold text-lg">Contract Discounts</h3>
+            <p class="text-stone-600 text-sm">Longer terms, bigger savings</p>
+          </div>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-stone-200">
+          <span class="text-stone-700">12 Months</span>
+          <span class="font-bold text-stone-900">Base Price</span>
+        </div>
+        <div class="flex justify-between items-center py-2 border-b border-stone-200">
+          <span class="text-stone-700">24 Months</span>
+          <span class="font-bold text-green-600">10% Off</span>
+        </div>
+        <div class="flex justify-between items-center py-2">
+          <span class="text-stone-700">36 Months</span>
+          <span class="font-bold text-green-600">15% Off</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -435,50 +459,35 @@
         <p class="mt-2 text-stone-700 max-w-2xl mx-auto">Build your custom package. Select station type, quantity, maintenance plan, and contract length.</p>
       </div>
 
-      <div class="calc-container" style="max-width: 1200px;">
+      <div class="calc-container">
         <div class="calc-options">
           
           <!-- Station Type -->
           <div class="option-group">
             <h3><span>1.</span> Choose Station Type 🛠️</h3>
             <div class="station-grid">
-              <div class="station-card selected" id="station-standard" onclick="selectStationType('standard')">
+              <div class="station-card selected" id="station-standard" onclick="selectStation('standard')">
                 <div class="station-icon">🚮</div>
                 <div class="station-name">Standard Station</div>
-                <div class="station-price">$425</div>
+                <div class="station-price">$350</div>
                 <div class="station-features">
                   • Commercial-grade unit<br>
                   • Bag dispenser<br>
                   • 11-15 gal locked bin<br>
-                  • Signage included<br>
-                  • In-ground install<br>
+                  • Signage & installation<br>
                   • 400-600 initial bags
                 </div>
               </div>
-              <div class="station-card popular" id="station-premium" onclick="selectStationType('premium')">
+              <div class="station-card popular" id="station-premium" onclick="selectStation('premium')">
                 <div class="station-icon">⭐</div>
-                <div class="station-name">Premium Heavy-Duty</div>
-                <div class="station-price">$575</div>
+                <div class="station-name">Premium Station</div>
+                <div class="station-price">$425</div>
                 <div class="station-features">
                   • Rust-resistant aluminum<br>
                   • Larger capacity bin<br>
                   • Locking dispenser<br>
                   • Concrete-set install<br>
-                  • Initial bag stock<br>
-                  • 5-year durability
-                </div>
-              </div>
-              <div class="station-card" id="station-installonly" onclick="selectStationType('installonly')">
-                <div class="station-icon">🔧</div>
-                <div class="station-name">Installation Only</div>
-                <div class="station-price">$175+</div>
-                <div class="station-features">
-                  • You supply station<br>
-                  • Ground install: $175<br>
-                  • Concrete drill: $225+<br>
-                  • Professional mounting<br>
-                  • Secure installation<br>
-                  • *Station not included
+                  • Heavy-duty construction
                 </div>
               </div>
             </div>
@@ -487,40 +496,26 @@
           <!-- Number of Stations -->
           <div class="option-group">
             <h3><span>2.</span> Number of Stations 📊</h3>
-            <div class="counter-grid">
-              <div class="counter-card selected" id="qty-1" onclick="selectQuantity(1)">
-                <div class="counter-number">1</div>
-                <div class="counter-label">Station</div>
+            <div class="qty-grid">
+              <div class="qty-card selected" id="qty-1" onclick="selectQty(1)">
+                <div class="qty-number">1</div>
+                <div class="qty-label">Station</div>
               </div>
-              <div class="counter-card" id="qty-2" onclick="selectQuantity(2)">
-                <div class="counter-number">2</div>
-                <div class="counter-label">Stations</div>
-                <div class="counter-discount">5% off</div>
+              <div class="qty-card" id="qty-2" onclick="selectQty(2)">
+                <div class="qty-number">2</div>
+                <div class="qty-label">Stations</div>
               </div>
-              <div class="counter-card" id="qty-3" onclick="selectQuantity(3)">
-                <div class="counter-number">3</div>
-                <div class="counter-label">Stations</div>
-                <div class="counter-discount">5% off</div>
+              <div class="qty-card" id="qty-3" onclick="selectQty(3)">
+                <div class="qty-number">3</div>
+                <div class="qty-label">Stations</div>
               </div>
-              <div class="counter-card" id="qty-4" onclick="selectQuantity(4)">
-                <div class="counter-number">4</div>
-                <div class="counter-label">Stations</div>
-                <div class="counter-discount">10% off</div>
+              <div class="qty-card discount" id="qty-4" onclick="selectQty(4)">
+                <div class="qty-number">4</div>
+                <div class="qty-label">Stations</div>
               </div>
-              <div class="counter-card" id="qty-5" onclick="selectQuantity(5)">
-                <div class="counter-number">5</div>
-                <div class="counter-label">Stations</div>
-                <div class="counter-discount">10% off</div>
-              </div>
-              <div class="counter-card" id="qty-6" onclick="selectQuantity(6)">
-                <div class="counter-number">6</div>
-                <div class="counter-label">Stations</div>
-                <div class="counter-discount">10% off</div>
-              </div>
-              <div class="counter-card" id="qty-custom" onclick="selectQuantity(7)">
-                <div class="counter-number">7+</div>
-                <div class="counter-label">Stations</div>
-                <div class="counter-discount">Custom pricing</div>
+              <div class="qty-card custom" id="qty-5" onclick="selectQty(5)">
+                <div class="qty-number">5+</div>
+                <div class="qty-label">Contact for Pricing</div>
               </div>
             </div>
           </div>
@@ -535,20 +530,18 @@
                 <div class="plan-price">$65/mo</div>
                 <div class="plan-desc">
                   1 visit/week<br>
-                  Bag refills<br>
-                  Waste removal<br>
-                  <strong>Best for:</strong> Small complexes, light traffic
+                  Bag refills & waste removal<br>
+                  Best for small complexes
                 </div>
               </div>
-              <div class="plan-card selected best" id="plan-standard" onclick="selectPlan('standard')">
-                <span class="plan-badge badge-standard">MOST POPULAR</span>
+              <div class="plan-card selected" id="plan-standard" onclick="selectPlan('standard')">
+                <span class="plan-badge badge-standard">POPULAR</span>
                 <div class="plan-name">Standard Plan</div>
                 <div class="plan-price">$85/mo</div>
                 <div class="plan-desc">
                   1 visit/week + extra bags<br>
-                  Higher volume allowance<br>
                   Priority restocking<br>
-                  <strong>Best for:</strong> Medium complexes, busy areas
+                  Best for medium complexes
                 </div>
               </div>
               <div class="plan-card" id="plan-premium" onclick="selectPlan('premium')">
@@ -557,9 +550,8 @@
                 <div class="plan-price">$140/mo</div>
                 <div class="plan-desc">
                   2 visits/week<br>
-                  Maximum service level<br>
                   High-traffic optimized<br>
-                  <strong>Best for:</strong> Large complexes, 100+ units
+                  Best for large complexes
                 </div>
               </div>
             </div>
@@ -569,51 +561,42 @@
           <div class="option-group">
             <h3><span>4.</span> Contract Length 📅</h3>
             <div class="contract-grid">
-              <div class="contract-card" id="contract-month" onclick="selectContract('month')">
-                <div class="contract-name">Month-to-Month</div>
-                <div class="contract-price" id="price-month">$93.50/mo</div>
-                <div class="contract-note">10% higher rate • No commitment</div>
+              <div class="contract-card selected" id="contract-12" onclick="selectContract(12)">
+                <div class="contract-months">12</div>
+                <div class="contract-label">Months</div>
+                <div class="contract-discount">Base Price</div>
               </div>
-              <div class="contract-card selected" id="contract-12" onclick="selectContract('12')">
-                <div class="contract-name">12-Month Agreement</div>
-                <div class="contract-price" id="price-12">$85/mo</div>
-                <div class="contract-note">Standard pricing • Locked rate</div>
+              <div class="contract-card" id="contract-24" onclick="selectContract(24)">
+                <span class="contract-badge badge-save-10">SAVE 10%</span>
+                <div class="contract-months">24</div>
+                <div class="contract-label">Months</div>
+                <div class="contract-discount">10% Discount</div>
               </div>
-              <div class="contract-card savings" id="contract-24" onclick="selectContract('24')">
-                <div class="contract-name">24-Month Agreement</div>
-                <div class="contract-price" id="price-24">$80.75/mo</div>
-                <div class="contract-note">5% discount • Best value</div>
+              <div class="contract-card" id="contract-36" onclick="selectContract(36)">
+                <span class="contract-badge badge-save-15">SAVE 15%</span>
+                <div class="contract-months">36</div>
+                <div class="contract-label">Months</div>
+                <div class="contract-discount">15% Discount</div>
               </div>
             </div>
           </div>
 
-          <!-- Add-ons -->
-          <div class="option-group">
-            <h3><span>5.</span> Optional Add-ons ➕</h3>
-            <div class="addon-list">
-              <div class="addon-item selected" id="addon-none" onclick="selectAddon('none')">
-                <div class="addon-check" id="check-none">✓</div>
-                <div class="addon-info">
-                  <div class="addon-name">No add-ons</div>
-                  <div class="addon-desc">Station maintenance only</div>
-                </div>
-                <div class="addon-price">Included</div>
+          <!-- Payment Option -->
+          <div class="payment-section">
+            <h3 style="font-family: 'Fredoka', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: #1a1a1a;">
+              <span>5.</span> Payment Option 💰
+            </h3>
+            <div class="payment-toggle">
+              <div class="payment-option selected" id="pay-monthly" onclick="selectPayment('monthly')">
+                <div class="payment-icon">📅</div>
+                <div class="payment-name">Monthly Billing</div>
+                <div class="payment-desc">Pay as you go</div>
               </div>
-              <div class="addon-item" id="addon-grounds" onclick="selectAddon('grounds')">
-                <div class="addon-check" id="check-grounds"></div>
-                <div class="addon-info">
-                  <div class="addon-name">Common Area Waste Cleanup</div>
-                  <div class="addon-desc">Grounds scooping service (price varies by property size)</div>
-                </div>
-                <div class="addon-price">+$75/visit</div>
-              </div>
-              <div class="addon-item" id="addon-deodorizer" onclick="selectAddon('deodorizer')">
-                <div class="addon-check" id="check-deodorizer"></div>
-                <div class="addon-info">
-                  <div class="addon-name">Deodorizer Treatment</div>
-                  <div class="addon-desc">Monthly odor control treatment per station</div>
-                </div>
-                <div class="addon-price">+$10/mo</div>
+              <div class="payment-option" id="pay-upfront" onclick="selectPayment('upfront')">
+                <span class="payment-badge">SAVE 5%</span>
+                <div class="payment-icon">💰</div>
+                <div class="payment-name">Pay Upfront</div>
+                <div class="payment-desc">5% additional discount</div>
               </div>
             </div>
           </div>
@@ -622,99 +605,66 @@
 
         <!-- Price Display -->
         <div class="price-display">
+          <div class="price-label" id="price-label">Total Investment</div>
+          <div class="price-amount" id="price-amount">$1,370</div>
+          <div class="price-period" id="price-period">1 Standard Station • Standard Plan • 12 Months</div>
           
-          <!-- Bundle Banner (shows when applicable) -->
-          <div id="bundle-banner" class="bundle-banner" style="display: none;">
-            <div class="bundle-title">💰 BUNDLE SAVINGS AVAILABLE</div>
-            <div class="bundle-price" id="bundle-price">$1,150</div>
-            <div class="bundle-save">Save $55 with our bundle deal!</div>
+          <!-- Savings Box -->
+          <div id="savings-box" class="savings-box" style="display: none;">
+            <div class="savings-title">🎉 You're Saving</div>
+            <div class="savings-amount" id="savings-amount">$0</div>
           </div>
 
-          <div class="price-label" id="price-header">Estimated First Payment</div>
-          <div class="price-amount" id="total-price">$1,105</div>
-          <div class="price-period" id="price-details">1 Standard Station • Standard Plan • 12-Month Contract</div>
-          
-          <div class="breakdown" id="price-breakdown">
+          <div class="breakdown" id="breakdown">
             <div class="breakdown-row">
-              <span>Standard Station Installation (×1)</span>
-              <span id="breakdown-install">$425.00</span>
+              <span id="breakdown-install-label">Standard Station (×1)</span>
+              <span id="breakdown-install">$350.00</span>
             </div>
             <div class="breakdown-row">
-              <span>12-Month Service (Standard Plan)</span>
+              <span id="breakdown-service-label">Standard Plan - 12 Months</span>
               <span id="breakdown-service">$1,020.00</span>
             </div>
-            <div class="breakdown-row discount" id="row-discount" style="display: none;">
+            <div class="breakdown-row discount" id="row-contract-discount" style="display: none;">
+              <span id="label-contract-discount">24-Month Contract Discount (10%)</span>
+              <span id="breakdown-contract-discount">-$102.00</span>
+            </div>
+            <div class="breakdown-row discount" id="row-volume-discount" style="display: none;">
               <span>Volume Discount (5%)</span>
-              <span id="breakdown-discount">-$51.00</span>
+              <span id="breakdown-volume-discount">-$25.50</span>
+            </div>
+            <div class="breakdown-row discount" id="row-upfront-discount" style="display: none;">
+              <span>Upfront Payment Discount (5%)</span>
+              <span id="breakdown-upfront-discount">-$68.00</span>
             </div>
             <div class="breakdown-row total">
-              <span>Total First Payment</span>
-              <span id="breakdown-total">$1,445.00</span>
-            </div>
-            <div class="breakdown-row monthly" id="row-monthly">
-              <span>Then monthly</span>
-              <span id="breakdown-monthly">$85.00/mo</span>
+              <span>Total Due Today</span>
+              <span id="breakdown-total">$1,370.00</span>
             </div>
           </div>
 
-          <button id="checkout-btn" class="checkout-btn" onclick="commercialCheckout()">
+          <!-- Monthly Note -->
+          <div id="monthly-note" class="mt-4 p-3 bg-white/60 rounded-lg text-center">
+            <div class="text-sm text-stone-600">Monthly service fee:</div>
+            <div class="text-xl font-bold text-lime-700" id="monthly-fee">$85.00/mo</div>
+          </div>
+
+          <button id="checkout-btn" class="checkout-btn mt-4" onclick="checkout()">
             <i class="fas fa-lock mr-2"></i> Get Started Now
           </button>
           
           <div class="mt-4 text-center">
-            <p class="text-xs text-stone-500 mb-2">Or call for custom quote:</p>
+            <p class="text-xs text-stone-500 mb-2">Questions? Call us:</p>
             <a href="tel:812-508-6399" class="text-lime-700 font-bold text-lg hover:underline">
               <i class="fas fa-phone mr-1"></i> 812-508-6399
             </a>
           </div>
 
-          <div id="custom-quote-notice" class="mt-4 p-3 bg-amber-100 rounded-lg text-center" style="display: none;">
-            <div class="text-amber-800 font-bold text-sm">7+ Stations Require Custom Quote</div>
-            <div class="text-amber-600 text-xs mt-1">Please call for personalized pricing</div>
+          <!-- Custom Quote Notice -->
+          <div id="custom-notice" class="custom-notice" style="display: none;">
+            <div class="custom-title">5+ Stations Require Custom Quote</div>
+            <div class="text-amber-700 mb-3">Contact us for volume pricing</div>
+            <a href="tel:812-508-6399" class="custom-phone">812-508-6399</a>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Choose Us / Positioning -->
-  <section class="container mx-auto px-4 py-16">
-    <div class="glassy rounded-2xl p-8 md:p-12">
-      <div class="grid md:grid-cols-2 gap-8 items-center">
-        <div>
-          <h2 class="text-3xl font-bold mb-4">Why Terre Haute Chooses Big Turd Commercial</h2>
-          <p class="text-stone-600 mb-6">
-            While competitors offer basic scooping services, we provide <strong>structured commercial contracts</strong> with professional rate sheets, 
-            transparent pricing, and enterprise-grade equipment. We're the only service in the area offering:
-          </p>
-          <ul class="space-y-3">
-            <li class="flex items-center gap-3">
-              <i class="fas fa-check-circle text-lime-600"></i>
-              <span>Professional installation (not DIY drop-offs)</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <i class="fas fa-check-circle text-lime-600"></i>
-              <span>Locked maintenance contracts with guaranteed service</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <i class="fas fa-check-circle text-lime-600"></i>
-              <span>Volume discounts for multi-station properties</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <i class="fas fa-check-circle text-lime-600"></i>
-              <span>Detailed reporting and supply management</span>
-            </li>
-          </ul>
-        </div>
-        <div class="bg-white rounded-xl p-6 shadow-lg">
-          <div class="text-center mb-4">
-            <div class="text-4xl font-black text-lime-600">100%</div>
-            <div class="text-stone-600 font-bold">Satisfaction Guaranteed</div>
-          </div>
-          <p class="text-stone-600 text-sm text-center">
-            Not happy with our service? We'll make it right or refund your money. 
-            That's the Big Turd promise to our commercial partners.
-          </p>
         </div>
       </div>
     </div>
@@ -734,10 +684,10 @@
         <div>
           <h4 class="font-bold mb-4">Services</h4>
           <ul class="space-y-2 text-sm text-stone-400">
-            <li><a href="#" class="hover:text-white">Residential Cleanup</a></li>
-            <li><a href="#" class="hover:text-white">Commercial Stations</a></li>
-            <li><a href="#" class="hover:text-white">HOA Services</a></li>
-            <li><a href="#" class="hover:text-white">Park Maintenance</a></li>
+            <li>Residential Cleanup</li>
+            <li>Commercial Stations</li>
+            <li>HOA Services</li>
+            <li>Park Maintenance</li>
           </ul>
         </div>
         <div>
@@ -763,214 +713,198 @@
     </div>
   </footer>
 
-  <!-- Commercial Calculator JavaScript -->
+  <!-- Calculator JavaScript -->
   <script>
-    const commercialConfig = {
+    const config = {
       stations: {
-        standard: { install: 425, name: 'Standard Station' },
-        premium: { install: 575, name: 'Premium Station' },
-        installonly: { install: 175, name: 'Installation Only' }
+        standard: { price: 350, name: 'Standard Station' },
+        premium: { price: 425, name: 'Premium Station' }
       },
       plans: {
         basic: { monthly: 65, name: 'Basic Plan' },
         standard: { monthly: 85, name: 'Standard Plan' },
         premium: { monthly: 140, name: 'Premium Plan' }
       },
-      contracts: {
-        month: { multiplier: 1.10, name: 'Month-to-Month', months: 1 },
-        12: { multiplier: 1.0, name: '12-Month Agreement', months: 12 },
-        24: { multiplier: 0.95, name: '24-Month Agreement', months: 24 }
-      },
-      volumeDiscounts: [
-        { min: 2, max: 3, rate: 0.05 },
-        { min: 4, max: 6, rate: 0.10 },
-        { min: 7, max: 999, rate: 0, custom: true }
-      ],
-      addons: {
-        none: { monthly: 0, name: 'No add-ons' },
-        grounds: { monthly: 75, name: 'Grounds Cleanup', perVisit: true },
-        deodorizer: { monthly: 10, name: 'Deodorizer', perStation: true }
+      contractDiscounts: {
+        12: 0,
+        24: 0.10,
+        36: 0.15
       }
     };
 
     let state = {
-      stationType: 'standard',
-      quantity: 1,
+      station: 'standard',
+      qty: 1,
       plan: 'standard',
-      contract: '12',
-      addon: 'none'
+      contract: 12,
+      payment: 'monthly'
     };
 
-    function selectStationType(type) {
-      state.stationType = type;
+    function selectStation(type) {
+      state.station = type;
       document.querySelectorAll('.station-card').forEach(c => c.classList.remove('selected'));
       document.getElementById('station-' + type).classList.add('selected');
-      updatePrice();
+      calculate();
     }
 
-    function selectQuantity(qty) {
-      state.quantity = qty;
-      document.querySelectorAll('.counter-card').forEach(c => c.classList.remove('selected'));
-      document.getElementById('qty-' + (qty === 7 ? 'custom' : qty)).classList.add('selected');
-      updatePrice();
+    function selectQty(qty) {
+      state.qty = qty;
+      document.querySelectorAll('.qty-card').forEach(c => c.classList.remove('selected'));
+      document.getElementById('qty-' + (qty === 5 ? '5' : qty)).classList.add('selected');
+      calculate();
     }
 
     function selectPlan(plan) {
       state.plan = plan;
       document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
       document.getElementById('plan-' + plan).classList.add('selected');
-      updatePrice();
+      calculate();
     }
 
-    function selectContract(contract) {
-      state.contract = contract;
+    function selectContract(months) {
+      state.contract = months;
       document.querySelectorAll('.contract-card').forEach(c => c.classList.remove('selected'));
-      document.getElementById('contract-' + contract).classList.add('selected');
-      updatePrice();
+      document.getElementById('contract-' + months).classList.add('selected');
+      calculate();
     }
 
-    function selectAddon(addon) {
-      state.addon = addon;
-      document.querySelectorAll('.addon-item').forEach(c => c.classList.remove('selected'));
-      document.getElementById('addon-' + addon).classList.add('selected');
-      
-      // Update checkmarks
-      document.querySelectorAll('.addon-check').forEach(c => c.textContent = '');
-      document.getElementById('check-' + addon).textContent = '✓';
-      
-      updatePrice();
+    function selectPayment(type) {
+      state.payment = type;
+      document.querySelectorAll('.payment-option').forEach(c => c.classList.remove('selected'));
+      document.getElementById('pay-' + type).classList.add('selected');
+      calculate();
     }
 
-    function getDiscountRate(qty) {
-      if (qty >= 7) return { rate: 0, custom: true };
-      for (let tier of commercialConfig.volumeDiscounts) {
-        if (qty >= tier.min && qty <= tier.max) return { rate: tier.rate, custom: false };
-      }
-      return { rate: 0, custom: false };
-    }
-
-    function updatePrice() {
-      const isCustom = state.quantity >= 7;
-      const stationData = commercialConfig.stations[state.stationType];
-      const planData = commercialConfig.plans[state.plan];
-      const contractData = commercialConfig.contracts[state.contract];
-      const addonData = commercialConfig.addons[state.addon];
-      
-      // Calculate costs
-      const installCost = stationData.install * state.quantity;
-      let monthlyRate = planData.monthly * contractData.multiplier;
-      
-      // Add addon costs
-      let addonMonthly = 0;
-      if (state.addon === 'deodorizer') {
-        addonMonthly = addonData.monthly * state.quantity;
-      } else if (state.addon === 'grounds') {
-        addonMonthly = addonData.monthly; // Per visit, estimate 4 visits/month
-      }
-      
-      const totalMonthly = monthlyRate + addonMonthly;
-      const serviceSubtotal = totalMonthly * contractData.months * state.quantity;
-      
-      // Apply volume discount
-      const discountInfo = getDiscountRate(state.quantity);
-      const discountAmount = serviceSubtotal * discountInfo.rate;
-      const serviceTotal = serviceSubtotal - discountAmount;
-      
-      const grandTotal = installCost + serviceTotal;
-      
-      // Update UI
-      if (isCustom) {
-        document.getElementById('total-price').textContent = 'Call Us';
-        document.getElementById('price-details').textContent = '7+ Stations • Custom Quote Required';
-        document.getElementById('price-breakdown').style.display = 'none';
+    function calculate() {
+      // Handle 5+ stations custom quote
+      if (state.qty === 5) {
+        document.getElementById('price-amount').style.display = 'none';
+        document.getElementById('price-period').style.display = 'none';
+        document.getElementById('price-label').textContent = 'Custom Quote Required';
+        document.getElementById('breakdown').style.display = 'none';
+        document.getElementById('monthly-note').style.display = 'none';
         document.getElementById('checkout-btn').style.display = 'none';
-        document.getElementById('bundle-banner').style.display = 'none';
-        document.getElementById('custom-quote-notice').style.display = 'block';
-        document.getElementById('price-header').textContent = 'Custom Pricing';
+        document.getElementById('savings-box').style.display = 'none';
+        document.getElementById('custom-notice').style.display = 'block';
         return;
       }
-      
-      document.getElementById('price-breakdown').style.display = 'block';
+
+      // Show normal elements
+      document.getElementById('price-amount').style.display = 'block';
+      document.getElementById('price-period').style.display = 'block';
+      document.getElementById('price-label').textContent = state.payment === 'upfront' ? 'Total Upfront Payment' : 'First Payment Due';
+      document.getElementById('breakdown').style.display = 'block';
+      document.getElementById('monthly-note').style.display = state.payment === 'monthly' ? 'block' : 'none';
       document.getElementById('checkout-btn').style.display = 'inline-flex';
-      document.getElementById('custom-quote-notice').style.display = 'none';
-      document.getElementById('price-header').textContent = contractData.months === 1 ? 'First Month Payment' : 'Total First Payment';
+      document.getElementById('custom-notice').style.display = 'none';
+
+      const stationData = config.stations[state.station];
+      const planData = config.plans[state.plan];
+      const contractDiscount = config.contractDiscounts[state.contract];
+
+      // Calculate costs
+      const installCost = stationData.price * state.qty;
+      const monthlyRate = planData.monthly;
+      const months = state.contract;
       
-      // Check for bundle deal (Standard station + Basic plan + 12 month = $1,150)
-      const isBundleEligible = state.stationType === 'standard' && 
-                              state.plan === 'basic' && 
-                              state.contract === '12' && 
-                              state.quantity === 1 &&
-                              state.addon === 'none';
+      // Base service cost (no contract multiplier - just monthly rate × months × qty)
+      let serviceCost = monthlyRate * months * state.qty;
       
-      const bundleBanner = document.getElementById('bundle-banner');
-      if (isBundleEligible) {
-        bundleBanner.style.display = 'block';
-        document.getElementById('bundle-price').textContent = '$1,150';
-      } else {
-        bundleBanner.style.display = 'none';
+      // Apply contract length discount
+      const contractDiscountAmount = serviceCost * contractDiscount;
+      serviceCost -= contractDiscountAmount;
+      
+      // Apply volume discount (5% only on 4 stations)
+      let volumeDiscountAmount = 0;
+      if (state.qty === 4) {
+        volumeDiscountAmount = serviceCost * 0.05;
+        serviceCost -= volumeDiscountAmount;
       }
       
-      // Update price display
-      const displayTotal = isBundleEligible ? 1150 : grandTotal;
-      document.getElementById('total-price').textContent = '$' + displayTotal.toLocaleString();
-      document.getElementById('price-details').textContent = 
-        `${state.quantity} ${stationData.name} • ${planData.name} • ${contractData.name}`;
+      // Calculate subtotal before upfront discount
+      const subtotal = installCost + serviceCost;
       
+      // Apply upfront payment discount (5% on total)
+      let upfrontDiscountAmount = 0;
+      if (state.payment === 'upfront') {
+        upfrontDiscountAmount = subtotal * 0.05;
+      }
+      
+      const grandTotal = subtotal - upfrontDiscountAmount;
+      const totalSavings = contractDiscountAmount + volumeDiscountAmount + upfrontDiscountAmount;
+
+      // Update UI
+      document.getElementById('price-amount').textContent = '$' + Math.round(grandTotal).toLocaleString();
+      document.getElementById('price-period').textContent = 
+        `${state.qty} ${stationData.name} • ${planData.name} • ${state.contract} Months${state.payment === 'upfront' ? ' (Paid Upfront)' : ''}`;
+
       // Update breakdown
+      document.getElementById('breakdown-install-label').textContent = `${stationData.name} (×${state.qty})`;
       document.getElementById('breakdown-install').textContent = '$' + installCost.toLocaleString() + '.00';
       
-      const serviceText = contractData.months === 1 ? 
-        'Monthly Service' : 
-        `${contractData.months}-Month Service (${contractData.months} × $${totalMonthly.toFixed(2)})`;
-      document.getElementById('breakdown-service').textContent = '$' + serviceSubtotal.toLocaleString() + '.00';
-      document.getElementById('breakdown-service').previousElementSibling.textContent = serviceText;
-      
-      // Discount row
-      const discountRow = document.getElementById('row-discount');
-      if (discountAmount > 0) {
-        discountRow.style.display = 'flex';
-        document.getElementById('breakdown-discount').textContent = '-$' + discountAmount.toLocaleString() + '.00';
+      document.getElementById('breakdown-service-label').textContent = `${planData.name} - ${state.contract} Months`;
+      document.getElementById('breakdown-service').textContent = '$' + (monthlyRate * months * state.qty).toLocaleString() + '.00';
+
+      // Contract discount row
+      const contractRow = document.getElementById('row-contract-discount');
+      if (contractDiscountAmount > 0) {
+        contractRow.style.display = 'flex';
+        document.getElementById('label-contract-discount').textContent = `${state.contract}-Month Contract Discount (${(contractDiscount*100).toFixed(0)}%)`;
+        document.getElementById('breakdown-contract-discount').textContent = '-$' + Math.round(contractDiscountAmount).toLocaleString() + '.00';
       } else {
-        discountRow.style.display = 'none';
+        contractRow.style.display = 'none';
       }
-      
-      document.getElementById('breakdown-total').textContent = '$' + displayTotal.toLocaleString() + '.00';
-      
-      // Monthly row
-      const monthlyRow = document.getElementById('row-monthly');
-      if (contractData.months === 1) {
-        monthlyRow.style.display = 'none';
+
+      // Volume discount row
+      const volumeRow = document.getElementById('row-volume-discount');
+      if (volumeDiscountAmount > 0) {
+        volumeRow.style.display = 'flex';
+        document.getElementById('breakdown-volume-discount').textContent = '-$' + Math.round(volumeDiscountAmount).toLocaleString() + '.00';
       } else {
-        monthlyRow.style.display = 'flex';
-        document.getElementById('breakdown-monthly').textContent = '$' + totalMonthly.toFixed(2) + '/mo';
+        volumeRow.style.display = 'none';
       }
-      
-      // Update contract pricing display in options
-      document.getElementById('price-month').textContent = '$' + (planData.monthly * 1.10).toFixed(2) + '/mo';
-      document.getElementById('price-12').textContent = '$' + planData.monthly.toFixed(2) + '/mo';
-      document.getElementById('price-24').textContent = '$' + (planData.monthly * 0.95).toFixed(2) + '/mo';
+
+      // Upfront discount row
+      const upfrontRow = document.getElementById('row-upfront-discount');
+      if (upfrontDiscountAmount > 0) {
+        upfrontRow.style.display = 'flex';
+        document.getElementById('breakdown-upfront-discount').textContent = '-$' + Math.round(upfrontDiscountAmount).toLocaleString() + '.00';
+      } else {
+        upfrontRow.style.display = 'none';
+      }
+
+      document.getElementById('breakdown-total').textContent = '$' + Math.round(grandTotal).toLocaleString() + '.00';
+
+      // Monthly fee note
+      if (state.payment === 'monthly') {
+        document.getElementById('monthly-fee').textContent = '$' + monthlyRate * state.qty + '.00/mo';
+      }
+
+      // Savings box
+      const savingsBox = document.getElementById('savings-box');
+      if (totalSavings > 0) {
+        savingsBox.style.display = 'block';
+        document.getElementById('savings-amount').textContent = '$' + Math.round(totalSavings).toLocaleString() + ' total savings!';
+      } else {
+        savingsBox.style.display = 'none';
+      }
     }
 
-    function commercialCheckout() {
-      if (state.quantity >= 7) {
+    function checkout() {
+      if (state.qty === 5) {
         window.location.href = 'tel:812-508-6399';
         return;
       }
-      
-      // Check for bundle
-      const isBundle = state.stationType === 'standard' && state.plan === 'basic' && state.contract === '12' && state.quantity === 1;
-      const packageType = isBundle ? 'bundle' : 'custom';
-      
-      alert(`Thank you for your interest! This would redirect to Stripe for the ${packageType} package. Call 812-508-6399 to complete your order.`);
+      alert('Thank you! This would redirect to Stripe payment. Call 812-508-6399 to complete your order.');
     }
 
-    // Mobile menu toggle
+    // Mobile menu
     document.getElementById('mobileMenuBtn').addEventListener('click', function() {
       document.getElementById('mobileMenu').classList.toggle('hidden');
     });
 
     // Initialize
-    document.addEventListener('DOMContentLoaded', updatePrice);
+    document.addEventListener('DOMContentLoaded', calculate);
   </script>
 </body>
 </html>
