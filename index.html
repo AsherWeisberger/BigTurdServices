@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Google Tag Manager (gtag.js) for Analytics Tracking -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1GQ8FT04X"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1GQ8FT04X "></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -17,10 +17,10 @@
   <meta name="keywords" content="dog poop cleanup, pet waste removal, yard cleaning service, Terre Haute, BIG TURD Waste Removal" />
   <meta name="robots" content="index, follow" />
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💩</text></svg>">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💩</text></svg>">
+  <script src="https://cdn.tailwindcss.com "></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300 ;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
   <style>
     html{scroll-behavior:smooth}
     .container{max-width:1152px}
@@ -509,15 +509,239 @@
     .custom-title { font-weight: 800; color: #92400e; font-size: 1.1rem; margin-bottom: 0.5rem; }
     .custom-phone { font-size: 1.5rem; font-weight: 800; color: #b45309; }
 
+    /* Commercial Contact Modal Styles */
+    #commercialContactModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    #commercialContactModal.show {
+      display: flex;
+    }
+    .modal-content {
+      background: white;
+      border-radius: 24px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      animation: modalSlideIn 0.3s ease-out;
+    }
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .modal-header {
+      background: linear-gradient(135deg, #65a30d, #84cc16);
+      color: white;
+      padding: 2rem;
+      border-radius: 24px 24px 0 0;
+      position: relative;
+    }
+    .modal-header h3 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .modal-header p {
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .close-modal:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: rotate(90deg);
+    }
+    .modal-body {
+      padding: 2rem;
+    }
+    .company-info-box {
+      background: #f0fdf4;
+      border: 2px solid #86efac;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .company-info-box h4 {
+      color: #166534;
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      font-family: 'Fredoka', sans-serif;
+    }
+    .company-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .company-detail-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: #374151;
+      font-size: 1rem;
+    }
+    .company-detail-item i {
+      color: #65a30d;
+      width: 20px;
+    }
+    .company-detail-item a {
+      color: #65a30d;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .company-detail-item a:hover {
+      text-decoration: underline;
+    }
+    .quote-summary {
+      background: #fefce8;
+      border: 2px solid #fde047;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .quote-summary h5 {
+      font-weight: 700;
+      color: #854d0e;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .quote-summary p {
+      color: #713f12;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: all 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #65a30d;
+      box-shadow: 0 0 0 3px rgba(101, 163, 13, 0.1);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #65a30d, #84cc16);
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(101, 163, 13, 0.4);
+    }
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+    .success-message {
+      display: none;
+      background: #dcfce7;
+      border: 2px solid #22c55e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .success-message.show {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .success-message i {
+      font-size: 3rem;
+      color: #22c55e;
+      margin-bottom: 0.5rem;
+    }
+    .success-message h4 {
+      color: #166534;
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
     @media (max-width: 968px) {
       .calc-container { grid-template-columns: 1fr; }
       .price-display { position: relative; top: 0; }
       .service-grid, .dog-count-grid, .yard-grid, .station-grid, .plan-grid, .qty-grid, .contract-grid { grid-template-columns: repeat(2, 1fr); }
       .qty-card.custom { grid-column: span 2; }
+      .form-row { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .service-grid, .dog-count-grid, .yard-grid, .station-grid, .plan-grid, .qty-grid, .contract-grid { grid-template-columns: 1fr; }
       .qty-card.custom { grid-column: span 1; }
+      .modal-content { margin: 0.5rem; }
+      .modal-header, .modal-body { padding: 1.5rem; }
     }
   </style>
   <script>
@@ -535,28 +759,28 @@
     // UPDATED PRICING - All new prices and Stripe links as provided
     const PRICING = {
       small: {
-        weekly:   { price: 65.00,  link: 'https://buy.stripe.com/3cIcN54sP3eB2QV3mC6g80y' },
-        twice:    { price: 110.00, link: 'https://buy.stripe.com/3cI00jcZl9CZezD9L06g80C' },
-        biweekly: { price: 45.00,  link: 'https://buy.stripe.com/14A9AT3oL9CZdvzbT86g80H' },
-        onetime:  { price: 69.00,  link: 'https://buy.stripe.com/7sY8wP8J5eXj2QVf5k6g80L' }
+        weekly:   { price: 65.00,  link: 'https://buy.stripe.com/3cIcN54sP3eB2QV3mC6g80y ' },
+        twice:    { price: 110.00, link: 'https://buy.stripe.com/3cI00jcZl9CZezD9L06g80C ' },
+        biweekly: { price: 45.00,  link: 'https://buy.stripe.com/14A9AT3oL9CZdvzbT86g80H ' },
+        onetime:  { price: 69.00,  link: 'https://buy.stripe.com/7sY8wP8J5eXj2QVf5k6g80L ' }
       },
       medium: {
-        weekly:   { price: 75.00,  link: 'https://buy.stripe.com/28E00jcZl6qNajnaP46g80z' },
-        twice:    { price: 120.00, link: 'https://buy.stripe.com/cNi7sL0cz5mJajn5uK6g80D' },
-        biweekly: { price: 50.00,  link: 'https://buy.stripe.com/00w9AT8J5dTfcrv0aq6g80I' },
-        onetime:  { price: 79.00,  link: 'https://buy.stripe.com/5kQdR9bVh7uR6378GW6g80M' }
+        weekly:   { price: 75.00,  link: 'https://buy.stripe.com/28E00jcZl6qNajnaP46g80z ' },
+        twice:    { price: 120.00, link: 'https://buy.stripe.com/cNi7sL0cz5mJajn5uK6g80D ' },
+        biweekly: { price: 50.00,  link: 'https://buy.stripe.com/00w9AT8J5dTfcrv0aq6g80I ' },
+        onetime:  { price: 79.00,  link: 'https://buy.stripe.com/5kQdR9bVh7uR6378GW6g80M ' }
       },
       large: {
-        weekly:   { price: 85.00,  link: 'https://buy.stripe.com/00waEX5wTdTf1MR6yO6g80A' },
-        twice:    { price: 135.00, link: 'https://buy.stripe.com/14AeVd7F1eXj3UZ9L06g80E' },
-        biweekly: { price: 60.00,  link: 'https://buy.stripe.com/dRmbJ1f7teXj77bg9o6g80J' },
-        onetime:  { price: 89.00,  link: 'https://buy.stripe.com/bJe6oH2kH4iF2QVaP46g80N' }
+        weekly:   { price: 85.00,  link: 'https://buy.stripe.com/00waEX5wTdTf1MR6yO6g80A ' },
+        twice:    { price: 135.00, link: 'https://buy.stripe.com/14AeVd7F1eXj3UZ9L06g80E ' },
+        biweekly: { price: 60.00,  link: 'https://buy.stripe.com/dRmbJ1f7teXj77bg9o6g80J ' },
+        onetime:  { price: 89.00,  link: 'https://buy.stripe.com/bJe6oH2kH4iF2QVaP46g80N ' }
       },
       xlarge: {
-        weekly:   { price: 100.00, link: 'https://buy.stripe.com/6oU9ATf7tdTf8bf5uK6g80B' },
-        twice:    { price: 145.00, link: 'https://buy.stripe.com/9B66oH0czcPbbnr5uK6g80G' },
-        biweekly: { price: 70.00,  link: 'https://buy.stripe.com/bJe6oH8J53eBdvz3mC6g80K' },
-        onetime:  { price: 110.00, link: 'https://buy.stripe.com/28E4gz4sP7uR637f5k6g80O' }
+        weekly:   { price: 100.00, link: 'https://buy.stripe.com/6oU9ATf7tdTf8bf5uK6g80B ' },
+        twice:    { price: 145.00, link: 'https://buy.stripe.com/9B66oH0czcPbbnr5uK6g80G ' },
+        biweekly: { price: 70.00,  link: 'https://buy.stripe.com/bJe6oH8J53eBdvz3mC6g80K ' },
+        onetime:  { price: 110.00, link: 'https://buy.stripe.com/28E4gz4sP7uR637f5k6g80O ' }
       }
     };
 
@@ -1412,6 +1636,85 @@
     </div>
   </section>
 
+  <!-- Commercial Contact Modal -->
+  <div id="commercialContactModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Contact To Get Contracted</h3>
+        <p>Get in touch with us to discuss your commercial station installation</p>
+        <button class="close-modal" onclick="closeCommercialModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <!-- Company Info -->
+        <div class="company-info-box">
+          <h4>BIG TURD Waste Removal</h4>
+          <div class="company-details">
+            <div class="company-detail-item">
+              <i class="fas fa-phone"></i>
+              <a href="tel:812-508-6399">812-508-6399</a>
+            </div>
+            <div class="company-detail-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:BigTurdService@gmail.com">BigTurdService@gmail.com</a>
+            </div>
+            <div class="company-detail-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Terre Haute, IN & Surrounding Areas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quote Summary -->
+        <div class="quote-summary">
+          <h5>Your Selected Package</h5>
+          <p id="modal-quote-summary">1 Standard Station • Standard Plan • 12 Months • Monthly Billing</p>
+          <p style="margin-top: 0.5rem; font-weight: 700; color: #65a30d; font-size: 1.1rem;" id="modal-quote-price">First Payment: $435</p>
+        </div>
+
+        <!-- Contact Form -->
+        <form id="commercialContactForm" onsubmit="handleCommercialFormSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="commName">Full Name *</label>
+              <input type="text" id="commName" name="name" required placeholder="John Smith">
+            </div>
+            <div class="form-group">
+              <label for="commCompany">Company/Property Name</label>
+              <input type="text" id="commCompany" name="company" placeholder="ABC Apartments">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="commEmail">Email Address *</label>
+              <input type="email" id="commEmail" name="email" required placeholder="john@example.com">
+            </div>
+            <div class="form-group">
+              <label for="commPhone">Phone Number *</label>
+              <input type="tel" id="commPhone" name="phone" required placeholder="(812) 508-6399">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="commMessage">Message / Additional Details</label>
+            <textarea id="commMessage" name="message" rows="3" placeholder="Tell us about your property, preferred installation timeline, or any questions..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </button>
+        </form>
+
+        <div id="commercialSuccessMessage" class="success-message">
+          <i class="fas fa-check-circle"></i>
+          <h4>Message Sent Successfully!</h4>
+          <p>We'll get back to you within 24 hours to discuss your commercial station installation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Commercial Calculator JavaScript -->
   <script>
     const config = {
@@ -1638,9 +1941,92 @@
         window.location.href = 'tel:812-508-6399';
         return;
       }
-      const paymentDesc = state.payment === 'upfront' ? 'upfront payment' : 'monthly billing';
-      alert(`Thank you! This would redirect to Stripe for ${paymentDesc}. Call 812-508-6399 to complete your order.`);
+      
+      // Build quote summary for modal
+      const stationData = config.stations[state.station];
+      const planData = config.plans[state.plan];
+      const paymentText = state.payment === 'upfront' ? 'Upfront Payment' : 'Monthly Billing';
+      
+      document.getElementById('modal-quote-summary').textContent = 
+        `${state.qty} ${stationData.name} • ${planData.name} • ${state.contract} Months • ${paymentText}`;
+      
+      const priceText = document.getElementById('price-label').textContent;
+      const priceAmount = document.getElementById('price-amount').textContent;
+      document.getElementById('modal-quote-price').textContent = `${priceText}: ${priceAmount}`;
+      
+      // Show modal
+      document.getElementById('commercialContactModal').classList.add('show');
+      document.body.style.overflow = 'hidden';
     }
+
+    function closeCommercialModal() {
+      document.getElementById('commercialContactModal').classList.remove('show');
+      document.body.style.overflow = '';
+      
+      // Reset form after a delay
+      setTimeout(() => {
+        document.getElementById('commercialContactForm').reset();
+        document.getElementById('commercialSuccessMessage').classList.remove('show');
+        document.getElementById('commercialContactForm').style.display = 'block';
+      }, 300);
+    }
+
+    function handleCommercialFormSubmit(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const name = formData.get('name');
+      const company = formData.get('company');
+      const email = formData.get('email');
+      const phone = formData.get('phone');
+      const message = formData.get('message');
+      
+      // Build email content
+      const stationData = config.stations[state.station];
+      const planData = config.plans[state.plan];
+      
+      const subject = `Commercial Station Quote Request - ${company || name}`;
+      const body = encodeURIComponent(
+        `NEW COMMERCIAL QUOTE REQUEST\n` +
+        `============================\n\n` +
+        `Quote Details:\n` +
+        `- Station Type: ${state.qty} × ${stationData.name} ($${stationData.price} each)\n` +
+        `- Maintenance Plan: ${planData.name} ($${planData.monthly}/mo per station)\n` +
+        `- Contract Length: ${state.contract} Months\n` +
+        `- Payment Option: ${state.payment === 'upfront' ? 'Pay Upfront (5% additional savings)' : 'Monthly Billing'}\n` +
+        `- Estimated First Payment: ${document.getElementById('price-amount').textContent}\n\n` +
+        `Contact Information:\n` +
+        `- Name: ${name}\n` +
+        `- Company/Property: ${company || 'N/A'}\n` +
+        `- Email: ${email}\n` +
+        `- Phone: ${phone}\n\n` +
+        `Additional Message:\n${message || 'No additional message provided.'}\n\n` +
+        `---\n` +
+        `Sent from BIG TURD Waste Removal Website`
+      );
+      
+      // Open email client
+      window.location.href = `mailto:${BUSINESS.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
+      
+      // Show success message
+      document.getElementById('commercialContactForm').style.display = 'none';
+      document.getElementById('commercialSuccessMessage').classList.add('show');
+      
+      // Track event
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'submit', {
+          event_category: 'commercial_lead',
+          event_label: 'commercial_station_quote_request'
+        });
+      }
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('commercialContactModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeCommercialModal();
+      }
+    });
 
     // Initialize commercial calculator
     document.addEventListener('DOMContentLoaded', calculate);
