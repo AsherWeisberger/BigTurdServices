@@ -333,6 +333,24 @@
     .custom-title { font-weight: 800; color: #92400e; font-size: 1.1rem; margin-bottom: 0.5rem; }
     .custom-phone { font-size: 1.5rem; font-weight: 800; color: #b45309; }
 
+    .future-payments {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .future-title { font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
+    .future-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      font-size: 0.8rem;
+    }
+    .future-item { display: flex; justify-content: space-between; padding: 0.25rem 0; }
+    .future-label { color: #666; }
+    .future-value { font-weight: 600; color: #1a1a1a; }
+
     @media (max-width: 968px) {
       .calc-container { grid-template-columns: 1fr; }
       .price-display { position: relative; top: 0; }
@@ -432,7 +450,7 @@
           <div class="w-12 h-12 bg-lime-100 rounded-full flex items-center justify-center text-2xl">📅</div>
           <div>
             <h3 class="font-bold text-lg">Contract Discounts</h3>
-            <p class="text-stone-600 text-sm">Longer terms, bigger savings</p>
+            <p class="text-stone-600 text-sm">Longer terms, bigger savings on maintenance</p>
           </div>
         </div>
         <div class="flex justify-between items-center py-2 border-b border-stone-200">
@@ -456,7 +474,7 @@
     <div class="container mx-auto px-4">
       <div class="text-center mb-10">
         <h2 class="text-3xl font-extrabold">Commercial Station Calculator</h2>
-        <p class="mt-2 text-stone-700 max-w-2xl mx-auto">Build your custom package. Select station type, quantity, maintenance plan, and contract length.</p>
+        <p class="mt-2 text-stone-700 max-w-2xl mx-auto">Build your custom package. Pay monthly (installation + first month) or upfront for additional 5% savings.</p>
       </div>
 
       <div class="calc-container">
@@ -590,13 +608,13 @@
               <div class="payment-option selected" id="pay-monthly" onclick="selectPayment('monthly')">
                 <div class="payment-icon">📅</div>
                 <div class="payment-name">Monthly Billing</div>
-                <div class="payment-desc">Pay as you go</div>
+                <div class="payment-desc">Installation + first month now</div>
               </div>
               <div class="payment-option" id="pay-upfront" onclick="selectPayment('upfront')">
                 <span class="payment-badge">SAVE 5%</span>
                 <div class="payment-icon">💰</div>
                 <div class="payment-name">Pay Upfront</div>
-                <div class="payment-desc">5% additional discount</div>
+                <div class="payment-desc">Pay full contract, save 5%</div>
               </div>
             </div>
           </div>
@@ -605,8 +623,8 @@
 
         <!-- Price Display -->
         <div class="price-display">
-          <div class="price-label" id="price-label">Total Investment</div>
-          <div class="price-amount" id="price-amount">$1,370</div>
+          <div class="price-label" id="price-label">First Payment Due</div>
+          <div class="price-amount" id="price-amount">$435</div>
           <div class="price-period" id="price-period">1 Standard Station • Standard Plan • 12 Months</div>
           
           <!-- Savings Box -->
@@ -617,38 +635,55 @@
 
           <div class="breakdown" id="breakdown">
             <div class="breakdown-row">
-              <span id="breakdown-install-label">Standard Station (×1)</span>
+              <span id="breakdown-install-label">Standard Station Installation</span>
               <span id="breakdown-install">$350.00</span>
             </div>
-            <div class="breakdown-row">
-              <span id="breakdown-service-label">Standard Plan - 12 Months</span>
-              <span id="breakdown-service">$1,020.00</span>
+            <div class="breakdown-row" id="row-first-month">
+              <span id="breakdown-first-label">First Month Service</span>
+              <span id="breakdown-first">$85.00</span>
             </div>
             <div class="breakdown-row discount" id="row-contract-discount" style="display: none;">
-              <span id="label-contract-discount">24-Month Contract Discount (10%)</span>
-              <span id="breakdown-contract-discount">-$102.00</span>
+              <span id="label-contract-discount">Contract Discount (10%)</span>
+              <span id="breakdown-contract-discount">-$0.00</span>
             </div>
             <div class="breakdown-row discount" id="row-volume-discount" style="display: none;">
               <span>Volume Discount (5%)</span>
-              <span id="breakdown-volume-discount">-$25.50</span>
+              <span id="breakdown-volume-discount">-$0.00</span>
             </div>
             <div class="breakdown-row discount" id="row-upfront-discount" style="display: none;">
               <span>Upfront Payment Discount (5%)</span>
-              <span id="breakdown-upfront-discount">-$68.00</span>
+              <span id="breakdown-upfront-discount">-$0.00</span>
             </div>
             <div class="breakdown-row total">
-              <span>Total Due Today</span>
-              <span id="breakdown-total">$1,370.00</span>
+              <span id="total-label">Due Today</span>
+              <span id="breakdown-total">$435.00</span>
             </div>
           </div>
 
-          <!-- Monthly Note -->
-          <div id="monthly-note" class="mt-4 p-3 bg-white/60 rounded-lg text-center">
-            <div class="text-sm text-stone-600">Monthly service fee:</div>
-            <div class="text-xl font-bold text-lime-700" id="monthly-fee">$85.00/mo</div>
+          <!-- Future Payments (Monthly Only) -->
+          <div id="future-payments" class="future-payments" style="display: block;">
+            <div class="future-title">Remaining Contract Payments</div>
+            <div class="future-grid">
+              <div class="future-item">
+                <span class="future-label">Monthly Fee:</span>
+                <span class="future-value" id="future-monthly">$85/mo</span>
+              </div>
+              <div class="future-item">
+                <span class="future-label">Payments Left:</span>
+                <span class="future-value" id="future-count">11</span>
+              </div>
+              <div class="future-item">
+                <span class="future-label">Contract Total:</span>
+                <span class="future-value" id="future-total">$1,020</span>
+              </div>
+              <div class="future-item">
+                <span class="future-label">Paid Over:</span>
+                <span class="future-value" id="future-period">12 months</span>
+              </div>
+            </div>
           </div>
 
-          <button id="checkout-btn" class="checkout-btn mt-4" onclick="checkout()">
+          <button id="checkout-btn" class="checkout-btn" onclick="checkout()">
             <i class="fas fa-lock mr-2"></i> Get Started Now
           </button>
           
@@ -782,7 +817,7 @@
         document.getElementById('price-period').style.display = 'none';
         document.getElementById('price-label').textContent = 'Custom Quote Required';
         document.getElementById('breakdown').style.display = 'none';
-        document.getElementById('monthly-note').style.display = 'none';
+        document.getElementById('future-payments').style.display = 'none';
         document.getElementById('checkout-btn').style.display = 'none';
         document.getElementById('savings-box').style.display = 'none';
         document.getElementById('custom-notice').style.display = 'block';
@@ -792,92 +827,139 @@
       // Show normal elements
       document.getElementById('price-amount').style.display = 'block';
       document.getElementById('price-period').style.display = 'block';
-      document.getElementById('price-label').textContent = state.payment === 'upfront' ? 'Total Upfront Payment' : 'First Payment Due';
       document.getElementById('breakdown').style.display = 'block';
-      document.getElementById('monthly-note').style.display = state.payment === 'monthly' ? 'block' : 'none';
       document.getElementById('checkout-btn').style.display = 'inline-flex';
       document.getElementById('custom-notice').style.display = 'none';
 
       const stationData = config.stations[state.station];
       const planData = config.plans[state.plan];
-      const contractDiscount = config.contractDiscounts[state.contract];
+      const contractDiscountRate = config.contractDiscounts[state.contract];
 
-      // Calculate costs
+      // Base calculations
       const installCost = stationData.price * state.qty;
-      const monthlyRate = planData.monthly;
-      const months = state.contract;
+      const baseMonthlyRate = planData.monthly * state.qty;
       
-      // Base service cost (no contract multiplier - just monthly rate × months × qty)
-      let serviceCost = monthlyRate * months * state.qty;
+      // Apply contract discount to monthly rate
+      const discountedMonthlyRate = baseMonthlyRate * (1 - contractDiscountRate);
+      const monthlySavingsPerMonth = baseMonthlyRate - discountedMonthlyRate;
       
-      // Apply contract length discount
-      const contractDiscountAmount = serviceCost * contractDiscount;
-      serviceCost -= contractDiscountAmount;
-      
-      // Apply volume discount (5% only on 4 stations)
-      let volumeDiscountAmount = 0;
+      // Volume discount (5% on 4+ stations, applied to monthly rate)
+      let volumeDiscountRate = 0;
       if (state.qty === 4) {
-        volumeDiscountAmount = serviceCost * 0.05;
-        serviceCost -= volumeDiscountAmount;
+        volumeDiscountRate = 0.05;
       }
+      const finalMonthlyRate = discountedMonthlyRate * (1 - volumeDiscountRate);
       
-      // Calculate subtotal before upfront discount
-      const subtotal = installCost + serviceCost;
+      // Calculate totals based on payment type
+      let dueToday, totalContractValue, totalSavings, remainingPayments, futurePaymentsDisplay;
       
-      // Apply upfront payment discount (5% on total)
-      let upfrontDiscountAmount = 0;
-      if (state.payment === 'upfront') {
-        upfrontDiscountAmount = subtotal * 0.05;
+      if (state.payment === 'monthly') {
+        // MONTHLY: Pay installation + first month only
+        dueToday = installCost + finalMonthlyRate;
+        totalContractValue = installCost + (finalMonthlyRate * state.contract);
+        remainingPayments = state.contract - 1;
+        futurePaymentsDisplay = true;
+        
+        // Savings from contract + volume (over full contract)
+        const contractSavingsTotal = monthlySavingsPerMonth * state.contract;
+        const volumeSavingsTotal = (discountedMonthlyRate * volumeDiscountRate) * state.contract;
+        totalSavings = contractSavingsTotal + volumeSavingsTotal;
+        
+        document.getElementById('price-label').textContent = 'First Payment Due';
+        document.getElementById('total-label').textContent = 'Due Today';
+        document.getElementById('future-payments').style.display = 'block';
+        
+      } else {
+        // UPFRONT: Pay everything today with 5% additional discount
+        const subtotal = installCost + (finalMonthlyRate * state.contract);
+        const upfrontDiscount = subtotal * 0.05;
+        dueToday = subtotal - upfrontDiscount;
+        totalContractValue = dueToday;
+        remainingPayments = 0;
+        futurePaymentsDisplay = false;
+        
+        // All savings including upfront
+        const contractSavingsTotal = monthlySavingsPerMonth * state.contract;
+        const volumeSavingsTotal = (discountedMonthlyRate * volumeDiscountRate) * state.contract;
+        totalSavings = contractSavingsTotal + volumeSavingsTotal + upfrontDiscount;
+        
+        document.getElementById('price-label').textContent = 'Total Upfront Payment';
+        document.getElementById('total-label').textContent = 'Total Due Today';
+        document.getElementById('future-payments').style.display = 'none';
       }
-      
-      const grandTotal = subtotal - upfrontDiscountAmount;
-      const totalSavings = contractDiscountAmount + volumeDiscountAmount + upfrontDiscountAmount;
 
-      // Update UI
-      document.getElementById('price-amount').textContent = '$' + Math.round(grandTotal).toLocaleString();
+      // Update main price display
+      document.getElementById('price-amount').textContent = '$' + Math.round(dueToday).toLocaleString();
       document.getElementById('price-period').textContent = 
         `${state.qty} ${stationData.name} • ${planData.name} • ${state.contract} Months${state.payment === 'upfront' ? ' (Paid Upfront)' : ''}`;
 
       // Update breakdown
-      document.getElementById('breakdown-install-label').textContent = `${stationData.name} (×${state.qty})`;
+      document.getElementById('breakdown-install-label').textContent = 
+        state.qty === 1 ? `${stationData.name} Installation` : `${stationData.name} Installation (×${state.qty})`;
       document.getElementById('breakdown-install').textContent = '$' + installCost.toLocaleString() + '.00';
-      
-      document.getElementById('breakdown-service-label').textContent = `${planData.name} - ${state.contract} Months`;
-      document.getElementById('breakdown-service').textContent = '$' + (monthlyRate * months * state.qty).toLocaleString() + '.00';
 
-      // Contract discount row
+      // First month row (always show for clarity, but label changes)
+      const firstMonthRow = document.getElementById('row-first-month');
+      const firstMonthLabel = document.getElementById('breakdown-first-label');
+      const firstMonthValue = document.getElementById('breakdown-first');
+      
+      if (state.payment === 'monthly') {
+        firstMonthRow.style.display = 'flex';
+        firstMonthLabel.textContent = 'First Month Service';
+        firstMonthValue.textContent = '$' + Math.round(finalMonthlyRate).toLocaleString() + '.00';
+      } else {
+        // For upfront, show total service cost
+        firstMonthLabel.textContent = `Service (${state.contract} months × $${Math.round(finalMonthlyRate)}/mo)`;
+        firstMonthValue.textContent = '$' + Math.round(finalMonthlyRate * state.contract).toLocaleString() + '.00';
+      }
+
+      // Contract discount row (show rate applied)
       const contractRow = document.getElementById('row-contract-discount');
-      if (contractDiscountAmount > 0) {
+      if (contractDiscountRate > 0) {
         contractRow.style.display = 'flex';
-        document.getElementById('label-contract-discount').textContent = `${state.contract}-Month Contract Discount (${(contractDiscount*100).toFixed(0)}%)`;
-        document.getElementById('breakdown-contract-discount').textContent = '-$' + Math.round(contractDiscountAmount).toLocaleString() + '.00';
+        document.getElementById('label-contract-discount').textContent = 
+          `${state.contract}-Month Contract Discount (${(contractDiscountRate*100).toFixed(0)}% off monthly)`;
+        const monthlyDiscountTotal = monthlySavingsPerMonth * (state.payment === 'upfront' ? state.contract : 1);
+        document.getElementById('breakdown-contract-discount').textContent = 
+          state.payment === 'upfront' 
+            ? '-$' + Math.round(monthlySavingsPerMonth * state.contract).toLocaleString() + '.00 (total)'
+            : '-$' + Math.round(monthlySavingsPerMonth).toLocaleString() + '.00/mo';
       } else {
         contractRow.style.display = 'none';
       }
 
       // Volume discount row
       const volumeRow = document.getElementById('row-volume-discount');
-      if (volumeDiscountAmount > 0) {
+      if (state.qty === 4) {
         volumeRow.style.display = 'flex';
-        document.getElementById('breakdown-volume-discount').textContent = '-$' + Math.round(volumeDiscountAmount).toLocaleString() + '.00';
+        const volDiscountMonthly = discountedMonthlyRate * 0.05;
+        const volDiscountTotal = volDiscountMonthly * (state.payment === 'upfront' ? state.contract : 1);
+        document.getElementById('breakdown-volume-discount').textContent = 
+          state.payment === 'upfront'
+            ? '-$' + Math.round(volDiscountTotal).toLocaleString() + '.00 (total)'
+            : '-$' + Math.round(volDiscountMonthly).toLocaleString() + '.00/mo';
       } else {
         volumeRow.style.display = 'none';
       }
 
       // Upfront discount row
       const upfrontRow = document.getElementById('row-upfront-discount');
-      if (upfrontDiscountAmount > 0) {
+      if (state.payment === 'upfront') {
         upfrontRow.style.display = 'flex';
+        const upfrontDiscountAmount = (installCost + (finalMonthlyRate * state.contract)) * 0.05;
         document.getElementById('breakdown-upfront-discount').textContent = '-$' + Math.round(upfrontDiscountAmount).toLocaleString() + '.00';
       } else {
         upfrontRow.style.display = 'none';
       }
 
-      document.getElementById('breakdown-total').textContent = '$' + Math.round(grandTotal).toLocaleString() + '.00';
+      document.getElementById('breakdown-total').textContent = '$' + Math.round(dueToday).toLocaleString() + '.00';
 
-      // Monthly fee note
+      // Future payments section (monthly only)
       if (state.payment === 'monthly') {
-        document.getElementById('monthly-fee').textContent = '$' + monthlyRate * state.qty + '.00/mo';
+        document.getElementById('future-monthly').textContent = '$' + Math.round(finalMonthlyRate) + '/mo';
+        document.getElementById('future-count').textContent = remainingPayments;
+        document.getElementById('future-total').textContent = '$' + Math.round(finalMonthlyRate * remainingPayments).toLocaleString();
+        document.getElementById('future-period').textContent = state.contract + ' months total';
       }
 
       // Savings box
@@ -895,7 +977,8 @@
         window.location.href = 'tel:812-508-6399';
         return;
       }
-      alert('Thank you! This would redirect to Stripe payment. Call 812-508-6399 to complete your order.');
+      const paymentDesc = state.payment === 'upfront' ? 'upfront payment' : 'monthly billing';
+      alert(`Thank you! This would redirect to Stripe for ${paymentDesc}. Call 812-508-6399 to complete your order.`);
     }
 
     // Mobile menu
