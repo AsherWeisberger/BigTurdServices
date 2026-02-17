@@ -62,7 +62,7 @@
       display: grid;
       grid-template-columns: 1fr 380px;
       gap: 2rem;
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
     }
     .calc-options {
@@ -73,7 +73,7 @@
       padding: 2rem;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
-    .option-group { margin-bottom: 2.5rem; }
+    .option-group { margin-bottom: 2rem; }
     .option-group h3 {
       font-family: 'Fredoka', sans-serif;
       font-size: 1.25rem;
@@ -84,8 +84,235 @@
       align-items: center;
       gap: 0.5rem;
     }
+    .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .service-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      position: relative;
+    }
+    .service-card:hover {
+      border-color: #65a30d;
+      background: rgba(101, 163, 13, 0.05);
+      transform: translateY(-2px);
+    }
+    .service-card.selected {
+      border-color: #65a30d;
+      background: rgba(101, 163, 13, 0.15);
+      box-shadow: 0 4px 15px rgba(101, 163, 13, 0.2);
+    }
+    .service-card.best::before {
+      content: 'BEST VALUE';
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #000;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    .service-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .service-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; color: #1a1a1a; }
+    .service-desc { font-size: 0.8rem; color: #666; }
+
+    /* Dog Count Selector */
+    .dog-count-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .dog-count-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+      position: relative;
+    }
+    .dog-count-card:hover {
+      border-color: #65a30d;
+      background: rgba(101, 163, 13, 0.05);
+      transform: translateY(-2px);
+    }
+    .dog-count-card.selected {
+      border-color: #65a30d;
+      background: rgba(101, 163, 13, 0.15);
+      box-shadow: 0 4px 15px rgba(101, 163, 13, 0.2);
+    }
+    .dog-count-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .dog-count-number { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.25rem; color: #1a1a1a; }
+    .dog-count-label { font-size: 0.75rem; color: #666; }
+    .dog-count-price { font-size: 0.75rem; color: #65a30d; margin-top: 0.5rem; font-weight: 700; }
+
+    /* Yard Size */
+    .yard-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+
+    /* Price Display */
+    .price-display {
+      background: linear-gradient(135deg, rgba(101, 163, 13, 0.15), rgba(132, 204, 22, 0.1));
+      border: 2px solid rgba(101, 163, 13, 0.3);
+      border-radius: 24px;
+      padding: 2rem;
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    .price-label { font-size: 0.875rem; color: #666; margin-bottom: 0.5rem; font-weight: 500; }
+    .price-amount {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #65a30d, #84cc16);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .price-period { color: #666; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    .breakdown {
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    .breakdown-row:last-child {
+      margin-bottom: 0;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .checkout-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #65a30d, #84cc16);
+      color: #fff;
+      border: none;
+      padding: 1rem;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(101, 163, 13, 0.3);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .checkout-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(101, 163, 13, 0.4);
+    }
+    .custom-quote-box {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 14px;
+    }
+    .custom-quote-box h4 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #1a1a1a;
+    }
+    .custom-quote-box a {
+      color: #65a30d;
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-decoration: none;
+    }
+
+    /* Testimonials */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 4rem;
+      color: rgba(101, 163, 13, 0.2);
+      line-height: 1;
+    }
+    .stars { color: #fbbf24; margin-bottom: 1rem; font-size: 1.1rem; }
+    .testimonial-text { color: #444; line-height: 1.6; margin-bottom: 1.5rem; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #65a30d, #84cc16);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #fff;
+      font-size: 1.25rem;
+    }
+    .author-info h4 { font-weight: 700; margin-bottom: 0.25rem; color: #1a1a1a; }
+    .author-info p { color: #666; font-size: 0.875rem; }
+
+    /* Commercial Section Styles */
+    .commercial-section {
+      background: linear-gradient(135deg, rgba(101, 163, 13, 0.1), rgba(132, 204, 22, 0.05));
+      border: 2px solid rgba(101, 163, 13, 0.2);
+    }
     
-    /* Station Type Cards */
+    .commercial-card {
+      background: rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(101, 163, 13, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+    
+    .commercial-card:hover {
+      border-color: #65a30d;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(101, 163, 13, 0.15);
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      color: #444;
+    }
+    
+    .feature-list li i {
+      color: #65a30d;
+      margin-top: 0.25rem;
+    }
+
+    /* Commercial Calculator Specific Styles */
     .station-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .station-card {
       background: rgba(255, 255, 255, 0.9);
@@ -126,7 +353,6 @@
     .station-price { font-size: 1.5rem; font-weight: 800; color: #65a30d; text-align: center; margin-bottom: 0.75rem; }
     .station-features { font-size: 0.8rem; color: #666; line-height: 1.5; }
 
-    /* Quantity Cards */
     .qty-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
     .qty-card {
       background: rgba(255, 255, 255, 0.9);
@@ -156,7 +382,6 @@
     .qty-label { font-size: 0.85rem; color: #666; }
     .qty-card.custom { grid-column: span 2; }
 
-    /* Plan Cards */
     .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .plan-card {
       background: rgba(255, 255, 255, 0.9);
@@ -177,7 +402,6 @@
     .plan-price { font-size: 1.5rem; font-weight: 800; color: #65a30d; margin-bottom: 0.5rem; }
     .plan-desc { font-size: 0.8rem; color: #666; line-height: 1.4; }
 
-    /* Contract Cards */
     .contract-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .contract-card {
       background: rgba(255, 255, 255, 0.9);
@@ -208,7 +432,6 @@
     .contract-label { font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
     .contract-discount { font-size: 0.9rem; font-weight: 700; color: #16a34a; }
 
-    /* Payment Toggle */
     .payment-section {
       background: rgba(255, 255, 255, 0.6);
       border-radius: 16px;
@@ -247,53 +470,24 @@
     .payment-name { font-weight: 700; font-size: 0.95rem; color: #1a1a1a; }
     .payment-desc { font-size: 0.75rem; color: #666; margin-top: 0.25rem; }
 
-    /* Price Display */
-    .price-display {
-      background: linear-gradient(135deg, rgba(101, 163, 13, 0.15), rgba(132, 204, 22, 0.1));
-      border: 2px solid rgba(101, 163, 13, 0.3);
-      border-radius: 24px;
-      padding: 2rem;
-      position: sticky;
-      top: 100px;
-      height: fit-content;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-    .price-label { font-size: 0.875rem; color: #666; margin-bottom: 0.5rem; font-weight: 500; }
-    .price-amount {
-      font-family: 'Fredoka', sans-serif;
-      font-size: 2.75rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #65a30d, #84cc16);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-    .price-period { color: #666; margin-bottom: 1.5rem; font-size: 0.9rem; line-height: 1.4; }
-    
-    .breakdown {
+    .future-payments {
       background: rgba(255, 255, 255, 0.6);
-      border-radius: 16px;
-      padding: 1.25rem;
+      border-radius: 12px;
+      padding: 1rem;
       margin-bottom: 1.5rem;
+      text-align: center;
     }
-    .breakdown-row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 0.75rem;
-      font-size: 0.9rem;
-      color: #444;
+    .future-title { font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; font-weight: 600; }
+    .future-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      font-size: 0.8rem;
     }
-    .breakdown-row.discount { color: #16a34a; font-weight: 600; }
-    .breakdown-row.total {
-      margin-bottom: 0;
-      padding-top: 0.75rem;
-      border-top: 2px solid rgba(0, 0, 0, 0.1);
-      font-weight: 800;
-      color: #1a1a1a;
-      font-size: 1.1rem;
-    }
-    
+    .future-item { display: flex; justify-content: space-between; padding: 0.25rem 0; }
+    .future-label { color: #666; }
+    .future-value { font-weight: 600; color: #1a1a1a; }
+
     .savings-box {
       background: linear-gradient(135deg, #dcfce7, #bbf7d0);
       border: 1px solid #22c55e;
@@ -304,24 +498,6 @@
     }
     .savings-title { font-weight: 700; color: #166534; font-size: 0.9rem; margin-bottom: 0.25rem; }
     .savings-amount { font-size: 1.25rem; font-weight: 800; color: #16a34a; }
-    
-    .checkout-btn {
-      width: 100%;
-      background: linear-gradient(135deg, #65a30d, #84cc16);
-      color: #fff;
-      border: none;
-      padding: 1rem;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(101, 163, 13, 0.3);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .checkout-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(101, 163, 13, 0.4); }
 
     .custom-notice {
       background: linear-gradient(135deg, #fef3c7, #fde68a);
@@ -333,41 +509,204 @@
     .custom-title { font-weight: 800; color: #92400e; font-size: 1.1rem; margin-bottom: 0.5rem; }
     .custom-phone { font-size: 1.5rem; font-weight: 800; color: #b45309; }
 
-    .future-payments {
-      background: rgba(255, 255, 255, 0.6);
-      border-radius: 12px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-    .future-title { font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
-    .future-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem;
-      font-size: 0.8rem;
-    }
-    .future-item { display: flex; justify-content: space-between; padding: 0.25rem 0; }
-    .future-label { color: #666; }
-    .future-value { font-weight: 600; color: #1a1a1a; }
-
     @media (max-width: 968px) {
       .calc-container { grid-template-columns: 1fr; }
       .price-display { position: relative; top: 0; }
-      .station-grid, .plan-grid, .qty-grid, .contract-grid { grid-template-columns: repeat(2, 1fr); }
+      .service-grid, .dog-count-grid, .yard-grid, .station-grid, .plan-grid, .qty-grid, .contract-grid { grid-template-columns: repeat(2, 1fr); }
       .qty-card.custom { grid-column: span 2; }
     }
     @media (max-width: 640px) {
-      .station-grid, .plan-grid, .qty-grid, .contract-grid { grid-template-columns: 1fr; }
+      .service-grid, .dog-count-grid, .yard-grid, .station-grid, .plan-grid, .qty-grid, .contract-grid { grid-template-columns: 1fr; }
       .qty-card.custom { grid-column: span 1; }
     }
   </style>
+  <script>
+    // === Site config you can customize ===
+    const BUSINESS = {
+      name: "BIG TURD Waste Removal",
+      phone: "812-508-6399",
+      email: "BigTurdService@gmail.com",
+      city: "Terre Haute and surrounding cities",
+      serviceZips: [
+        "47801","47802","47803","47804","47805","47807","47806","47808","47809","47810"
+      ]
+    };
+
+    // UPDATED PRICING - All new prices and Stripe links as provided
+    const PRICING = {
+      small: {
+        weekly:   { price: 65.00,  link: 'https://buy.stripe.com/3cIcN54sP3eB2QV3mC6g80y' },
+        twice:    { price: 110.00, link: 'https://buy.stripe.com/3cI00jcZl9CZezD9L06g80C' },
+        biweekly: { price: 45.00,  link: 'https://buy.stripe.com/14A9AT3oL9CZdvzbT86g80H' },
+        onetime:  { price: 69.00,  link: 'https://buy.stripe.com/7sY8wP8J5eXj2QVf5k6g80L' }
+      },
+      medium: {
+        weekly:   { price: 75.00,  link: 'https://buy.stripe.com/28E00jcZl6qNajnaP46g80z' },
+        twice:    { price: 120.00, link: 'https://buy.stripe.com/cNi7sL0cz5mJajn5uK6g80D' },
+        biweekly: { price: 50.00,  link: 'https://buy.stripe.com/00w9AT8J5dTfcrv0aq6g80I' },
+        onetime:  { price: 79.00,  link: 'https://buy.stripe.com/5kQdR9bVh7uR6378GW6g80M' }
+      },
+      large: {
+        weekly:   { price: 85.00,  link: 'https://buy.stripe.com/00waEX5wTdTf1MR6yO6g80A' },
+        twice:    { price: 135.00, link: 'https://buy.stripe.com/14AeVd7F1eXj3UZ9L06g80E' },
+        biweekly: { price: 60.00,  link: 'https://buy.stripe.com/dRmbJ1f7teXj77bg9o6g80J' },
+        onetime:  { price: 89.00,  link: 'https://buy.stripe.com/bJe6oH2kH4iF2QVaP46g80N' }
+      },
+      xlarge: {
+        weekly:   { price: 100.00, link: 'https://buy.stripe.com/6oU9ATf7tdTf8bf5uK6g80B' },
+        twice:    { price: 145.00, link: 'https://buy.stripe.com/9B66oH0czcPbbnr5uK6g80G' },
+        biweekly: { price: 70.00,  link: 'https://buy.stripe.com/bJe6oH8J53eBdvz3mC6g80K' },
+        onetime:  { price: 110.00, link: 'https://buy.stripe.com/28E4gz4sP7uR637f5k6g80O' }
+      }
+    };
+
+    // Dog count pricing - +$7 per additional dog over the first
+    const DOG_PRICING = {
+      1: { extra: 0, label: '1 Dog' },
+      2: { extra: 7, label: '2 Dogs' },
+      3: { extra: 14, label: '3 Dogs' },
+      4: { extra: 21, label: '4+ Dogs' }
+    };
+
+    let currentService = 'weekly';
+    let currentYard = 'small';
+    let currentDogs = 1;
+
+    function selectService(service) {
+      currentService = service;
+      document.querySelectorAll('[id^="card-"]').forEach(card => {
+        card.classList.remove('selected');
+      });
+      document.getElementById('card-' + service).classList.add('selected');
+      updatePrice();
+    }
+
+    function selectYard(yard) {
+      currentYard = yard;
+      document.querySelectorAll('[id^="yard-"]').forEach(card => {
+        card.classList.remove('selected');
+      });
+      document.getElementById('yard-' + yard).classList.add('selected');
+      updatePrice();
+    }
+
+    function selectDogs(dogs) {
+      currentDogs = dogs;
+      document.querySelectorAll('[id^="dog-"]').forEach(card => {
+        card.classList.remove('selected');
+      });
+      document.getElementById('dog-' + dogs).classList.add('selected');
+      updatePrice();
+    }
+
+    function updatePrice() {
+      // Check for 4+ dogs ONLY for one-time service - show call us
+      if (currentDogs === 4 && currentService === 'onetime') {
+        document.getElementById('price').innerHTML = 'Call Us';
+        document.getElementById('period').textContent = '4+ Dogs • One-Time Cleanup • Custom quote required';
+        document.getElementById('breakdown').style.display = 'none';
+        document.getElementById('checkoutBtn').style.display = 'none';
+        document.getElementById('customQuote').style.display = 'block';
+        return;
+      }
+
+      document.getElementById('breakdown').style.display = 'block';
+      document.getElementById('checkoutBtn').style.display = 'inline-flex';
+      document.getElementById('customQuote').style.display = 'none';
+
+      // Get base price from PRICING object
+      const basePrice = PRICING[currentYard][currentService].price;
+      const dogFee = DOG_PRICING[currentDogs].extra;
+      
+      const totalPrice = basePrice + dogFee;
+
+      const serviceName = currentService === 'weekly' ? 'Weekly' : 
+                         currentService === 'twice' ? 'Twice Weekly' : 
+                         currentService === 'biweekly' ? 'Every Other Week' : 'One-Time';
+
+      const yardLabel = currentYard === 'small' ? 'Small Yard' :
+                       currentYard === 'medium' ? 'Medium Yard' :
+                       currentYard === 'large' ? 'Large Yard' : 'Extra Large';
+
+      const dogLabel = currentDogs === 4 ? '4+ Dogs' : currentDogs + ' Dog' + (currentDogs > 1 ? 's' : '');
+
+      document.getElementById('price').textContent = '$' + totalPrice.toFixed(2);
+      document.getElementById('period').textContent = `${serviceName} • ${dogLabel} • ${yardLabel}`;
+
+      // Update breakdown
+      document.getElementById('basePrice').textContent = '$' + basePrice.toFixed(2);
+      document.getElementById('totalPrice').textContent = '$' + totalPrice.toFixed(2);
+
+      // Show/hide dog fee row
+      const dogRow = document.getElementById('dogRow');
+      if (currentDogs > 1) {
+        dogRow.style.display = 'flex';
+        document.getElementById('dogPrice').textContent = '+$' + dogFee.toFixed(2);
+      } else {
+        dogRow.style.display = 'none';
+      }
+    }
+
+    function checkout() {
+      // Check for 4+ dogs on one-time service
+      if (currentDogs === 4 && currentService === 'onetime') {
+        window.location.href = 'tel:' + BUSINESS.phone.replace(/-/g, '');
+        return;
+      }
+      
+      const data = PRICING[currentYard][currentService];
+      if (data && data.link) {
+        window.open(data.link, '_blank');
+      } else {
+        alert('Please select valid options before checkout.');
+      }
+    }
+
+    function fillBusinessBits() {
+      document.querySelectorAll('[data-business-name]').forEach(el => el.textContent = BUSINESS.name);
+      document.querySelectorAll('[data-business-phone]').forEach(el => el.textContent = BUSINESS.phone);
+      document.querySelectorAll('[data-business-email]').forEach(el => { 
+        el.textContent = BUSINESS.email; 
+        el.href = 'mailto:' + BUSINESS.email; 
+      });
+    }
+
+    function sendContactEmail() {
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+      if (!name || !email) {
+        alert('Please fill in at least your name and email.');
+        return;
+      }
+      const subject = `Contact Request - ${encodeURIComponent(BUSINESS.name)}`;
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}\n---\nNotes:`
+      );
+      window.location.href = `mailto:${BUSINESS.email}?subject=${subject}&body=${body}`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fillBusinessBits();
+      // Set initial selections
+      selectService('weekly');
+      selectYard('small');
+      selectDogs(1);
+      const btn = document.getElementById('mobileMenuBtn');
+      const menu = document.getElementById('mobileMenu');
+      btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+      document.getElementById('contactSubmit').addEventListener('click', sendContactEmail);
+    });
+  </script>
 </head>
 <body class="text-stone-900">
-  <!-- Banner -->
-  <div class="bg-green-600 text-white text-center py-3 font-extrabold text-lg tracking-wide">
+   <!-- Cheapest Nationwide Banner -->
+  <div class="bg-green-600 text-white text-center py-4 font-extrabold text-xl tracking-wide">
     50% OFF INITIAL CLEANUP WITH PURCHASE OF MONTHLY SERVICE
   </div>
+
+  <!-- Grand Opening Deal Banner -->
 
   <!-- Header -->
   <header class="sticky top-0 z-50 glassy border-b border-stone-200">
@@ -382,7 +721,10 @@
           <a href="#pricing" class="hover:text-stone-700">Pricing</a>
           <a href="#commercial" class="hover:text-stone-700 font-bold text-lime-700">Commercial</a>
           <a href="#area" class="hover:text-stone-700">Service Area</a>
+          <a href="#faq" class="hover:text-stone-700">FAQ</a>
+          <a href="#reviews" class="hover:text-stone-700">Reviews</a>
           <a href="#contact" class="hover:text-stone-700">Contact</a>
+          <a href="#pricing" class="inline-flex items-center rounded-xl border border-stone-300 px-3 py-1.5 hover:bg-stone-100 glassy">Free Quote</a>
         </nav>
         <button id="mobileMenuBtn" class="md:hidden inline-flex items-center gap-2 rounded-xl border border-stone-300 px-3 py-1.5 glassy">Menu</button>
       </div>
@@ -392,12 +734,14 @@
           <a href="#pricing" class="px-2 py-1">Pricing</a>
           <a href="#commercial" class="px-2 py-1 font-bold text-lime-700">Commercial</a>
           <a href="#area" class="px-2 py-1">Service Area</a>
+          <a href="#faq" class="px-2 py-1">FAQ</a>
+          <a href="#reviews" class="px-2 py-1">Reviews</a>
           <a href="#contact" class="px-2 py-1">Contact</a>
+          <a href="#pricing" class="px-2 py-1 font-semibold">Free Quote</a>
         </div>
       </div>
     </div>
   </header>
-
   <!-- Hero -->
   <section id="top" class="relative bg-gray-100 py-16">
     <div class="container mx-auto px-4">
@@ -405,18 +749,361 @@
         <div class="hero-text text-center max-w-3xl">
           <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
             <span class="text-lime-600">Big Turd</span><br>
-            <span class="text-stone-900">Commercial Solutions</span>
+            <span class="text-stone-900">Professional Pet Waste Removal</span>
           </h1>
-          <p class="mt-6 text-lg text-stone-700 max-w-prose mx-auto">
-            Professional dog poop station installation and maintenance for HOAs, apartments, and commercial properties. 
-            Serving Terre Haute with structured contracts and transparent pricing.
-          </p>
+          <p class="mt-6 text-lg text-stone-700 max-w-prose mx-auto">Reliable, affordable dog poop cleanup for yards, HOAs, apartments and parks. No contracts. Friendly service. Sparkling lawns and happy paws.</p>
           <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#commercial-calculator" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-lime-600 text-white hover:bg-lime-700 font-bold">
-              <i class="fas fa-calculator mr-2"></i> Build Your Quote
+            <a href="#pricing" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-lime-600 text-white hover:bg-lime-700">View Pricing Plans</a>
+            <a href="#commercial" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-green-600 text-white hover:bg-green-700">Commercial Solutions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POOP CALCULATOR SECTION -->
+<section id="poop-calc" class="container mx-auto px-4 py-12">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-8">
+      <h2 class="text-4xl md:text-5xl font-extrabold text-stone-900 mb-4">
+        <span class="text-lime-600"></span> The Poop Calculator <span class="text-lime-600">💩</span>
+      </h2>
+      <p class="text-lg text-stone-600">See how much poop is really piling up in your yard. It's more than you think.</p>
+    </div>
+
+    <div class="glassy rounded-3xl p-6 md:p-10 shadow-2xl border-2 border-lime-200">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+        
+        <!-- LEFT SIDE: Controls -->
+        <div class="space-y-8">
+          <!-- Dog Counter -->
+          <div class="bg-white/80 rounded-2xl p-6 border border-stone-200">
+            <label class="block text-sm font-bold text-stone-500 uppercase tracking-wide mb-3">
+              How many dogs?
+            </label>
+            <div class="flex items-center gap-4 mb-4">
+              <button onclick="adjustDogs(-1)" class="w-12 h-12 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center text-2xl font-bold transition">−</button>
+              <div class="flex-1 text-center">
+                <span id="dogCount" class="text-5xl font-black text-lime-600">1</span>
+                <span class="text-stone-400 text-sm block mt-1">dog<span id="dogPlural">s</span></span>
+              </div>
+              <button onclick="adjustDogs(1)" class="w-12 h-12 rounded-full bg-lime-500 hover:bg-lime-600 text-white flex items-center justify-center text-2xl font-bold transition shadow-lg">+</button>
+            </div>
+            <div class="flex justify-center gap-1 text-3xl" id="dogEmojis">
+              🐕
+            </div>
+          </div>
+
+          <!-- Poops Per Day -->
+          <div class="bg-white/80 rounded-2xl p-6 border border-stone-200">
+            <label class="block text-sm font-bold text-stone-500 uppercase tracking-wide mb-3">
+              Poops per day per dog
+            </label>
+            <input type="range" id="poopSlider" min="1" max="5" value="3" step="1" 
+                   class="w-full h-3 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-lime-600 mb-4"
+                   oninput="updateCalc()">
+            <div class="flex justify-between text-xs text-stone-400 font-bold uppercase tracking-wide">
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4</span>
+              <span>5</span>
+            </div>
+            <div class="text-center mt-4">
+              <span id="poopPerDay" class="text-4xl font-black text-amber-600">3</span>
+              <span class="text-stone-500">poops/day each</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: The Shocking Results -->
+        <div class="flex flex-col justify-center">
+          <div class="bg-gradient-to-br from-stone-900 to-stone-800 rounded-2xl p-6 text-white shadow-xl">
+            <div class="text-center mb-6">
+              <div class="text-sm uppercase tracking-widest text-stone-400 mb-2">Monthly Poop Total</div>
+              <div class="flex items-baseline justify-center gap-2 flex-wrap">
+                <span id="totalPoops" class="text-7xl md:text-8xl font-black text-lime-400 leading-none">84</span>
+                <span class="text-3xl font-bold text-stone-300">poops</span>
+              </div>
+            </div>
+
+            <!-- Visual Poop Storm -->
+            <div class="bg-black/30 rounded-xl p-4 mb-6 min-h-[120px] flex flex-wrap justify-center items-center gap-1 overflow-hidden" id="poopVisual">
+              <!-- Poops get injected here -->
+            </div>
+
+            <!-- Reality Check -->
+            <div class="space-y-3 text-sm">
+              <div class="flex items-center gap-3 bg-white/10 rounded-lg p-3">
+                <span class="text-2xl">⚖️</span>
+                <div>
+                  <div class="font-bold text-lime-300">That's <span id="poundsWaste">63</span> lbs of waste</div>
+                  <div class="text-stone-400 text-xs">per month sitting in your yard</div>
+                </div>
+              </div>
+              
+              <div class="flex items-center gap-3 bg-white/10 rounded-lg p-3">
+                <span class="text-2xl">🦠</span>
+                <div>
+                  <div class="font-bold text-red-300"><span id="bacteriaCount">1.9 billion</span> bacteria</div>
+                  <div class="text-stone-400 text-xs">swarming in that poop right now</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 bg-white/10 rounded-lg p-3">
+                <span class="text-2xl">⏰</span>
+                <div>
+                  <div class="font-bold text-amber-300"><span id="timeWasted">4.2</span> hours</div>
+                  <div class="text-stone-400 text-xs">you'll spend scooping this month</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 text-center">
+            <a href="#pricing" class="inline-flex items-center justify-center w-full bg-lime-600 hover:bg-lime-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              Save Your Yard →
             </a>
-            <a href="tel:812-508-6399" class="inline-flex items-center justify-center rounded-lg px-6 py-3 bg-white text-lime-700 border-2 border-lime-600 hover:bg-lime-50 font-bold">
-              <i class="fas fa-phone mr-2"></i> 812-508-6399
+            <p class="text-xs text-stone-500 mt-2">Based on average .75 lbs per poop</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  let dogs = 1;
+  let poopsPerDay = 3;
+
+  function adjustDogs(change) {
+    dogs = Math.max(1, Math.min(5, dogs + change));
+    document.getElementById('dogCount').textContent = dogs;
+    document.getElementById('dogPlural').textContent = dogs === 1 ? '' : 's';
+    
+    // Update dog emojis
+    const dogEmojis = document.getElementById('dogEmojis');
+    dogEmojis.innerHTML = '🐕'.repeat(dogs);
+    
+    updateCalc();
+  }
+
+  function updateCalc() {
+    poopsPerDay = parseInt(document.getElementById('poopSlider').value);
+    document.getElementById('poopPerDay').textContent = poopsPerDay;
+    
+    // Math
+    const daily = dogs * poopsPerDay;
+    const weekly = daily * 7;
+    const monthly = daily * 30;
+    const pounds = (monthly * 0.75).toFixed(0);
+    const bacteria = (monthly * 23000000).toLocaleString();
+    const hours = ((monthly * 2) / 60).toFixed(1); // 2 mins per poop
+    
+    // Update numbers
+    document.getElementById('totalPoops').textContent = monthly;
+    document.getElementById('poundsWaste').textContent = pounds;
+    document.getElementById('bacteriaCount').textContent = bacteria;
+    document.getElementById('timeWasted').textContent = hours;
+    
+    // Update visual poop display (max 50 for performance)
+    const visualContainer = document.getElementById('poopVisual');
+    visualContainer.innerHTML = '';
+    const displayCount = Math.min(monthly, 50);
+    for(let i = 0; i < displayCount; i++) {
+      const poop = document.createElement('span');
+      poop.textContent = '💩';
+      poop.style.fontSize = Math.random() > 0.5 ? '1.5rem' : '1.2rem';
+      poop.style.opacity = Math.random() * 0.5 + 0.5;
+      poop.style.animation = `float ${2 + Math.random() * 2}s ease-in-out infinite`;
+      poop.style.animationDelay = `${Math.random() * 2}s`;
+      visualContainer.appendChild(poop);
+    }
+    
+    if(monthly > 50) {
+      const more = document.createElement('div');
+      more.className = 'w-full text-center text-stone-400 text-xs mt-2';
+      more.textContent = `+ ${monthly - 50} more...`;
+      visualContainer.appendChild(more);
+    }
+  }
+
+  // Add floating animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Initialize
+  updateCalc();
+</script>
+  
+  <!-- Why Choose Big Turd -->
+  <section class="container mx-auto px-4 py-16">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold">Why Choose Big Turd?</h2>
+      <p class="mt-2 text-stone-700 max-w-2xl mx-auto">We're committed to keeping your yard clean, healthy, and enjoyable for your family and pets.</p>
+      <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="bg-white/60 backdrop-blur-md p-6 rounded-xl text-center shadow-sm">
+          <div class="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-green-600">✅</span>
+          </div>
+          <h3 class="font-semibold text-lg">Reliable Service</h3>
+          <p class="mt-2 text-stone-600">Consistent, dependable cleanup service that you can count on every week.</p>
+        </div>
+        <div class="bg-white/60 backdrop-blur-md p-6 rounded-xl text-center shadow-sm">
+          <div class="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-green-600">🛡️</span>
+          </div>
+          <h3 class="font-semibold text-lg">Health & Safety</h3>
+          <p class="mt-2 text-stone-600">Professional sanitization keeps your yard and pets safe from harmful bacteria.</p>
+        </div>
+        <div class="bg-white/60 backdrop-blur-md p-6 rounded-xl text-center shadow-sm">
+          <div class="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-green-600">📅</span>
+          </div>
+          <h3 class="font-semibold text-lg">Flexible Scheduling</h3>
+          <p class="mt-2 text-stone-600">Choose from weekly, bi-weekly, or one-time services to fit your needs.</p>
+        </div>
+        <div class="bg-white/60 backdrop-blur-md p-6 rounded-xl text-center shadow-sm">
+          <div class="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+            <span class="text-green-600">⭐</span>
+          </div>
+          <h3 class="font-semibold text-lg">100% Satisfaction</h3>
+          <p class="mt-2 text-stone-600">Not happy with our service? We'll make it right or refund your money.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Pricing Calculator -->
+  <section id="pricing" class="calculator-section">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-extrabold">Instant Price Calculator</h2>
+        <p class="mt-2 text-stone-700 max-w-2xl mx-auto">Get your exact price in seconds. No hidden fees, no surprises. Select your preferences below.</p>
+      </div>
+
+      <div class="calc-container">
+        <div class="calc-options">
+          <!-- Service Frequency -->
+          <div class="option-group">
+            <h3><span>1.</span> Select Service Frequency</h3>
+            <div class="service-grid">
+              <div class="service-card selected" id="card-weekly" onclick="selectService('weekly')">
+                <div class="service-icon">📅</div>
+                <div class="service-name">Weekly</div>
+                <div class="service-desc">1x per week • Most popular</div>
+              </div>
+              <div class="service-card best" id="card-twice" onclick="selectService('twice')">
+                <div class="service-icon">⚡</div>
+                <div class="service-name">Twice Weekly</div>
+                <div class="service-desc">2x per week • Best value</div>
+              </div>
+              <div class="service-card" id="card-biweekly" onclick="selectService('biweekly')">
+                <div class="service-icon">🗓️</div>
+                <div class="service-name">Every Other Week</div>
+                <div class="service-desc">1x per 2 weeks • Budget friendly</div>
+              </div>
+              <div class="service-card" id="card-onetime" onclick="selectService('onetime')">
+                <div class="service-icon">🧹</div>
+                <div class="service-name">One-Time Clean</div>
+                <div class="service-desc">Single deep clean</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Number of Dogs -->
+          <div class="option-group">
+            <h3><span>2.</span> Number of Dogs 🐕</h3>
+            <div class="dog-count-grid">
+              <div class="dog-count-card selected" id="dog-1" onclick="selectDogs(1)">
+                <div class="dog-count-icon">🐕</div>
+                <div class="dog-count-number">1 Dog</div>
+                <div class="dog-count-label">Base price</div>
+                <div class="dog-count-price">Included</div>
+              </div>
+              <div class="dog-count-card" id="dog-2" onclick="selectDogs(2)">
+                <div class="dog-count-icon">🐕🐕</div>
+                <div class="dog-count-number">2 Dogs</div>
+                <div class="dog-count-label">+ $7/month</div>
+                <div class="dog-count-price">+$7.00</div>
+              </div>
+              <div class="dog-count-card" id="dog-3" onclick="selectDogs(3)">
+                <div class="dog-count-icon">🐕🐕🐕</div>
+                <div class="dog-count-number">3 Dogs</div>
+                <div class="dog-count-label">+ $14/month</div>
+                <div class="dog-count-price">+$14.00</div>
+              </div>
+              <div class="dog-count-card" id="dog-4" onclick="selectDogs(4)">
+                <div class="dog-count-icon">🏠</div>
+                <div class="dog-count-number">4+ Dogs</div>
+                <div class="dog-count-label">Custom quote</div>
+                <div class="dog-count-price">Call us</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Yard Size -->
+          <div class="option-group">
+            <h3><span>3.</span> Choose Yard Size</h3>
+            <div class="yard-grid">
+              <div class="service-card selected" id="yard-small" onclick="selectYard('small')">
+                <div class="service-name">Small Yard</div>
+                <div class="service-desc">Under 5,000 sq ft</div>
+              </div>
+              <div class="service-card" id="yard-medium" onclick="selectYard('medium')">
+                <div class="service-name">Medium Yard</div>
+                <div class="service-desc">5,000 - 10,000 sq ft</div>
+              </div>
+              <div class="service-card" id="yard-large" onclick="selectYard('large')">
+                <div class="service-name">Large Yard</div>
+                <div class="service-desc">10,000 - 20,000 sq ft</div>
+              </div>
+              <div class="service-card" id="yard-xlarge" onclick="selectYard('xlarge')">
+                <div class="service-name">Extra Large</div>
+                <div class="service-desc">20,000+ sq ft</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price Display -->
+        <div class="price-display">
+          <div class="price-label">Your Monthly Price</div>
+          <div class="price-amount" id="price">$65.00</div>
+          <div class="price-period" id="period">Weekly • 1 Dog • Small Yard</div>
+          
+          <div class="breakdown" id="breakdown">
+            <div class="breakdown-row">
+              <span>Base Service</span>
+              <span id="basePrice">$65.00</span>
+            </div>
+            <div class="breakdown-row" id="dogRow" style="display: none;">
+              <span>Additional Dogs</span>
+              <span id="dogPrice">+$0.00</span>
+            </div>
+            <div class="breakdown-row">
+              <span>Total</span>
+              <span id="totalPrice">$65.00</span>
+            </div>
+          </div>
+
+          <!-- CHECKOUT BUTTON -->
+          <button id="checkoutBtn" class="checkout-btn" onclick="checkout()">
+            <i class="fas fa-lock mr-2"></i> Checkout Now
+          </button>
+
+          <!-- Custom Quote Box -->
+          <div id="customQuote" class="custom-quote-box" style="display: none;">
+            <h4>Custom Quote Required</h4>
+            <p class="text-sm text-gray-600 mb-3">4+ dogs requires a personalized quote.</p>
+            <a href="tel:812-508-6399" onclick="gtag('event', 'click', { event_category: 'conversion', event_label: 'phone_call_custom_quote' });">
+              <i class="fas fa-phone mr-2"></i> Call 812-508-6399
             </a>
           </div>
         </div>
@@ -424,52 +1111,72 @@
     </div>
   </section>
 
-  <!-- Commercial Overview -->
-  <section id="commercial" class="container mx-auto px-4 py-12">
-    <div class="grid md:grid-cols-2 gap-6 mb-12">
-      <div class="glassy rounded-2xl p-6">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="w-12 h-12 bg-lime-100 rounded-full flex items-center justify-center text-2xl">🛠️</div>
-          <div>
-            <h3 class="font-bold text-lg">Station Installation</h3>
-            <p class="text-stone-600 text-sm">Professional-grade equipment</p>
+  <!-- COMMERCIAL SECTION - Dog Poop Stations for Larger Complexes -->
+  <section id="commercial" class="commercial-section py-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-extrabold text-stone-900 mb-4">
+          🏢 Commercial Solutions
+        </h2>
+        <p class="text-lg text-stone-600 max-w-2xl mx-auto">
+          Professional dog poop station installation and maintenance for HOAs, apartment complexes, parks, and commercial properties. Keep your common areas clean and your residents happy.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mb-12">
+        <div class="glassy rounded-2xl p-6">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-lime-100 rounded-full flex items-center justify-center text-2xl">🛠️</div>
+            <div>
+              <h3 class="font-bold text-lg">Station Installation</h3>
+              <p class="text-stone-600 text-sm">Professional-grade equipment</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-stone-200">
+            <span class="text-stone-700">Standard Station</span>
+            <span class="font-bold text-lime-700">$350</span>
+          </div>
+          <div class="flex justify-between items-center py-2">
+            <span class="text-stone-700">Premium Station</span>
+            <span class="font-bold text-lime-700">$425</span>
           </div>
         </div>
-        <div class="flex justify-between items-center py-2 border-b border-stone-200">
-          <span class="text-stone-700">Standard Station</span>
-          <span class="font-bold text-lime-700">$350</span>
-        </div>
-        <div class="flex justify-between items-center py-2">
-          <span class="text-stone-700">Premium Station</span>
-          <span class="font-bold text-lime-700">$425</span>
+        
+        <div class="glassy rounded-2xl p-6">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 bg-lime-100 rounded-full flex items-center justify-center text-2xl">📅</div>
+            <div>
+              <h3 class="font-bold text-lg">Contract Discounts</h3>
+              <p class="text-stone-600 text-sm">Longer terms, bigger savings on maintenance</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-stone-200">
+            <span class="text-stone-700">12 Months</span>
+            <span class="font-bold text-stone-900">Base Price</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-stone-200">
+            <span class="text-stone-700">24 Months</span>
+            <span class="font-bold text-green-600">10% Off</span>
+          </div>
+          <div class="flex justify-between items-center py-2">
+            <span class="text-stone-700">36 Months</span>
+            <span class="font-bold text-green-600">15% Off</span>
+          </div>
         </div>
       </div>
-      
-      <div class="glassy rounded-2xl p-6">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="w-12 h-12 bg-lime-100 rounded-full flex items-center justify-center text-2xl">📅</div>
-          <div>
-            <h3 class="font-bold text-lg">Contract Discounts</h3>
-            <p class="text-stone-600 text-sm">Longer terms, bigger savings on maintenance</p>
-          </div>
-        </div>
-        <div class="flex justify-between items-center py-2 border-b border-stone-200">
-          <span class="text-stone-700">12 Months</span>
-          <span class="font-bold text-stone-900">Base Price</span>
-        </div>
-        <div class="flex justify-between items-center py-2 border-b border-stone-200">
-          <span class="text-stone-700">24 Months</span>
-          <span class="font-bold text-green-600">10% Off</span>
-        </div>
-        <div class="flex justify-between items-center py-2">
-          <span class="text-stone-700">36 Months</span>
-          <span class="font-bold text-green-600">15% Off</span>
-        </div>
+
+      <!-- CTA to Commercial Calculator Page -->
+      <div class="text-center">
+        <a href="#commercial-calculator" class="inline-flex items-center justify-center bg-lime-600 hover:bg-lime-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+          <i class="fas fa-calculator mr-3"></i>
+          Calculate Your Commercial Quote
+        </a>
+        <p class="mt-4 text-sm text-stone-500">Get an instant estimate for your property's needs</p>
       </div>
     </div>
   </section>
 
-  <!-- COMMERCIAL CALCULATOR -->
+  <!-- COMMERCIAL CALCULATOR PAGE/SECTION -->
   <section id="commercial-calculator" class="calculator-section bg-stone-50 py-16">
     <div class="container mx-auto px-4">
       <div class="text-center mb-10">
@@ -477,8 +1184,8 @@
         <p class="mt-2 text-stone-700 max-w-2xl mx-auto">Build your custom package. Pay monthly (installation + first month) or upfront for additional 5% savings.</p>
       </div>
 
-      <div class="calc-container">
-        <div class="calc-options">
+      <div class="calc-container" style="max-width: 1100px;">
+        <div class="calc-options" style="background: rgba(255, 255, 255, 0.9);">
           
           <!-- Station Type -->
           <div class="option-group">
@@ -683,7 +1390,7 @@
             </div>
           </div>
 
-          <button id="checkout-btn" class="checkout-btn" onclick="checkout()">
+          <button id="checkout-btn" class="checkout-btn" onclick="commercialCheckout()">
             <i class="fas fa-lock mr-2"></i> Get Started Now
           </button>
           
@@ -705,50 +1412,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-stone-900 text-white py-12">
-    <div class="container mx-auto px-4">
-      <div class="grid md:grid-cols-4 gap-8">
-        <div>
-          <div class="flex items-center gap-2 font-extrabold text-xl mb-4">
-            <span class="text-2xl">💩</span>
-            <span>BIG TURD</span>
-          </div>
-          <p class="text-stone-400 text-sm">Professional pet waste removal services in Terre Haute and surrounding areas.</p>
-        </div>
-        <div>
-          <h4 class="font-bold mb-4">Services</h4>
-          <ul class="space-y-2 text-sm text-stone-400">
-            <li>Residential Cleanup</li>
-            <li>Commercial Stations</li>
-            <li>HOA Services</li>
-            <li>Park Maintenance</li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold mb-4">Contact</h4>
-          <ul class="space-y-2 text-sm text-stone-400">
-            <li><i class="fas fa-phone mr-2"></i> 812-508-6399</li>
-            <li><i class="fas fa-envelope mr-2"></i> BigTurdService@gmail.com</li>
-            <li><i class="fas fa-map-marker-alt mr-2"></i> Terre Haute, IN</li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold mb-4">Hours</h4>
-          <ul class="space-y-2 text-sm text-stone-400">
-            <li>Monday - Friday: 8am - 6pm</li>
-            <li>Saturday: 9am - 4pm</li>
-            <li>Sunday: Closed</li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-stone-800 mt-8 pt-8 text-center text-stone-500 text-sm">
-        <p>&copy; 2024 BIG TURD Waste Removal. All rights reserved. 💩</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Calculator JavaScript -->
+  <!-- Commercial Calculator JavaScript -->
   <script>
     const config = {
       stations: {
@@ -843,7 +1507,7 @@
       const discountedMonthlyRate = baseMonthlyRate * (1 - contractDiscountRate);
       const monthlySavingsPerMonth = baseMonthlyRate - discountedMonthlyRate;
       
-      // Volume discount (5% on 4+ stations, applied to monthly rate)
+      // Volume discount (5% on 4 stations, applied to monthly rate)
       let volumeDiscountRate = 0;
       if (state.qty === 4) {
         volumeDiscountRate = 0.05;
@@ -851,14 +1515,13 @@
       const finalMonthlyRate = discountedMonthlyRate * (1 - volumeDiscountRate);
       
       // Calculate totals based on payment type
-      let dueToday, totalContractValue, totalSavings, remainingPayments, futurePaymentsDisplay;
+      let dueToday, totalContractValue, totalSavings, remainingPayments;
       
       if (state.payment === 'monthly') {
         // MONTHLY: Pay installation + first month only
         dueToday = installCost + finalMonthlyRate;
         totalContractValue = installCost + (finalMonthlyRate * state.contract);
         remainingPayments = state.contract - 1;
-        futurePaymentsDisplay = true;
         
         // Savings from contract + volume (over full contract)
         const contractSavingsTotal = monthlySavingsPerMonth * state.contract;
@@ -876,7 +1539,6 @@
         dueToday = subtotal - upfrontDiscount;
         totalContractValue = dueToday;
         remainingPayments = 0;
-        futurePaymentsDisplay = false;
         
         // All savings including upfront
         const contractSavingsTotal = monthlySavingsPerMonth * state.contract;
@@ -898,7 +1560,7 @@
         state.qty === 1 ? `${stationData.name} Installation` : `${stationData.name} Installation (×${state.qty})`;
       document.getElementById('breakdown-install').textContent = '$' + installCost.toLocaleString() + '.00';
 
-      // First month row (always show for clarity, but label changes)
+      // First month row
       const firstMonthRow = document.getElementById('row-first-month');
       const firstMonthLabel = document.getElementById('breakdown-first-label');
       const firstMonthValue = document.getElementById('breakdown-first');
@@ -908,12 +1570,12 @@
         firstMonthLabel.textContent = 'First Month Service';
         firstMonthValue.textContent = '$' + Math.round(finalMonthlyRate).toLocaleString() + '.00';
       } else {
-        // For upfront, show total service cost
+        firstMonthRow.style.display = 'flex';
         firstMonthLabel.textContent = `Service (${state.contract} months × $${Math.round(finalMonthlyRate)}/mo)`;
         firstMonthValue.textContent = '$' + Math.round(finalMonthlyRate * state.contract).toLocaleString() + '.00';
       }
 
-      // Contract discount row (show rate applied)
+      // Contract discount row
       const contractRow = document.getElementById('row-contract-discount');
       if (contractDiscountRate > 0) {
         contractRow.style.display = 'flex';
@@ -922,7 +1584,7 @@
         const monthlyDiscountTotal = monthlySavingsPerMonth * (state.payment === 'upfront' ? state.contract : 1);
         document.getElementById('breakdown-contract-discount').textContent = 
           state.payment === 'upfront' 
-            ? '-$' + Math.round(monthlySavingsPerMonth * state.contract).toLocaleString() + '.00 (total)'
+            ? '-$' + Math.round(monthlySavingsPerMonth * state.contract).toLocaleString() + '.00'
             : '-$' + Math.round(monthlySavingsPerMonth).toLocaleString() + '.00/mo';
       } else {
         contractRow.style.display = 'none';
@@ -933,10 +1595,9 @@
       if (state.qty === 4) {
         volumeRow.style.display = 'flex';
         const volDiscountMonthly = discountedMonthlyRate * 0.05;
-        const volDiscountTotal = volDiscountMonthly * (state.payment === 'upfront' ? state.contract : 1);
         document.getElementById('breakdown-volume-discount').textContent = 
           state.payment === 'upfront'
-            ? '-$' + Math.round(volDiscountTotal).toLocaleString() + '.00 (total)'
+            ? '-$' + Math.round(volDiscountMonthly * state.contract).toLocaleString() + '.00 (total)'
             : '-$' + Math.round(volDiscountMonthly).toLocaleString() + '.00/mo';
       } else {
         volumeRow.style.display = 'none';
@@ -972,7 +1633,7 @@
       }
     }
 
-    function checkout() {
+    function commercialCheckout() {
       if (state.qty === 5) {
         window.location.href = 'tel:812-508-6399';
         return;
@@ -981,13 +1642,183 @@
       alert(`Thank you! This would redirect to Stripe for ${paymentDesc}. Call 812-508-6399 to complete your order.`);
     }
 
-    // Mobile menu
-    document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
-    });
-
-    // Initialize
+    // Initialize commercial calculator
     document.addEventListener('DOMContentLoaded', calculate);
   </script>
+
+  <!-- Testimonials Section -->
+  <section id="reviews" class="container mx-auto px-4 py-16">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-extrabold">What Our Customers Say</h2>
+      <p class="mt-2 text-stone-700">Don't just take our word for it - hear from our happy customers!</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Big Turd has been a lifesaver! I never have to worry about stepping in surprises in my yard anymore. Professional, reliable, and worth every penny."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JD</div>
+          <div class="author-info">
+            <h4>John D.</h4>
+            <p>Terre Haute, IN</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Best service ever! They come every week like clockwork. My yard has never looked better, and my kids can play outside without worry."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SM</div>
+          <div class="author-info">
+            <h4>Sarah M.</h4>
+            <p>West Terre Haute, IN</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"I was skeptical at first, but now I can't imagine not having this service. Affordable, friendly, and they do an amazing job every time!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MK</div>
+          <div class="author-info">
+            <h4>Mike K.</h4>
+            <p>Clinton, IN</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Area -->
+  <section id="area" class="container mx-auto px-4 py-16">
+    <div class="text-center">
+      <h2 class="text-3xl font-extrabold">Service Area</h2>
+      <p class="mt-2 text-stone-700 max-w-2xl mx-auto">We proudly serve Terre Haute and surrounding areas. Check if we cover your zip code!</p>
+      <div class="mt-8 glassy rounded-2xl p-8 max-w-2xl mx-auto">
+        <h3 class="font-bold text-xl mb-4">Cities We Serve</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-left">
+          <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Terre Haute</div>
+          <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> West Terre Haute</div>
+          <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Clinton</div>
+          <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Brazil</div>
+          <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Sullivan</div>
+          <div class="flex items-center gap-2"><i class="fas fa-check text-green-600"></i> Marshall</div>
+        </div>
+        <p class="mt-6 text-sm text-stone-600">Don't see your city? Call us at <a href="tel:812-508-6399" class="text-green-600 font-bold">812-508-6399</a> to check availability!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="container mx-auto px-4 py-16">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-extrabold text-center mb-10">Frequently Asked Questions</h2>
+      <div class="space-y-4">
+        <div class="glassy rounded-xl p-6">
+          <h3 class="font-bold text-lg mb-2">How does the service work?</h3>
+          <p class="text-stone-600">We come to your property on your scheduled day, thoroughly clean your yard of all pet waste, and dispose of it properly. You don't even need to be home!</p>
+        </div>
+        <div class="glassy rounded-xl p-6">
+          <h3 class="font-bold text-lg mb-2">Do I need to sign a contract?</h3>
+          <p class="text-stone-600">Nope! All our services are month-to-month with no long-term contracts. Cancel anytime with 30 days notice.</p>
+        </div>
+        <div class="glassy rounded-xl p-6">
+          <h3 class="font-bold text-lg mb-2">What if it rains or snows?</h3>
+          <p class="text-stone-600">We work in most weather conditions. If severe weather prevents us from servicing your yard, we'll reschedule for the next available day at no extra charge.</p>
+        </div>
+        <div class="glassy rounded-xl p-6">
+          <h3 class="font-bold text-lg mb-2">Is the initial cleanup really %50 off??</h3>
+          <p class="text-stone-600">Yes! With your first month of recurring service, we the inital clean at 50% the value!.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="container mx-auto px-4 py-16">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl font-extrabold mb-4">Get In Touch</h2>
+      <p class="text-stone-600 mb-8">Have questions? We're here to help! Reach out to us anytime.</p>
+      
+      <div class="glassy rounded-2xl p-8">
+        <div class="grid gap-4 text-left">
+          <div>
+            <label class="block text-sm font-medium mb-1">Name *</label>
+            <input type="text" id="contactName" class="w-full px-4 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Your name">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Email *</label>
+            <input type="email" id="contactEmail" class="w-full px-4 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="your@email.com">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Phone</label>
+            <input type="tel" id="contactPhone" class="w-full px-4 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="(555) 123-4567">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1">Message</label>
+            <textarea id="contactMessage" rows="4" class="w-full px-4 py-2 rounded-lg border border-stone-300 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="How can we help you?"></textarea>
+          </div>
+          <button id="contactSubmit" class="w-full bg-green-600 text-white font-bold py-3 rounded-lg hover:bg-green-700 transition">
+            Send Message
+          </button>
+        </div>
+      </div>
+      
+      <div class="mt-8 flex flex-col md:flex-row justify-center gap-8">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-phone text-green-600"></i>
+          <a href="tel:812-508-6399" class="font-bold text-lg hover:text-green-600">812-508-6399</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fas fa-envelope text-green-600"></i>
+          <a href="mailto:BigTurdService@gmail.com" class="font-bold text-lg hover:text-green-600">BigTurdService@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-stone-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center gap-2 font-extrabold text-xl mb-4">
+            <span class="text-2xl">💩</span>
+            <span>BIG TURD</span>
+          </div>
+          <p class="text-stone-400 text-sm">Professional pet waste removal services in Terre Haute and surrounding areas. We scoop the poop so you don't have to!</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm text-stone-400">
+            <li><a href="#services" class="hover:text-white">Services</a></li>
+            <li><a href="#pricing" class="hover:text-white">Pricing</a></li>
+            <li><a href="#commercial" class="hover:text-white">Commercial</a></li>
+            <li><a href="#area" class="hover:text-white">Service Area</a></li>
+            <li><a href="#faq" class="hover:text-white">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Contact</h4>
+          <ul class="space-y-2 text-sm text-stone-400">
+            <li><i class="fas fa-phone mr-2"></i> 812-508-6399</li>
+            <li><i class="fas fa-envelope mr-2"></i> BigTurdService@gmail.com</li>
+            <li><i class="fas fa-map-marker-alt mr-2"></i> Terre Haute, IN</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Hours</h4>
+          <ul class="space-y-2 text-sm text-stone-400">
+            <li>Monday - Friday: 8am - 6pm</li>
+            <li>Saturday: 9am - 4pm</li>
+            <li>Sunday: Closed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-stone-800 mt-8 pt-8 text-center text-stone-500 text-sm">
+        <p>&copy; 2024 BIG TURD Waste Removal. All rights reserved. 💩</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
