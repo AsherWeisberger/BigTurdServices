@@ -1231,7 +1231,137 @@
     </div>
   </section>
 
-  <!-- NEW SERVICES SECTION -->
+  <!-- Interactive Pricing Calculator -->
+  <section id="pricing" class="calculator-section">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-extrabold">Instant Price Calculator</h2>
+        <p class="mt-2 text-stone-700 max-w-2xl mx-auto">Get your exact price in seconds. No hidden fees, no surprises. Select your preferences below.</p>
+      </div>
+
+      <div class="calc-container">
+        <div class="calc-options">
+          <!-- Service Frequency -->
+          <div class="option-group">
+            <h3><span>1.</span> Select Service Frequency</h3>
+            <div class="service-grid">
+              <div class="service-card selected" id="card-weekly" onclick="selectService('weekly')">
+                <div class="service-icon">📅</div>
+                <div class="service-name">Weekly</div>
+                <div class="service-desc">1x per week • Most popular</div>
+              </div>
+              <div class="service-card best" id="card-twice" onclick="selectService('twice')">
+                <div class="service-icon">⚡</div>
+                <div class="service-name">Twice Weekly</div>
+                <div class="service-desc">2x per week • Best value</div>
+              </div>
+              <div class="service-card" id="card-biweekly" onclick="selectService('biweekly')">
+                <div class="service-icon">🗓️</div>
+                <div class="service-name">Every Other Week</div>
+                <div class="service-desc">1x per 2 weeks • Budget friendly</div>
+              </div>
+              <div class="service-card" id="card-onetime" onclick="selectService('onetime')">
+                <div class="service-icon">🧹</div>
+                <div class="service-name">One-Time Clean</div>
+                <div class="service-desc">Single deep clean</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Number of Dogs -->
+          <div class="option-group">
+            <h3><span>2.</span> Number of Dogs 🐕</h3>
+            <div class="dog-count-grid">
+              <div class="dog-count-card selected" id="dog-1" onclick="selectDogs(1)">
+                <div class="dog-count-icon">🐕</div>
+                <div class="dog-count-number">1 Dog</div>
+                <div class="dog-count-label">Base price</div>
+                <div class="dog-count-price">Included</div>
+              </div>
+              <div class="dog-count-card" id="dog-2" onclick="selectDogs(2)">
+                <div class="dog-count-icon">🐕🐕</div>
+                <div class="dog-count-number">2 Dogs</div>
+                <div class="dog-count-label">+ $7/month</div>
+                <div class="dog-count-price">+$7.00</div>
+              </div>
+              <div class="dog-count-card" id="dog-3" onclick="selectDogs(3)">
+                <div class="dog-count-icon">🐕🐕🐕</div>
+                <div class="dog-count-number">3 Dogs</div>
+                <div class="dog-count-label">+ $14/month</div>
+                <div class="dog-count-price">+$14.00</div>
+              </div>
+              <div class="dog-count-card" id="dog-4" onclick="selectDogs(4)">
+                <div class="dog-count-icon">🏠</div>
+                <div class="dog-count-number">4+ Dogs</div>
+                <div class="dog-count-label">Custom quote</div>
+                <div class="dog-count-price">Call us</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Yard Size -->
+          <div class="option-group">
+            <h3><span>3.</span> Choose Yard Size</h3>
+            <div class="yard-grid">
+              <div class="service-card selected" id="yard-small" onclick="selectYard('small')">
+                <div class="service-name">Small Yard</div>
+                <div class="service-desc">Under 5,000 sq ft</div>
+              </div>
+              <div class="service-card" id="yard-medium" onclick="selectYard('medium')">
+                <div class="service-name">Medium Yard</div>
+                <div class="service-desc">5,000 - 10,000 sq ft</div>
+              </div>
+              <div class="service-card" id="yard-large" onclick="selectYard('large')">
+                <div class="service-name">Large Yard</div>
+                <div class="service-desc">10,000 - 20,000 sq ft</div>
+              </div>
+              <div class="service-card" id="yard-xlarge" onclick="selectYard('xlarge')">
+                <div class="service-name">Extra Large</div>
+                <div class="service-desc">20,000+ sq ft</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Price Display -->
+        <div class="price-display">
+          <div class="price-label">Your Monthly Price</div>
+          <div class="price-amount" id="price">$65.00</div>
+          <div class="price-period" id="period">Weekly • 1 Dog • Small Yard</div>
+          
+          <div class="breakdown" id="breakdown">
+            <div class="breakdown-row">
+              <span>Base Service</span>
+              <span id="basePrice">$65.00</span>
+            </div>
+            <div class="breakdown-row" id="dogRow" style="display: none;">
+              <span>Additional Dogs</span>
+              <span id="dogPrice">+$0.00</span>
+            </div>
+            <div class="breakdown-row">
+              <span>Total</span>
+              <span id="totalPrice">$65.00</span>
+            </div>
+          </div>
+
+          <!-- CHECKOUT BUTTON -->
+          <button id="checkoutBtn" class="checkout-btn" onclick="checkout()">
+            <i class="fas fa-lock mr-2"></i> Checkout Now
+          </button>
+
+          <!-- Custom Quote Box -->
+          <div id="customQuote" class="custom-quote-box" style="display: none;">
+            <h4>Custom Quote Required</h4>
+            <p class="text-sm text-gray-600 mb-3">4+ dogs requires a personalized quote.</p>
+            <a href="tel:812-508-6399" onclick="gtag('event', 'click', { event_category: 'conversion', event_label: 'phone_call_custom_quote' });">
+              <i class="fas fa-phone mr-2"></i> Call 812-508-6399
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+   <!-- NEW SERVICES SECTION -->
   <section id="services" class="container mx-auto px-4 py-16">
     <div class="text-center mb-12">
       <h2 class="text-4xl font-extrabold text-stone-900 mb-4">Our Services</h2>
@@ -1361,137 +1491,6 @@
       <div class="inline-flex items-center gap-2 bg-stone-100 rounded-full px-6 py-3 text-sm text-stone-600">
         <i class="fas fa-map-marker-alt text-lime-600"></i>
         <span>Serving Terre Haute and surrounding areas • Same-day service available for urgent requests</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Pricing Calculator -->
-  <section id="pricing" class="calculator-section">
-    <div class="container mx-auto px-4">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl font-extrabold">Instant Price Calculator</h2>
-        <p class="mt-2 text-stone-700 max-w-2xl mx-auto">Get your exact price in seconds. No hidden fees, no surprises. Select your preferences below.</p>
-      </div>
-
-      <div class="calc-container">
-        <div class="calc-options">
-          <!-- Service Frequency -->
-          <div class="option-group">
-            <h3><span>1.</span> Select Service Frequency</h3>
-            <div class="service-grid">
-              <div class="service-card selected" id="card-weekly" onclick="selectService('weekly')">
-                <div class="service-icon">📅</div>
-                <div class="service-name">Weekly</div>
-                <div class="service-desc">1x per week • Most popular</div>
-              </div>
-              <div class="service-card best" id="card-twice" onclick="selectService('twice')">
-                <div class="service-icon">⚡</div>
-                <div class="service-name">Twice Weekly</div>
-                <div class="service-desc">2x per week • Best value</div>
-              </div>
-              <div class="service-card" id="card-biweekly" onclick="selectService('biweekly')">
-                <div class="service-icon">🗓️</div>
-                <div class="service-name">Every Other Week</div>
-                <div class="service-desc">1x per 2 weeks • Budget friendly</div>
-              </div>
-              <div class="service-card" id="card-onetime" onclick="selectService('onetime')">
-                <div class="service-icon">🧹</div>
-                <div class="service-name">One-Time Clean</div>
-                <div class="service-desc">Single deep clean</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Number of Dogs -->
-          <div class="option-group">
-            <h3><span>2.</span> Number of Dogs 🐕</h3>
-            <div class="dog-count-grid">
-              <div class="dog-count-card selected" id="dog-1" onclick="selectDogs(1)">
-                <div class="dog-count-icon">🐕</div>
-                <div class="dog-count-number">1 Dog</div>
-                <div class="dog-count-label">Base price</div>
-                <div class="dog-count-price">Included</div>
-              </div>
-              <div class="dog-count-card" id="dog-2" onclick="selectDogs(2)">
-                <div class="dog-count-icon">🐕🐕</div>
-                <div class="dog-count-number">2 Dogs</div>
-                <div class="dog-count-label">+ $7/month</div>
-                <div class="dog-count-price">+$7.00</div>
-              </div>
-              <div class="dog-count-card" id="dog-3" onclick="selectDogs(3)">
-                <div class="dog-count-icon">🐕🐕🐕</div>
-                <div class="dog-count-number">3 Dogs</div>
-                <div class="dog-count-label">+ $14/month</div>
-                <div class="dog-count-price">+$14.00</div>
-              </div>
-              <div class="dog-count-card" id="dog-4" onclick="selectDogs(4)">
-                <div class="dog-count-icon">🏠</div>
-                <div class="dog-count-number">4+ Dogs</div>
-                <div class="dog-count-label">Custom quote</div>
-                <div class="dog-count-price">Call us</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Yard Size -->
-          <div class="option-group">
-            <h3><span>3.</span> Choose Yard Size</h3>
-            <div class="yard-grid">
-              <div class="service-card selected" id="yard-small" onclick="selectYard('small')">
-                <div class="service-name">Small Yard</div>
-                <div class="service-desc">Under 5,000 sq ft</div>
-              </div>
-              <div class="service-card" id="yard-medium" onclick="selectYard('medium')">
-                <div class="service-name">Medium Yard</div>
-                <div class="service-desc">5,000 - 10,000 sq ft</div>
-              </div>
-              <div class="service-card" id="yard-large" onclick="selectYard('large')">
-                <div class="service-name">Large Yard</div>
-                <div class="service-desc">10,000 - 20,000 sq ft</div>
-              </div>
-              <div class="service-card" id="yard-xlarge" onclick="selectYard('xlarge')">
-                <div class="service-name">Extra Large</div>
-                <div class="service-desc">20,000+ sq ft</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Price Display -->
-        <div class="price-display">
-          <div class="price-label">Your Monthly Price</div>
-          <div class="price-amount" id="price">$65.00</div>
-          <div class="price-period" id="period">Weekly • 1 Dog • Small Yard</div>
-          
-          <div class="breakdown" id="breakdown">
-            <div class="breakdown-row">
-              <span>Base Service</span>
-              <span id="basePrice">$65.00</span>
-            </div>
-            <div class="breakdown-row" id="dogRow" style="display: none;">
-              <span>Additional Dogs</span>
-              <span id="dogPrice">+$0.00</span>
-            </div>
-            <div class="breakdown-row">
-              <span>Total</span>
-              <span id="totalPrice">$65.00</span>
-            </div>
-          </div>
-
-          <!-- CHECKOUT BUTTON -->
-          <button id="checkoutBtn" class="checkout-btn" onclick="checkout()">
-            <i class="fas fa-lock mr-2"></i> Checkout Now
-          </button>
-
-          <!-- Custom Quote Box -->
-          <div id="customQuote" class="custom-quote-box" style="display: none;">
-            <h4>Custom Quote Required</h4>
-            <p class="text-sm text-gray-600 mb-3">4+ dogs requires a personalized quote.</p>
-            <a href="tel:812-508-6399" onclick="gtag('event', 'click', { event_category: 'conversion', event_label: 'phone_call_custom_quote' });">
-              <i class="fas fa-phone mr-2"></i> Call 812-508-6399
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   </section>
