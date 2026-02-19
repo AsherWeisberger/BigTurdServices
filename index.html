@@ -1030,38 +1030,87 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1"
     </div>
   </section>
 
-  <!-- POOP CALCULATOR SECTION -->
-<section id="poop-calc" class="container mx-auto px-4 py-12">
-  <div class="max-w-4xl mx-auto">
-    <div class="text-center mb-8">
-      <h2 class="text-4xl md:text-5xl font-extrabold text-stone-900 mb-4">
-        <span class="text-lime-600"></span> The Poop Calculator <span class="text-lime-600">💩</span>
-      </h2>
-      <p class="text-lg text-stone-600">See how much poop is really piling up in your yard. It's more than you think.</p>
-    </div>
+<!-- MINI POOP CALCULATOR -->
+<section id="poop-calc" class="container mx-auto px-4 py-10">
+  <div class="max-w-2xl mx-auto text-center">
+    
+    <h2 class="text-3xl md:text-4xl font-extrabold text-stone-900 mb-2">
+      The Poop Calculator 💩
+    </h2>
+    <p class="text-stone-500 mb-6">Let’s see what’s hiding in your yard...</p>
 
-    <div class="glassy rounded-3xl p-6 md:p-10 shadow-2xl border-2 border-lime-200">
-      <div class="grid md:grid-cols-2 gap-8 md:gap-12">
-        
-        <!-- LEFT SIDE: Controls -->
-        <div class="space-y-8">
-          <!-- Dog Counter -->
-          <div class="bg-white/80 rounded-2xl p-6 border border-stone-200">
-            <label class="block text-sm font-bold text-stone-500 uppercase tracking-wide mb-3">
-              How many dogs?
-            </label>
-            <div class="flex items-center gap-4 mb-4">
-              <button onclick="adjustDogs(-1)" class="w-12 h-12 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center text-2xl font-bold transition">−</button>
-              <div class="flex-1 text-center">
-                <span id="dogCount" class="text-5xl font-black text-lime-600">1</span>
-                <span class="text-stone-400 text-sm block mt-1">dog<span id="dogPlural">s</span></span>
-              </div>
-              <button onclick="adjustDogs(1)" class="w-12 h-12 rounded-full bg-lime-500 hover:bg-lime-600 text-white flex items-center justify-center text-2xl font-bold transition shadow-lg">+</button>
-            </div>
-            <div class="flex justify-center gap-1 text-3xl" id="dogEmojis">
-              🐕
-            </div>
-          </div>
+    <div class="bg-white rounded-3xl p-6 shadow-2xl border-2 border-lime-300 space-y-6">
+
+      <!-- Dog Counter -->
+      <div>
+        <p class="text-xs font-bold uppercase text-stone-500 mb-2">
+          How many dogs?
+        </p>
+
+        <div class="flex items-center justify-center gap-4">
+          <button onclick="adjustDogs(-1)" 
+            class="w-10 h-10 rounded-full bg-stone-200 hover:bg-stone-300 font-bold text-xl">
+            −
+          </button>
+
+          <span id="dogCount" 
+            class="text-4xl font-black text-lime-600 w-12 text-center">
+            1
+          </span>
+
+          <button onclick="adjustDogs(1)" 
+            class="w-10 h-10 rounded-full bg-lime-500 hover:bg-lime-600 text-white font-bold text-xl">
+            +
+          </button>
+        </div>
+
+        <div id="dogEmojis" class="mt-2 text-2xl">🐕</div>
+      </div>
+
+      <!-- Results -->
+      <div class="bg-lime-50 rounded-2xl p-4 border border-lime-200">
+        <p class="text-sm text-stone-600">Your yard collects about</p>
+        <p id="weeklyPoop" class="text-3xl font-extrabold text-stone-900">
+          7 piles per week
+        </p>
+        <p id="monthlyPoop" class="text-lime-700 font-semibold text-sm mt-1">
+          That’s 30+ piles per month 😬
+        </p>
+      </div>
+
+      <a href="#pricing"
+        class="block bg-lime-500 hover:bg-lime-600 text-white font-bold py-3 rounded-full transition shadow-lg">
+        Save My Yard 🚀
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<script>
+let dogs = 1;
+
+function adjustDogs(amount) {
+  dogs += amount;
+  if (dogs < 1) dogs = 1;
+  if (dogs > 10) dogs = 10;
+
+  document.getElementById("dogCount").textContent = dogs;
+
+  // Update emojis
+  document.getElementById("dogEmojis").textContent = "🐕".repeat(dogs);
+
+  // Simple math: avg 1 poop per day per dog
+  let weekly = dogs * 7;
+  let monthly = dogs * 30;
+
+  document.getElementById("weeklyPoop").textContent =
+    weekly + " piles per week";
+
+  document.getElementById("monthlyPoop").textContent =
+    "That’s " + monthly + "+ piles per month 😬";
+}
+</script>
 
           <!-- Poops Per Day -->
           <div class="bg-white/80 rounded-2xl p-6 border border-stone-200">
