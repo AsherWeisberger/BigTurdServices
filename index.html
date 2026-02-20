@@ -29,7 +29,7 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1 "
 <!-- End Meta Pixel Code -->
   
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>BIG TURD Waste Removal | Dog Poop Cleanup</title>
   <meta name="description" content="BIG TURD Waste Removal – reliable, affordable dog poop yard cleanup in Terre Haute and surrounding areas. We scoop the poop so you don't have to." />
   <meta name="keywords" content="dog poop cleanup, pet waste removal, yard cleaning service, Terre Haute, BIG TURD Waste Removal" />
@@ -775,6 +775,446 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1 "
       margin-bottom: 0.5rem;
     }
 
+    /* POOP CALCULATOR COMPACT STYLES */
+    .poop-calc-compact {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+    
+    .poop-calc-card {
+      background: linear-gradient(145deg, #ffffff 0%, #f0fdf4 100%);
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      border: 2px solid #86efac;
+    }
+    
+    .poop-calc-header {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    .poop-calc-header h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .poop-calc-header p {
+      font-size: 0.875rem;
+      color: #666;
+      margin-top: 0.25rem;
+    }
+    
+    .poop-controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .poop-control-box {
+      flex: 1;
+      background: white;
+      border-radius: 16px;
+      padding: 1rem;
+      border: 2px solid #e5e7eb;
+      text-align: center;
+    }
+    
+    .poop-control-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+    
+    .poop-counter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+    
+    .poop-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: #e5e7eb;
+      color: #374151;
+      font-size: 1.25rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .poop-btn:hover {
+      background: #d1d5db;
+      transform: scale(1.1);
+    }
+    
+    .poop-btn.plus {
+      background: #65a30d;
+      color: white;
+    }
+    
+    .poop-btn.plus:hover {
+      background: #4d7c0f;
+    }
+    
+    .poop-count-display {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #65a30d;
+      min-width: 40px;
+    }
+    
+    .poop-emojis {
+      font-size: 1.25rem;
+      margin-top: 0.25rem;
+      height: 1.5rem;
+    }
+    
+    .poop-slider-container {
+      margin-top: 0.5rem;
+    }
+    
+    .poop-slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #e5e7eb;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    
+    .poop-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #65a30d;
+      cursor: pointer;
+      border: 3px solid white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    .poop-slider-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.625rem;
+      color: #9ca3af;
+      margin-top: 0.25rem;
+      font-weight: 600;
+    }
+    
+    .poop-result-box {
+      background: linear-gradient(135deg, #1a1a1a 0%, #374151 100%);
+      border-radius: 20px;
+      padding: 1.25rem;
+      color: white;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    .poop-total-label {
+      font-size: 0.75rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.25rem;
+    }
+    
+    .poop-total-number {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: #84cc16;
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(132, 204, 22, 0.5);
+    }
+    
+    .poop-total-unit {
+      font-size: 1rem;
+      color: #9ca3af;
+      margin-left: 0.25rem;
+    }
+    
+    .poop-visual {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2px;
+      margin: 0.75rem 0;
+      min-height: 40px;
+      align-items: center;
+    }
+    
+    .poop-emoji {
+      font-size: 1rem;
+      animation: poopFloat 2s ease-in-out infinite;
+    }
+    
+    @keyframes poopFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    
+    .poop-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    
+    .poop-stat {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    
+    .poop-stat-icon {
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .poop-stat-value {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: #84cc16;
+    }
+    
+    .poop-stat-label {
+      font-size: 0.625rem;
+      color: #9ca3af;
+      margin-top: 0.125rem;
+    }
+    
+    .poop-cta {
+      width: 100%;
+      background: linear-gradient(135deg, #65a30d, #84cc16);
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(101, 163, 13, 0.4);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .poop-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(101, 163, 13, 0.5);
+    }
+    
+    .poop-disclaimer {
+      text-align: center;
+      font-size: 0.625rem;
+      color: #9ca3af;
+      margin-top: 0.5rem;
+    }
+    
+    /* Desktop styles for poop calculator */
+    @media (min-width: 768px) {
+      .poop-calc-compact {
+        max-width: 800px;
+        padding: 2rem;
+      }
+      
+      .poop-calc-card {
+        padding: 2rem;
+      }
+      
+      .poop-calc-header h2 {
+        font-size: 2rem;
+      }
+      
+      .poop-calc-header p {
+        font-size: 1rem;
+      }
+      
+      .poop-controls {
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .poop-control-box {
+        padding: 1.5rem;
+      }
+      
+      .poop-control-label {
+        font-size: 0.875rem;
+      }
+      
+      .poop-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
+      }
+      
+      .poop-count-display {
+        font-size: 2.5rem;
+      }
+      
+      .poop-emojis {
+        font-size: 1.5rem;
+        height: 2rem;
+      }
+      
+      .poop-result-box {
+        padding: 1.5rem;
+      }
+      
+      .poop-total-number {
+        font-size: 5rem;
+      }
+      
+      .poop-visual {
+        min-height: 60px;
+        margin: 1rem 0;
+      }
+      
+      .poop-emoji {
+        font-size: 1.5rem;
+      }
+      
+      .poop-stats {
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      
+      .poop-stat {
+        padding: 0.75rem;
+      }
+      
+      .poop-stat-icon {
+        font-size: 1.5rem;
+      }
+      
+      .poop-stat-value {
+        font-size: 1rem;
+      }
+      
+      .poop-stat-label {
+        font-size: 0.75rem;
+      }
+      
+      .poop-cta {
+        padding: 1.25rem;
+        font-size: 1.125rem;
+      }
+    }
+    
+    /* iPhone Pro Max specific optimizations */
+    @media (max-width: 430px) {
+      .poop-calc-compact {
+        padding: 0.75rem;
+      }
+      
+      .poop-calc-card {
+        padding: 1rem;
+        border-radius: 20px;
+      }
+      
+      .poop-calc-header h2 {
+        font-size: 1.25rem;
+      }
+      
+      .poop-calc-header p {
+        font-size: 0.75rem;
+      }
+      
+      .poop-controls {
+        gap: 0.75rem;
+      }
+      
+      .poop-control-box {
+        padding: 0.75rem;
+        border-radius: 12px;
+      }
+      
+      .poop-control-label {
+        font-size: 0.625rem;
+      }
+      
+      .poop-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+      }
+      
+      .poop-count-display {
+        font-size: 1.5rem;
+        min-width: 30px;
+      }
+      
+      .poop-emojis {
+        font-size: 1rem;
+      }
+      
+      .poop-result-box {
+        padding: 1rem;
+        border-radius: 16px;
+      }
+      
+      .poop-total-number {
+        font-size: 2.5rem;
+      }
+      
+      .poop-visual {
+        min-height: 30px;
+      }
+      
+      .poop-emoji {
+        font-size: 0.875rem;
+      }
+      
+      .poop-stats {
+        gap: 0.375rem;
+      }
+      
+      .poop-stat {
+        padding: 0.375rem;
+        border-radius: 8px;
+      }
+      
+      .poop-stat-icon {
+        font-size: 1rem;
+      }
+      
+      .poop-stat-value {
+        font-size: 0.75rem;
+      }
+      
+      .poop-stat-label {
+        font-size: 0.5rem;
+      }
+      
+      .poop-cta {
+        padding: 0.875rem;
+        font-size: 0.875rem;
+        border-radius: 12px;
+      }
+    }
+
     @media (max-width: 968px) {
       .calc-container { grid-template-columns: 1fr; }
       .price-display { position: relative; top: 0; }
@@ -1030,112 +1470,77 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1 "
     </div>
   </section>
 
-  <!-- POOP CALCULATOR SECTION -->
-  <section id="poop-calc" class="container mx-auto px-4 py-12">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-8">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-stone-900 mb-4">
-          <span class="text-lime-600"></span> The Poop Calculator <span class="text-lime-600">💩</span>
+  <!-- COMPACT POOP CALCULATOR SECTION -->
+  <section id="poop-calc" class="poop-calc-compact">
+    <div class="poop-calc-card">
+      <div class="poop-calc-header">
+        <h2>
+          💩 The Poop Calculator
         </h2>
-        <p class="text-lg text-stone-600">See how much poop is really piling up in your yard. It's more than you think.</p>
+        <p>See how much poop is piling up in your yard</p>
       </div>
-      <div class="glassy rounded-3xl p-6 md:p-10 shadow-2xl border-2 border-lime-200">
-        <div class="grid md:grid-cols-2 gap-8 md:gap-12">
-          <!-- LEFT SIDE: Controls -->
-          <div class="space-y-8">
-            <!-- Dog Counter -->
-            <div class="bg-white/80 rounded-2xl p-6 border border-stone-200">
-              <label class="block text-sm font-bold text-stone-500 uppercase tracking-wide mb-3">
-                How many dogs?
-              </label>
-              <div class="flex items-center gap-4 mb-4">
-                <button onclick="adjustDogs(-1)" class="w-12 h-12 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center text-2xl font-bold transition">−</button>
-                <div class="flex-1 text-center">
-                  <span id="dogCount" class="text-5xl font-black text-lime-600">1</span>
-                  <span class="text-stone-400 text-sm block mt-1">dog<span id="dogPlural">s</span></span>
-                </div>
-                <button onclick="adjustDogs(1)" class="w-12 h-12 rounded-full bg-lime-500 hover:bg-lime-600 text-white flex items-center justify-center text-2xl font-bold transition shadow-lg">+</button>
-              </div>
-              <div class="flex justify-center gap-1 text-3xl" id="dogEmojis">
-                🐕
-              </div>
-            </div>
-
-            <!-- Poops Per Day -->
-            <div class="bg-white/80 rounded-2xl p-6 border border-stone-200">
-              <label class="block text-sm font-bold text-stone-500 uppercase tracking-wide mb-3">
-                Poops per day per dog
-              </label>
-              <input type="range" id="poopSlider" min="1" max="5" value="3" step="1" 
-                     class="w-full h-3 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-lime-600 mb-4"
-                     oninput="updateCalc()">
-              <div class="flex justify-between text-xs text-stone-400 font-bold uppercase tracking-wide">
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
-              </div>
-              <div class="text-center mt-4">
-                <span id="poopPerDay" class="text-4xl font-black text-amber-600">3</span>
-                <span class="text-stone-500">poops/day each</span>
-              </div>
-            </div>
+      
+      <div class="poop-controls">
+        <!-- Dog Counter -->
+        <div class="poop-control-box">
+          <div class="poop-control-label">How many dogs?</div>
+          <div class="poop-counter">
+            <button class="poop-btn" onclick="adjustDogs(-1)">−</button>
+            <span class="poop-count-display" id="dogCount">1</span>
+            <button class="poop-btn plus" onclick="adjustDogs(1)">+</button>
           </div>
-
-          <!-- RIGHT SIDE: The Shocking Results -->
-          <div class="flex flex-col justify-center">
-            <div class="bg-gradient-to-br from-stone-900 to-stone-800 rounded-2xl p-6 text-white shadow-xl">
-              <div class="text-center mb-6">
-                <div class="text-sm uppercase tracking-widest text-stone-400 mb-2">Monthly Poop Total</div>
-                <div class="flex items-baseline justify-center gap-2 flex-wrap">
-                  <span id="totalPoops" class="text-7xl md:text-8xl font-black text-lime-400 leading-none">84</span>
-                  <span class="text-3xl font-bold text-stone-300">poops</span>
-                </div>
-              </div>
-
-              <!-- Visual Poop Storm -->
-              <div class="bg-black/30 rounded-xl p-4 mb-6 min-h-[120px] flex flex-wrap justify-center items-center gap-1 overflow-hidden" id="poopVisual">
-                <!-- Poops get injected here -->
-              </div>
-
-              <!-- Reality Check -->
-              <div class="space-y-3 text-sm">
-                <div class="flex items-center gap-3 bg-white/10 rounded-lg p-3">
-                  <span class="text-2xl">⚖️</span>
-                  <div>
-                    <div class="font-bold text-lime-300">That's <span id="poundsWaste">63</span> lbs of waste</div>
-                    <div class="text-stone-400 text-xs">per month sitting in your yard</div>
-                  </div>
-                </div>
-                
-                <div class="flex items-center gap-3 bg-white/10 rounded-lg p-3">
-                  <span class="text-2xl">🦠</span>
-                  <div>
-                    <div class="font-bold text-red-300"><span id="bacteriaCount">1.9 billion</span> bacteria</div>
-                    <div class="text-stone-400 text-xs">swarming in that poop right now</div>
-                  </div>
-                </div>
-
-                <div class="flex items-center gap-3 bg-white/10 rounded-lg p-3">
-                  <span class="text-2xl">⏰</span>
-                  <div>
-                    <div class="font-bold text-amber-300"><span id="timeWasted">4.2</span> hours</div>
-                    <div class="text-stone-400 text-xs">you'll spend scooping this month</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-6 text-center">
-              <a href="#pricing" class="inline-flex items-center justify-center w-full bg-lime-600 hover:bg-lime-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                Save Your Yard →
-              </a>
-              <p class="text-xs text-stone-500 mt-2">Based on average .75 lbs per poop</p>
+          <div class="poop-emojis" id="dogEmojis">🐕</div>
+        </div>
+        
+        <!-- Poops Per Day -->
+        <div class="poop-control-box">
+          <div class="poop-control-label">Poops per day</div>
+          <div class="poop-count-display" id="poopPerDay" style="color: #d97706; margin: 0.25rem 0;">3</div>
+          <div class="poop-slider-container">
+            <input type="range" id="poopSlider" min="1" max="5" value="3" step="1" 
+                   class="poop-slider" oninput="updateCalc()">
+            <div class="poop-slider-labels">
+              <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Results -->
+      <div class="poop-result-box">
+        <div class="poop-total-label">Monthly Poop Total</div>
+        <div>
+          <span class="poop-total-number" id="totalPoops">84</span>
+          <span class="poop-total-unit">poops</span>
+        </div>
+        
+        <!-- Visual Poop Display -->
+        <div class="poop-visual" id="poopVisual"></div>
+        
+        <!-- Stats Grid -->
+        <div class="poop-stats">
+          <div class="poop-stat">
+            <div class="poop-stat-icon">⚖️</div>
+            <div class="poop-stat-value" id="poundsWaste">63 lbs</div>
+            <div class="poop-stat-label">of waste</div>
+          </div>
+          <div class="poop-stat">
+            <div class="poop-stat-icon">🦠</div>
+            <div class="poop-stat-value" id="bacteriaCount">1.9B</div>
+            <div class="poop-stat-label">bacteria</div>
+          </div>
+          <div class="poop-stat">
+            <div class="poop-stat-icon">⏰</div>
+            <div class="poop-stat-value" id="timeWasted">4.2 hrs</div>
+            <div class="poop-stat-label">scooping</div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#pricing" class="poop-cta">
+        Save Your Yard →
+      </a>
+      <p class="poop-disclaimer">Based on average 0.75 lbs per poop</p>
     </div>
   </section>
 
@@ -1146,11 +1551,10 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1 "
     function adjustDogs(change) {
       dogs = Math.max(1, Math.min(5, dogs + change));
       document.getElementById('dogCount').textContent = dogs;
-      document.getElementById('dogPlural').textContent = dogs === 1 ? '' : 's';
       
       // Update dog emojis
       const dogEmojis = document.getElementById('dogEmojis');
-      dogEmojis.innerHTML = '🐕'.repeat(dogs);
+      dogEmojis.textContent = '🐕'.repeat(dogs);
       
       updateCalc();
     }
@@ -1161,49 +1565,50 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1 "
       
       // Math
       const daily = dogs * poopsPerDay;
-      const weekly = daily * 7;
       const monthly = daily * 30;
       const pounds = (monthly * 0.75).toFixed(0);
-      const bacteria = (monthly * 23000000).toLocaleString();
-      const hours = ((monthly * 2) / 60).toFixed(1); // 2 mins per poop
+      const bacteria = monthly * 23000000;
+      const hours = ((monthly * 2) / 60).toFixed(1);
+      
+      // Format bacteria number
+      let bacteriaDisplay;
+      if (bacteria >= 1000000000) {
+        bacteriaDisplay = (bacteria / 1000000000).toFixed(1) + 'B';
+      } else if (bacteria >= 1000000) {
+        bacteriaDisplay = (bacteria / 1000000).toFixed(1) + 'M';
+      } else {
+        bacteriaDisplay = bacteria.toLocaleString();
+      }
       
       // Update numbers
       document.getElementById('totalPoops').textContent = monthly;
-      document.getElementById('poundsWaste').textContent = pounds;
-      document.getElementById('bacteriaCount').textContent = bacteria;
-      document.getElementById('timeWasted').textContent = hours;
+      document.getElementById('poundsWaste').textContent = pounds + ' lbs';
+      document.getElementById('bacteriaCount').textContent = bacteriaDisplay;
+      document.getElementById('timeWasted').textContent = hours + ' hrs';
       
-      // Update visual poop display (max 50 for performance)
+      // Update visual poop display (max 30 for performance)
       const visualContainer = document.getElementById('poopVisual');
       visualContainer.innerHTML = '';
-      const displayCount = Math.min(monthly, 50);
+      const displayCount = Math.min(monthly, 30);
       for(let i = 0; i < displayCount; i++) {
         const poop = document.createElement('span');
         poop.textContent = '💩';
-        poop.style.fontSize = Math.random() > 0.5 ? '1.5rem' : '1.2rem';
-        poop.style.opacity = Math.random() * 0.5 + 0.5;
-        poop.style.animation = `float ${2 + Math.random() * 2}s ease-in-out infinite`;
+        poop.className = 'poop-emoji';
         poop.style.animationDelay = `${Math.random() * 2}s`;
+        poop.style.fontSize = Math.random() > 0.5 ? '1rem' : '0.875rem';
+        poop.style.opacity = Math.random() * 0.4 + 0.6;
         visualContainer.appendChild(poop);
       }
       
-      if(monthly > 50) {
-        const more = document.createElement('div');
-        more.className = 'w-full text-center text-stone-400 text-xs mt-2';
-        more.textContent = `+ ${monthly - 50} more...`;
+      if(monthly > 30) {
+        const more = document.createElement('span');
+        more.className = 'poop-emoji';
+        more.textContent = `+${monthly - 30}`;
+        more.style.fontSize = '0.75rem';
+        more.style.opacity = '0.7';
         visualContainer.appendChild(more);
       }
     }
-
-    // Add floating animation
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-5px); }
-      }
-    `;
-    document.head.appendChild(style);
 
     // Initialize
     updateCalc();
