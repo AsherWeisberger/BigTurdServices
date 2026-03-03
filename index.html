@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Google Tag Manager (gtag.js) for Analytics Tracking -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1GQ8FT04X"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q1GQ8FT04X "></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -19,12 +19,12 @@ if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
 n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
+'https://connect.facebook.net/en_US/fbevents.js ');
 fbq('init', '196908840923767');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1 "
 /></noscript>
 <!-- End Meta Pixel Code -->
   
@@ -35,10 +35,10 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1"
   <meta name="keywords" content="dog poop cleanup, pet waste removal, yard cleaning service, Terre Haute, BIG TURD Waste Removal" />
   <meta name="robots" content="index, follow" />
   <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💩</text></svg>">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg ' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💩</text></svg>">
+  <script src="https://cdn.tailwindcss.com "></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300 ;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css ">
   <style>
     html{scroll-behavior:smooth}
     .container{max-width:1152px}
@@ -809,6 +809,220 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1"
       font-weight: 800;
       color: #65a30d;
     }
+
+    /* ===== PHOTO GALLERY STYLES ===== */
+    .photo-gallery-section {
+      padding: 3rem 1rem;
+      background: linear-gradient(to bottom, #f0fdf4, #dcfce7);
+    }
+    
+    .gallery-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .gallery-header h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .gallery-header p {
+      color: #666;
+      font-size: 1rem;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      background: white;
+      aspect-ratio: 4/3;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      padding: 1.5rem 1rem 1rem;
+      color: white;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+    
+    .gallery-overlay h4 {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .gallery-overlay p {
+      font-size: 0.875rem;
+      opacity: 0.9;
+    }
+    
+    .gallery-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+      z-index: 10;
+    }
+    
+    .gallery-badge.before {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+    }
+    
+    .gallery-badge.after {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+    }
+
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+    .lightbox.show {
+      display: flex;
+    }
+    
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+    
+    .lightbox img {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      background: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    
+    .lightbox-close:hover {
+      transform: scale(1.1);
+      background: #f3f4f6;
+    }
+    
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .lightbox-nav:hover {
+      transform: translateY(-50%) scale(1.1);
+      background: #f3f4f6;
+    }
+    
+    .lightbox-nav.prev {
+      left: -70px;
+    }
+    
+    .lightbox-nav.next {
+      right: -70px;
+    }
+    
+    .lightbox-counter {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .lightbox-nav.prev { left: 10px; }
+      .lightbox-nav.next { right: 10px; }
+      .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    }
     
     /* Desktop enhancements */
     @media (min-width: 768px) {
@@ -847,6 +1061,10 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1"
       
       .compact-price-amount {
         font-size: 4rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
     
@@ -925,6 +1143,10 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1"
       .station-info-compact {
         flex: 1;
       }
+
+      .gallery-header h2 {
+        font-size: 1.5rem;
+      }
     }
     
     @media (max-width: 640px) {
@@ -948,28 +1170,28 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1"
     // UPDATED PRICING - All new prices and Stripe links as provided
     const PRICING = {
       small: {
-        weekly:   { price: 65.00,  link: 'https://buy.stripe.com/3cIcN54sP3eB2QV3mC6g80y' },
-        twice:    { price: 110.00, link: 'https://buy.stripe.com/3cI00jcZl9CZezD9L06g80C' },
-        biweekly: { price: 45.00,  link: 'https://buy.stripe.com/14A9AT3oL9CZdvzbT86g80H' },
-        onetime:  { price: 69.00,  link: 'https://buy.stripe.com/7sY8wP8J5eXj2QVf5k6g80L' }
+        weekly:   { price: 65.00,  link: 'https://buy.stripe.com/3cIcN54sP3eB2QV3mC6g80y ' },
+        twice:    { price: 110.00, link: 'https://buy.stripe.com/3cI00jcZl9CZezD9L06g80C ' },
+        biweekly: { price: 45.00,  link: 'https://buy.stripe.com/14A9AT3oL9CZdvzbT86g80H ' },
+        onetime:  { price: 69.00,  link: 'https://buy.stripe.com/7sY8wP8J5eXj2QVf5k6g80L ' }
       },
       medium: {
-        weekly:   { price: 75.00,  link: 'https://buy.stripe.com/28E00jcZl6qNajnaP46g80z' },
-        twice:    { price: 120.00, link: 'https://buy.stripe.com/cNi7sL0cz5mJajn5uK6g80D' },
-        biweekly: { price: 50.00,  link: 'https://buy.stripe.com/00w9AT8J5dTfcrv0aq6g80I' },
-        onetime:  { price: 79.00,  link: 'https://buy.stripe.com/5kQdR9bVh7uR6378GW6g80M' }
+        weekly:   { price: 75.00,  link: 'https://buy.stripe.com/28E00jcZl6qNajnaP46g80z ' },
+        twice:    { price: 120.00, link: 'https://buy.stripe.com/cNi7sL0cz5mJajn5uK6g80D ' },
+        biweekly: { price: 50.00,  link: 'https://buy.stripe.com/00w9AT8J5dTfcrv0aq6g80I ' },
+        onetime:  { price: 79.00,  link: 'https://buy.stripe.com/5kQdR9bVh7uR6378GW6g80M ' }
       },
       large: {
-        weekly:   { price: 85.00,  link: 'https://buy.stripe.com/00waEX5wTdTf1MR6yO6g80A' },
-        twice:    { price: 135.00, link: 'https://buy.stripe.com/14AeVd7F1eXj3UZ9L06g80E' },
-        biweekly: { price: 60.00,  link: 'https://buy.stripe.com/dRmbJ1f7teXj77bg9o6g80J' },
-        onetime:  { price: 89.00,  link: 'https://buy.stripe.com/bJe6oH2kH4iF2QVaP46g80N' }
+        weekly:   { price: 85.00,  link: 'https://buy.stripe.com/00waEX5wTdTf1MR6yO6g80A ' },
+        twice:    { price: 135.00, link: 'https://buy.stripe.com/14AeVd7F1eXj3UZ9L06g80E ' },
+        biweekly: { price: 60.00,  link: 'https://buy.stripe.com/dRmbJ1f7teXj77bg9o6g80J ' },
+        onetime:  { price: 89.00,  link: 'https://buy.stripe.com/bJe6oH2kH4iF2QVaP46g80N ' }
       },
       xlarge: {
-        weekly:   { price: 100.00, link: 'https://buy.stripe.com/6oU9ATf7tdTf8bf5uK6g80B' },
-        twice:    { price: 145.00, link: 'https://buy.stripe.com/9B66oH0czcPbbnr5uK6g80G' },
-        biweekly: { price: 70.00,  link: 'https://buy.stripe.com/bJe6oH8J53eBdvz3mC6g80K' },
-        onetime:  { price: 110.00, link: 'https://buy.stripe.com/28E4gz4sP7uR637f5k6g80O' }
+        weekly:   { price: 100.00, link: 'https://buy.stripe.com/6oU9ATf7tdTf8bf5uK6g80B ' },
+        twice:    { price: 145.00, link: 'https://buy.stripe.com/9B66oH0czcPbbnr5uK6g80G ' },
+        biweekly: { price: 70.00,  link: 'https://buy.stripe.com/bJe6oH8J53eBdvz3mC6g80K ' },
+        onetime:  { price: 110.00, link: 'https://buy.stripe.com/28E4gz4sP7uR637f5k6g80O ' }
       }
     };
 
@@ -1098,6 +1320,65 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1"
       window.location.href = `mailto:${BUSINESS.email}?subject=${subject}&body=${body}`;
     }
 
+    // ===== PHOTO GALLERY FUNCTIONALITY =====
+    let currentImageIndex = 0;
+    const galleryImages = [
+      { src: 'c1.HEIC', title: 'Yard Cleanup', desc: 'Before & After Transformation' },
+      { src: 'c2.HEIC', title: 'Complete Service', desc: 'Professional Waste Removal' },
+      { src: 'c3.HEIC', title: 'Spotless Results', desc: 'Your Yard, Our Priority' },
+      { src: 'c4.HEIC', title: 'Thorough Cleaning', desc: 'No Mess Left Behind' },
+      { src: 'c5.HEIC', title: 'Fresh Start', desc: 'Ready for Family Fun' },
+      { src: 'c6.JPG', title: 'Detailed Work', desc: 'Every Corner Covered' },
+      { src: 'c7.JPG', title: 'Quality Service', desc: 'Satisfaction Guaranteed' },
+      { src: 'c8.JPG', title: 'Expert Cleanup', desc: 'Trained Professionals' },
+      { src: 'c9.JPG', title: 'Pristine Yards', desc: 'Enjoy Your Outdoor Space' },
+      { src: 'c10.JPG', title: 'Reliable Service', desc: 'Consistent Results' },
+      { src: 'c11.JPG', title: 'Happy Clients', desc: 'Join Our Satisfied Customers' },
+      { src: 'c12.JPG', title: 'Top Rated', desc: 'Best in Terre Haute' },
+      { src: 'c13.JPG', title: 'Book Today', desc: 'Transform Your Yard' }
+    ];
+
+    function openLightbox(index) {
+      currentImageIndex = index;
+      const lightbox = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const counter = document.getElementById('lightbox-counter');
+      
+      img.src = galleryImages[index].src;
+      counter.textContent = `${index + 1} / ${galleryImages.length}`;
+      lightbox.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    function changeImage(direction) {
+      currentImageIndex += direction;
+      if (currentImageIndex < 0) currentImageIndex = galleryImages.length - 1;
+      if (currentImageIndex >= galleryImages.length) currentImageIndex = 0;
+      
+      const img = document.getElementById('lightbox-img');
+      const counter = document.getElementById('lightbox-counter');
+      
+      img.style.opacity = '0';
+      setTimeout(() => {
+        img.src = galleryImages[currentImageIndex].src;
+        counter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+        img.style.opacity = '1';
+      }, 200);
+    }
+
+    // Keyboard navigation for lightbox
+    document.addEventListener('keydown', (e) => {
+      if (!document.getElementById('lightbox').classList.contains('show')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') changeImage(-1);
+      if (e.key === 'ArrowRight') changeImage(1);
+    });
+
     document.addEventListener('DOMContentLoaded', () => {
       fillBusinessBits();
       // Set initial selections
@@ -1129,6 +1410,7 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1"
         <nav class="hidden md:flex items-center gap-6 text-sm">
           <a href="#services" class="hover:text-stone-700">Services</a>
           <a href="#pricing" class="hover:text-stone-700">Pricing</a>
+          <a href="#gallery" class="hover:text-stone-700">Our Work</a>
           <a href="#commercial" class="hover:text-stone-700 font-bold text-lime-700">Commercial</a>
           <a href="#area" class="hover:text-stone-700">Service Area</a>
           <a href="#faq" class="hover:text-stone-700">FAQ</a>
@@ -1142,6 +1424,7 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1"
         <div class="grid gap-2 text-sm">
           <a href="#services" class="px-2 py-1">Services</a>
           <a href="#pricing" class="px-2 py-1">Pricing</a>
+          <a href="#gallery" class="px-2 py-1">Our Work</a>
           <a href="#commercial" class="px-2 py-1 font-bold text-lime-700">Commercial</a>
           <a href="#area" class="px-2 py-1">Service Area</a>
           <a href="#faq" class="px-2 py-1">FAQ</a>
@@ -1283,6 +1566,149 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1"
 
     updatePoopCalc();
   </script>
+
+  <!-- PHOTO GALLERY SECTION -->
+  <section id="gallery" class="photo-gallery-section">
+    <div class="gallery-container">
+      <div class="gallery-header">
+        <h2>
+          📸 Our Cleanup Results
+        </h2>
+        <p>See the transformations we've accomplished for our clients</p>
+      </div>
+      
+      <div class="gallery-grid">
+        <!-- Gallery Items -->
+        <div class="gallery-item" onclick="openLightbox(0)">
+          <span class="gallery-badge before">BEFORE</span>
+          <img src="c1.HEIC" alt="Yard cleanup before" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Yard Transformation</h4>
+            <p>Click to view full size</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="openLightbox(1)">
+          <span class="gallery-badge after">AFTER</span>
+          <img src="c2.HEIC" alt="Yard cleanup after" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Spotless Results</h4>
+            <p>Click to view full size</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="openLightbox(2)">
+          <span class="gallery-badge before">BEFORE</span>
+          <img src="c3.HEIC" alt="Cleanup service before" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Complete Service</h4>
+            <p>Click to view full size</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="openLightbox(3)">
+          <span class="gallery-badge after">AFTER</span>
+          <img src="c4.HEIC" alt="Cleanup service after" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Fresh Start</h4>
+            <p>Click to view full size</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="openLightbox(4)">
+          <span class="gallery-badge before">BEFORE</span>
+          <img src="c5.HEIC" alt="Waste removal before" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Thorough Cleaning</h4>
+            <p>Click to view full size</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="openLightbox(5)">
+          <span class="gallery-badge after">AFTER</span>
+          <img src="c6.JPG" alt="Waste removal after" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Detailed Work</h4>
+            <p>Click to view full size</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="openLightbox(6)">
+          <span class="gallery-badge before">BEFORE</span>
+          <img src="c7.JPG" alt="Professional cleanup before" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Quality Service</h4>
+            <p>Click to view full size</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="openLightbox(7)">
+          <span class="gallery-badge after">AFTER</span>
+          <img src="c8.JPG" alt="Professional cleanup after" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Expert Cleanup</h4>
+            <p>Click to view full size</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="openLightbox(8)">
+          <span class="gallery-badge before">BEFORE</span>
+          <img src="c9.JPG" alt="Yard service before" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Pristine Yards</h4>
+            <p>Click to view full size</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="openLightbox(9)">
+          <span class="gallery-badge after">AFTER</span>
+          <img src="c10.JPG" alt="Yard service after" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Reliable Service</h4>
+            <p>Click to view full size</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="openLightbox(10)">
+          <span class="gallery-badge before">BEFORE</span>
+          <img src="c11.JPG" alt="Happy client yard before" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Happy Clients</h4>
+            <p>Click to view full size</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="openLightbox(11)">
+          <span class="gallery-badge after">AFTER</span>
+          <img src="c12.JPG" alt="Happy client yard after" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Top Rated</h4>
+            <p>Click to view full size</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item" onclick="openLightbox(12)">
+          <span class="gallery-badge after">AFTER</span>
+          <img src="c13.JPG" alt="Book today transformation" loading="lazy">
+          <div class="gallery-overlay">
+            <h4>Book Today</h4>
+            <p>Click to view full size</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="if(event.target === this) closeLightbox()">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox()">×</button>
+      <button class="lightbox-nav prev" onclick="changeImage(-1)">❮</button>
+      <img id="lightbox-img" src="" alt="Gallery image">
+      <button class="lightbox-nav next" onclick="changeImage(1)">❯</button>
+      <div class="lightbox-counter" id="lightbox-counter">1 / 13</div>
+    </div>
+  </div>
   
   <!-- Why Choose Big Turd -->
   <section class="container mx-auto px-4 py-16">
@@ -1306,7 +1732,7 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1"
         </div>
         <div class="bg-white/60 backdrop-blur-md p-6 rounded-xl text-center shadow-sm">
           <div class="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-            <span class="text-green-600">📅</span>
+            span class="text-green-600">📅</span>
           </div>
           <h3 class="font-semibold text-lg">Flexible Scheduling</h3>
           <p class="mt-2 text-stone-600">Choose from weekly, bi-weekly, or one-time services to fit your needs.</p>
@@ -2386,6 +2812,7 @@ src="https://www.facebook.com/tr?id=196908840923767&ev=PageView&noscript=1"
           <ul class="space-y-2 text-sm text-stone-400">
             <li><a href="#services" class="hover:text-white">Services</a></li>
             <li><a href="#pricing" class="hover:text-white">Pricing</a></li>
+            <li><a href="#gallery" class="hover:text-white">Our Work</a></li>
             <li><a href="#commercial" class="hover:text-white">Commercial</a></li>
             <li><a href="#area" class="hover:text-white">Service Area</a></li>
             <li><a href="#faq" class="hover:text-white">FAQ</a></li>
